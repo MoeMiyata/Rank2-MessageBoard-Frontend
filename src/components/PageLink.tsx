@@ -7,7 +7,7 @@ export default function PageLink() {
 
     const onNextPageClick = async () => {
       console.log('next');
-      await setPageNumber((prevPage) => prevPage += 1);
+      await setPageNumber((prevPage) => prevPage += 10);
     }
 
 	return (
