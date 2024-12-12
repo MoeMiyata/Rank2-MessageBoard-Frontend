@@ -3,12 +3,15 @@ import styled from 'styled-components';
 import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 
 export default function PageLink() {
+    const { pageNumber } = useContext(PageLinkContext);
     const { setPageNumber } = useContext(PageLinkContext);
 
     const onNextPageClick = async () => {
       console.log('next');
       await setPageNumber((prevPage) => prevPage += 10);
     }
+
+    console.log('pageNumber:', pageNumber);
 
 	return (
         <SPageLink>
