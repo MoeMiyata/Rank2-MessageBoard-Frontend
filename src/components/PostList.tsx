@@ -36,7 +36,7 @@ export default function PostList() {
   // 描画時にポスト一覧を取得する
   useEffect(() => {
     getPostList();
-  }, []);
+  }, [pageNumber]);
 
   console.log('postList:', postList);
 
