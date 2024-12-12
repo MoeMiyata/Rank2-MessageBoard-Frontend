@@ -5,9 +5,9 @@ import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 export default function PageLink() {
     const { setPageNumber } = useContext(PageLinkContext);
 
-    const onNextPageClick = () => {
+    const onNextPageClick = async () => {
       console.log('next');
-      setPageNumber((prevPage) => prevPage += 1);
+      await setPageNumber((prevPage) => prevPage += 1);
     }
 
 	return (

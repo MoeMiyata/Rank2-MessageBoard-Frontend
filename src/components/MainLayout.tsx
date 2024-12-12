@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Header from "./Header.tsx";
 import SideBar from "./SideBar.tsx";
 import Contents from "./Contents.tsx";
+import { PageLinkProvider } from '../providers/PageLinkProvider.tsx';
 // import { UserContext } from "../providers/UserProvider.tsx";
 // import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 // import { getList } from "../api/Post.tsx";
@@ -33,6 +34,8 @@ export default function MainLayout() {
 
   return (
     <>
+    <PageLinkProvider> 
+
       <SHeader>
         <Header></Header>
       </SHeader>
@@ -46,6 +49,8 @@ export default function MainLayout() {
           <Contents></Contents>
         </SContents>
       </SBody>
+
+      </PageLinkProvider>
     </>
   );
 }
