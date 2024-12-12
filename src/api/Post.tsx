@@ -1,5 +1,5 @@
 import axios from "axios";
-import { hostUrl } from './hostUrl';
+import { hostUrl } from './hostUrl.ts';
 
 export const post = async (user_id: string, token: string, msg: string) => {
   const data = {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { hostUrl } from './hostUrl';
+import { hostUrl } from './hostUrl.ts';
 
 export const sign_in = async (user_id: string, pass: string) => {
   // const url = `http://localhost:3000/auth?user_id=${user_id}&pass=${pass}`;

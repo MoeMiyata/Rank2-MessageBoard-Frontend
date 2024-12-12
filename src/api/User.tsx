@@ -1,5 +1,5 @@
 import axios from "axios";
-import { hostUrl } from './hostUrl';
+import { hostUrl } from './hostUrl.ts';
 
 export const getUser = async (user_id: number, token: string) => {
   // const url = `http://localhost:3000/user/${user_id}?token=${token}`;
