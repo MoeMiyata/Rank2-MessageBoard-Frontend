@@ -3,12 +3,16 @@ import styled from "styled-components";
 import Post from "./Post.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
+
 import { getList } from "../api/Post.tsx";
+// import { PageContext } from "../providers/PageProvider.tsx";
 
 export default function PostList() {
   const { postList } = useContext(PostListContext);
   const { userInfo } = useContext(UserContext);
   const { setPostList } = useContext(PostListContext);
+
+  // const { pageNumber } = useContext(PageContext)
 
   // ポスト一覧を取得する関数
   const getPostList = async() => {
