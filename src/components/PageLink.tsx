@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 
 export default function PageLink() {
+    const { setPageNumber } = useContext(PageLinkContext);
+
     const onNextPageClick = () => {
       console.log('next');
+      setPageNumber((prevPage) => prevPage += 1);
     }
 
 	return (

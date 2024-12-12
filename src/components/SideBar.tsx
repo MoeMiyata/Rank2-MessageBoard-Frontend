@@ -3,15 +3,19 @@ import { useState, useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
+import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 import { post, getList } from "../api/Post.tsx";
 
 export default function SideBar() {
   const [msg, setMsg] = useState("");
   const { userInfo } = useContext(UserContext);  // コンテキストからuserInfoを取り出す
 
+  const { pageNumber } = useContext(PageLinkContext);
+
   const { setPostList } = useContext(PostListContext); 
+
   const getPostList = async () => {
-    const posts = await getList(userInfo.token);
+    const posts = await getList(userInfo.token, pageNumber);
     console.log(posts);
 
     let postList: Array<PostType> = [];
