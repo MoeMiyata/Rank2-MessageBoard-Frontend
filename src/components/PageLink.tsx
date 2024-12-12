@@ -23,7 +23,7 @@ const SPageLink = styled.div`
 const SPageLinkRow = styled.div`
   margin-top: 4px;
   margin-bottom: 4px;
-  text-align: left;
+  text-align: rigth;
 `
 
 const SPageLinkButton = styled.button`
@@ -32,4 +32,5 @@ const SPageLinkButton = styled.button`
   border-radius: 8px;
   color: #FAFAFA;
   width: 100%;
+  width: 15%;
 `
