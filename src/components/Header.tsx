@@ -24,11 +24,6 @@ export default function Header() {
   }, []);
 
   return (
-	  // <div>
-		//   <span>MicroPost</span>
-		//   <span>{userName}</span>
-		//   <span onClick={logout}>ログアウト</span>
-	  // </div>
     <SHeader>
       <SLogo>MicroPost</SLogo>
 

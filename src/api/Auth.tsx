@@ -9,5 +9,5 @@ export const sign_in = async (user_id: string, pass: string) => {
   const res = await axios.get(url);
   console.log(res);
 
-  return res.data; // 修正（ログイン後、メイン画面に遷移する）
+  return res.data;
 };

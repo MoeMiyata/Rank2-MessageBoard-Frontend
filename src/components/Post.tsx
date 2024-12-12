@@ -27,11 +27,6 @@ export default function Post(props: any) {
   }
   
   return (
-    // <div>
-	  //   <div>{getDateStr(post.craeted_at)}</div>
-	  //   <div>{post.user_name}</div>
-	  //   <div>{getLines(post.content)}</div>
-	  // </div>
     <SPost>
       <div>
         <SName>{post.user_name}</SName>

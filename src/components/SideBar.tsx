@@ -1,8 +1,3 @@
-// import React from 'react';
-// import { useState, useContext } from "react";
-// import { UserContext } from "../providers/UserProvider.tsx";  // 追加
-// import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
-// import { post, getList } from "../api/Post.tsx";
 import React from 'react';
 import { useState, useContext } from "react";
 import styled from "styled-components";
@@ -12,11 +7,9 @@ import { post, getList } from "../api/Post.tsx";
 
 export default function SideBar() {
   const [msg, setMsg] = useState("");
-  // 以下が追加（SideBarコンテナでIdとトークンをコンテキストから取り出す）
   const { userInfo } = useContext(UserContext);  // コンテキストからuserInfoを取り出す
-  // ここで追加終わり
 
-  const { setPostList } = useContext(PostListContext); // 追加（ポスト投稿時に、ポストリスト反映）
+  const { setPostList } = useContext(PostListContext); 
   const getPostList = async () => {
     const posts = await getList(userInfo.token);
     console.log(posts);
@@ -36,34 +29,11 @@ export default function SideBar() {
     setPostList(postList);
   };
 
-  // 以下が追加（SideBarコンテナでIdとトークンをコンテキストから取り出す）
   const onSendClick = async () => {
-    // console.log("onSendClick");
-    // post(String(userInfo.id), userInfo.token, msg);
-	await post(String(userInfo.id), userInfo.token, msg);
+	  await post(String(userInfo.id), userInfo.token, msg);
     await getPostList();
   };
-  // ここで追加終わり
 
-  // return (
-  //   <div>
-  //     <div>hoge</div>
-
-  //     <div>hoge@example.com</div>
-
-  //     <div>
-  //       <textarea
-  //         rows={4}
-  //         value={msg}
-  //         onChange={(evt) => setMsg(evt.target.value)}
-  //       ></textarea>
-  //     </div>
-
-  //     <div>
-  //       <button onClick={onSendClick}>送信</button>
-  //     </div>
-  //   </div>
-  // );
   return (
     <SSideBar>
       <SSideBarRow>hoge</SSideBarRow>
