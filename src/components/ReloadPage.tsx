@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { UserContext } from '../providers/UserProvider';
+import { UserContext } from '../providers/UserProvider.tsx';
 
 const PageUnloadLogger = () => {
     const { userInfo } = useContext(UserContext);
