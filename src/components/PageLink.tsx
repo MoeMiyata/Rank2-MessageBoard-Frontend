@@ -12,15 +12,12 @@ export default function PageLink() {
     const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
 
     const judgeOfNextPage = async () => {
-        // let IsExistNextPage = false;
         const posts = await getList(userInfo.token, pageNumber+10);
         if (posts.length > 0) {
-            // IsExistNextPage = true;
             await setIsExistNextPage(true);
         } else {
             await setIsExistNextPage(false);
         }
-        // return IsExistNextPage;
     }
 
 
@@ -37,11 +34,6 @@ export default function PageLink() {
     console.log('pageNumber:', pageNumber);
 
     useEffect(() => {
-        // const checkNextPage = async () => {
-        //     const nextPageExists = await judgeOfNextPage();
-        //     setIsExistNextPage(nextPageExists); 
-        // };
-        // checkNextPage(); 
         judgeOfNextPage();
     }, [pageNumber]); 
 
@@ -49,8 +41,8 @@ export default function PageLink() {
 	return (
         <SPageLink>
             <SPageLinkRow>
-                { !(pageNumber<10) ? <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> : null }
-                { isExistNextPage ? <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> : null }
+                { pageNumber<10 ?  null : <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> }
+                { !isExistNextPage ? null : <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
             </SPageLinkRow>
         </SPageLink>
 	)
