@@ -12,22 +12,24 @@ export default function PageLink() {
     const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
 
     const judgeOfNextPage = async () => {
-        let IsExistNextPage = false;
+        // let IsExistNextPage = false;
         const posts = await getList(userInfo.token, pageNumber+10);
         if (posts.length > 0) {
-            IsExistNextPage = true;
+            // IsExistNextPage = true;
+            setIsExistNextPage(true);
         }
-        return IsExistNextPage;
+        // return IsExistNextPage;
     }
 
     useEffect(() => {
-        const checkNextPage = async () => {
-            const nextPageExists = await judgeOfNextPage();
-            setIsExistNextPage(nextPageExists); 
-        };
-        checkNextPage(); 
+        // const checkNextPage = async () => {
+        //     const nextPageExists = await judgeOfNextPage();
+        //     setIsExistNextPage(nextPageExists); 
+        // };
+        // checkNextPage(); 
+        judgeOfNextPage();
     }, [pageNumber]); 
-    
+
 
     const onBeforePageClick = async () => {
         console.log('before');
