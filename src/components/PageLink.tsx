@@ -18,7 +18,7 @@ export default function PageLink() {
 
 
     useEffect(() => {
-        judgeOfNextPage();
+        // judgeOfNextPage();
         console.log('isExistNextPage(InuseEffect):', isExistNextPage);
     }, [pageNumber]); 
     console.log('isExistNextPage(OutuseEffect):', isExistNextPage);
@@ -35,6 +35,7 @@ export default function PageLink() {
         console.log('next');
         // await setPageNumber((prevPage) => prevPage += 10);
         setPageNumber((prevPage) => prevPage += 10);
+        judgeOfNextPage();
     }
 
     console.log('pageNumber:', pageNumber);
