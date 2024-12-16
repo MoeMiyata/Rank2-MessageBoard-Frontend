@@ -19,6 +19,7 @@ export default function PageLink() {
 
     useEffect(() => {
         judgeOfNextPage();
+        console.log('isExistNextPage:', isExistNextPage);
     }, [pageNumber]); 
 
 
