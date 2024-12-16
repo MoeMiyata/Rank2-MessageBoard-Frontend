@@ -336,6 +336,13 @@ module.exports = function (webpackEnv) {
           babelRuntimeRegenerator,
         ]),
       ],
+      // 以下追加（メッセージ一覧のリロード）
+      devServer: {
+        historyApiFallback: {
+          rewrites: [{ from: /^\/*/, to: '/index.html' }],
+        }
+      },
+      // 追加終了（メッセージ一覧のリロード）
     },
     module: {
       strictExportPresence: true,
