@@ -20,6 +20,15 @@ export default function PageLink() {
         return IsExistNextPage;
     }
 
+    useEffect(() => {
+        const checkNextPage = async () => {
+            const nextPageExists = await judgeOfNextPage();
+            setIsExistNextPage(nextPageExists); 
+        };
+        checkNextPage(); 
+    }, [pageNumber]); 
+    
+
     const onBeforePageClick = async () => {
         console.log('before');
         await setPageNumber((prevPage) => prevPage -= 10);
@@ -31,16 +40,6 @@ export default function PageLink() {
     }
 
     console.log('pageNumber:', pageNumber);
-
-    useEffect(() => {
-        const checkNextPage = async () => {
-            const nextPageExists = await judgeOfNextPage(); // 非同期で結果を取得
-            setIsExistNextPage(nextPageExists); // 結果をステートに保存
-        };
-
-        checkNextPage(); // 初回レンダリング時にチェック
-
-    }, [pageNumber]); // pageNumberやtokenが変わったときに再評価
 
 	return (
         <SPageLink>
