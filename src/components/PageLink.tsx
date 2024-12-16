@@ -33,7 +33,7 @@ export default function PageLink() {
 
     judgeOfNextPage();
 
-    
+
 	return (
         <SPageLink>
             <SPageLinkRow>
@@ -47,8 +47,6 @@ export default function PageLink() {
 
 const SPageLink = styled.div`
   padding: 8px;
-  height: 100%; 
-  overflow-y: scroll;
 `
 
 const SPageLinkRow = styled.div`
