@@ -749,13 +749,13 @@ module.exports = function (webpackEnv) {
           },
         }),
     ].filter(Boolean),
-    // // 以下追加（メッセージ一覧のリロード）
-    // devServer: {
-    //   historyApiFallback: {
-    //     rewrites: [{ from: /^\/*/, to: '/index.html' }],
-    //   }
-    // },
-    // // 追加終了（メッセージ一覧のリロード）
+    // 以下追加（メッセージ一覧のリロード）
+    devServer: {
+      historyApiFallback: {
+        rewrites: [{ from: /^\/*/, to: '/index.html' }],
+      }
+    },
+    // 追加終了（メッセージ一覧のリロード）
     
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
