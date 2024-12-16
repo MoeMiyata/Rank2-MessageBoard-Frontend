@@ -12,17 +12,9 @@ export default function PageLink() {
     const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
 
     const judgeOfNextPage = async () => {
-        const posts = await getList(userInfo.token, pageNumber+10);
+        const posts = await getList(userInfo.token, pageNumber+20);
         setIsExistNextPage(posts.length > 0);
     }
-
-
-    useEffect(() => {
-        // judgeOfNextPage();
-        console.log('isExistNextPage(InuseEffect):', isExistNextPage);
-    }, [pageNumber]); 
-    console.log('isExistNextPage(OutuseEffect):', isExistNextPage);
-
 
 
     const onBeforePageClick = async () => {
@@ -35,17 +27,22 @@ export default function PageLink() {
         console.log('next');
         // await setPageNumber((prevPage) => prevPage += 10);
         setPageNumber((prevPage) => prevPage += 10);
-        judgeOfNextPage();
     }
 
     console.log('pageNumber:', pageNumber);
 
+    useEffect(() => {
+        judgeOfNextPage();
+        console.log('isExistNextPage(InuseEffect):', isExistNextPage);
+    }, [pageNumber]); 
+    console.log('isExistNextPage(OutuseEffect):', isExistNextPage);
     
+
 	return (
         <SPageLink>
             <SPageLinkRow>
                 { !(pageNumber<10) ? <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> : null }
-                { ((pageNumber<10)||isExistNextPage) && <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
+                { isExistNextPage && <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
             </SPageLinkRow>
         </SPageLink>
 	)
