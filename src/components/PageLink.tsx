@@ -6,6 +6,11 @@ export default function PageLink() {
     const { pageNumber } = useContext(PageLinkContext);
     const { setPageNumber } = useContext(PageLinkContext);
 
+    const onBeforePageClick = async () => {
+        console.log('before');
+        await setPageNumber((prevPage) => prevPage -= 10);
+    }
+
     const onNextPageClick = async () => {
       console.log('next');
       await setPageNumber((prevPage) => prevPage += 10);
@@ -16,6 +21,7 @@ export default function PageLink() {
 	return (
         <SPageLink>
             <SPageLinkRow>
+                {pageNumber<10 ? <SPageLinkButton onClick={onBeforePageClick}>前へ</SPageLinkButton> : null}
                 <SPageLinkButton onClick={onNextPageClick}>次へ</SPageLinkButton>
             </SPageLinkRow>
         </SPageLink>
