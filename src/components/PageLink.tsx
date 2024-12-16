@@ -17,6 +17,11 @@ export default function PageLink() {
     }
 
 
+    useEffect(() => {
+        judgeOfNextPage();
+    }, [pageNumber]); 
+
+
     const onBeforePageClick = async () => {
         console.log('before');
         // await setPageNumber((prevPage) => prevPage -= 10);
@@ -31,11 +36,7 @@ export default function PageLink() {
 
     console.log('pageNumber:', pageNumber);
 
-    useEffect(() => {
-        judgeOfNextPage();
-    }, [pageNumber]); 
-
-
+    
 	return (
         <SPageLink>
             <SPageLinkRow>
