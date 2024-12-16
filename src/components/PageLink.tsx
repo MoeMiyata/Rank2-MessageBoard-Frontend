@@ -16,7 +16,7 @@ export default function PageLink() {
         const posts = await getList(userInfo.token, pageNumber+10);
         if (posts.length > 0) {
             // IsExistNextPage = true;
-            setIsExistNextPage(true);
+            await setIsExistNextPage(true);
         }
         // return IsExistNextPage;
     }
