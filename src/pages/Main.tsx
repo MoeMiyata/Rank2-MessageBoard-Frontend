@@ -13,7 +13,8 @@ export default function Main() {
 	return (
 		<PostListProvider>
 		  {
-		    loggedIn ? <MainLayout />:<Navigate replace to="/" />
+		    // loggedIn ? <MainLayout />:<Navigate replace to="/" />
+		    loggedIn ? <Navigate replace to="/" /> : null
           }
 		</PostListProvider>
 	)
