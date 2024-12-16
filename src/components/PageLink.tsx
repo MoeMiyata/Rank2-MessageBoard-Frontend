@@ -19,8 +19,10 @@ export default function PageLink() {
 
     useEffect(() => {
         judgeOfNextPage();
-        console.log('isExistNextPage:', isExistNextPage);
+        console.log('isExistNextPage(InuseEffect):', isExistNextPage);
     }, [pageNumber]); 
+    console.log('isExistNextPage(OutuseEffect):', isExistNextPage);
+
 
 
     const onBeforePageClick = async () => {
