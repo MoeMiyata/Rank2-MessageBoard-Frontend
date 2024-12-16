@@ -19,12 +19,14 @@ export default function PageLink() {
 
     const onBeforePageClick = async () => {
         console.log('before');
-        await setPageNumber((prevPage) => prevPage -= 10);
+        // await setPageNumber((prevPage) => prevPage -= 10);
+        setPageNumber((prevPage) => prevPage -= 10);
     }
 
     const onNextPageClick = async () => {
         console.log('next');
-        await setPageNumber((prevPage) => prevPage += 10);
+        // await setPageNumber((prevPage) => prevPage += 10);
+        setPageNumber((prevPage) => prevPage += 10);
     }
 
     console.log('pageNumber:', pageNumber);
