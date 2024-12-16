@@ -17,18 +17,11 @@ export default function PageLink() {
         if (posts.length > 0) {
             // IsExistNextPage = true;
             await setIsExistNextPage(true);
+        } else {
+            await setIsExistNextPage(false);
         }
         // return IsExistNextPage;
     }
-
-    useEffect(() => {
-        // const checkNextPage = async () => {
-        //     const nextPageExists = await judgeOfNextPage();
-        //     setIsExistNextPage(nextPageExists); 
-        // };
-        // checkNextPage(); 
-        judgeOfNextPage();
-    }, [pageNumber]); 
 
 
     const onBeforePageClick = async () => {
@@ -42,6 +35,16 @@ export default function PageLink() {
     }
 
     console.log('pageNumber:', pageNumber);
+
+    useEffect(() => {
+        // const checkNextPage = async () => {
+        //     const nextPageExists = await judgeOfNextPage();
+        //     setIsExistNextPage(nextPageExists); 
+        // };
+        // checkNextPage(); 
+        judgeOfNextPage();
+    }, [pageNumber]); 
+
 
 	return (
         <SPageLink>
