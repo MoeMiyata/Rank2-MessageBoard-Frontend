@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { UserContext } from '../providers/UserProvider';
 
 const PageUnloadLogger = () => {
+    const { userInfo } = useContext(UserContext);
+
     useEffect(() => {
         const handleBeforeUnload = (e: Event) => {
             const navigationType = (window?.performance?.getEntriesByType("navigation")[0] as PerformanceNavigationTiming)?.type;
@@ -10,6 +13,9 @@ const PageUnloadLogger = () => {
                     console.log(navigationType + " : ページ遷移");
                     break;
                 case "reload":
+                    const loggedIn = (userInfo.token !== '');
+	                console.log('loggedIn:', loggedIn);
+
                     console.log(navigationType + " : ページ更新");
                     break;
                 case "back_forward":
