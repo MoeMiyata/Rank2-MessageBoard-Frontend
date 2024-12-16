@@ -13,7 +13,7 @@ export default function PageLink() {
 
     const judgeOfNextPage = async () => {
         let IsExistNextPage = false;
-        const posts = await getList(userInfo.token, pageNumber);
+        const posts = await getList(userInfo.token, pageNumber+10);
         if (posts.length > 0) {
             IsExistNextPage = true;
         }
