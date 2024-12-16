@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 import { UserContext } from '../providers/UserProvider.tsx';
@@ -9,14 +9,15 @@ export default function PageLink() {
     const { pageNumber } = useContext(PageLinkContext);
     const { setPageNumber } = useContext(PageLinkContext);
 
-    let IsExistNextPage = false;
+    const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
 
     const judgeOfNextPage = async () => {
+        let IsExistNextPage = false;
         const posts = await getList(userInfo.token, pageNumber);
         if (posts.length > 0) {
             IsExistNextPage = true;
         }
-        // return IsExistNextPage;
+        return IsExistNextPage;
     }
 
     const onBeforePageClick = async () => {
@@ -31,14 +32,21 @@ export default function PageLink() {
 
     console.log('pageNumber:', pageNumber);
 
-    judgeOfNextPage();
+    useEffect(() => {
+        const checkNextPage = async () => {
+            const nextPageExists = await judgeOfNextPage(); // 非同期で結果を取得
+            setIsExistNextPage(nextPageExists); // 結果をステートに保存
+        };
 
+        checkNextPage(); // 初回レンダリング時にチェック
+
+    }, [pageNumber]); // pageNumberやtokenが変わったときに再評価
 
 	return (
         <SPageLink>
             <SPageLinkRow>
                 { !(pageNumber<10) ? <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> : null }
-                { IsExistNextPage ? <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> : null }
+                { (pageNumber<10) || isExistNextPage ? <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> : null }
             </SPageLinkRow>
         </SPageLink>
 	)
