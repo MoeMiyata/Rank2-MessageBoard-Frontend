@@ -17,6 +17,8 @@ const PageUnloadLogger = () => {
 	                console.log('loggedIn:', loggedIn);
 
                     console.log(navigationType + " : ページ更新");
+
+                    alert('reload')
                     break;
                 case "back_forward":
                     console.log(navigationType + " : 戻る・進む");
