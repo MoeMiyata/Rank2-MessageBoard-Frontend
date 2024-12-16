@@ -38,7 +38,7 @@ export default function MainLayout() {
     <>
     <PageLinkProvider> 
 
-      <PageUnloadLogger/>
+      {/* <PageUnloadLogger/> */}
 
       <SHeader>
         <Header></Header>
