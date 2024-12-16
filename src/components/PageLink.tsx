@@ -41,7 +41,7 @@ export default function PageLink() {
 	return (
         <SPageLink>
             <SPageLinkRow>
-                { pageNumber<10 ?  null : <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> }
+                { !(pageNumber<10) ? <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> : null }
                 { !isExistNextPage ? null : <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
             </SPageLinkRow>
         </SPageLink>
