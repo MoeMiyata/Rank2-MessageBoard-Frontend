@@ -13,11 +13,7 @@ export default function PageLink() {
 
     const judgeOfNextPage = async () => {
         const posts = await getList(userInfo.token, pageNumber+10);
-        if (posts.length > 0) {
-            await setIsExistNextPage(true);
-        } else {
-            await setIsExistNextPage(false);
-        }
+        setIsExistNextPage(posts.length > 0);
     }
 
 
@@ -42,7 +38,7 @@ export default function PageLink() {
         <SPageLink>
             <SPageLinkRow>
                 { !(pageNumber<10) ? <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> : null }
-                { !isExistNextPage ? null : <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
+                { isExistNextPage && <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
             </SPageLinkRow>
         </SPageLink>
 	)
@@ -60,7 +56,6 @@ const SPageLinkRow = styled.div`
 `
 
 const SPageLinkBeforeButton = styled.button`
-  
   background-color: #222222;
   padding: 4px;
   border-radius: 8px;
