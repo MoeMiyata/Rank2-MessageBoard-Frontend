@@ -4,6 +4,9 @@ import Header from "./Header.tsx";
 import SideBar from "./SideBar.tsx";
 import Contents from "./Contents.tsx";
 import { PageLinkContext, PageLinkProvider } from '../providers/PageLinkProvider.tsx';
+
+import { ReloadPage } from './ReloadPage.tsx';
+
 // import { useContext, useLayoutEffect } from "react";
 // import { UserContext } from "../providers/UserProvider.tsx";
 // import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
@@ -37,7 +40,8 @@ export default function MainLayout() {
     <>
     <PageLinkProvider> 
 
-      {/* <PageUnloadLogger/> */}
+      {/* メッセージ一覧取得のリロード操作 */}
+      <ReloadPage/> 
 
       <SHeader>
         <Header></Header>

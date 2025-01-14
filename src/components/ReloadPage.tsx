@@ -49,3 +49,22 @@
 // };
 
 // export default PageUnloadLogger;
+
+
+import React from "react";
+import styled from "styled-components";
+
+export const ReloadPage = () => {
+    return (
+        <SPageLinkNextButton>aaaa</SPageLinkNextButton>
+    )
+}
+
+const SPageLinkNextButton = styled.button`
+  background-color: #222222;
+  padding: 4px;
+  border-radius: 8px;
+  color: #FAFAFA;
+  width: 100%;
+  width: 15%;
+`
