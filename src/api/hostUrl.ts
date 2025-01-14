@@ -1,1 +1,1 @@
-export const hostUrl = process.env.REACT_APP_API_HOST;
+export const hostUrl = process.env.REACT_APP_API_HOST; // Render側（Rank2-MessageBoard-Frontend）で定義
