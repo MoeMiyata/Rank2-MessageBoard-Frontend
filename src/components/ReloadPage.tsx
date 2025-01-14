@@ -56,20 +56,20 @@ import styled from "styled-components";
 
 export const ReloadPage = () => {
     return (
-        <SPageLinkNextButton><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/public/reloadicon.png" alt="button" width="160" height="30" /></SPageLinkNextButton>
+        <SPageLinkNextButton><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/reloadicon.png?raw=true" alt="button" width="160" height="30" /></SPageLinkNextButton>
     )
 }
 
 const SPageLinkNextButton = styled.button`
-//   background-color: #222222;
-//   padding: 4px;
-//   border-radius: 8px;
-//   color: #FAFAFA;
-//   width: 100%;
-//   width: 15%;
+  background-color: #222222;
+  padding: 4px;
+  border-radius: 8px;
+  color: #FAFAFA;
+  width: 100%;
+  width: 15%;
     position: fixed;
     top: 50px;
     right: 10px;
-    padding: 6px 40px;
+    padding: 3px 5px 0px 4px;
     border-radius: 50%;
 `
