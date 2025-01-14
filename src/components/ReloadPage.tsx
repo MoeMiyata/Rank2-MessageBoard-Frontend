@@ -53,7 +53,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import PostList from "./PostList";
+import PostList from "./PostList.tsx";
 
 export const ReloadPage = () => {
     const onReloadClick = () => {
