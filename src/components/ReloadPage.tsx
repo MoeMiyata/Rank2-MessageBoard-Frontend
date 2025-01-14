@@ -56,7 +56,7 @@ import styled from "styled-components";
 
 export const ReloadPage = () => {
     return (
-        <SPageLinkNextButton>aaaa</SPageLinkNextButton>
+        <SPageLinkNextButton><img src="../../public/reloadicon.png" alt="button" width="160" height="30" /></SPageLinkNextButton>
     )
 }
 
@@ -68,7 +68,8 @@ const SPageLinkNextButton = styled.button`
 //   width: 100%;
 //   width: 15%;
     position: fixed;
-    top: 30px;
+    top: 50px;
     right: 10px;
     padding: 6px 40px;
+    border-radius: 50%;
 `
