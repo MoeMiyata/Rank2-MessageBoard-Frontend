@@ -61,10 +61,14 @@ export const ReloadPage = () => {
 }
 
 const SPageLinkNextButton = styled.button`
-  background-color: #222222;
-  padding: 4px;
-  border-radius: 8px;
-  color: #FAFAFA;
-  width: 100%;
-  width: 15%;
+//   background-color: #222222;
+//   padding: 4px;
+//   border-radius: 8px;
+//   color: #FAFAFA;
+//   width: 100%;
+//   width: 15%;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 40px;
 `
