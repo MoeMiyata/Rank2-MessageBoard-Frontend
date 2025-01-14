@@ -56,7 +56,7 @@ import styled from "styled-components";
 
 export const ReloadPage = () => {
     return (
-        <SPageLinkNextButton><img src="public/reloadicon.png" alt="button" width="160" height="30" /></SPageLinkNextButton>
+        <SPageLinkNextButton><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/public/reloadicon.png" alt="button" width="160" height="30" /></SPageLinkNextButton>
     )
 }
 
