@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-// import PostList from "./PostList.tsx";
 
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
@@ -8,14 +7,12 @@ import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
 import { getList } from "../api/Post.tsx";
 
 export const ReloadPage = () => {
-    // const { postList } = useContext(PostListContext);
     const { userInfo } = useContext(UserContext);
     const { setPostList } = useContext(PostListContext);
     const { pageNumber } = useContext(PageLinkContext);
     // ポスト一覧を取得する関数
     const getPostList = async() => {
         const posts = await getList(userInfo.token, pageNumber);
-
         // getListで取得したポスト配列をコンテキストに保存する
         let postList: Array<PostType> = [];
         if (posts) {
@@ -32,8 +29,6 @@ export const ReloadPage = () => {
     }
 
     const onReloadClick = () => {
-        // PostList() // ポスト一覧表示
-
         getPostList();
        console.log('ページ更新');
     }
@@ -45,14 +40,10 @@ export const ReloadPage = () => {
 
 const SPageLinkNextButton = styled.button`
   background-color: #222222;
-//   padding: 4px;
-//   border-radius: 8px;
   color: #FAFAFA;
-//   width: 100%;
-//   width: 15%;
-    position: fixed;
-    top: 50px;
-    right: 10px;
-    padding: 3px 5px 0px 4px;
-    border-radius: 50%;
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  padding: 3px 5px 0px 4px;
+  border-radius: 50%;
 `
