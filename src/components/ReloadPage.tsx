@@ -53,10 +53,15 @@
 
 import React from "react";
 import styled from "styled-components";
+import PostList from "./PostList";
 
 export const ReloadPage = () => {
+    const onReloadClick = () => {
+        PostList() // ポスト一覧表示
+    }
+
     return (
-        <SPageLinkNextButton><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/reloadicon_white.png?raw=true" alt="button" width="30" height="30" /></SPageLinkNextButton>
+        <SPageLinkNextButton onClick={onReloadClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/reloadicon_white.png?raw=true" alt="button" width="30" height="30" /></SPageLinkNextButton>
     )
 }
 
