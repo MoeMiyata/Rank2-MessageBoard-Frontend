@@ -68,7 +68,7 @@ const SPageLinkNextButton = styled.button`
 //   width: 100%;
 //   width: 15%;
     position: fixed;
-    bottom: 10px;
+    top: 30px;
     right: 10px;
     padding: 6px 40px;
 `
