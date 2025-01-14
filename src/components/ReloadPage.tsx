@@ -1,63 +1,41 @@
-// import React, { useContext, useEffect } from 'react';
-// import { UserContext } from '../providers/UserProvider.tsx';
-
-// const PageUnloadLogger = () => {
-//     const { userInfo } = useContext(UserContext);
-
-//     useEffect(() => {
-//         const handleBeforeUnload = (e: Event) => {
-//             const navigationType = (window?.performance?.getEntriesByType("navigation")[0] as PerformanceNavigationTiming)?.type;
-
-//             switch (navigationType) {
-//                 case "navigate":
-//                     console.log(navigationType + " : ページ遷移");
-//                     break;
-//                 case "reload":
-//                     const loggedIn = (userInfo.token !== '');
-// 	                console.log('loggedIn:', loggedIn);
-
-//                     console.log(navigationType + " : ページ更新");
-
-//                     alert('reload')
-//                     break;
-//                 case "back_forward":
-//                     console.log(navigationType + " : 戻る・進む");
-//                     break;
-//                 case "prerender":
-//                     console.log(navigationType + " : prerender");
-//                     break;
-//                 default:
-//                     console.log("不明な遷移タイプ");
-//             }
-//         };
-
-//         // beforeunload イベントの設定
-//         window.addEventListener('beforeunload', handleBeforeUnload);
-
-//         // クリーンアップ処理（アンマウント時にイベントリスナーを削除）
-//         return () => {
-//             window.removeEventListener('beforeunload', handleBeforeUnload);
-//         };
-//     }, []); // 空の依存配列でコンポーネントのマウント時に1回だけ実行
-
-//     return (
-//         <div>
-//             <h1>ページ遷移の監視</h1>
-//             <p>ページ遷移を監視して、コンソールに遷移タイプをログ出力します。</p>
-//         </div>
-//     );
-// };
-
-// export default PageUnloadLogger;
-
-
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import PostList from "./PostList.tsx";
+// import PostList from "./PostList.tsx";
+
+import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
+import { UserContext } from "../providers/UserProvider.tsx";
+import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
+import { getList } from "../api/Post.tsx";
 
 export const ReloadPage = () => {
+    // const { postList } = useContext(PostListContext);
+    const { userInfo } = useContext(UserContext);
+    const { setPostList } = useContext(PostListContext);
+    const { pageNumber } = useContext(PageLinkContext);
+    // ポスト一覧を取得する関数
+    const getPostList = async() => {
+        const posts = await getList(userInfo.token, pageNumber);
+
+        // getListで取得したポスト配列をコンテキストに保存する
+        let postList: Array<PostType> = [];
+        if (posts) {
+        posts.forEach((p: any) => {
+            postList.push({
+            id: p.id,
+            user_name: p.user_name,
+            content: p.content,
+            created_at: new Date(p.created_at),
+            });
+        });
+        }
+        setPostList(postList);
+    }
+
     const onReloadClick = () => {
-        PostList() // ポスト一覧表示
+        // PostList() // ポスト一覧表示
+
+        getPostList();
+       console.log('ページ更新');
     }
 
     return (
