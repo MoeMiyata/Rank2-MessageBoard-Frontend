@@ -34,8 +34,8 @@ export const DeletePost = (props: any) => {
             });
         }
         console.log("record(getPostListExcludeOne):", deleteRecord);
-        // const deletesPosts = await deletePost(userInfo.token, deleteid);
-        // console.log("deletesPosts(getPostListExcludeOne):", deletesPosts);
+        const deletesPosts = await deletePost(userInfo.token, deleteid);
+        console.log("deletesPosts(getPostListExcludeOne):", deletesPosts);
     }
 
     const onDeletePostClick = () => {
