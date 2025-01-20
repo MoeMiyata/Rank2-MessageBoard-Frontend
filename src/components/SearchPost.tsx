@@ -18,7 +18,7 @@ export const SearchPost = () => {
         let postList: Array<PostType> = [];
         if (posts) {
         posts.forEach((p: any) => {
-            if (p.content.includes(kwd))
+            if ((p.content).includes(kwd))
             postList.push({
             id: p.id,
             user_name: p.user_name,
