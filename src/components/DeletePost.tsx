@@ -31,7 +31,7 @@ export const DeletePost = (props: any) => {
                 }
             });
         }
-        console.log("posts(getPostListExcludeOne):", posts);
+        console.log("postList(getPostListExcludeOne):", postList);
         setPostList(postList);
     }
 
