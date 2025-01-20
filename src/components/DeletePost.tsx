@@ -8,7 +8,7 @@ import { getList } from "../api/Post.tsx";
 
 
 export const DeletePost = (props: any) => {
-    const { id } = props;
+    const { deleteid } = props;
 
     const { userInfo } = useContext(UserContext);
     const { setPostList } = useContext(PostListContext);
@@ -21,13 +21,15 @@ export const DeletePost = (props: any) => {
         let postList: Array<PostType> = [];
         if (posts) {
             posts.forEach((p: any) => {
-                if (!p.id === id) { // 取得したポストが削除したいポストidと一致しなければ追加
+                console.log("p.id:", p.id, "deleteid:", deleteid);
+                if (!p.id === deleteid) { // 取得したポストが削除したいポストidと一致しなければ追加
+                    console.log("p.id:", p.id);
                     postList.push({
                         id: p.id,
                         user_name: p.user_name,
                         content: p.content,
                         created_at: new Date(p.created_at),
-                        });
+                    });
                 }
             });
         }
@@ -37,7 +39,7 @@ export const DeletePost = (props: any) => {
 
     const onDeletePostClick = () => {
         getPostListExcludeOne()
-        console.log("post.id:", id, "のメッセージ削除");
+        console.log("post.id:", deleteid, "のメッセージ削除");
     }
 
     return <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton>
