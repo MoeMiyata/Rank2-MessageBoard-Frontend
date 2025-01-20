@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactNode } from 'react';
 import styled from "styled-components";
-import { DeletePost } from './DeletePost';
+import { DeletePost } from './DeletePost.tsx';
 
 export default function Post(props: any) {
   const { children, post } = props;
