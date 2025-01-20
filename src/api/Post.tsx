@@ -22,7 +22,7 @@ export const getList = async (token: string, pageNumber: number) => {
 
 // サーバのポート番号3000, frontのポート番号3001
 
-
+// 特定の投稿を削除
 export const deletePost = async (token: string, id: number) => {
   const url = hostUrl + `/post?token=${token}&id=${id}`;
   const res = await axios.delete(url);
