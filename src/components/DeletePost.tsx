@@ -8,9 +8,7 @@ export const DeletePost = () => {
 const SDeletePostButton = styled.button`
   background-color: #222222;
   color: #FAFAFA;
-//   position: fixed;
-//   top: 50px;
-//   right: 100px;
-//   padding: 3px 5px 0px 4px;
-//   border-radius: 50%;
+  border-radius: 8px;
+  padding: 0px 10px;
+  margin-left: 30px;
 `

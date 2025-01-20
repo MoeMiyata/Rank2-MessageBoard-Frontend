@@ -48,6 +48,7 @@ const SPost = styled.div`
   border-bottom: 1px solid #AAAAAA;
   text-align: left;
   padding-left: 8px;
+  padding-bottom: 8px;
 `
 
 const SName = styled.span`
