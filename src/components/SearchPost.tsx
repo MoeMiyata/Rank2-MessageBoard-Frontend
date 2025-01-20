@@ -7,12 +7,12 @@ export const SearchPost = () => {
     // }
 
     return (
-        <SSearchForm>
+        // <SSearchForm>
             <SSearchDiv>
                 <SSearchPost type="search" placeholder="検索" name="q"/>
                 <SSearchIcon type="submit"><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
             </SSearchDiv> 
-        </SSearchForm>
+        // </SSearchForm>
         
     )
 }
@@ -41,5 +41,7 @@ const SSearchPost = styled.input`
 const SSearchIcon = styled.button`
   background-color: #222222;
   border: none;
-//   filter: invert(100%);
 `
+
+
+// 投稿一覧を表示し、検索されるとその表示された10個の投稿からListを削って表示する
