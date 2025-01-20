@@ -26,7 +26,7 @@ const SSearchPost = styled.input`
 const SSearchIcon = styled.button`
   background-color: #222222;
   border: none;
-  filter: hue-rotate(180deg);
+//   filter: invert(100%);
 `
 
 // const SPageLinkNextButton = styled.button`
