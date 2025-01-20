@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export const SearchPost = () => {
-    // const onSearchPostClick = () => {
-    //     console.log()
-    // }
+    const [kwd, setKwd] = useState("");
+
+    const onSearchPostClick = () => {
+        console.log("kwd:", kwd)
+    }
 
     return (
         // <SSearchForm>
             <SSearchDiv>
-                <SSearchPost type="search" placeholder="検索" name="q"/>
-                <SSearchIcon type="submit"><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
+                <SSearchPost type="search" placeholder="検索" name="q" onChange={(evt) => setKwd(evt.target.value)}/>
+                <SSearchIcon type="submit" onClick={onSearchPostClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
             </SSearchDiv> 
         // </SSearchForm>
         
