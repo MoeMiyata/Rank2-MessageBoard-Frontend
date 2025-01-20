@@ -12,7 +12,7 @@ export const SearchPost = () => {
 
 
 const SSearchDiv = styled.div`
-  display: flex;
+//   display: flex;
 `
 
 const SSearchPost = styled.input`
