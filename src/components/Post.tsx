@@ -1,18 +1,19 @@
 import React from 'react';
 import { ReactNode } from 'react';
 import styled from "styled-components";
+import { DeletePost } from './DeletePost';
 
 export default function Post(props: any) {
   const { children, post } = props;
 
   const getDateStr = (dateObj: Date) => {
-	const year = post.created_at.getFullYear();
-	const month = post.created_at.getMonth() + 1;
-	const date = post.created_at.getDate();
-	const hour = post.created_at.getHours();
-	const min = post.created_at.getMinutes();
-	const sec = post.created_at.getSeconds();
-	return `${year}年${month}月${date}日 ${hour}時${min}分${sec}秒`;
+    const year = post.created_at.getFullYear();
+    const month = post.created_at.getMonth() + 1;
+    const date = post.created_at.getDate();
+    const hour = post.created_at.getHours();
+    const min = post.created_at.getMinutes();
+    const sec = post.created_at.getSeconds();
+	  return `${year}年${month}月${date}日 ${hour}時${min}分${sec}秒`;
   };
 
   const getLines = (src: string):ReactNode => {
@@ -31,6 +32,9 @@ export default function Post(props: any) {
       <div>
         <SName>{post.user_name}</SName>
         <SDate>{getDateStr(post.craeted_at)}</SDate>
+
+        {/* メッセージの削除ボタン */}
+        <DeletePost/>
       </div>
 
       <div>{getLines(post.content)}</div>

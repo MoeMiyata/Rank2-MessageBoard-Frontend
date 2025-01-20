@@ -42,7 +42,7 @@ const SPageLinkNextButton = styled.button`
   background-color: #222222;
   color: #FAFAFA;
   position: fixed;
-  top: 50px;
+  top: 45px;
   right: 10px;
   padding: 3px 5px 0px 4px;
   border-radius: 50%;
