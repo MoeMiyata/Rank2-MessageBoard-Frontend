@@ -13,6 +13,8 @@ export const SearchPost = () => {
 
 const SSearchDiv = styled.div`
   display: flex;
+  position: relative;
+  left: 25%;
 `
 
 const SSearchPost = styled.input`
