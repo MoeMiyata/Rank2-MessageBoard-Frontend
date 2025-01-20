@@ -5,7 +5,7 @@ export const SearchPost = () => {
     return (
         <SSearchDiv>
             <SSearchPost type="search" placeholder="検索"/>
-            <SSearchIcon type="submit"><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
+            {/* <SSearchIcon type="submit"><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon> */}
         </SSearchDiv> 
     )
 }
