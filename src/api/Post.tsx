@@ -21,3 +21,11 @@ export const getList = async (token: string, pageNumber: number) => {
 };
 
 // サーバのポート番号3000, frontのポート番号3001
+
+
+export const deletePost = async (id: number) => {
+  const url = hostUrl + `/delete?id=${id}`;
+  const res = await axios.delete(url);
+  console.log('res(deletePost):', res);
+  return res.data;
+}

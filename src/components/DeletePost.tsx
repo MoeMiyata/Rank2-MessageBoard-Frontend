@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
-import { getList } from "../api/Post.tsx";
+import { deletePost, getList } from "../api/Post.tsx";
 
 
 export const DeletePost = (props: any) => {
@@ -16,25 +16,27 @@ export const DeletePost = (props: any) => {
 
     // ポスト一覧を取得して、対象のポストのみ削除する関数
     const getPostListExcludeOne = async() => {
-        const posts = await getList(userInfo.token, pageNumber);
-        // getListで取得したポスト配列をコンテキストに保存する
-        let postList: Array<PostType> = [];
-        if (posts) {
-            posts.forEach((p: any) => {
-                console.log("p.id:", p.id, "deleteid:", deleteid);
-                if (p.id !== deleteid) { // 取得したポストが削除したいポストidと一致しなければ追加
-                    console.log("p.id:", p.id);
-                    postList.push({
-                        id: p.id,
-                        user_name: p.user_name,
-                        content: p.content,
-                        created_at: new Date(p.created_at),
-                    });
-                }
-            });
-        }
-        console.log("postList(getPostListExcludeOne):", postList);
-        setPostList(postList);
+        // const posts = await getList(userInfo.token, pageNumber);
+        // // getListで取得したポスト配列をコンテキストに保存する
+        // let postList: Array<PostType> = [];
+        // if (posts) {
+        //     posts.forEach((p: any) => {
+        //         console.log("p.id:", p.id, "deleteid:", deleteid);
+        //         if (p.id !== deleteid) { // 取得したポストが削除したいポストidと一致しなければ追加
+        //             console.log("p.id:", p.id);
+        //             postList.push({
+        //                 id: p.id,
+        //                 user_name: p.user_name,
+        //                 content: p.content,
+        //                 created_at: new Date(p.created_at),
+        //             });
+        //         }
+        //     });
+        // }
+        // console.log("postList(getPostListExcludeOne):", postList);
+        // setPostList(postList);
+        const deletesPosts = await deletePost(deleteid);
+        console.log("deletesPosts(getPostListExcludeOne):", deletesPosts);
     }
 
     const onDeletePostClick = () => {
