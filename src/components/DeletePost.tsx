@@ -22,7 +22,7 @@ export const DeletePost = (props: any) => {
         if (posts) {
             posts.forEach((p: any) => {
                 console.log("p.id:", p.id, "deleteid:", deleteid);
-                if (p.id !== deleteid) { // 取得したポストが削除したいポストidと一致しなければ追加
+                if (p.id === deleteid) { // 取得したポストが削除したいポストidと一致しなければ追加
                     console.log("p.id:", p.id);
                     deleteRecord = {
                         id: p.id,
