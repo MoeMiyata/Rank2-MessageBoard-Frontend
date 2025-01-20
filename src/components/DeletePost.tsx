@@ -42,7 +42,7 @@ export const DeletePost = (props: any) => {
         console.log("post.id:", deleteid, "のメッセージ削除");
     }
 
-    return <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton>
+    return <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
 }
 
 const SDeletePostButton = styled.button`
