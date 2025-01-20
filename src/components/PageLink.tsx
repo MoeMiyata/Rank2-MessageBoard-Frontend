@@ -13,6 +13,7 @@ export default function PageLink() {
 
     const judgeOfNextPage = async () => {
         const posts = await getList(userInfo.token, pageNumber+20); // +20にしているのはstateの更新とレンダリングのタイミングが合わないので帳尻合わせで10->20に変更
+        console.log("judgeOfNextPage(posts):", posts);
         setIsExistNextPage(posts.length > 0);
     }
 
