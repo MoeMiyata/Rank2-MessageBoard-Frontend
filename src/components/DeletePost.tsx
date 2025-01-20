@@ -14,26 +14,30 @@ export const DeletePost = (props: any) => {
     const { setPostList } = useContext(PostListContext);
     const { pageNumber } = useContext(PageLinkContext);
 
-    // ポスト一覧を取得する関数
-    const getPostList = async() => {
+    // ポスト一覧を取得して、対象のポストのみ削除する関数
+    const getPostListExcludeOne = async() => {
         const posts = await getList(userInfo.token, pageNumber);
         // getListで取得したポスト配列をコンテキストに保存する
         let postList: Array<PostType> = [];
         if (posts) {
             posts.forEach((p: any) => {
-                postList.push({
-                id: p.id,
-                user_name: p.user_name,
-                content: p.content,
-                created_at: new Date(p.created_at),
-                });
+                if (!p.id === id) { // 取得したポストが削除したいポストidと一致しなければ追加
+                    postList.push({
+                        id: p.id,
+                        user_name: p.user_name,
+                        content: p.content,
+                        created_at: new Date(p.created_at),
+                        });
+                }
             });
         }
+        console.log("posts(getPostListExcludeOne):", posts);
         setPostList(postList);
     }
 
     const onDeletePostClick = () => {
-        console.log("post.id", id, "のメッセージ削除") ;
+        getPostListExcludeOne()
+        console.log("post.id:", id, "のメッセージ削除");
     }
 
     return <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton>
