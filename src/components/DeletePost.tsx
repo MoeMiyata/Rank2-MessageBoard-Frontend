@@ -35,7 +35,7 @@ export const DeletePost = (props: any) => {
         // }
         // console.log("postList(getPostListExcludeOne):", postList);
         // setPostList(postList);
-        const deletesPosts = await deletePost(deleteid);
+        const deletesPosts = await deletePost(userInfo.token, deleteid);
         console.log("deletesPosts(getPostListExcludeOne):", deletesPosts);
     }
 
