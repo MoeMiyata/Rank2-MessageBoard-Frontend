@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { getUser } from "../api/User.tsx";
+import { SearchPost } from './SearchPost.tsx';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -26,6 +27,9 @@ export default function Header() {
   return (
     <SHeader>
       <SLogo>MicroPost</SLogo>
+
+      {/* 検索ボタンの配置 */}
+      <SearchPost/>
 
       <SRightItem>
         <SName>{userName}</SName>
