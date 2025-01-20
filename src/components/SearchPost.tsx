@@ -18,13 +18,14 @@ export const SearchPost = () => {
         let postList: Array<PostType> = [];
         if (posts) {
         posts.forEach((p: any) => {
-            if ((p.content).includes(kwd))
-            postList.push({
-            id: p.id,
-            user_name: p.user_name,
-            content: p.content,
-            created_at: new Date(p.created_at),
-            });
+            if ((p.content).includes(kwd)) {
+                postList.push({
+                id: p.id,
+                user_name: p.user_name,
+                content: p.content,
+                created_at: new Date(p.created_at),
+                });
+            }
         });
         }
         setPostList(postList);
