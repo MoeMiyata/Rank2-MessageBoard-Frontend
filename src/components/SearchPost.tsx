@@ -3,7 +3,10 @@ import styled from "styled-components";
 
 export const SearchPost = () => {
     return (
-        <SSearchPost type="search" placeholder="検索"/>
+        <div>
+            <SSearchPost type="search" placeholder="検索"/>
+            <input type="submit" value="&#xf002"></input>
+        </div> 
     )
 }
 
