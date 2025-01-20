@@ -12,7 +12,7 @@ export default function PageLink() {
     const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
 
     const judgeOfNextPage = async () => {
-        const posts = await getList(userInfo.token, pageNumber+20); // +20にしているのはstateの更新とレンダリングのタイミングが合わないので帳尻合わせで10->20に変更
+        const posts = await getList(userInfo.token, pageNumber+10); // +20にしているのはstateの更新とレンダリングのタイミングが合わないので帳尻合わせで10->20に変更  -> 合わなかったのでまた10に戻した
         console.log("judgeOfNextPage(posts):", posts);
         setIsExistNextPage(posts.length > 0);
     }
