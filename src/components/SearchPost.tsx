@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { UserContext } from "../providers/UserProvider";
-import { PostListContext, PostType } from "../providers/PostListProvider";
-import { PageLinkContext } from "../providers/PageLinkProvider";
-import { getList } from "../api/Post";
+import { UserContext } from "../providers/UserProvider.tsx";
+import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
+import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
+import { getList } from "../api/Post.tsx";
 
 export const SearchPost = () => {
     const [kwd, setKwd] = useState("");
