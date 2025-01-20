@@ -34,7 +34,7 @@ export default function Post(props: any) {
         <SDate>{getDateStr(post.craeted_at)}</SDate>
 
         {/* メッセージの削除ボタン */}
-        <DeletePost/>
+        <DeletePost id={post.id}/>
       </div>
 
       <div>{getLines(post.content)}</div>
