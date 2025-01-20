@@ -5,7 +5,7 @@ export const SearchPost = () => {
     return (
         <SSearchDiv>
             <SSearchPost type="search" placeholder="検索"/>
-            {/* <SSearchIcon type="submit"><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon> */}
+            <SSearchIcon type="submit"><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
         </SSearchDiv> 
     )
 }
@@ -23,6 +23,16 @@ const SSearchPost = styled.input`
   width: 400px;
 `
 
-const SSearchIcon = styled.input`
+const SSearchIcon = styled.button`
   filter: hue-rotate(180deg);
 `
+
+// const SPageLinkNextButton = styled.button`
+//   background-color: #222222;
+//   color: #FAFAFA;
+//   position: fixed;
+//   top: 45px;
+//   right: 10px;
+//   padding: 3px 5px 0px 4px;
+//   border-radius: 50%;
+// `
