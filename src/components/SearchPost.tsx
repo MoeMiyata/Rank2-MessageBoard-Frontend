@@ -12,7 +12,7 @@ export const SearchPost = () => {
 
 
 const SSearchDiv = styled.div`
-//   display: flex;
+  display: flex;
 `
 
 const SSearchPost = styled.input`
@@ -24,6 +24,8 @@ const SSearchPost = styled.input`
 `
 
 const SSearchIcon = styled.button`
+  background-color: #222222;
+  border: none;
   filter: hue-rotate(180deg);
 `
 
@@ -35,4 +37,4 @@ const SSearchIcon = styled.button`
 //   right: 10px;
 //   padding: 3px 5px 0px 4px;
 //   border-radius: 50%;
-// `
+// // `
