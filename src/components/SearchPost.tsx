@@ -1,16 +1,19 @@
-import React, { useState, useContext } from "react";
+// import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
+import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
 import { getList } from "../api/Post.tsx";
 
 export const SearchPost = () => {
-    const [kwd, setKwd] = useState("");
+    // const [kwd, setKwd] = useState("");
 
     const { userInfo } = useContext(UserContext);
     const { setPostList } = useContext(PostListContext);
     const { pageNumber } = useContext(PageLinkContext);
+    const { kwd, setKwd } = useContext(SearchPostContext);
     // ポスト一覧を取得する関数
     const getSearchPostList = async() => {
         const posts = await getList(userInfo.token, pageNumber, kwd);
@@ -60,11 +63,11 @@ const SSearchDiv = styled.div`
   left: 25%;
 `
 
-const SSearchForm = styled.form`
-  display: flex;
-  position: relative;
-  left: 25%;
-`
+// const SSearchForm = styled.form`
+//   display: flex;
+//   position: relative;
+//   left: 25%;
+// `
 
 const SSearchPost = styled.input`
   border-radius: 4px;
