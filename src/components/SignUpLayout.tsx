@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { createUser } from "../api/User";
 
 
 export default function SignInLayout() {
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
 
   const onSignUpClick = async () => {
+    // createUser(name, email, pass)
+    console.log('name:', name, 'email:', email, 'password:', pass);
+  };
+
+  const onBackToLoginClick = async () => {
     navigate("/");
   };
       
@@ -25,24 +34,9 @@ export default function SignInLayout() {
         <SSignInInput>
           <input
             id="name"
-            // value={userId}
+            value={name}
             type="text"
-            // onChange={(evt) => setUserId(evt.target.value)}
-          />
-        </SSignInInput>
-      </SSignInRow>
-
-      <SSignInRow>
-        <SSignInLabel>
-          <label htmlFor="password">Password</label>
-        </SSignInLabel>
-
-        <SSignInInput>
-          <input
-            id="password"
-            // value={pass}
-            type="password"
-            // onChange={(evt) => setPass(evt.target.value)}
+            onChange={(evt) => setName(evt.target.value)}
           />
         </SSignInInput>
       </SSignInRow>
@@ -55,23 +49,39 @@ export default function SignInLayout() {
         <SSignInInput>
           <input
             id="email"
-            // value={pass}
+            value={email}
             type="email"
-            // onChange={(evt) => setPass(evt.target.value)}
+            onChange={(evt) => setEmail(evt.target.value)}
+          />
+        </SSignInInput>
+      </SSignInRow>
+
+      <SSignInRow>
+        <SSignInLabel>
+          <label htmlFor="password">Password</label>
+        </SSignInLabel>
+
+        <SSignInInput>
+          <input
+            id="password"
+            value={pass
+            }
+            type="password"
+            onChange={(evt) => setPass(evt.target.value)}
           />
         </SSignInInput>
       </SSignInRow>
 
       <SSignInRow>
         {/* <SLoginButton type="button" onClick={onSignInClick}> */}
-        <SLoginButton type="button">
+        <SLoginButton type="button" onClick={onSignUpClick}>
           Create New Account
         </SLoginButton>
       </SSignInRow>
     </SSignInFrame>
 
     <SSignInRow>
-    <SLoginButton type="button" onClick={onSignUpClick}>
+    <SLoginButton type="button" onClick={onBackToLoginClick}>
         Back to Login
     </SLoginButton>
     </SSignInRow>
