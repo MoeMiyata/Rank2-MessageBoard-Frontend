@@ -1,5 +1,5 @@
 // import React, { useState, useContext } from "react";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
@@ -39,6 +39,13 @@ export const SearchPost = () => {
         }
         setPostList(postList);
     }
+
+    // kwdが変更されるたびに検索結果を更新する
+    useEffect(() => {
+      if (kwd !== "") {
+          getSearchPostList(); // kwdが変更されるたびに実行
+      }
+    }, [kwd]);  // kwdが変わるたびに実行
 
     const onSearchPostClick = () => {
         console.log("kwd:", kwd)
