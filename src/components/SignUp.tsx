@@ -57,11 +57,11 @@ export default function SignUp() {
         </SSignInInput>
       </SSignInRow> */}
 
-      <SSignInRow>
+      {/* <SSignInRow> */}
         <SLoginButton type="button" onClick={onSignUpClick}>
           Sign up
         </SLoginButton>
-      </SSignInRow>
+      {/* </SSignInRow> */}
     </SSignInFrame>
   );
 }
