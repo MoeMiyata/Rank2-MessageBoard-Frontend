@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
-import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
+import { SearchPostContext, SearchPostProvider } from "../providers/SearchPostProvider.tsx";
 import { getList } from "../api/Post.tsx";
 
 export const SearchPost = () => {
@@ -47,10 +47,12 @@ export const SearchPost = () => {
 
     return (
         // <SSearchForm>
+          <SearchPostProvider>
             <SSearchDiv>
                 <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
                 <SSearchIcon type="submit" onClick={onSearchPostClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
             </SSearchDiv> 
+          </SearchPostProvider>
         // </SSearchForm>
         
     )
