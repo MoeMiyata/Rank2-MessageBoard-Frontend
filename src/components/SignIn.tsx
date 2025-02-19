@@ -23,6 +23,9 @@ export default function SignIn() {
       });
       navigate("/main");
     }
+    else {
+      alert('ユーザ情報が登録されていません．')
+    }
   };
 
   return (
