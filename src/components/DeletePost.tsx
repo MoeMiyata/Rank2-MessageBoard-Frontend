@@ -61,11 +61,7 @@ export const DeletePost = (props: any) => {
         console.log("post.id:", deleteid, "のメッセージ削除");
     }
 
-    if (userName !== postUserName) {
-        return null; // 一致しない場合は何も表示しない
-    }
-
-    return <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
+    return userName === postUserName ? <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> : null //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
 }
 
 const SDeletePostButton = styled.button`
