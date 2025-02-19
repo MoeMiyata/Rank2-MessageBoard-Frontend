@@ -10,7 +10,7 @@ import { getUser } from "../api/User.tsx";
 
 
 export const DeletePost = (props: any) => {
-    const { deleteid } = props;
+    const { deleteid, postUserName } = props;
 
     const { userInfo } = useContext(UserContext);
     const { setPostList } = useContext(PostListContext);
@@ -59,6 +59,10 @@ export const DeletePost = (props: any) => {
     const onDeletePostClick = () => {
         deletePostReload()
         console.log("post.id:", deleteid, "のメッセージ削除");
+    }
+
+    if (userName !== postUserName) {
+        return null; // 一致しない場合は何も表示しない
     }
 
     return <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
