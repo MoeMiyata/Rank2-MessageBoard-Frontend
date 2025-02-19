@@ -12,9 +12,9 @@ export const post = async (user_id: string, token: string, msg: string) => {
   return res.data;
 }
 
-export const getList = async (token: string, pageNumber: number) => {
+export const getList = async (token: string, pageNumber: number, kwd: string = '') => {
   // const url = `http://localhost:3000/post?token=${token}&records=10`;
-  const url = hostUrl + `/post?token=${token}&start=${pageNumber}&records=10`;
+  const url = hostUrl + `/post?token=${token}&start=${pageNumber}&records=10&keyword=${kwd}`;
   const res = await axios.get(url);
   console.log('res(getList):', res);
   return res.data;

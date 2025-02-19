@@ -13,19 +13,25 @@ export const SearchPost = () => {
     const { pageNumber } = useContext(PageLinkContext);
     // ポスト一覧を取得する関数
     const getSearchPostList = async() => {
-        const posts = await getList(userInfo.token, pageNumber);
+        const posts = await getList(userInfo.token, pageNumber, kwd);
         // getListで取得したポスト配列をコンテキストに保存する
         let postList: Array<PostType> = [];
         if (posts) {
         posts.forEach((p: any) => {
-            if ((p.content).includes(kwd)) {
-                postList.push({
-                id: p.id,
-                user_name: p.user_name,
-                content: p.content,
-                created_at: new Date(p.created_at),
-                });
-            }
+            // if ((p.content).includes(kwd)) {
+            //     postList.push({
+            //     id: p.id,
+            //     user_name: p.user_name,
+            //     content: p.content,
+            //     created_at: new Date(p.created_at),
+            //     });
+            // }
+            postList.push({
+            id: p.id,
+            user_name: p.user_name,
+            content: p.content,
+            created_at: new Date(p.created_at),
+            });
         });
         }
         setPostList(postList);
