@@ -11,8 +11,8 @@ export default function SignInLayout() {
   const [pass, setPass] = useState("");
 
   const onSignUpClick = async () => {
-    // createUser(name, email, pass)
-    console.log('name:', name, 'email:', email, 'password:', pass);
+      console.log('name:', name, '\nemail:', email, '\npassword:', pass);
+      createUser(name, email, pass)
   };
 
   const onBackToLoginClick = async () => {
