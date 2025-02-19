@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 
 import { UserContext } from "../providers/UserProvider.tsx";
@@ -6,6 +6,7 @@ import { deletePost, getList } from "../api/Post.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
 import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
+import { getUser } from "../api/User.tsx";
 
 
 export const DeletePost = (props: any) => {
@@ -15,6 +16,20 @@ export const DeletePost = (props: any) => {
     const { setPostList } = useContext(PostListContext);
     const { pageNumber } = useContext(PageLinkContext);
     const { kwd } = useContext(SearchPostContext);
+
+    // ログイン中のユーザ情報を管理するための状態を追加
+    const [loginUser, setLoginUser] = useState<any>(null);
+
+    // ユーザ情報を取得するための useEffect
+    useEffect(() => {
+        const getLoginUser = async () => {
+            const user = await getUser(userInfo.id, userInfo.token);
+            setLoginUser(user); // ユーザ情報をセット
+        };
+
+        getLoginUser(); // useEffect内で非同期関数を呼び出し
+    }, [userInfo.id]);
+
 
     // ポスト一覧を取得する関数
     const getPostList = async() => {
@@ -45,7 +60,7 @@ export const DeletePost = (props: any) => {
         console.log("post.id:", deleteid, "のメッセージ削除");
     }
 
-    return <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
+    return loginUser.name === 'user1' ? <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> : null //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
 }
 
 const SDeletePostButton = styled.button`
