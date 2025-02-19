@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { createUser } from "../api/User";
+import { createUser } from "../api/User.tsx";
 
 
 export default function SignInLayout() {
