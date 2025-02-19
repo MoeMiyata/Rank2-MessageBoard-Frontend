@@ -3,8 +3,13 @@ import { hostUrl } from './hostUrl.ts';
 
 // ユーザ登録で追加
 export const createUser = async (name: string, email: string, password: string) => {
-  const url = hostUrl + `/user/name=${name}&email=${email}&password=${password}`;
-  const res = await axios.post(url);
+  const url = hostUrl + `/user`;
+  // POSTリクエストでデータを送る際は、URLにパラメータを埋め込むのではなく、リクエストボディにデータを送信する
+  const res = await axios.post(url, {
+    name,
+    email,
+    password
+  }); // リクエストボディにデータを送る;
   console.log('res(createUser):', res.data);
   return res.data;
 }
