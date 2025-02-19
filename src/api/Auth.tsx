@@ -11,5 +11,9 @@ export const sign_in = async (user_id: string, pass: string) => {
   const res = await axios.get(url);
   console.log(res);
 
+  if (res.status === 401) {
+    alert('ログインできません．')
+  }
+
   return res.data;
 };
