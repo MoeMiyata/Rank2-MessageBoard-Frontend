@@ -82,7 +82,6 @@ export default function SignInLayout() {
 
 const SHeader = styled.div`
   background-color: #222222;
-  display: flex;
   flex-direction: row;
   color: #F8F8F8;
   padding-left: 8px;
