@@ -42,9 +42,9 @@ export const SearchPost = () => {
 
     // kwdが変更されるたびに検索結果を更新する
     useEffect(() => {
-      if (kwd !== "") {
+      // if (kwd !== "") {
           getSearchPostList(); // kwdが変更されるたびに実行
-      }
+      // }
     }, [kwd]);  // kwdが変わるたびに実行
 
     const onSearchPostClick = () => {
