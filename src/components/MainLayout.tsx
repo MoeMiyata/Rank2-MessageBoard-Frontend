@@ -4,6 +4,7 @@ import Header from "./Header.tsx";
 import SideBar from "./SideBar.tsx";
 import Contents from "./Contents.tsx";
 import { PageLinkContext, PageLinkProvider } from '../providers/PageLinkProvider.tsx';
+import { SearchPostProvider } from "../providers/SearchPostProvider.tsx";
 
 import { ReloadPage } from './ReloadPage.tsx';
 
@@ -39,6 +40,7 @@ export default function MainLayout() {
   return (
     <>
     <PageLinkProvider> 
+    <SearchPostProvider>
 
       {/* メッセージ一覧取得のリロード操作 */}
       <ReloadPage/> 
@@ -57,6 +59,7 @@ export default function MainLayout() {
         </SContents>
       </SBody>
 
+      </SearchPostProvider>
       </PageLinkProvider>
     </>
   );

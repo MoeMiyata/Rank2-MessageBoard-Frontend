@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { getUser } from "../api/User.tsx";
 import { SearchPost } from './SearchPost.tsx';
-import { SearchPostProvider } from "../providers/SearchPostProvider.tsx";
+// import { SearchPostProvider } from "../providers/SearchPostProvider.tsx";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export default function Header() {
   }, []);
 
   return (
-    <SearchPostProvider>
+    // <SearchPostProvider>
 
     <SHeader>
       <SLogo>MicroPost</SLogo>
@@ -39,8 +39,8 @@ export default function Header() {
         <SLogout onClick={logout}>ログアウト</SLogout>
       </SRightItem>
     </SHeader>
-    
-    </SearchPostProvider>
+
+    // </SearchPostProvider>
   )
 }
 
