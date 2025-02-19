@@ -26,43 +26,11 @@ export default function SignUp() {
   };
 
   return (
-    <SSignInFrame>
-      {/* <SSignInRow>
-        <SSignInLabel>
-          <label htmlFor="id">ID</label>
-        </SSignInLabel>
-        
-        <SSignInInput>
-          <input
-            id="id"
-            value={userId}
-            type="text"
-            onChange={(evt) => setUserId(evt.target.value)}
-          />
-        </SSignInInput>
-      </SSignInRow>
-
-      <SSignInRow>
-        <SSignInLabel>
-          <label htmlFor="password">Password</label>
-        </SSignInLabel>
-
-        <SSignInInput>
-          <input
-            id="password"
-            value={pass}
-            type="password"
-            onChange={(evt) => setPass(evt.target.value)}
-          />
-        </SSignInInput>
-      </SSignInRow> */}
-
-      {/* <SSignInRow> */}
-        <SLoginButton type="button" onClick={onSignUpClick}>
-          Sign up
-        </SLoginButton>
-      {/* </SSignInRow> */}
-    </SSignInFrame>
+    <SSignInRow>
+    <SLoginButton type="button" onClick={onSignUpClick}>
+        Sign up
+    </SLoginButton>
+    </SSignInRow>
   );
 }
 
