@@ -5,6 +5,7 @@ import { UserContext } from "../providers/UserProvider.tsx";
 import { deletePost, getList } from "../api/Post.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
+import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
 
 
 export const DeletePost = (props: any) => {
@@ -13,9 +14,11 @@ export const DeletePost = (props: any) => {
     const { userInfo } = useContext(UserContext);
     const { setPostList } = useContext(PostListContext);
     const { pageNumber } = useContext(PageLinkContext);
+    const { kwd } = useContext(SearchPostContext);
+
     // ポスト一覧を取得する関数
     const getPostList = async() => {
-        const posts = await getList(userInfo.token, pageNumber);
+        const posts = await getList(userInfo.token, pageNumber, kwd);
         // getListで取得したポスト配列をコンテキストに保存する
         let postList: Array<PostType> = [];
         if (posts) {
