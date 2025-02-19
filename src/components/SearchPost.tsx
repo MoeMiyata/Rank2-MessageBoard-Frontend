@@ -8,8 +8,6 @@ import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
 import { getList } from "../api/Post.tsx";
 
 export const SearchPost = () => {
-    // const [kwd, setKwd] = useState("");
-
     const { userInfo } = useContext(UserContext);
     const { setPostList } = useContext(PostListContext);
     const { pageNumber } = useContext(PageLinkContext);
@@ -21,14 +19,6 @@ export const SearchPost = () => {
         let postList: Array<PostType> = [];
         if (posts) {
         posts.forEach((p: any) => {
-            // if ((p.content).includes(kwd)) {
-            //     postList.push({
-            //     id: p.id,
-            //     user_name: p.user_name,
-            //     content: p.content,
-            //     created_at: new Date(p.created_at),
-            //     });
-            // }
             postList.push({
             id: p.id,
             user_name: p.user_name,
@@ -42,24 +32,20 @@ export const SearchPost = () => {
 
     // kwdが変更されるたびに検索結果を更新する
     useEffect(() => {
-      // if (kwd !== "") {
-          getSearchPostList(); // kwdが変更されるたびに実行
-      // }
+      getSearchPostList(); // kwdが変更されるたびに実行
     }, [kwd]);  // kwdが変わるたびに実行
 
+    // 検索ボタンを押しても実行可能
     const onSearchPostClick = () => {
         console.log("kwd:", kwd)
         getSearchPostList()
     }
 
     return (
-        // <SSearchForm>
             <SSearchDiv>
                 <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
                 <SSearchIcon type="submit" onClick={onSearchPostClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
             </SSearchDiv> 
-        // </SSearchForm>
-        
     )
 }
 
@@ -69,12 +55,6 @@ const SSearchDiv = styled.div`
   position: relative;
   left: 25%;
 `
-
-// const SSearchForm = styled.form`
-//   display: flex;
-//   position: relative;
-//   left: 25%;
-// `
 
 const SSearchPost = styled.input`
   border-radius: 4px;
