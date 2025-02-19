@@ -28,7 +28,7 @@ export const DeletePost = (props: any) => {
         };
 
         getLoginUser(); // useEffect内で非同期関数を呼び出し
-    }, [userInfo.id]);
+    }, [userInfo.id, userInfo.token]);
 
     console.log('loginUser:', loginUser)
 
