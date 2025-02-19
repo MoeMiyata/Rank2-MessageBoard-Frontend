@@ -21,7 +21,7 @@ export default function SignUp() {
     //     id: ret.user_id,
     //     token: ret.token,
     //   });
-      navigate("/main");
+      navigate("/signup");
     // }
   };
 
