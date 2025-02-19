@@ -30,6 +30,9 @@ export const DeletePost = (props: any) => {
         getLoginUser(); // useEffect内で非同期関数を呼び出し
     }, [userInfo.id]);
 
+    console.log('loginUser:', loginUser)
+
+
 
     // ポスト一覧を取得する関数
     const getPostList = async() => {
@@ -60,7 +63,7 @@ export const DeletePost = (props: any) => {
         console.log("post.id:", deleteid, "のメッセージ削除");
     }
 
-    return loginUser.name === 'user1' ? <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> : '' //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
+    return <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
 }
 
 const SDeletePostButton = styled.button`
