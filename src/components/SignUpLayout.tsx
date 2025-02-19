@@ -12,7 +12,7 @@ export default function SignInLayout() {
       
   return (
     <>
-    <h1>ユーザ登録画面</h1>
+    <h1>Sign Up Page</h1>
 
     <SSignInFrame>
       <SSignInRow>
