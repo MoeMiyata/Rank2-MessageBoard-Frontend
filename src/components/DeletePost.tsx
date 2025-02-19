@@ -27,7 +27,7 @@ export const DeletePost = (props: any) => {
             setLoginUser(user); // ユーザ情報をセット
         };
 
-        getLoginUser(); // useEffect内で非同期関数を呼び出し
+        // getLoginUser(); // useEffect内で非同期関数を呼び出し
     },[]);
 
     console.log('loginUser:', loginUser)
