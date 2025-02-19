@@ -12,7 +12,9 @@ export default function SignInLayout() {
       
   return (
     <>
-    <h1>Sign Up Page</h1>
+    <SHeader>
+        <SLogo>Sign Up Page</SLogo>
+    </SHeader>
 
     <SSignInFrame>
       <SSignInRow>
@@ -76,6 +78,24 @@ export default function SignInLayout() {
     </>
   );
 }
+
+
+const SHeader = styled.div`
+  background-color: #222222;
+  display: flex;
+  flex-direction: row;
+  color: #F8F8F8;
+  padding-left: 8px;
+  padding-right: 8px;
+  height: 100%;
+`
+
+const SLogo = styled.div`
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  justyify-content: start;
+`
 
 const SSignInFrame = styled.div`
   background-color: #f8f8f8;
