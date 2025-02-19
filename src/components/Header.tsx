@@ -71,7 +71,8 @@ const SName = styled.div`
 `
 
 const SLogout = styled.div`
-  padding-top: 8px;
+  // padding-top: 8px;
+  padding-top: 6px;
   padding-bottom: 8px;
   text-align: center;
 `

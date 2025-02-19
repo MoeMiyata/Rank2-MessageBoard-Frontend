@@ -16,21 +16,19 @@ export const DeletePost = (props: any) => {
     const { setPostList } = useContext(PostListContext);
     const { pageNumber } = useContext(PageLinkContext);
     const { kwd } = useContext(SearchPostContext);
+    
+    const [ userName, setUserName ] = useState("");
 
-    // ログイン中のユーザ情報を管理するための状態を追加
-    const [loginUser, setLoginUser] = useState<any>(null);
-
-    // ユーザ情報を取得するための useEffect
+    // ログインユーザの名前を取得
     useEffect(() => {
-        const getLoginUser = async () => {
-            const user = await getUser(userInfo.id, userInfo.token);
-            setLoginUser(user); // ユーザ情報をセット
+        const myGetUser = async () => {
+          const user = await getUser(userInfo.id, userInfo.token);
+          setUserName(user.name);
         };
+        myGetUser();
+    }, []);
 
-        // getLoginUser(); // useEffect内で非同期関数を呼び出し
-    },[]);
-
-    console.log('loginUser:', loginUser)
+    console.log('userName:', userName)
 
 
 
