@@ -28,6 +28,7 @@ export const createUser = async (name: string, email: string, password: string) 
 
   } catch (error: any) {
     console.log('catch in!')
+    console.log(error)
     // エラーがある場合、詳細を取得
     // if (error.response) {
     //   // バックエンドからエラーレスポンスが返された場合
