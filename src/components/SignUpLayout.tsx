@@ -16,9 +16,7 @@ export default function SignInLayout() {
   const onSignUpClick = async () => {
     try {
       console.log('name:', name, '\nemail:', email, '\npassword:', pass);
-      // 入力データが既存のユーザ情報と被っていないか確認!!!!!
-
-
+      
       await createUser(name, email, pass);
       //　アカウント作成に成功したらログイン画面に移行
       navigate("/");
@@ -153,4 +151,9 @@ const SLoginButton = styled.button`
   color: #f0f0f0;
   padding: 4px 16px;
   border-radius: 8px;
+
+  &:disabled {
+    background-color: #aaaaaa; /* グレーに変える */
+    cursor: not-allowed; /* マウスカーソルを変更 */
+  }
 `;
