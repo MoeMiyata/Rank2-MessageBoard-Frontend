@@ -10,6 +10,7 @@ export default function UserProfile() {
   const onBackToMainClick = async () => {
     navigate("/main");
   }
+  console.log('loginUser:', loginUser)
 
   return (
     <>
@@ -19,15 +20,18 @@ export default function UserProfile() {
 
         <SUserProfileFrame>
             <SSignInRow>
-                <h1>Name: {loginUser.name}</h1>
+                {/* <h1>Name: {loginUser.name}</h1> */}
+                <h1>Name</h1>
             </SSignInRow>
 
             <SSignInRow>
-                <h1>Email: {loginUser.email}</h1>
+                {/* <h1>Email: {loginUser.email}</h1> */}
+                <h1>Email</h1>
             </SSignInRow>
 
             <SSignInRow>
-                <h1>Hash: {loginUser.hash}</h1>
+                {/* <h1>Hash: {loginUser.hash}</h1> */}
+                <h1>Hash</h1>
             </SSignInRow>
         </SUserProfileFrame>
 
