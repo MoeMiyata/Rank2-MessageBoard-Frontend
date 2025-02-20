@@ -21,10 +21,16 @@ export default function SignInLayout() {
 
       createUser(name, email, pass);
       //　アカウント作成に成功したらログイン画面に移行
-      navigate("/");
+    //   navigate("/");
     } catch (error: any) {
-      // エラーをcatchしてアラートで表示
-      alert(error.response?.data?.message || "ユーザー登録に失敗しました");
+      // バックエンドから返されたエラーメッセージを表示
+      if (error.response && error.response.data && error.response.data.message) {
+        // エラーメッセージが存在すればそれを表示
+        alert(error.response.data.message);
+      } else {
+        // メッセージがない場合は、一般的なエラーメッセージを表示
+        alert("ユーザー登録に失敗しました。再度お試しください。");
+      }
     }
   };
 
