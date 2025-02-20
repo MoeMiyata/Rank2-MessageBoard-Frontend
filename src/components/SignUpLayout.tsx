@@ -14,15 +14,15 @@ export default function SignInLayout() {
   const isFormValid = name !== "" && email !== "" && pass !== "";
 
   const onSignUpClick = async () => {
-    try {
       console.log('name:', name, '\nemail:', email, '\npassword:', pass);
       
-      await createUser(name, email, pass);
-      //　アカウント作成に成功したらログイン画面に移行
-      navigate("/");
-    } catch (error: any) {
-        // バックエンドから返されたエラーメッセージを表示
-        alert(error.response.data.message); // 例: "このユーザー名はすでに使用されています"
+      const error = await createUser(name, email, pass);
+
+      if (error) {
+        alert(error.response.data.message);
+      } else {
+        //　アカウント作成に成功したらログイン画面に移行
+        navigate("/");
       }
   };
 
