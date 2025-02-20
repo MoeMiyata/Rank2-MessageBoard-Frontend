@@ -5,10 +5,12 @@ import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { getUser } from "../api/User.tsx";
 import { SearchPost } from './SearchPost.tsx';
+import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 
 export default function Header() {
   const navigate = useNavigate();
-  const [ userName, setUserName ] = useState("");
+  // const [ userName, setUserName ] = useState("");
+  const { loginUser } = useContext(LoginUserContext);
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   const logout = () => {
@@ -16,13 +18,13 @@ export default function Header() {
     navigate("/");
   };
 
-  useEffect(() => {
-    const myGetUser = async () => {
-      const user = await getUser(userInfo.id, userInfo.token);
-      setUserName(user.name);
-    };
-    myGetUser();
-  }, []);
+  // useEffect(() => {
+  //   const myGetUser = async () => {
+  //     const user = await getUser(userInfo.id, userInfo.token);
+  //     setUserName(user.name);
+  //   };
+  //   myGetUser();
+  // }, []);
 
   return (
     <SHeader>
@@ -32,7 +34,7 @@ export default function Header() {
       <SearchPost/>
 
       <SRightItem>
-        <SName>{userName}</SName>
+        <SName>{loginUser.name}</SName>
         <SLogout onClick={logout}>ログアウト</SLogout>
       </SRightItem>
     </SHeader>
