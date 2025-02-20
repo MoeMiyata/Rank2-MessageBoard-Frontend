@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { LoginUserContext } from "../providers/LoginUserProvider";
+import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 
 export default function UserProfile() {
   const navigate = useNavigate();
