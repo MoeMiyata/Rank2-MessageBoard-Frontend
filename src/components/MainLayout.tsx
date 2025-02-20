@@ -48,6 +48,7 @@ export default function MainLayout() {
     const myGetUser = async () => {
       const user = await getUser(userInfo.id, userInfo.token);
       setLoginUser(user);
+      console.log("user(MainLayout):", user);
     };
     myGetUser();
   }, []);
