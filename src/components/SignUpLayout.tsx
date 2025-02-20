@@ -23,15 +23,9 @@ export default function SignInLayout() {
       //　アカウント作成に成功したらログイン画面に移行
     //   navigate("/");
     } catch (error: any) {
-      // バックエンドから返されたエラーメッセージを表示
-      if (error.response && error.response.data && error.response.data.message) {
-        // エラーメッセージが存在すればそれを表示
-        alert(error.response.data.message);
-      } else {
-        // メッセージがない場合は、一般的なエラーメッセージを表示
-        alert("ユーザー登録に失敗しました。再度お試しください。");
+        // バックエンドから返されたエラーメッセージを表示
+        alert(error.message); // 例: "このユーザー名はすでに使用されています"
       }
-    }
   };
 
   const onBackToLoginClick = async () => {

@@ -29,21 +29,18 @@ export const createUser = async (name: string, email: string, password: string) 
   } catch (error: any) {
     // エラーがある場合、詳細を取得
     if (error.response) {
-      // サーバーからのレスポンスにエラーが含まれている場合
-      console.error("Error response:", error.response.data);
-      
-      // エラーが存在する場合、エラーメッセージを返す
-      throw new Error(error.response.data.message || "ユーザー登録に失敗しました。");
-
+      // バックエンドからエラーレスポンスが返された場合
+      const errorMessage = error.response.data.message || 'ユーザー登録に失敗しました';
+      console.error('Error response:', error.response);
+      throw new Error(errorMessage); // エラーメッセージをスロー
     } else if (error.request) {
-      // リクエストが送信されていない場合（ネットワークエラーなど）
-      console.error("Error request:", error.request);
-      throw new Error("サーバーに接続できません。ネットワークを確認してください。");
-
+      // リクエストがサーバーに送信されたがレスポンスが無かった場合
+      console.error('Error request:', error.request);
+      throw new Error('サーバーからのレスポンスがありません');
     } else {
-      // 他のエラーが発生した場合
-      console.error("Error message:", error.message);
-      throw new Error("予期しないエラーが発生しました。");
+      // その他のエラー
+      console.error('Error message:', error.message);
+      throw new Error('エラーが発生しました');
     }
   }
 }
