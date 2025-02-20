@@ -10,12 +10,17 @@ export default function SignInLayout() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
+  // サインアップボタンが押せるかの判定
+  const isFormValid = name !== "" && email !== "" && pass !== "";
+
   const onSignUpClick = async () => {
       console.log('name:', name, '\nemail:', email, '\npassword:', pass);
       // 入力データが既存のユーザ情報と被っていないか確認!!!!!
 
 
-      createUser(name, email, pass)
+      createUser(name, email, pass);
+      //　アカウント作成に成功したらログイン画面に移行
+      navigate("/");
   };
 
   const onBackToLoginClick = async () => {
@@ -77,7 +82,7 @@ export default function SignInLayout() {
 
       <SSignInRow>
         {/* <SLoginButton type="button" onClick={onSignInClick}> */}
-        <SLoginButton type="button" onClick={onSignUpClick}>
+        <SLoginButton type="button" onClick={onSignUpClick} disabled={!isFormValid}>
           Create New Account
         </SLoginButton>
       </SSignInRow>
