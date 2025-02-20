@@ -29,20 +29,21 @@ export const createUser = async (name: string, email: string, password: string) 
   } catch (error: any) {
     console.log('catch in!')
     // エラーがある場合、詳細を取得
-    if (error.response) {
-      // バックエンドからエラーレスポンスが返された場合
-      const errorMessage = error.response.data.message || 'ユーザー登録に失敗しました';
-      console.error('Error response:', error.response);
-      throw new Error(errorMessage); // エラーメッセージをスロー
-    } else if (error.request) {
-      // リクエストがサーバーに送信されたがレスポンスが無かった場合
-      console.error('Error request:', error.request);
-      throw new Error('サーバーからのレスポンスがありません');
-    } else {
-      // その他のエラー
-      console.error('Error message:', error.message);
-      throw new Error('エラーが発生しました');
-    }
+    // if (error.response) {
+    //   // バックエンドからエラーレスポンスが返された場合
+    //   const errorMessage = error.response.data.message || 'ユーザー登録に失敗しました';
+    //   console.error('Error response:', error.response);
+    //   throw new Error(errorMessage); // エラーメッセージをスロー
+    // } else if (error.request) {
+    //   // リクエストがサーバーに送信されたがレスポンスが無かった場合
+    //   console.error('Error request:', error.request);
+    //   throw new Error('サーバーからのレスポンスがありません');
+    // } else {
+    //   // その他のエラー
+    //   console.error('Error message:', error.message);
+    //   throw new Error('エラーが発生しました');
+    // }
+    alert('ユーザ登録に失敗しました．')
   }
 }
 
