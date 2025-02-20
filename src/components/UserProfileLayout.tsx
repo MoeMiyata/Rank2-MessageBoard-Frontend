@@ -1,9 +1,6 @@
 import React from "react"
+import UserProfile from "./UserProfile"
 
 export const UserProfileLayout = () => {
-    return (
-        <>
-            <h1>ユーザ情報</h1>
-        </>
-    )
+    return <UserProfile />
 }
