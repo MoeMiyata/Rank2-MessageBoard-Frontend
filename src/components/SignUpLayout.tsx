@@ -19,12 +19,12 @@ export default function SignInLayout() {
       // 入力データが既存のユーザ情報と被っていないか確認!!!!!
 
 
-      createUser(name, email, pass);
+      await createUser(name, email, pass);
       //　アカウント作成に成功したらログイン画面に移行
       navigate("/");
     } catch (error: any) {
         // バックエンドから返されたエラーメッセージを表示
-        alert(error.message); // 例: "このユーザー名はすでに使用されています"
+        alert(error.response.data.message); // 例: "このユーザー名はすでに使用されています"
       }
   };
 
