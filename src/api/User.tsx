@@ -27,10 +27,6 @@ export const createUser = async (name: string, email: string, password: string) 
     return res.data;
 
   } catch (error: any) {
-    // console.log('catch in!')
-    // console.log(error)
-    
-    // alert(error.response.data.message);
     return error;
   }
 }
