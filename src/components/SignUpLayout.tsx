@@ -21,7 +21,7 @@ export default function SignInLayout() {
 
       createUser(name, email, pass);
       //　アカウント作成に成功したらログイン画面に移行
-    //   navigate("/");
+      navigate("/");
     } catch (error: any) {
         // バックエンドから返されたエラーメッセージを表示
         alert(error.message); // 例: "このユーザー名はすでに使用されています"
