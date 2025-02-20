@@ -22,8 +22,6 @@ export default function SignIn() {
         token: ret.token,
       });
       navigate("/main");
-    } else {
-      alert('ログイン情報が誤っています．')
     }
   };
 
