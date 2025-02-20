@@ -23,10 +23,11 @@ export const createUser = async (name: string, email: string, password: string) 
       password
     });
     
-    // console.log('res(createUser):', res.data);
-    // return res.data;
+    console.log('res(createUser):', res.data);
+    return res.data;
 
   } catch (error: any) {
+    console.log('catch in!')
     // エラーがある場合、詳細を取得
     if (error.response) {
       // バックエンドからエラーレスポンスが返された場合
