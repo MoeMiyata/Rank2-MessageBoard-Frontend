@@ -19,15 +19,15 @@ export default function UserProfile() {
 
         <SUserProfileFrame>
             <SSignInRow>
-                Name: {loginUser.name}
+                <h1>Name: {loginUser.name}</h1>
             </SSignInRow>
 
             <SSignInRow>
-                Email: {loginUser.email}
+                <h1>Email: {loginUser.email}</h1>
             </SSignInRow>
 
             <SSignInRow>
-                Hash: {loginUser.hash}
+                <h1>Hash: {loginUser.hash}</h1>
             </SSignInRow>
         </SUserProfileFrame>
 
