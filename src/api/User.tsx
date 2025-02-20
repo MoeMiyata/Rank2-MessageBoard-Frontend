@@ -44,7 +44,7 @@ export const createUser = async (name: string, email: string, password: string) 
     //   console.error('Error message:', error.message);
     //   throw new Error('エラーが発生しました');
     // }
-    alert('ユーザ登録に失敗しました．')
+    alert(error.response.data.message);
   }
 }
 
