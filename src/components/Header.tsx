@@ -31,13 +31,13 @@ export default function Header() {
 
   return (
     <SHeader>
-      <SLogoButton onClick={onUserProfileClick}>MicroPost</SLogoButton>
+      <SLogo>MicroPost</SLogo>
 
       {/* 検索ボタンの配置 */}
       <SearchPost/>
 
       <SRightItem>
-        <SName>{loginUser.name}</SName>
+        <SNameButton onClick={onUserProfileClick}>{loginUser.name}</SNameButton>
         <SLogout onClick={logout}>ログアウト</SLogout>
       </SRightItem>
     </SHeader>
@@ -54,7 +54,7 @@ const SHeader = styled.div`
   height: 100%;
 `
 
-const SLogoButton = styled.button`
+const SLogo = styled.div`
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
@@ -68,7 +68,9 @@ const SRightItem = styled.div`
   justify-content: end;
 `
 
-const SName = styled.div`
+const SNameButton = styled.button`
+  background-color: #222222;
+  border: none;
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
