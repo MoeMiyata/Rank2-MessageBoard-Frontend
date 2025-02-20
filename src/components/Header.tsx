@@ -25,9 +25,13 @@ export default function Header() {
   //   myGetUser();
   // }, []);
 
+  const onUserProfileClick = () => {
+    console.log('ユーザ情報閲覧');
+  }
+
   return (
     <SHeader>
-      <SLogo>MicroPost</SLogo>
+      <SLogoButton onClick={onUserProfileClick}>MicroPost</SLogoButton>
 
       {/* 検索ボタンの配置 */}
       <SearchPost/>
@@ -50,7 +54,7 @@ const SHeader = styled.div`
   height: 100%;
 `
 
-const SLogo = styled.div`
+const SLogoButton = styled.button`
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
