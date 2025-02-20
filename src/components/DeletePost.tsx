@@ -6,7 +6,8 @@ import { deletePost, getList } from "../api/Post.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
 import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
-import { getUser } from "../api/User.tsx";
+// import { getUser } from "../api/User.tsx";
+import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 
 
 export const DeletePost = (props: any) => {
@@ -17,20 +18,19 @@ export const DeletePost = (props: any) => {
     const { pageNumber } = useContext(PageLinkContext);
     const { kwd } = useContext(SearchPostContext);
     
-    const [ userName, setUserName ] = useState("");
+    // const [ userName, setUserName ] = useState("");
+    const { loginUser } = useContext(LoginUserContext);
 
-    // ログインユーザの名前を取得
-    useEffect(() => {
-        const myGetUser = async () => {
-          const user = await getUser(userInfo.id, userInfo.token);
-          setUserName(user.name);
-        };
-        myGetUser();
-    }, []);
+    // // ログインユーザの名前を取得
+    // useEffect(() => {
+    //     const myGetUser = async () => {
+    //       const user = await getUser(userInfo.id, userInfo.token);
+    //       setUserName(user.name);
+    //     };
+    //     myGetUser();
+    // }, []);
 
-    console.log('userName:', userName)
-
-
+    // console.log('userName:', userName)
 
     // ポスト一覧を取得する関数
     const getPostList = async() => {
@@ -61,7 +61,8 @@ export const DeletePost = (props: any) => {
         console.log("post.id:", deleteid, "のメッセージ削除");
     }
 
-    return userName === postUserName ? <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> : null //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
+    // return userName === postUserName ? <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> : null //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
+    return loginUser.name === postUserName ? <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> : null //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない
 }
 
 const SDeletePostButton = styled.button`
