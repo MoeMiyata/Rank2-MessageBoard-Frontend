@@ -14,6 +14,7 @@ export default function SignInLayout() {
   const isFormValid = name !== "" && email !== "" && pass !== "";
 
   const onSignUpClick = async () => {
+    try {
       console.log('name:', name, '\nemail:', email, '\npassword:', pass);
       // 入力データが既存のユーザ情報と被っていないか確認!!!!!
 
@@ -21,6 +22,10 @@ export default function SignInLayout() {
       createUser(name, email, pass);
       //　アカウント作成に成功したらログイン画面に移行
       navigate("/");
+    } catch (error: any) {
+      // エラーをcatchしてアラートで表示
+      alert(error.response?.data?.message || "ユーザー登録に失敗しました");
+    }
   };
 
   const onBackToLoginClick = async () => {
