@@ -12,6 +12,9 @@ export default function SignInLayout() {
 
   const onSignUpClick = async () => {
       console.log('name:', name, '\nemail:', email, '\npassword:', pass);
+      // 入力データが既存のユーザ情報と被っていないか確認!!!!!
+
+
       createUser(name, email, pass)
   };
 

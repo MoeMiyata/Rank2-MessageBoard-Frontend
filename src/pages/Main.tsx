@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import MainLayout from "../components/MainLayout.tsx";
 import { PostListProvider } from "../providers/PostListProvider.tsx";  // 追加（ポスト保持コンテキスト作成）
 import { UserContext } from "../providers/UserProvider.tsx";
-// import { LoginUserProvider } from "../providers/LoginUserProvider.tsx";
+import { LoginUserProvider } from "../providers/LoginUserProvider.tsx";
 
 export default function Main() {
 	const { userInfo } = useContext(UserContext);
@@ -15,11 +15,11 @@ export default function Main() {
 	return (
 		<PostListProvider>
 		{/* ユーザのログイン情報を扱うためのProvider ↓ */}
-		{/* <LoginUserProvider> */}
+		<LoginUserProvider>
 		  {
 		    loggedIn ? <MainLayout />:<Navigate replace to="/" />
           }
-		{/* </LoginUserProvider> */}
+		</LoginUserProvider>
 		</PostListProvider>
 	)
 }

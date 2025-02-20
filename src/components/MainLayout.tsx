@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from "styled-components";
 import Header from "./Header.tsx";
 import SideBar from "./SideBar.tsx";
 import Contents from "./Contents.tsx";
 import { PageLinkContext, PageLinkProvider } from '../providers/PageLinkProvider.tsx';
 import { SearchPostProvider } from "../providers/SearchPostProvider.tsx";
+import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
+import { UserContext } from '../providers/UserProvider.tsx';
 
 import { ReloadPage } from './ReloadPage.tsx';
+import { getUser } from '../api/User.tsx';
 
 // import { useContext, useLayoutEffect } from "react";
 // import { UserContext } from "../providers/UserProvider.tsx";
@@ -36,6 +39,19 @@ export default function MainLayout() {
   //   }
   //   setPostList(postList);
   // };
+
+
+  // ログインしたユーザの情報を取得してContextに内容を保持しておく
+  const { userInfo } = useContext(UserContext);
+  const { loginUser, setLoginUser } = useContext(LoginUserContext);
+  useEffect(() => {
+    const myGetUser = async () => {
+      const user = await getUser(userInfo.id, userInfo.token);
+      setLoginUser(user);
+    };
+    myGetUser();
+  }, []);
+  console.log("loginUser(MainLayout):", loginUser);
 
   return (
     <>
