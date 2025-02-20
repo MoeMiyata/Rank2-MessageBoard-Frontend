@@ -153,7 +153,7 @@ const SLoginButton = styled.button`
   border-radius: 8px;
 
   &:disabled {
-    background-color: #aaaaaa; /* グレーに変える */
-    cursor: not-allowed; /* マウスカーソルを変更 */
+    background-color: #aaaaaa;
+    cursor: not-allowed; 
   }
 `;

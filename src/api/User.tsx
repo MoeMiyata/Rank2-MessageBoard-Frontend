@@ -30,7 +30,8 @@ export const createUser = async (name: string, email: string, password: string) 
     console.log('catch in!')
     console.log(error)
     
-    alert(error.response.data.message);
+    // alert(error.response.data.message);
+    return error;
   }
 }
 
