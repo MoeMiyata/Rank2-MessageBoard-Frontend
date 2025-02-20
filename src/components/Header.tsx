@@ -37,7 +37,7 @@ export default function Header() {
       <SearchPost/>
 
       <SRightItem>
-        <SNameButton onClick={onUserProfileClick}>{loginUser.name}</SNameButton>
+        <SName onClick={onUserProfileClick}>{loginUser.name}</SName>
         <SLogout onClick={logout}>ログアウト</SLogout>
       </SRightItem>
     </SHeader>
@@ -68,9 +68,7 @@ const SRightItem = styled.div`
   justify-content: end;
 `
 
-const SNameButton = styled.button`
-  background-color: #222222;
-  border: none;
+const SName = styled.div`
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
