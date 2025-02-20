@@ -48,7 +48,7 @@ export default function SignInLayout() {
           <input
             id="name"
             value={name}
-            type="text"
+            type="name"
             onChange={(evt) => setName(evt.target.value)}
           />
         </SSignInInput>
@@ -77,8 +77,7 @@ export default function SignInLayout() {
         <SSignInInput>
           <input
             id="password"
-            value={pass
-            }
+            value={pass}
             type="password"
             onChange={(evt) => setPass(evt.target.value)}
           />
