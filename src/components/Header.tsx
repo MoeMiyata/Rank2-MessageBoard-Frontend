@@ -1,9 +1,8 @@
 import React from 'react';
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
-import { getUser } from "../api/User.tsx";
 import { SearchPost } from './SearchPost.tsx';
 import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 

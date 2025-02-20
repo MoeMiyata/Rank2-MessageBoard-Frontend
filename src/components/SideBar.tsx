@@ -1,33 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState, useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 import { post, getList } from "../api/Post.tsx";
-import { getUser } from '../api/User.tsx';
 import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 
 export default function SideBar() {
   const [msg, setMsg] = useState("");
-  // const [ userName, setUserName ] = useState(""); // ユーザ登録（ログインユーザの名前取得）
-  // const [ userEmail, setUserEmail ] = useState(""); // ユーザ登録（ログインユーザのmail address取得）
-  const { loginUser } = useContext(LoginUserContext);
-
   const { userInfo } = useContext(UserContext);  // コンテキストからuserInfoを取り出す
-
+  const { loginUser } = useContext(LoginUserContext);
   const { pageNumber } = useContext(PageLinkContext);
-
   const { setPostList } = useContext(PostListContext); 
-
-  // useEffect(() => {
-  //   const myGetUser = async () => {
-  //     const user = await getUser(userInfo.id, userInfo.token);
-  //     setUserName(user.name);
-  //     setUserEmail(user.email);
-  //   };
-  //   myGetUser();
-  // }, []);
 
   const getPostList = async () => {
     const posts = await getList(userInfo.token, pageNumber);
