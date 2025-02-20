@@ -27,6 +27,7 @@ export default function Header() {
 
   const onUserProfileClick = () => {
     console.log('ユーザ情報閲覧');
+    navigate("/userprofile");
   }
 
   return (
