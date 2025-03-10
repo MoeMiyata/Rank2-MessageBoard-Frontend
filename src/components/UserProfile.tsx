@@ -264,7 +264,7 @@ const SLogo = styled.div<UserProfileProps>`
   padding-top: 8px;
   padding-bottom: 8px;
   // padding-left: 22px;
-  padding-left: ${({ isEditMode }) => (isEditMode ? "67px" : "22px")};
+  padding-left: ${({ isEditMode }) => (isEditMode ? "67px" : "20px")};
   text-align: center;
   flex-grow: 1;  /* 残りのスペースを埋める */
 `;
