@@ -32,14 +32,16 @@ export default function SignIn() {
           <label htmlFor="id">ID</label>
         </SSignInLabel>
         
-        <SSignInInput>
-          <input
-            id="id"
-            value={userId}
-            type="text"
-            onChange={(evt) => setUserId(evt.target.value)}
-          />
-        </SSignInInput>
+        <SSignInData>
+          <SSignInInput>
+            <input
+              id="id"
+              value={userId}
+              type="text"
+              onChange={(evt) => setUserId(evt.target.value)}
+            />
+          </SSignInInput>
+        </SSignInData>
       </SSignInRow>
 
       <SSignInRow>
@@ -47,14 +49,16 @@ export default function SignIn() {
           <label htmlFor="password">Password</label>
         </SSignInLabel>
 
-        <SSignInInput>
-          <input
-            id="password"
-            value={pass}
-            type="password"
-            onChange={(evt) => setPass(evt.target.value)}
-          />
-        </SSignInInput>
+        <SSignInData>
+          <SSignInInput>
+            <input
+              id="password"
+              value={pass}
+              type="password"
+              onChange={(evt) => setPass(evt.target.value)}
+            />
+          </SSignInInput>
+        </SSignInData>
       </SSignInRow>
 
       <SSignInRow>
@@ -95,6 +99,14 @@ const SSignInInput = styled.span`
   width: auto;
   vertical-align: top;
   margin-left: 4px;
+`;
+
+const SSignInData = styled.span`
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  text-align: left;
+  margin-right: 4px;
 `;
 
 const SLoginButton = styled.button`
