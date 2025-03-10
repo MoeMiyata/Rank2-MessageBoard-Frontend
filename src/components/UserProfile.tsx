@@ -1,29 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { loginUser } = useContext(LoginUserContext)
+  const { loginUser } = useContext(LoginUserContext);
+
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const onBackToMainClick = async () => {
     navigate("/main");
   }
   console.log('loginUser:', loginUser)
 
+  const onEditModeClick = async () => {
+    setIsEditMode(!isEditMode);
+  }
+
   return (
     <>
         <SHeader>
             <SLogo>User Profile</SLogo>
             <SRightItem>
-              <SEdit>編集</SEdit>
+              <SEdit onClick={onEditModeClick}>編集</SEdit>
             </SRightItem>
         </SHeader>
 
         <SUserProfileFrame>
             <SSignInRow>
                 <h1>Name: {loginUser.name}</h1>
+                {isEditMode ? <h1>変更内容: </h1> : null}
             </SSignInRow>
 
             <SSignInRow>
