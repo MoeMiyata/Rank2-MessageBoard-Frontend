@@ -27,6 +27,10 @@ export default function UserProfile() {
             </SRightItem>
         </SHeader>
 
+        <SSignInRow>
+          {isEditMode ? "登録内容を編集してください。" : null}
+        </SSignInRow>
+
         <SUserProfileFrame>
             <SSignInRow>
                 {/* <h1>Name: {loginUser.name}</h1> */}
@@ -35,57 +39,59 @@ export default function UserProfile() {
                     <label>Revised Name：</label>
                     <input type="text" placeholder={loginUser.name}/>
                   </div>
-                  : <h1>Name: {loginUser.name}</h1>}
+                  : <h1>名前: {loginUser.name}</h1>}
             </SSignInRow>
 
             <SSignInRow>
-                <h1>Email: {loginUser.email}</h1>
+                {/* <h1>メールアドレス: {loginUser.email}</h1> */}
                 {isEditMode ? 
                   <div>
                     <label>Revised Email：</label>
-                    <input type="text" />
+                    <input type="text" placeholder={loginUser.email}/>
                   </div>
-                  : null}
+                  : <h1>メールアドレス: {loginUser.email}</h1>
+                }
             </SSignInRow>
 
             <SSignInRow>
-                <h1>Hash: {loginUser.hash}</h1>
+                {/* <h1>ハッシュ: {loginUser.hash}</h1> */}
                 {isEditMode ? 
                   <div>
                     <label>Revised Password：</label>
                     <input type="text" />
                   </div>
-                  : null}
+                  : <h1>ハッシュ: {loginUser.hash}</h1>}
             </SSignInRow>
 
             <SSignInRow>
-                <h1>Date of birth:  登録なし</h1>
+                {/* <h1>生年月日:  登録なし</h1> */}
                 {isEditMode ? 
                   <div>
                     <label>Revised Birthday：</label>
-                    <input type="text" />
+                    <input type="text" placeholder="登録なし"/>
                   </div>
-                  : null}
+                  : <h1>生年月日:  登録なし</h1>}
             </SSignInRow>
 
             <SSignInRow>
-                <h1>Address: 登録なし</h1>
+                {/* <h1>住所: 登録なし</h1> */}
                 {isEditMode ? 
                   <div>
                     <label>Revised Adderess：</label>
-                    <input type="text" />
+                    <input type="text" placeholder="登録なし"/>
                   </div>
-                  : null}
+                  : <h1>住所: 登録なし</h1>}
             </SSignInRow>
 
             <SSignInRow>
-                <h1>Phone number: 登録なし</h1>
+                {/* <h1>電話番号: 登録なし</h1> */}
                 {isEditMode ? 
                   <div>
                     <label>Revised Phone number：</label>
-                    <input type="text" />
+                    <input type="text" placeholder="登録なし"/>
                   </div>
-                  : null}
+                  : <h1>電話番号: 登録なし</h1>
+                }
             </SSignInRow>
         </SUserProfileFrame>
 
