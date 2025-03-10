@@ -95,7 +95,10 @@ export default function UserProfile() {
                       Email: 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {loginUser.email}
+                      <address>
+                        <a href="mailto:loginUser.email">{loginUser.email}</a>
+                      </address>
+                      {/* {loginUser.email} */}
                     </SUserProfileData>
                   </>
                 }
@@ -143,7 +146,7 @@ export default function UserProfile() {
                       <SUserProfileInput>
                         <input
                             id="birthday"
-                            type="birthday"
+                            type="date"
                             placeholder="登録なし"
                         />
                       </SUserProfileInput>
@@ -203,8 +206,10 @@ export default function UserProfile() {
                       <SUserProfileInput>
                         <input
                             id="phonenumber"
-                            type="phonenumber"
+                            type="tel"
                             placeholder="登録なし"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            required 
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
