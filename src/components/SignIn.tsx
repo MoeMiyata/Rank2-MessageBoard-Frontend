@@ -96,7 +96,7 @@ const SSignInLabel = styled.span`
 
 const SSignInInput = styled.span`
   display: inline-block;
-  width: auto;
+  // width: auto;
   vertical-align: top;
   margin-left: 4px;
 `;
