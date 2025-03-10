@@ -16,7 +16,9 @@ export default function UserProfile() {
     <>
         <SHeader>
             <SLogo>User Profile</SLogo>
-            <SEdit>編集</SEdit>
+            <SRightItem>
+              <SEdit>編集</SEdit>
+            </SRightItem>
         </SHeader>
 
         <SUserProfileFrame>
@@ -48,12 +50,20 @@ export default function UserProfile() {
 
 const SHeader = styled.div`
   background-color: #222222;
+  display: flex;
   flex-direction: row;
   color: #F8F8F8;
   padding-left: 8px;
   padding-right: 8px;
   height: 100%;
 `;
+
+const SRightItem = styled.div`
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+`
 
 const SLogo = styled.div`
   padding-top: 8px;
