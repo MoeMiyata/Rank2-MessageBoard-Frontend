@@ -55,9 +55,9 @@ export default function UserProfile() {
                     <SUserProfileLabel>
                       Name: 
                     </SUserProfileLabel>
-                    <SUserProfileLabel>
-                    {loginUser.name}
-                    </SUserProfileLabel>
+                    <SUserProfileData>
+                      {loginUser.name}
+                    </SUserProfileData>
                     {/* <span>{loginUser.name}</span> */}
                   </>
                   }
@@ -89,7 +89,9 @@ export default function UserProfile() {
                     <SUserProfileLabel>
                       Email: 
                     </SUserProfileLabel>
-                    <span>{loginUser.email}</span>
+                    <SUserProfileData>
+                      {loginUser.email}
+                    </SUserProfileData>
                   </>
                 }
             </SUserProfileRow>
@@ -109,7 +111,16 @@ export default function UserProfile() {
                     />
                     </SUserProfileInput>
                   </>
-                  : <p>ハッシュ: {loginUser.hash}</p>}
+                  : 
+                  <>
+                    <SUserProfileLabel>
+                      Password: 
+                    </SUserProfileLabel>
+                    <SUserProfileData>
+                      ****
+                    </SUserProfileData>
+                  </>
+                }
             </SUserProfileRow>
 
             <SUserProfileRow>
@@ -128,7 +139,16 @@ export default function UserProfile() {
                       />
                     </SUserProfileInput>
                   </>
-                  : <p>生年月日:  登録なし</p>}
+                  :
+                  <>
+                    <SUserProfileLabel>
+                      Date of birth: 
+                    </SUserProfileLabel>
+                    <SUserProfileData>
+                      登録なし
+                    </SUserProfileData>
+                  </>
+                }
             </SUserProfileRow>
 
             <SUserProfileRow>
@@ -147,7 +167,16 @@ export default function UserProfile() {
                       />
                     </SUserProfileInput>
                   </>
-                  : <p>住所: 登録なし</p>}
+                  : 
+                  <>
+                    <SUserProfileLabel>
+                      Address: 
+                    </SUserProfileLabel>
+                    <SUserProfileData>
+                      登録なし
+                    </SUserProfileData>
+                  </>
+                }
             </SUserProfileRow>
 
             <SUserProfileRow>
@@ -166,7 +195,15 @@ export default function UserProfile() {
                       />
                     </SUserProfileInput>
                   </>
-                  : <p>電話番号: 登録なし</p>
+                  : 
+                  <>
+                    <SUserProfileLabel>
+                      Phone number: 
+                    </SUserProfileLabel>
+                    <SUserProfileData>
+                      登録なし
+                    </SUserProfileData>
+                  </>
                 }
             </SUserProfileRow>
         </SUserProfileFrame>
@@ -248,4 +285,12 @@ const SUserProfileInput = styled.span`
   width: auto;
   vertical-align: top;
   margin-left: 4px;
+`;
+
+const SUserProfileData = styled.span`
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  text-align: left;
+  margin-right: 4px;
 `;
