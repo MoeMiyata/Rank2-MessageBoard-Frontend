@@ -16,9 +16,9 @@ export default function UserProfile() {
     <>
         <SHeader>
             <SLogo>User Profile</SLogo>
-            <SRightItem>
+            {/* <SRightItem> */}
               <SEdit>編集</SEdit>
-            </SRightItem>
+            {/* </SRightItem> */}
         </SHeader>
 
         <SUserProfileFrame>
@@ -100,5 +100,6 @@ const SEdit = styled.div`
   padding-top: 6px;
   padding-bottom: 8px;
   text-align: center;
+  justify-content: end;
   cursor: pointer;  // ポインタ追加
 `
