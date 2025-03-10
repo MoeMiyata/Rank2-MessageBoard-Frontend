@@ -30,8 +30,8 @@ export default function UserProfile() {
             </SSignInRow>
 
             <SSignInRow>
-                <h1>Hash: {loginUser.hash}</h1>
-                {/* <h1>Hash</h1> */}
+                {/* <h1>Hash: {loginUser.hash}</h1> */}
+                <h1>Hash</h1>
             </SSignInRow>
         </SUserProfileFrame>
 
