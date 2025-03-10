@@ -35,20 +35,42 @@ export default function UserProfile() {
             <SUserProfileRow>
                 {/* <h1>Name: {loginUser.name}</h1> */}
                 {isEditMode ? 
-                  <div>
-                    <label>名前：</label>
-                    <input type="text" placeholder={loginUser.name}/>
-                  </div>
+                  <>
+                    <SUserProfileLabel>
+                      <label htmlFor="name">Name</label>
+                    </SUserProfileLabel>
+
+                    <SUserProfileInput>
+                      <input
+                        id="name"
+                        // value={pass}
+                        type="name"
+                        // onChange={(evt) => setPass(evt.target.value)}
+                    />
+                    </SUserProfileInput>
+                  </>
                   : <p>名前: {loginUser.name}</p>}
             </SUserProfileRow>
 
             <SUserProfileRow>
                 {/* <h1>メールアドレス: {loginUser.email}</h1> */}
                 {isEditMode ? 
-                  <div>
-                    <label>メールアドレス：</label>
-                    <input type="text" placeholder={loginUser.email}/>
-                  </div>
+                  // <p>
+                  //   <label>メールアドレス：</label>
+                  //   <input type="text" placeholder={loginUser.email}/>
+                  // </p>
+                  <>
+                    <SUserProfileLabel>
+                      <label htmlFor="email">Email</label>
+                    </SUserProfileLabel>
+
+                    <SUserProfileInput>
+                      <input
+                        id="email"
+                        type="email"
+                    />
+                    </SUserProfileInput>
+                  </>
                   : <p>メールアドレス: {loginUser.email}</p>
                 }
             </SUserProfileRow>
@@ -56,40 +78,72 @@ export default function UserProfile() {
             <SUserProfileRow>
                 {/* <h1>ハッシュ: {loginUser.hash}</h1> */}
                 {isEditMode ? 
-                  <div>
-                    <label>パスワード：</label>
-                    <input type="text" />
-                  </div>
+                  <>
+                    <SUserProfileLabel>
+                     <label htmlFor="password">Password</label>
+                    </SUserProfileLabel>
+
+                    <SUserProfileInput>
+                     <input
+                        id="password"
+                        type="password"
+                    />
+                    </SUserProfileInput>
+                  </>
                   : <p>ハッシュ: {loginUser.hash}</p>}
             </SUserProfileRow>
 
             <SUserProfileRow>
                 {/* <h1>生年月日:  登録なし</h1> */}
                 {isEditMode ? 
-                  <div>
-                    <label>生年月日：</label>
-                    <input type="text" placeholder="登録なし"/>
-                  </div>
+                  <>
+                    <SUserProfileLabel>
+                      <label htmlFor="birthday">Date of birth</label>
+                    </SUserProfileLabel>
+
+                    <SUserProfileInput>
+                      <input
+                          id="birthday"
+                          type="birthday"
+                      />
+                    </SUserProfileInput>
+                  </>
                   : <p>生年月日:  登録なし</p>}
             </SUserProfileRow>
 
             <SUserProfileRow>
                 {/* <h1>住所: 登録なし</h1> */}
                 {isEditMode ? 
-                  <div>
-                    <label>住所：</label>
-                    <input type="text" placeholder="登録なし"/>
-                  </div>
+                  <>
+                    <SUserProfileLabel>
+                      <label htmlFor="address">Address</label>
+                    </SUserProfileLabel>
+
+                    <SUserProfileInput>
+                      <input
+                          id="address"
+                          type="address"
+                      />
+                    </SUserProfileInput>
+                  </>
                   : <p>住所: 登録なし</p>}
             </SUserProfileRow>
 
             <SUserProfileRow>
                 {/* <h1>電話番号: 登録なし</h1> */}
                 {isEditMode ? 
-                  <div>
-                    <label>電話番号：</label>
-                    <input type="text" placeholder="登録なし"/>
-                  </div>
+                  <>
+                    <SUserProfileLabel>
+                      <label htmlFor="phonenumber">Phone number</label>
+                    </SUserProfileLabel>
+
+                    <SUserProfileInput>
+                      <input
+                          id="phonenumber"
+                          type="phonenumber"
+                      />
+                    </SUserProfileInput>
+                  </>
                   : <p>電話番号: 登録なし</p>
                 }
             </SUserProfileRow>
@@ -157,4 +211,19 @@ const SMainButton = styled.button`
   color: #f0f0f0;
   padding: 4px 16px;
   border-radius: 8px;
+`;
+
+const SUserProfileLabel = styled.span`
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  text-align: right;
+  margin-right: 4px;
+`;
+
+const SUserProfileInput = styled.span`
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+  margin-left: 4px;
 `;
