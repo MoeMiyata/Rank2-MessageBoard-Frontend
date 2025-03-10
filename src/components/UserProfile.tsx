@@ -24,17 +24,26 @@ export default function UserProfile() {
         <SUserProfileFrame>
             <SSignInRow>
                 <h1>Name: {loginUser.name}</h1>
-                {/* <h1>Name</h1> */}
             </SSignInRow>
 
             <SSignInRow>
                 <h1>Email: {loginUser.email}</h1>
-                {/* <h1>Email</h1> */}
             </SSignInRow>
 
             <SSignInRow>
                 <h1>Hash: {loginUser.hash}</h1>
-                {/* <h1>Hash</h1> */}
+            </SSignInRow>
+
+            <SSignInRow>
+                <h1>生年月日:  登録なし</h1>
+            </SSignInRow>
+
+            <SSignInRow>
+                <h1>住所: 登録なし</h1>
+            </SSignInRow>
+
+            <SSignInRow>
+                <h1>電話番号: 登録なし</h1>
             </SSignInRow>
         </SUserProfileFrame>
 
