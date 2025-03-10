@@ -29,13 +29,13 @@ export default function UserProfile() {
 
         <SUserProfileFrame>
             <SSignInRow>
-                <h1>Name: {loginUser.name}</h1>
+                {/* <h1>Name: {loginUser.name}</h1> */}
                 {isEditMode ? 
                   <div>
                     <label>Revised Name：</label>
-                    <input type="text" />
+                    <input type="text" placeholder={loginUser.name}/>
                   </div>
-                  : null}
+                  : <h1>Name: {loginUser.name}</h1>}
             </SSignInRow>
 
             <SSignInRow>
