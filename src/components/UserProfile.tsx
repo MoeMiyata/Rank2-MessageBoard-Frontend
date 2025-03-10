@@ -40,6 +40,8 @@ export default function UserProfile() {
                       <label htmlFor="name">Name</label>
                     </SUserProfileLabel>
 
+                    <SUserProfileData>
+
                     <SUserProfileInput>
                       <input
                         id="name"
@@ -49,6 +51,8 @@ export default function UserProfile() {
                         // onChange={(evt) => setPass(evt.target.value)}
                     />
                     </SUserProfileInput>
+                    </SUserProfileData>
+
                   </>
                   :
                   <>
