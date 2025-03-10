@@ -45,11 +45,18 @@ export default function UserProfile() {
                         id="name"
                         // value={pass}
                         type="name"
+                        placeholder={loginUser.name}
                         // onChange={(evt) => setPass(evt.target.value)}
                     />
                     </SUserProfileInput>
                   </>
-                  : <p>名前: {loginUser.name}</p>}
+                  :
+                  <>
+                    <SUserProfileLabel>
+                      名前：{loginUser.name}
+                    </SUserProfileLabel>
+                  </>
+                  }
             </SUserProfileRow>
 
             <SUserProfileRow>
@@ -68,6 +75,7 @@ export default function UserProfile() {
                       <input
                         id="email"
                         type="email"
+                        placeholder={loginUser.email}
                     />
                     </SUserProfileInput>
                   </>
@@ -105,6 +113,7 @@ export default function UserProfile() {
                       <input
                           id="birthday"
                           type="birthday"
+                          placeholder="登録なし"
                       />
                     </SUserProfileInput>
                   </>
@@ -123,6 +132,7 @@ export default function UserProfile() {
                       <input
                           id="address"
                           type="address"
+                          placeholder="登録なし"
                       />
                     </SUserProfileInput>
                   </>
@@ -141,6 +151,7 @@ export default function UserProfile() {
                       <input
                           id="phonenumber"
                           type="phonenumber"
+                          placeholder="登録なし"
                       />
                     </SUserProfileInput>
                   </>
