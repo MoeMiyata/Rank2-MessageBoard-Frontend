@@ -23,13 +23,13 @@ export default function UserProfile() {
         <SHeader>
             <SLogo>User Profile</SLogo>
             <SRightItem>
-              <SEdit onClick={onEditModeClick}>編集</SEdit>
+              <SEdit onClick={onEditModeClick}>{isEditMode ? "キャンセル" : "編集"}</SEdit>
             </SRightItem>
         </SHeader>
 
-        <SUserProfileRow>
+        <SUserProfileTextRow>
           {isEditMode ? "登録内容を編集してください。" : null}
-        </SUserProfileRow>
+        </SUserProfileTextRow>
 
         <SUserProfileFrame>
             <SUserProfileRow>
@@ -287,6 +287,11 @@ const SUserProfileRow = styled.div`
   dixplay: inline-block;
   margin-top: 4px;
   margin-bottom: 4px;
+`;
+
+const SUserProfileTextRow = styled.div`
+  dixplay: inline-block;
+  margin: 80px;
 `;
 
 const SMainButton = styled.button`
