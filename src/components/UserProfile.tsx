@@ -56,7 +56,7 @@ export default function UserProfile() {
                   :
                   <>
                     <SUserProfileLabel>
-                      Name: 
+                      Name 👤 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.name}
@@ -92,13 +92,10 @@ export default function UserProfile() {
                   // <p>メールアドレス: {loginUser.email}</p>
                   <>
                     <SUserProfileLabel>
-                      Email: 
+                      Email ✉️ : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      <address>
-                        <a href="mailto:loginUser.email">{loginUser.email}</a>
-                      </address>
-                      {/* {loginUser.email} */}
+                      {loginUser.email}
                     </SUserProfileData>
                   </>
                 }
@@ -125,7 +122,7 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      Password: 
+                      Password 🔑 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       ＊＊＊＊＊
@@ -155,7 +152,7 @@ export default function UserProfile() {
                   :
                   <>
                     <SUserProfileLabel>
-                      Date of birth: 
+                      Date of birth 🎂 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       登録なし
@@ -185,7 +182,7 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      Address: 
+                      Address 🏠 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       登録なし
@@ -217,7 +214,7 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      Phone number: 
+                      Phone number 📱 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       登録なし
