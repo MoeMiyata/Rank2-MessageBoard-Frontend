@@ -20,13 +20,13 @@ export default function UserProfile() {
 
         <SUserProfileFrame>
             <SSignInRow>
-                {/* <h1>Name: {loginUser.name}</h1> */}
-                <h1>Name</h1>
+                <h1>Name: {loginUser.name}</h1>
+                {/* <h1>Name</h1> */}
             </SSignInRow>
 
             <SSignInRow>
-                {/* <h1>Email: {loginUser.email}</h1> */}
-                <h1>Email</h1>
+                <h1>Email: {loginUser.email}</h1>
+                {/* <h1>Email</h1> */}
             </SSignInRow>
 
             <SSignInRow>

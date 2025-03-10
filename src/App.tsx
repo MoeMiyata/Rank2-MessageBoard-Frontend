@@ -12,18 +12,16 @@ import { LoginUserProvider } from './providers/LoginUserProvider.tsx';
 function App() {
   return (
     <div className="App">
-      <LoginUserProvider>
-  
       <UserProvider>
+      <LoginUserProvider> {/* ログイン情報をUserProfileでも扱うためにAppレベルに上げる */}
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/main" element={<Main />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/userprofile" element={<UserProfile />} />
         </Routes>
-      </UserProvider>
-
       </LoginUserProvider>
+      </UserProvider>
     </div>
   );
 }
