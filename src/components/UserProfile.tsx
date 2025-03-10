@@ -62,15 +62,13 @@ const SHeader = styled.div`
 const SRightItem = styled.div`
   display: flex;
   flex-direction: row;
-  // justify-content: end;
 `
 
 const SLogo = styled.div`
-  // padding-top: 8px;
-  // padding-bottom: 8px;
-  // text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
   flex-grow: 1;  /* 残りのスペースを埋める */
-  text-align: center; /* 中央揃え */
 `;
 
 const SEdit = styled.div`
