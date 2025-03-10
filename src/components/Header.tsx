@@ -74,6 +74,7 @@ const SName = styled.div`
   padding-bottom: 8px;
   text-align: center;
   margin-right: 8px;
+  cursor: pointer;  // ポインタ追加
 `
 
 const SLogout = styled.div`
@@ -81,4 +82,5 @@ const SLogout = styled.div`
   padding-top: 6px;
   padding-bottom: 8px;
   text-align: center;
+  cursor: pointer;  // ポインタ追加
 `
