@@ -21,7 +21,7 @@ export default function UserProfile() {
   return (
     <>
         <SHeader>
-            <SLogo>User Profile</SLogo>
+            <SLogo isEditMode={isEditMode}>User Profile</SLogo>
             <SRightItem>
               <SEdit onClick={onEditModeClick}>{isEditMode ? "キャンセル" : "編集"}</SEdit>
             </SRightItem>
@@ -256,10 +256,15 @@ const SRightItem = styled.div`
   flex-direction: row;
 `
 
-const SLogo = styled.div`
+interface UserProfileProps {
+  isEditMode: boolean;
+}
+
+const SLogo = styled.div<UserProfileProps>`
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 22px;
+  // padding-left: 22px;
+  padding-left: ${({ isEditMode }) => (isEditMode ? "67px" : "22px")};
   text-align: center;
   flex-grow: 1;  /* 残りのスペースを埋める */
 `;
@@ -274,10 +279,6 @@ const SEdit = styled.div`
   cursor: pointer;  // ポインタ追加
 `
 
-interface UserProfileProps {
-  isEditMode: boolean;
-}
-
 // const SUserProfileFrame = styled.div`
 //   background-color: #f8f8f8;
 //   // margin: 80px;
@@ -291,7 +292,7 @@ interface UserProfileProps {
 // `;
 const SUserProfileFrame = styled.div<UserProfileProps>`
   background-color: #f8f8f8;
-  margin: ${({ isEditMode }) => (isEditMode ? "40px 80px 80px 80px" : "100px 80px 80px 80px")};
+  margin: ${({ isEditMode }) => (isEditMode ? "40px 80px 80px 80px" : "105px 80px 80px 80px")};
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
@@ -329,6 +330,8 @@ const SUserProfileLabel = styled.span`
   vertical-align: top;
   text-align: right;
   margin-right: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 `;
 
 const SUserProfileInput = styled.span`
@@ -344,4 +347,6 @@ const SUserProfileData = styled.span`
   vertical-align: top;
   text-align: left;
   margin-right: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 `;
