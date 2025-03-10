@@ -16,9 +16,9 @@ export default function UserProfile() {
     <>
         <SHeader>
             <SLogo>User Profile</SLogo>
-            {/* <SRightItem> */}
+            <SRightItem>
               <SEdit>編集</SEdit>
-            {/* </SRightItem> */}
+            </SRightItem>
         </SHeader>
 
         <SUserProfileFrame>
