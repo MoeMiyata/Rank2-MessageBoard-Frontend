@@ -18,6 +18,19 @@ export default function UserProfile() {
     setIsEditMode(!isEditMode);
   }
 
+  const onUserProfileRegisterClick = async () => {
+    // const error = await createUser(name, email, pass);
+    const error = null;
+
+    if (error) {
+      // alert(error.response.data.message);
+      alert('error!');
+    } else {
+      //　ユーザ情報一覧ページ（編集ボタン押印前）に移行
+      setIsEditMode(!isEditMode);
+    }
+  };
+
   return (
     <>
         <SHeader>
@@ -226,7 +239,7 @@ export default function UserProfile() {
 
         <SUserProfileRow>
           {isEditMode ? 
-            <SRegisterButton type="button" onClick={onBackToMainClick}>
+            <SRegisterButton type="button" onClick={onUserProfileRegisterClick}>
               登録する
             </SRegisterButton>
             :
