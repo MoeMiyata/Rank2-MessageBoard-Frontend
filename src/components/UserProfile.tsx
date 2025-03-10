@@ -31,7 +31,7 @@ export default function UserProfile() {
           {isEditMode ? "登録内容を編集してください。" : null}
         </SUserProfileTextRow>
 
-        <SUserProfileFrame>
+        <SUserProfileFrame  isEditMode={isEditMode}>
             <SUserProfileRow>
                 {/* <h1>Name: {loginUser.name}</h1> */}
                 {isEditMode ? 
@@ -274,12 +274,24 @@ const SEdit = styled.div`
   cursor: pointer;  // ポインタ追加
 `
 
-const SUserProfileFrame = styled.div`
-  background-color: #f8f8f8;
-  // margin: 80px;
-  // margin: 40px 80px 80px 80px;
-  margin: {isEditMode ? 40px : 100px} 80px 80px 80px;
+interface UserProfileProps {
+  isEditMode: boolean;
+}
 
+// const SUserProfileFrame = styled.div`
+//   background-color: #f8f8f8;
+//   // margin: 80px;
+//   // margin: 40px 80px 80px 80px;
+//   margin: ${({ isEditMode }) => (isEditMode ? "40px 80px 80px 80px" : "100px 80px 80px 80px")};
+  
+//   padding-top: 8px;
+//   padding-bottom: 8px;
+//   border-radius: 8px;
+//   box-shadow: 0 8px 8px #aaaaaa;
+// `;
+const SUserProfileFrame = styled.div<UserProfileProps>`
+  background-color: #f8f8f8;
+  margin: ${({ isEditMode }) => (isEditMode ? "40px 80px 80px 80px" : "100px 80px 80px 80px")};
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
@@ -294,7 +306,7 @@ const SUserProfileRow = styled.div`
 
 const SUserProfileTextRow = styled.div`
   dixplay: inline-block;
-  margin: 40px;
+  margin-top: 40px;
 `;
 
 const SMainButton = styled.button`
