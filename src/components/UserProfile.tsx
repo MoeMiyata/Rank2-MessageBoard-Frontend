@@ -27,79 +27,79 @@ export default function UserProfile() {
             </SRightItem>
         </SHeader>
 
-        <SSignInRow>
+        <SUserProfileRow>
           {isEditMode ? "登録内容を編集してください。" : null}
-        </SSignInRow>
+        </SUserProfileRow>
 
         <SUserProfileFrame>
-            <SSignInRow>
+            <SUserProfileRow>
                 {/* <h1>Name: {loginUser.name}</h1> */}
                 {isEditMode ? 
                   <div>
-                    <label>Revised Name：</label>
+                    <label>名前：</label>
                     <input type="text" placeholder={loginUser.name}/>
                   </div>
-                  : <h1>名前: {loginUser.name}</h1>}
-            </SSignInRow>
+                  : <p>名前: {loginUser.name}</p>}
+            </SUserProfileRow>
 
-            <SSignInRow>
+            <SUserProfileRow>
                 {/* <h1>メールアドレス: {loginUser.email}</h1> */}
                 {isEditMode ? 
                   <div>
-                    <label>Revised Email：</label>
+                    <label>メールアドレス：</label>
                     <input type="text" placeholder={loginUser.email}/>
                   </div>
-                  : <h1>メールアドレス: {loginUser.email}</h1>
+                  : <p>メールアドレス: {loginUser.email}</p>
                 }
-            </SSignInRow>
+            </SUserProfileRow>
 
-            <SSignInRow>
+            <SUserProfileRow>
                 {/* <h1>ハッシュ: {loginUser.hash}</h1> */}
                 {isEditMode ? 
                   <div>
-                    <label>Revised Password：</label>
+                    <label>パスワード：</label>
                     <input type="text" />
                   </div>
-                  : <h1>ハッシュ: {loginUser.hash}</h1>}
-            </SSignInRow>
+                  : <p>ハッシュ: {loginUser.hash}</p>}
+            </SUserProfileRow>
 
-            <SSignInRow>
+            <SUserProfileRow>
                 {/* <h1>生年月日:  登録なし</h1> */}
                 {isEditMode ? 
                   <div>
-                    <label>Revised Birthday：</label>
+                    <label>生年月日：</label>
                     <input type="text" placeholder="登録なし"/>
                   </div>
-                  : <h1>生年月日:  登録なし</h1>}
-            </SSignInRow>
+                  : <p>生年月日:  登録なし</p>}
+            </SUserProfileRow>
 
-            <SSignInRow>
+            <SUserProfileRow>
                 {/* <h1>住所: 登録なし</h1> */}
                 {isEditMode ? 
                   <div>
-                    <label>Revised Adderess：</label>
+                    <label>住所：</label>
                     <input type="text" placeholder="登録なし"/>
                   </div>
-                  : <h1>住所: 登録なし</h1>}
-            </SSignInRow>
+                  : <p>住所: 登録なし</p>}
+            </SUserProfileRow>
 
-            <SSignInRow>
+            <SUserProfileRow>
                 {/* <h1>電話番号: 登録なし</h1> */}
                 {isEditMode ? 
                   <div>
-                    <label>Revised Phone number：</label>
+                    <label>電話番号：</label>
                     <input type="text" placeholder="登録なし"/>
                   </div>
-                  : <h1>電話番号: 登録なし</h1>
+                  : <p>電話番号: 登録なし</p>
                 }
-            </SSignInRow>
+            </SUserProfileRow>
         </SUserProfileFrame>
 
-        <SSignInRow>
+        <SUserProfileRow>
             <SMainButton type="button" onClick={onBackToMainClick}>
                 Back to Main
             </SMainButton>
-        </SSignInRow>
+        </SUserProfileRow>
     </>
   );
 }
@@ -146,7 +146,7 @@ const SUserProfileFrame = styled.div`
   box-shadow: 0 8px 8px #aaaaaa;
 `;
 
-const SSignInRow = styled.div`
+const SUserProfileRow = styled.div`
   dixplay: inline-block;
   margin-top: 4px;
   margin-bottom: 4px;
