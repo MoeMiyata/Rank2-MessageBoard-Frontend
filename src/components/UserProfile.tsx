@@ -41,16 +41,15 @@ export default function UserProfile() {
                     </SUserProfileLabel>
 
                     <SUserProfileData>
-
-                    <SUserProfileInput>
-                      <input
-                        id="name"
-                        // value={pass}
-                        type="name"
-                        placeholder={loginUser.name}
-                        // onChange={(evt) => setPass(evt.target.value)}
-                    />
-                    </SUserProfileInput>
+                      <SUserProfileInput>
+                        <input
+                          id="name"
+                          // value={pass}
+                          type="name"
+                          placeholder={loginUser.name}
+                          // onChange={(evt) => setPass(evt.target.value)}
+                      />
+                      </SUserProfileInput>
                     </SUserProfileData>
 
                   </>
@@ -79,13 +78,15 @@ export default function UserProfile() {
                       <label htmlFor="email">Email</label>
                     </SUserProfileLabel>
 
-                    <SUserProfileInput>
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder={loginUser.email}
-                    />
-                    </SUserProfileInput>
+                    <SUserProfileData>
+                      <SUserProfileInput>
+                        <input
+                          id="email"
+                          type="email"
+                          placeholder={loginUser.email}
+                      />
+                      </SUserProfileInput>
+                    </SUserProfileData>
                   </>
                   : 
                   // <p>メールアドレス: {loginUser.email}</p>
@@ -108,12 +109,14 @@ export default function UserProfile() {
                      <label htmlFor="password">Password</label>
                     </SUserProfileLabel>
 
-                    <SUserProfileInput>
-                     <input
-                        id="password"
-                        type="password"
-                    />
-                    </SUserProfileInput>
+                    <SUserProfileData>
+                      <SUserProfileInput>
+                      <input
+                          id="password"
+                          type="password"
+                      />
+                      </SUserProfileInput>
+                    </SUserProfileData>
                   </>
                   : 
                   <>
@@ -135,13 +138,15 @@ export default function UserProfile() {
                       <label htmlFor="birthday">Date of birth</label>
                     </SUserProfileLabel>
 
-                    <SUserProfileInput>
-                      <input
-                          id="birthday"
-                          type="birthday"
-                          placeholder="登録なし"
-                      />
-                    </SUserProfileInput>
+                    <SUserProfileData>
+                      <SUserProfileInput>
+                        <input
+                            id="birthday"
+                            type="birthday"
+                            placeholder="登録なし"
+                        />
+                      </SUserProfileInput>
+                    </SUserProfileData>
                   </>
                   :
                   <>
@@ -163,13 +168,15 @@ export default function UserProfile() {
                       <label htmlFor="address">Address</label>
                     </SUserProfileLabel>
 
-                    <SUserProfileInput>
-                      <input
-                          id="address"
-                          type="address"
-                          placeholder="登録なし"
-                      />
-                    </SUserProfileInput>
+                    <SUserProfileData>
+                      <SUserProfileInput>
+                        <input
+                            id="address"
+                            type="address"
+                            placeholder="登録なし"
+                        />
+                      </SUserProfileInput>
+                    </SUserProfileData>
                   </>
                   : 
                   <>
@@ -191,13 +198,15 @@ export default function UserProfile() {
                       <label htmlFor="phonenumber">Phone number</label>
                     </SUserProfileLabel>
 
-                    <SUserProfileInput>
-                      <input
-                          id="phonenumber"
-                          type="phonenumber"
-                          placeholder="登録なし"
-                      />
-                    </SUserProfileInput>
+                    <SUserProfileData>
+                      <SUserProfileInput>
+                        <input
+                            id="phonenumber"
+                            type="phonenumber"
+                            placeholder="登録なし"
+                        />
+                      </SUserProfileInput>
+                    </SUserProfileData>
                   </>
                   : 
                   <>
