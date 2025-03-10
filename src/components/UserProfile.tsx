@@ -56,6 +56,7 @@ const SHeader = styled.div`
   padding-left: 8px;
   padding-right: 8px;
   height: 100%;
+  justyify-content: end;
 `;
 
 const SRightItem = styled.div`
@@ -66,11 +67,20 @@ const SRightItem = styled.div`
 `
 
 const SLogo = styled.div`
+  width:100%;
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: center;
-  justyify-content: start;
 `;
+
+const SEdit = styled.div`
+  // padding-top: 8px;
+  padding-top: 6px;
+  padding-bottom: 8px;
+  text-align: center;
+  justify-content: end;
+  cursor: pointer;  // ポインタ追加
+`
 
 const SUserProfileFrame = styled.div`
   background-color: #f8f8f8;
@@ -93,13 +103,3 @@ const SMainButton = styled.button`
   padding: 4px 16px;
   border-radius: 8px;
 `;
-
-
-const SEdit = styled.div`
-  // padding-top: 8px;
-  padding-top: 6px;
-  padding-bottom: 8px;
-  text-align: center;
-  justify-content: end;
-  cursor: pointer;  // ポインタ追加
-`
