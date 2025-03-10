@@ -53,8 +53,9 @@ export default function UserProfile() {
                   :
                   <>
                     <SUserProfileLabel>
-                      名前：{loginUser.name}
+                      Name: 
                     </SUserProfileLabel>
+                    <span>{loginUser.name}</span>
                   </>
                   }
             </SUserProfileRow>
@@ -79,7 +80,14 @@ export default function UserProfile() {
                     />
                     </SUserProfileInput>
                   </>
-                  : <p>メールアドレス: {loginUser.email}</p>
+                  : 
+                  // <p>メールアドレス: {loginUser.email}</p>
+                  <>
+                    <SUserProfileLabel>
+                      Email: 
+                    </SUserProfileLabel>
+                    <span>{loginUser.email}</span>
+                  </>
                 }
             </SUserProfileRow>
 
