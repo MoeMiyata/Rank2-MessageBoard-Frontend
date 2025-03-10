@@ -222,9 +222,16 @@ export default function UserProfile() {
         </SUserProfileFrame>
 
         <SUserProfileRow>
+          {isEditMode ? 
+            <SRegisterButton type="button" onClick={onBackToMainClick}>
+              登録する
+            </SRegisterButton>
+            :
             <SMainButton type="button" onClick={onBackToMainClick}>
-                Back to Main
+              Back to Main
             </SMainButton>
+          }
+            
         </SUserProfileRow>
     </>
   );
@@ -252,6 +259,7 @@ const SRightItem = styled.div`
 const SLogo = styled.div`
   padding-top: 8px;
   padding-bottom: 8px;
+  padding-left: 22px;
   text-align: center;
   flex-grow: 1;  /* 残りのスペースを埋める */
 `;
@@ -260,7 +268,7 @@ const SEdit = styled.div`
   // padding-top: 8px;
   padding-top: 6px;
   padding-bottom: 8px;
-  padding-right: 8px;
+  padding-right: 4px;
   text-align: center;
   justify-content: end;
   cursor: pointer;  // ポインタ追加
@@ -282,6 +290,13 @@ const SUserProfileRow = styled.div`
 `;
 
 const SMainButton = styled.button`
+  background-color: #444444;
+  color: #f0f0f0;
+  padding: 4px 16px;
+  border-radius: 8px;
+`;
+
+const SRegisterButton = styled.button`
   background-color: #444444;
   color: #f0f0f0;
   padding: 4px 16px;
