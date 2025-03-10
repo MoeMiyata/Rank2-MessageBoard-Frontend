@@ -238,8 +238,10 @@ const SHeader = styled.div`
   color: #F8F8F8;
   padding-left: 8px;
   padding-right: 8px;
-  height: 100%;
+  // height: 100%;
+  height: 32px;
   justify-content: space-between;
+  box-shadow: 0px 4px 4px #AAAAAA;
 `;
 
 const SRightItem = styled.div`
@@ -258,6 +260,7 @@ const SEdit = styled.div`
   // padding-top: 8px;
   padding-top: 6px;
   padding-bottom: 8px;
+  padding-right: 8px;
   text-align: center;
   justify-content: end;
   cursor: pointer;  // ポインタ追加
