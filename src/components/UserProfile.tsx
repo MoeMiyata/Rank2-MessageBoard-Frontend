@@ -276,7 +276,10 @@ const SEdit = styled.div`
 
 const SUserProfileFrame = styled.div`
   background-color: #f8f8f8;
-  margin: 80px;
+  // margin: 80px;
+  // margin: 40px 80px 80px 80px;
+  margin: {isEditMode ? 40px : 100px} 80px 80px 80px;
+
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
@@ -291,7 +294,7 @@ const SUserProfileRow = styled.div`
 
 const SUserProfileTextRow = styled.div`
   dixplay: inline-block;
-  margin: 80px;
+  margin: 40px;
 `;
 
 const SMainButton = styled.button`
