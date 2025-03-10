@@ -30,27 +30,62 @@ export default function UserProfile() {
         <SUserProfileFrame>
             <SSignInRow>
                 <h1>Name: {loginUser.name}</h1>
-                {isEditMode ? <h1>変更内容: </h1> : null}
+                {isEditMode ? 
+                  <div>
+                    <label>Revised Name：</label>
+                    <input type="text" />
+                  </div>
+                  : null}
             </SSignInRow>
 
             <SSignInRow>
                 <h1>Email: {loginUser.email}</h1>
+                {isEditMode ? 
+                  <div>
+                    <label>Revised Email：</label>
+                    <input type="text" />
+                  </div>
+                  : null}
             </SSignInRow>
 
             <SSignInRow>
                 <h1>Hash: {loginUser.hash}</h1>
+                {isEditMode ? 
+                  <div>
+                    <label>Revised Password：</label>
+                    <input type="text" />
+                  </div>
+                  : null}
             </SSignInRow>
 
             <SSignInRow>
-                <h1>生年月日:  登録なし</h1>
+                <h1>Date of birth:  登録なし</h1>
+                {isEditMode ? 
+                  <div>
+                    <label>Revised Birthday：</label>
+                    <input type="text" />
+                  </div>
+                  : null}
             </SSignInRow>
 
             <SSignInRow>
-                <h1>住所: 登録なし</h1>
+                <h1>Address: 登録なし</h1>
+                {isEditMode ? 
+                  <div>
+                    <label>Revised Adderess：</label>
+                    <input type="text" />
+                  </div>
+                  : null}
             </SSignInRow>
 
             <SSignInRow>
-                <h1>電話番号: 登録なし</h1>
+                <h1>Phone number: 登録なし</h1>
+                {isEditMode ? 
+                  <div>
+                    <label>Revised Phone number：</label>
+                    <input type="text" />
+                  </div>
+                  : null}
             </SSignInRow>
         </SUserProfileFrame>
 
