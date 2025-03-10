@@ -301,8 +301,10 @@ const SUserProfileFrame = styled.div<UserProfileProps>`
 
 const SUserProfileRow = styled.div`
   dixplay: inline-block;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  // margin-top: 4px;
+  // margin-bottom: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 const SUserProfileTextRow = styled.div`
