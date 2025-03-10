@@ -16,6 +16,7 @@ export default function UserProfile() {
     <>
         <SHeader>
             <SLogo>User Profile</SLogo>
+            <SEdit>編集</SEdit>
         </SHeader>
 
         <SUserProfileFrame>
@@ -82,3 +83,12 @@ const SMainButton = styled.button`
   padding: 4px 16px;
   border-radius: 8px;
 `;
+
+
+const SEdit = styled.div`
+  // padding-top: 8px;
+  padding-top: 6px;
+  padding-bottom: 8px;
+  text-align: center;
+  cursor: pointer;  // ポインタ追加
+`
