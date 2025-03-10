@@ -55,7 +55,10 @@ export default function UserProfile() {
                     <SUserProfileLabel>
                       Name: 
                     </SUserProfileLabel>
-                    <span>{loginUser.name}</span>
+                    <SUserProfileLabel>
+                    {loginUser.name}
+                    </SUserProfileLabel>
+                    {/* <span>{loginUser.name}</span> */}
                   </>
                   }
             </SUserProfileRow>
