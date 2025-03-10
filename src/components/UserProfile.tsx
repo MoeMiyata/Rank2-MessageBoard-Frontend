@@ -114,6 +114,7 @@ export default function UserProfile() {
                       <input
                           id="password"
                           type="password"
+                          placeholder="＊＊＊＊＊"
                       />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -124,7 +125,7 @@ export default function UserProfile() {
                       Password: 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      ****
+                      ＊＊＊＊＊
                     </SUserProfileData>
                   </>
                 }
