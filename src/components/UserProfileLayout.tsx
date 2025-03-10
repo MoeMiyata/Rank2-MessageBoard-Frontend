@@ -4,8 +4,8 @@ import { LoginUserProvider } from "../providers/LoginUserProvider.tsx"
 
 export const UserProfileLayout = () => {
     return (
-        <LoginUserProvider>
+        // <LoginUserProvider>
             <UserProfile />
-        </LoginUserProvider>
+        // </LoginUserProvider>
     )
 }
