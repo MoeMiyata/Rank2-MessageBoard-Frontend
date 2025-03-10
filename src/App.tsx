@@ -7,10 +7,13 @@ import Main from './pages/Main.tsx';
 import UserProfile from './pages/UserProfile.tsx';
 import { UserProvider } from "./providers/UserProvider.tsx"; // 追加（UserProviderコンポーネントを組み込む）
 import './App.css';
+import { LoginUserProvider } from './providers/LoginUserProvider.tsx';
 
 function App() {
   return (
     <div className="App">
+      <LoginUserProvider>
+  
       <UserProvider>
         <Routes>
           <Route path="/" element={<SignIn />} />
@@ -19,6 +22,8 @@ function App() {
           <Route path="/userprofile" element={<UserProfile />} />
         </Routes>
       </UserProvider>
+
+      </LoginUserProvider>
     </div>
   );
 }

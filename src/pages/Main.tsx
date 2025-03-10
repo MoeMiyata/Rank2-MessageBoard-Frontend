@@ -15,11 +15,11 @@ export default function Main() {
 	return (
 		<PostListProvider>
 		{/* ユーザのログイン情報を扱うためのProvider ↓ */}
-		<LoginUserProvider>
+		{/* <LoginUserProvider> */}
 		  {
 		    loggedIn ? <MainLayout />:<Navigate replace to="/" />
           }
-		</LoginUserProvider>
+		{/* </LoginUserProvider> */}
 		</PostListProvider>
 	)
 }
