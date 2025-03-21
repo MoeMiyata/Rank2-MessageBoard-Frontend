@@ -169,7 +169,7 @@ export default function UserProfile() {
                         <input
                             id="birthday"
                             type="date"
-                            placeholder={loginUser.birthday ? loginUser.birthday.toISOString().split('T')[0] : ''}
+                            value={loginUser.birthday ? loginUser.birthday.toISOString().split('T')[0] : ''}
                             min={hundredYearsAgoDate} // 100年前の日付
                             max={currentDate} // 現在の日付
                             onChange={(evt) => {setLoginUser((prevState) => ({
