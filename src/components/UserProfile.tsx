@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 import { updateUser } from "../api/User.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
-import { createHash } from "crypto";
 
 export default function UserProfile() {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ export default function UserProfile() {
 
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const [pass, setPass] = useState(undefined);
+  const [pass, setPass] = useState<string>("");
   const currentYear = new Date().getFullYear();
   // 100年前の日付を計算
   const hundredYearsAgo = currentYear - 100;
@@ -31,7 +30,7 @@ export default function UserProfile() {
   }
 
   const onUserProfileRegisterClick = async () => {
-    const error = await updateUser(userInfo.id, userInfo.token, loginUser.name, loginUser.email, loginUser.hash, loginUser.birthday, loginUser.address, loginUser.tel);
+    const error = await updateUser(userInfo.id, userInfo.token, loginUser.name, loginUser.email, pass, loginUser.birthday, loginUser.address, loginUser.tel);
     // const error = null;
 
     if (error) {
@@ -140,10 +139,7 @@ export default function UserProfile() {
                           id="password"
                           type="password"
                           placeholder="＊＊＊＊＊"
-                          onChange={(evt) => {setLoginUser((prevState) => ({
-                            ...prevState,  // 前の状態を維持
-                            hash: createHash('md5').update(evt.target.value).digest('hex'),   // telだけを更新
-                          }))}} 
+                          onChange={(evt) => setPass(evt.target.value)}
                       />
                       </SUserProfileInput>
                     </SUserProfileData>
