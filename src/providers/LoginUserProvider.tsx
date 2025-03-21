@@ -9,6 +9,9 @@ type LoginUser = {
   email: string,
   created_at: string,
   updated_at: string,
+  birthday: Date | null,
+  address: string,
+  tel: string,
 };
 
 export const LoginUserContext = createContext(
@@ -21,7 +24,7 @@ export const LoginUserContext = createContext(
 // LoginUserProviderの定義
 export const LoginUserProvider = (props: any) => {
   const { children } = props;
-  const [loginUser, setLoginUser] = useState<LoginUser>({ id: 0, name: "", hash: "", email: "", created_at: "", updated_at: "" });
+  const [loginUser, setLoginUser] = useState<LoginUser>({ id: 0, name: "", hash: "", email: "", created_at: "", updated_at: "", birthday: null, address: "", tel: "" });
   return (
     <>
       <LoginUserContext.Provider value={{ loginUser, setLoginUser }}>

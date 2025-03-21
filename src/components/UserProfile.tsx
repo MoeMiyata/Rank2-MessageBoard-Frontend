@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
+import { updateUser } from "../api/User.tsx";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { loginUser } = useContext(LoginUserContext);
+  const { loginUser, setLoginUser } = useContext(LoginUserContext);
 
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -19,7 +20,7 @@ export default function UserProfile() {
   }
 
   const onUserProfileRegisterClick = async () => {
-    // const error = await createUser(name, email, pass);
+    // const error = await updateUser(user_id, token, name, email, pass, birthday, address, tel);
     const error = null;
 
     if (error) {
@@ -218,8 +219,12 @@ export default function UserProfile() {
                             id="phonenumber"
                             type="tel"
                             placeholder="登録なし"
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                             required 
+                            onChange={(evt) => setLoginUser((prevState) => ({
+                                                ...prevState,  // 前の状態を維持
+                                                tel: evt.target.value,   // telだけを更新
+                                               }))}
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -230,7 +235,7 @@ export default function UserProfile() {
                       Phone number 📱 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      登録なし
+                      {loginUser.tel}
                     </SUserProfileData>
                   </>
                 }
