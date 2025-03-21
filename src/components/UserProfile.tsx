@@ -169,7 +169,7 @@ export default function UserProfile() {
                       Date of birth 🎂 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      登録なし
+                    {loginUser.birthday}
                     </SUserProfileData>
                   </>
                 }
@@ -199,7 +199,7 @@ export default function UserProfile() {
                       Address 🏠 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      登録なし
+                    {loginUser.address}
                     </SUserProfileData>
                   </>
                 }
