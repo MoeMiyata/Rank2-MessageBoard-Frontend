@@ -158,7 +158,7 @@ export default function UserProfile() {
                         <input
                             id="birthday"
                             type="date"
-                            placeholder="登録なし"
+                            placeholder={loginUser.birthday}
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -188,7 +188,7 @@ export default function UserProfile() {
                         <input
                             id="address"
                             type="address"
-                            placeholder="登録なし"
+                            placeholder={loginUser.address}
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -218,7 +218,7 @@ export default function UserProfile() {
                         <input
                             id="phonenumber"
                             type="tel"
-                            placeholder="登録なし"
+                            placeholder={loginUser.tel}
                             pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                             required 
                             onChange={(evt) => setLoginUser((prevState) => ({
