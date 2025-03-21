@@ -123,7 +123,7 @@ export default function UserProfile() {
                       Email ✉️ : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {/* {loginUser.email} */}
+                      {loginUser.email}
                     </SUserProfileData>
                   </>
                 }
