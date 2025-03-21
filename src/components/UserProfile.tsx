@@ -6,8 +6,12 @@ import { updateUser } from "../api/User.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
 
 export default function UserProfile() {
+  console.log('In UserProfile!\n');
+
   const navigate = useNavigate();
   const { loginUser, setLoginUser } = useContext(LoginUserContext);
+  console.log('loginUser:', loginUser);
+
   const { userInfo} = useContext(UserContext);
 
   const [isEditMode, setIsEditMode] = useState(false);
@@ -188,9 +192,9 @@ export default function UserProfile() {
                       Date of birth 🎂 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {/* {loginUser.birthday 
+                      {loginUser.birthday 
                         ? loginUser.birthday.getFullYear() + '年' + (loginUser.birthday.getMonth() + 1) + '月' + loginUser.birthday.getDate() + '日'
-                        : '登録なし'} */}
+                        : '登録なし'}
                     </SUserProfileData>
                   </>
                 }
