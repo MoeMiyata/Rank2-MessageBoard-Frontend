@@ -154,7 +154,7 @@ export default function UserProfile() {
                       Password 🔑 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {/* ＊＊＊＊＊ */}
+                      ＊＊＊＊＊
                     </SUserProfileData>
                   </>
                 }
