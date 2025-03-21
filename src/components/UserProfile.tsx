@@ -10,6 +10,13 @@ export default function UserProfile() {
 
   const [isEditMode, setIsEditMode] = useState(false);
 
+  const currentYear = new Date().getFullYear();
+  // 100年前の日付を計算
+  const hundredYearsAgo = currentYear - 100;
+  const currentDate = new Date().toISOString().split("T")[0]; // 現在の日付（YYYY-MM-DD形式）
+  const hundredYearsAgoDate = new Date(hundredYearsAgo, 0, 1).toISOString().split("T")[0]; // 100年前の1月1日
+
+
   const onBackToMainClick = async () => {
     navigate("/main");
   }
@@ -158,10 +165,12 @@ export default function UserProfile() {
                         <input
                             id="birthday"
                             type="date"
-                            placeholder={loginUser.birthday}
+                            placeholder={loginUser.birthday ? loginUser.birthday.toISOString().split('T')[0] : ''}
+                            min={hundredYearsAgoDate} // 100年前の日付
+                            max={currentDate} // 現在の日付
                             onChange={(evt) => {setLoginUser((prevState) => ({
                               ...prevState,  // 前の状態を維持
-                              birthday: evt.target.value,   // telだけを更新
+                              birthday: new Date(evt.target.value),   // telだけを更新
                             }));
                             console.log("Selected birthday:", evt.target.value);} 
                           }
@@ -175,7 +184,9 @@ export default function UserProfile() {
                       Date of birth 🎂 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                    {loginUser.birthday || '登録なし'}
+                      {loginUser.birthday 
+                        ? loginUser.birthday.getFullYear() + '年' + (loginUser.birthday.getMonth() + 1) + '月' + loginUser.birthday.getDate() + '日'
+                        : '登録なし'}
                     </SUserProfileData>
                   </>
                 }
