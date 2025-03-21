@@ -3,13 +3,16 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 import { updateUser } from "../api/User.tsx";
+import { UserContext } from "../providers/UserProvider.tsx";
 
 export default function UserProfile() {
   const navigate = useNavigate();
   const { loginUser, setLoginUser } = useContext(LoginUserContext);
+  const { userInfo} = useContext(UserContext);
 
   const [isEditMode, setIsEditMode] = useState(false);
 
+  const [pass, setPass] = useState(undefined);
   const currentYear = new Date().getFullYear();
   // 100年前の日付を計算
   const hundredYearsAgo = currentYear - 100;
@@ -27,8 +30,8 @@ export default function UserProfile() {
   }
 
   const onUserProfileRegisterClick = async () => {
-    // const error = await updateUser(user_id, token, name, email, pass, birthday, address, tel);
-    const error = null;
+    const error = await updateUser(userInfo.id, userInfo.token, loginUser.name, loginUser.email, pass, loginUser.birthday, loginUser.address, loginUser.tel);
+    // const error = null;
 
     if (error) {
       // alert(error.response.data.message);
