@@ -42,7 +42,7 @@ export const getUser = async (user_id: number, token: string) => {
 };
 
 // user情報更新
-export const updateUser = async (user_id: number, token: string, name?: string, email?: string, password?: string, birthday?: Date, address?: string, tel?: string) => {
+export const updateUser = async (user_id: number, token: string, name?: string, email?: string, hash?: string, birthday?: Date, address?: string, tel?: string) => {
   console.log('In updateUser.\n')
   const url = hostUrl + `/user/${user_id}?token=${token}`;
   console.log('updateURL:', url)
@@ -51,7 +51,7 @@ export const updateUser = async (user_id: number, token: string, name?: string, 
     console.log('updateData:', {
       name,
       email,
-      password,
+      hash,
       birthday,
       address,
       tel
@@ -60,7 +60,7 @@ export const updateUser = async (user_id: number, token: string, name?: string, 
     const res = await axios.put(url, {
       name,
       email,
-      password,
+      hash,
       birthday,
       address,
       tel
