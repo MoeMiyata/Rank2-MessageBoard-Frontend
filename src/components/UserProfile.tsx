@@ -87,7 +87,7 @@ export default function UserProfile() {
                       Name 👤 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {loginUser.name}
+                      {/* {loginUser.name} */}
                     </SUserProfileData>
                     {/* <span>{loginUser.name}</span> */}
                   </>
@@ -123,7 +123,7 @@ export default function UserProfile() {
                       Email ✉️ : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {loginUser.email}
+                      {/* {loginUser.email} */}
                     </SUserProfileData>
                   </>
                 }
@@ -154,7 +154,7 @@ export default function UserProfile() {
                       Password 🔑 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      ＊＊＊＊＊
+                      {/* ＊＊＊＊＊ */}
                     </SUserProfileData>
                   </>
                 }
@@ -192,9 +192,9 @@ export default function UserProfile() {
                       Date of birth 🎂 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {loginUser.birthday 
+                      {/* {loginUser.birthday 
                         ? loginUser.birthday.getFullYear() + '年' + (loginUser.birthday.getMonth() + 1) + '月' + loginUser.birthday.getDate() + '日'
-                        : '登録なし'}
+                        : '登録なし'} */}
                     </SUserProfileData>
                   </>
                 }
@@ -228,7 +228,7 @@ export default function UserProfile() {
                       Address 🏠 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                    {loginUser.address || '登録なし'}
+                    {/* {loginUser.address || '登録なし'} */}
                     </SUserProfileData>
                   </>
                 }
@@ -264,7 +264,7 @@ export default function UserProfile() {
                       Phone number 📱 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {loginUser.tel || '登録なし'}
+                      {/* {loginUser.tel || '登録なし'} */}
                     </SUserProfileData>
                   </>
                 }
