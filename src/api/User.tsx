@@ -48,6 +48,14 @@ export const updateUser = async (user_id: number, token: string, name?: string, 
   console.log('updateURL:', url)
 
   try {
+    console.log('updateData:', {
+      name,
+      email,
+      password,
+      birthday,
+      address,
+      tel
+    })
     const res = await axios.put(url, {
       name,
       email,
