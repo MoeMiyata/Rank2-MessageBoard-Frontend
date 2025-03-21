@@ -87,7 +87,7 @@ export default function UserProfile() {
                       Name 👤 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {/* {loginUser.name} */}
+                      {loginUser.name}
                     </SUserProfileData>
                     {/* <span>{loginUser.name}</span> */}
                   </>
