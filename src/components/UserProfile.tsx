@@ -192,7 +192,10 @@ export default function UserProfile() {
                       Date of birth 🎂 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {loginUser.birthday?.toISOString()}
+                      {/* {loginUser.birthday 
+                        ? loginUser.birthday.getFullYear() + '年' + (loginUser.birthday.getMonth() + 1) + '月' + loginUser.birthday.getDate() + '日'
+                        : '登録なし'} */}
+                      {loginUser.birthday?.toISOString().split('T')[0]}
                     </SUserProfileData>
                   </>
                 }
