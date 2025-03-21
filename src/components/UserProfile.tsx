@@ -195,7 +195,7 @@ export default function UserProfile() {
                       {/* {loginUser.birthday 
                         ? loginUser.birthday.getFullYear() + '年' + (loginUser.birthday.getMonth() + 1) + '月' + loginUser.birthday.getDate() + '日'
                         : '登録なし'} */}
-                      {loginUser.birthday?.toISOString().split('T')[0]}
+                      誕生日（Date型では表示されないので修正必要）
                     </SUserProfileData>
                   </>
                 }
