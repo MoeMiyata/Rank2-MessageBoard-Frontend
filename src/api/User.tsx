@@ -56,7 +56,6 @@ export const updateUser = async (user_id: number, token: string, name?: string, 
       address,
       tel
     })
-    console.log(birthday!.toISOString().split('T')[0])
     const res = await axios.put(url, {
       name,
       email,

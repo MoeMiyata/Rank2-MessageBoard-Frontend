@@ -12,7 +12,7 @@ export default function UserProfile() {
 
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const [pass, setPass] = useState<string>("");
+  const [pass, setPass] = useState<string|undefined>(undefined);
   const currentYear = new Date().getFullYear();
   // 100年前の日付を計算
   const hundredYearsAgo = currentYear - 100;
