@@ -159,6 +159,12 @@ export default function UserProfile() {
                             id="birthday"
                             type="date"
                             placeholder={loginUser.birthday}
+                            onChange={(evt) => {setLoginUser((prevState) => ({
+                              ...prevState,  // 前の状態を維持
+                              birthday: evt.target.value,   // telだけを更新
+                            }));
+                            console.log("Selected birthday:", evt.target.value);} 
+                          }
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -169,7 +175,7 @@ export default function UserProfile() {
                       Date of birth 🎂 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                    {loginUser.birthday}
+                    {loginUser.birthday || '登録なし'}
                     </SUserProfileData>
                   </>
                 }
@@ -187,8 +193,12 @@ export default function UserProfile() {
                       <SUserProfileInput>
                         <input
                             id="address"
-                            type="address"
+                            type="text"
                             placeholder={loginUser.address}
+                            onChange={(evt) => setLoginUser((prevState) => ({
+                              ...prevState,  // 前の状態を維持
+                              address: evt.target.value,   // telだけを更新
+                            }))}
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -199,7 +209,7 @@ export default function UserProfile() {
                       Address 🏠 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                    {loginUser.address}
+                    {loginUser.address || '登録なし'}
                     </SUserProfileData>
                   </>
                 }
@@ -235,7 +245,7 @@ export default function UserProfile() {
                       Phone number 📱 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {loginUser.tel}
+                      {loginUser.tel || '登録なし'}
                     </SUserProfileData>
                   </>
                 }
