@@ -228,7 +228,7 @@ export default function UserProfile() {
                       Address 🏠 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                    {/* {loginUser.address || '登録なし'} */}
+                    {loginUser.address || '登録なし'}
                     </SUserProfileData>
                   </>
                 }
