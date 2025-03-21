@@ -264,7 +264,7 @@ export default function UserProfile() {
                       Phone number 📱 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {/* {loginUser.tel || '登録なし'} */}
+                      {loginUser.tel || '登録なし'}
                     </SUserProfileData>
                   </>
                 }
