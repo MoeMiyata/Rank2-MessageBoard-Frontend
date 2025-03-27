@@ -55,7 +55,7 @@ export default function SideBar() {
       </SSideBarRow>
 
       <SSideBarRow>
-        <SSideBarButton onClick={onSendClick}>送信</SSideBarButton>
+        <SSideBarButton onClick={onSendClick} disabled={msg.trim() === ''}>送信</SSideBarButton>
       </SSideBarRow>
     </SSideBar>
   );
@@ -83,4 +83,10 @@ const SSideBarButton = styled.button`
   border-radius: 8px;
   color: #FAFAFA;
   width: 100%;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #aaaaaa;  // 無効化されたボタンのスタイルを変更
+    cursor: not-allowed;  // 無効化されたボタンのカーソルを変更
+  }
 `

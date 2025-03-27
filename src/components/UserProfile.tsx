@@ -29,7 +29,7 @@ export default function UserProfile() {
   const currentDate = new Date().toISOString().split("T")[0]; // 現在の日付（YYYY-MM-DD形式）
   const hundredYearsAgoDate = new Date(hundredYearsAgo, 0, 1).toISOString().split("T")[0]; // 100年前の1月1日
 
-  // サインアップボタンが押せるかの判定
+  // 登録ボタンが押せるかの判定
   const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '';
 
 
@@ -69,7 +69,7 @@ export default function UserProfile() {
     console.log('name, email, pass, birthday, address, tel:', name, email, pass, birthday, address, tel)
     console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel)
 
-    if (updateName === '' && updateEmail === '' && updateBirthday === '' && (pass === undefined || pass === '') && updateAdress === '' && updateTel === '') {
+    if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '') {
       alert('変更内容がありません．')
       return ;
     } 

@@ -48,4 +48,5 @@ const SPageLinkNextButton = styled.button`
   right: 10px;
   padding: 3px 5px 0px 4px;
   border-radius: 50%;
+  cursor: pointer;
 `
