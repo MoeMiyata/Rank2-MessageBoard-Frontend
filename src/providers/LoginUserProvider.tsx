@@ -9,7 +9,7 @@ type LoginUser = {
   email: string,
   created_at: string,
   updated_at: string,
-  birthday: Date | undefined,
+  birthday: string | undefined,
   address: string,
   tel: string,
 };

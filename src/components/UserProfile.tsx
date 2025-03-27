@@ -45,6 +45,7 @@ export default function UserProfile() {
   const onUserProfileRegisterClick = async () => {
     let updateName = '';
     let updateEmail = '';
+    let updateBirthday = '';
     let updateAdress = '';
     let updateTel = '';
 
@@ -54,6 +55,9 @@ export default function UserProfile() {
     if (email !== loginUser.email) {
       updateEmail = email;
     }
+    if (birthday !== loginUser.birthday) {
+      updateBirthday = birthday;
+    }
     if (address !== loginUser.address) {
       updateAdress = address;
     }
@@ -61,13 +65,19 @@ export default function UserProfile() {
       updateTel = tel;
     }
 
-    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, loginUser.birthday, updateAdress, updateTel);
+    if (updateName !== '' || updateEmail !== '' || updateBirthday !== '' || pass !== undefined || pass !== '' || updateAdress !== '' || updateTel !== '') {
+      alert('変更内容がありません．')
+    } 
+
+    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel);
     // const error = null;
 
     if (error) {
       alert(error.response.data.message); // サーバ側で設定したエラー文を表示
       // alert('error!');
     } else {
+      ////// ここで、登録できたら登録内容をloginUserに反映する
+
       //　ユーザ情報一覧ページ（編集ボタン押印前）に移行
       setIsEditMode(!isEditMode);
     }
@@ -413,6 +423,11 @@ const SRegisterButton = styled.button`
   color: #f0f0f0;
   padding: 4px 16px;
   border-radius: 8px;
+
+  &:disabled {
+    background-color: #aaaaaa;
+    cursor: not-allowed; 
+  }
 `;
 
 const SUserProfileLabel = styled.span`
