@@ -11,6 +11,7 @@ export default function UserProfile() {
   const navigate = useNavigate();
   const { loginUser, setLoginUser } = useContext(LoginUserContext);
   console.log('loginUser:', loginUser);
+  console.log('loginUser(birthday):', loginUser.birthday);
 
   const { userInfo} = useContext(UserContext);
 
