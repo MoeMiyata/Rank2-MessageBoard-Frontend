@@ -106,7 +106,9 @@ export default function UserProfile() {
         </SUserProfileTextRow>
 
         <SUserProfileFrame  isEditMode={isEditMode}>
-            <SUserProfileImage src="https://via.placeholder.com/150" alt="ProfileImage" />
+            <SUserProfileRow>
+              <SUserProfileImage src="https://fujifilmsquare.jp/assets/img/column/column_24_mv.jpg" alt="ProfileImage" />
+            </SUserProfileRow>
 
             <SUserProfileRow>
                 {/* <h1>Name: {loginUser.name}</h1> */}
