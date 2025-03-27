@@ -50,7 +50,8 @@ export default function UserProfile() {
     let updateTel = '';
 
     if (name !== loginUser.name) {
-      updateName = name;
+      // updateName = name;
+      updateName = name !== '' ? name : ''; // 空文字を反映
     }
     if (email !== loginUser.email) {
       updateEmail = email;
@@ -65,7 +66,8 @@ export default function UserProfile() {
       updateTel = tel;
     }
 
-    console.log('name, email, pass, birthday, address, tel:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel)
+    console.log('name, email, pass, birthday, address, tel:', name, email, pass, birthday, address, tel)
+    console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel)
 
     if (updateName === '' && updateEmail === '' && updateBirthday === '' && (pass === undefined || pass === '') && updateAdress === '' && updateTel === '') {
       alert('変更内容がありません．')
