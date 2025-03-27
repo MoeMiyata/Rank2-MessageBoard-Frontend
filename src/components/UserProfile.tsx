@@ -76,7 +76,10 @@ export default function UserProfile() {
                           // value={pass}
                           type="name"
                           placeholder={loginUser.name}
-                          // onChange={(evt) => setPass(evt.target.value)}
+                          onChange={(evt) => setLoginUser((prevState) => ({
+                            ...prevState,  // 前の状態を維持
+                            name: evt.target.value,   // nameだけを更新
+                          }))}
                       />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -113,6 +116,10 @@ export default function UserProfile() {
                           id="email"
                           type="email"
                           placeholder={loginUser.email}
+                          onChange={(evt) => setLoginUser((prevState) => ({
+                            ...prevState,  // 前の状態を維持
+                            email: evt.target.value,   // emailだけを更新
+                          }))}
                       />
                       </SUserProfileInput>
                     </SUserProfileData>
