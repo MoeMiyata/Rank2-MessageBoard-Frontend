@@ -120,7 +120,11 @@ export default function UserProfile() {
             <SUserProfileRow>
               {/* <SUserProfileImage src="https://fujifilmsquare.jp/assets/img/column/column_24_mv.jpg" alt="ProfileImage" /> */}
               <SUserProfileImage src={profileImage}  alt="ProfileImage" />
-              <input type="file" accept="image/*" onChange={onFileInputChange} />
+              {isEditMode ? 
+                <div>
+                  <input type="file" accept="image/*" onChange={onFileInputChange} />
+                </div>
+                : null}
             </SUserProfileRow>
 
             <SUserProfileRow>
