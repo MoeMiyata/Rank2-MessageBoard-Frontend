@@ -12,6 +12,7 @@ type LoginUser = {
   birthday: string | undefined,
   address: string,
   tel: string,
+  imgSrc: string, //プロフ画像のpath
 };
 
 export const LoginUserContext = createContext(
@@ -24,7 +25,7 @@ export const LoginUserContext = createContext(
 // LoginUserProviderの定義
 export const LoginUserProvider = (props: any) => {
   const { children } = props;
-  const [loginUser, setLoginUser] = useState<LoginUser>({ id: 0, name: "", hash: "", email: "", created_at: "", updated_at: "", birthday: undefined, address: "登録なし", tel: "登録なし" });
+  const [loginUser, setLoginUser] = useState<LoginUser>({ id: 0, name: "", hash: "", email: "", created_at: "", updated_at: "", birthday: undefined, address: "登録なし", tel: "登録なし", imgSrc: 'https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true'});
   return (
     <>
       <LoginUserContext.Provider value={{ loginUser, setLoginUser }}>

@@ -42,7 +42,7 @@ export const getUser = async (user_id: number, token: string) => {
 };
 
 // user情報更新
-export const updateUser = async (user_id: number, token: string, name?: string, email?: string, password?: string, birthday?: string, address?: string, tel?: string) => {
+export const updateUser = async (user_id: number, token: string, name?: string, email?: string, password?: string, birthday?: string, address?: string, tel?: string, imgSrc?: string) => {
   console.log('In updateUser.\n')
   const url = hostUrl + `/user/${user_id}?token=${token}`;
   console.log('updateURL:', url)
@@ -54,7 +54,8 @@ export const updateUser = async (user_id: number, token: string, name?: string, 
       password,
       birthday,
       address,
-      tel
+      tel,
+      imgSrc,
     })
     const res = await axios.put(url, {
       name,
@@ -62,7 +63,8 @@ export const updateUser = async (user_id: number, token: string, name?: string, 
       password,
       birthday,
       address,
-      tel
+      tel,
+      imgSrc,
     });
     
     console.log('res(updateUser):', res.data);

@@ -59,6 +59,7 @@ export default function UserProfile() {
     let updateBirthday = '';
     let updateAdress = '';
     let updateTel = '';
+    let updateImgsrc = '';
 
     if (name !== loginUser.name) {
       updateName = name !== '' ? name : ''; // 空文字を反映
@@ -75,16 +76,19 @@ export default function UserProfile() {
     if (tel !== loginUser.tel) {
       updateTel = tel;
     }
+    if (updateImgsrc !== loginUser.imgSrc) {
+      updateImgsrc = profileImage;
+    }
 
-    console.log('name, email, pass, birthday, address, tel:', name, email, pass, birthday, address, tel)
-    console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel)
+    console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImage)
+    console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel, updateImgsrc:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgsrc)
 
-    if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '') {
+    if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '' && updateImgsrc.trim() === '') {
       alert('変更内容がありません．')
       return ;
     } 
 
-    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel);
+    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgsrc);
     // const error = null;
 
     if (error) {
