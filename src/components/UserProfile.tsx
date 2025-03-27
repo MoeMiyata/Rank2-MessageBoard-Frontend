@@ -20,11 +20,17 @@ export default function UserProfile() {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [pass, setPass] = useState<string|undefined>(undefined);
+  const [birthday, setBirthday] = useState<string>('');
+  const [address, setAddress] = useState<string>('');
+  const [tel, setTel] = useState<string>('');
   const currentYear = new Date().getFullYear();
   // 100年前の日付を計算
   const hundredYearsAgo = currentYear - 100;
   const currentDate = new Date().toISOString().split("T")[0]; // 現在の日付（YYYY-MM-DD形式）
   const hundredYearsAgoDate = new Date(hundredYearsAgo, 0, 1).toISOString().split("T")[0]; // 100年前の1月1日
+
+  // サインアップボタンが押せるかの判定
+  const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '';
 
 
   const onBackToMainClick = async () => {
@@ -39,6 +45,8 @@ export default function UserProfile() {
   const onUserProfileRegisterClick = async () => {
     let updateName = '';
     let updateEmail = '';
+    let updateAdress = '';
+    let updateTel = '';
 
     if (name !== loginUser.name) {
       updateName = name;
@@ -46,8 +54,14 @@ export default function UserProfile() {
     if (email !== loginUser.email) {
       updateEmail = email;
     }
+    if (address !== loginUser.address) {
+      updateAdress = address;
+    }
+    if (tel !== loginUser.tel) {
+      updateTel = tel;
+    }
 
-    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, loginUser.birthday, loginUser.address, loginUser.tel);
+    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, loginUser.birthday, updateAdress, updateTel);
     // const error = null;
 
     if (error) {
@@ -88,10 +102,6 @@ export default function UserProfile() {
                           // value={pass}
                           type="name"
                           placeholder={loginUser.name}
-                          // onChange={(evt) => setLoginUser((prevState) => ({
-                          //   ...prevState,  // 前の状態を維持
-                          //   name: evt.target.value,   // nameだけを更新
-                          // }))}
                           onChange={(evt) => setName(evt.target.value)}
                       />
                       </SUserProfileInput>
@@ -129,10 +139,6 @@ export default function UserProfile() {
                           id="email"
                           type="email"
                           placeholder={loginUser.email}
-                          // onChange={(evt) => setLoginUser((prevState) => ({
-                          //   ...prevState,  // 前の状態を維持
-                          //   email: evt.target.value,   // emailだけを更新
-                          // }))}
                           onChange={(evt) => setEmail(evt.target.value)}
                       />
                       </SUserProfileInput>
@@ -198,12 +204,15 @@ export default function UserProfile() {
                             // placeholder={loginUser.birthday ? loginUser.birthday.toISOString().split('T')[0] : ''}
                             min={hundredYearsAgoDate} // 100年前の日付
                             max={currentDate} // 現在の日付
-                            onChange={(evt) => {setLoginUser((prevState) => ({
-                              ...prevState,  // 前の状態を維持
-                              birthday: new Date(evt.target.value),   // telだけを更新
-                            }));
-                            console.log("Selected birthday:", evt.target.value);} 
-                          }
+                            // onChange={(evt) => {setLoginUser((prevState) => ({
+                            //   ...prevState,  // 前の状態を維持
+                            //   birthday: new Date(evt.target.value),   
+                            //   }));
+                            //   console.log("Selected birthday:", evt.target.value);} 
+                            // }
+                            onChange={(evt) => {setBirthday(evt.target.value);
+                              console.log("Selected birthday:", evt.target.value);}
+                            }
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -242,10 +251,11 @@ export default function UserProfile() {
                             id="address"
                             type="text"
                             placeholder={loginUser.address}
-                            onChange={(evt) => setLoginUser((prevState) => ({
-                              ...prevState,  // 前の状態を維持
-                              address: evt.target.value,   // telだけを更新
-                            }))}
+                            // onChange={(evt) => setLoginUser((prevState) => ({
+                            //   ...prevState,  // 前の状態を維持
+                            //   address: evt.target.value,   // telだけを更新
+                            // }))}
+                            onChange={(evt) => setAddress(evt.target.value)}
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -278,10 +288,11 @@ export default function UserProfile() {
                             placeholder={loginUser.tel}
                             pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                             required 
-                            onChange={(evt) => setLoginUser((prevState) => ({
-                                                ...prevState,  // 前の状態を維持
-                                                tel: evt.target.value,   // telだけを更新
-                                               }))}
+                            // onChange={(evt) => setLoginUser((prevState) => ({
+                            //   ...prevState,  // 前の状態を維持
+                            //   tel: evt.target.value,   // telだけを更新
+                            // }))}
+                            onChange={(evt) => setTel(evt.target.value)}
                         />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -301,7 +312,7 @@ export default function UserProfile() {
 
         <SUserProfileRow>
           {isEditMode ? 
-            <SRegisterButton type="button" onClick={onUserProfileRegisterClick}>
+            <SRegisterButton type="button" onClick={onUserProfileRegisterClick} disabled={!isRegisterValid}>
               登録する
             </SRegisterButton>
             :
