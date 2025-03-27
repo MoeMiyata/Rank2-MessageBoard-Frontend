@@ -33,7 +33,7 @@ export default function UserProfile() {
   const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '';
 
   // プロフ画像
-  const [profileImage, setProfileImage] = useState('../../public/profileicon_default.png');
+  const [profileImage, setProfileImage] = useState('https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true');
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
 
