@@ -196,7 +196,12 @@ export default function UserProfile() {
                       {/* {loginUser.birthday 
                         ? loginUser.birthday.getFullYear() + '年' + (loginUser.birthday.getMonth() + 1) + '月' + loginUser.birthday.getDate() + '日'
                         : '登録なし'} */}
-                      誕生日（Date型では表示されないので修正必要）
+                      {loginUser.birthday 
+                        ? new Date(loginUser.birthday).getFullYear() + '年 ' + 
+                          (new Date(loginUser.birthday).getMonth() + 1) + '月 ' + 
+                          new Date(loginUser.birthday).getDate() + '日'
+                        : '登録なし'}
+                      {/* 誕生日（Date型では表示されないので修正必要） */}
                     </SUserProfileData>
                   </>
                 }
