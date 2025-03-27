@@ -33,7 +33,7 @@ export default function UserProfile() {
   const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '';
 
   // プロフ画像
-  const [profileImage, setProfileImage] = useState('https://fujifilmsquare.jp/assets/img/column/column_24_mv.jpg');
+  const [profileImage, setProfileImage] = useState('../../public/profileicon_default.png');
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
 
