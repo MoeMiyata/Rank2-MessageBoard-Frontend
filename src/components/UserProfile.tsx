@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
-import { updateUser } from "../api/User.tsx";
+import { getUser, updateUser } from "../api/User.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
 
 export default function UserProfile() {
@@ -82,6 +82,11 @@ export default function UserProfile() {
       // alert('error!');
     } else {
       ////// ここで、登録できたら登録内容をloginUserに反映する
+      const myGetUser = async () => {
+        const user = await getUser(userInfo.id, userInfo.token);
+        setLoginUser(user);
+      };
+      myGetUser();
 
       //　ユーザ情報一覧ページ（編集ボタン押印前）に移行
       setIsEditMode(!isEditMode);
@@ -421,6 +426,7 @@ const SMainButton = styled.button`
   color: #f0f0f0;
   padding: 4px 16px;
   border-radius: 8px;
+  cursor: pointer; 
 `;
 
 const SRegisterButton = styled.button`
@@ -428,6 +434,7 @@ const SRegisterButton = styled.button`
   color: #f0f0f0;
   padding: 4px 16px;
   border-radius: 8px;
+  cursor: pointer; 
 
   &:disabled {
     background-color: #aaaaaa;
