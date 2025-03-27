@@ -17,6 +17,8 @@ export default function UserProfile() {
 
   const [isEditMode, setIsEditMode] = useState(false);
 
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
   const [pass, setPass] = useState<string|undefined>(undefined);
   const currentYear = new Date().getFullYear();
   // 100年前の日付を計算
@@ -35,12 +37,22 @@ export default function UserProfile() {
   }
 
   const onUserProfileRegisterClick = async () => {
-    const error = await updateUser(userInfo.id, userInfo.token, loginUser.name, loginUser.email, pass, loginUser.birthday, loginUser.address, loginUser.tel);
+    let updateName = '';
+    let updateEmail = '';
+
+    if (name !== loginUser.name) {
+      updateName = name;
+    }
+    if (email !== loginUser.email) {
+      updateEmail = email;
+    }
+
+    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, loginUser.birthday, loginUser.address, loginUser.tel);
     // const error = null;
 
     if (error) {
-      // alert(error.response.data.message);
-      alert('error!');
+      alert(error.response.data.message); // サーバ側で設定したエラー文を表示
+      // alert('error!');
     } else {
       //　ユーザ情報一覧ページ（編集ボタン押印前）に移行
       setIsEditMode(!isEditMode);
@@ -76,10 +88,11 @@ export default function UserProfile() {
                           // value={pass}
                           type="name"
                           placeholder={loginUser.name}
-                          onChange={(evt) => setLoginUser((prevState) => ({
-                            ...prevState,  // 前の状態を維持
-                            name: evt.target.value,   // nameだけを更新
-                          }))}
+                          // onChange={(evt) => setLoginUser((prevState) => ({
+                          //   ...prevState,  // 前の状態を維持
+                          //   name: evt.target.value,   // nameだけを更新
+                          // }))}
+                          onChange={(evt) => setName(evt.target.value)}
                       />
                       </SUserProfileInput>
                     </SUserProfileData>
@@ -116,10 +129,11 @@ export default function UserProfile() {
                           id="email"
                           type="email"
                           placeholder={loginUser.email}
-                          onChange={(evt) => setLoginUser((prevState) => ({
-                            ...prevState,  // 前の状態を維持
-                            email: evt.target.value,   // emailだけを更新
-                          }))}
+                          // onChange={(evt) => setLoginUser((prevState) => ({
+                          //   ...prevState,  // 前の状態を維持
+                          //   email: evt.target.value,   // emailだけを更新
+                          // }))}
+                          onChange={(evt) => setEmail(evt.target.value)}
                       />
                       </SUserProfileInput>
                     </SUserProfileData>
