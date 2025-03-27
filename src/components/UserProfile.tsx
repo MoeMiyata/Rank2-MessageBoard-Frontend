@@ -65,7 +65,7 @@ export default function UserProfile() {
       updateTel = tel;
     }
 
-    if (updateName !== '' || updateEmail !== '' || updateBirthday !== '' || pass !== undefined || pass !== '' || updateAdress !== '' || updateTel !== '') {
+    if (updateName !== '' && updateEmail !== '' && updateBirthday !== '' && (pass !== undefined || pass !== '') && updateAdress !== '' && updateTel !== '') {
       alert('変更内容がありません．')
       return ;
     } 
