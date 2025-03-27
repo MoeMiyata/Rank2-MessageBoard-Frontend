@@ -65,7 +65,9 @@ export default function UserProfile() {
       updateTel = tel;
     }
 
-    if (updateName !== '' && updateEmail !== '' && updateBirthday !== '' && (pass !== undefined || pass !== '') && updateAdress !== '' && updateTel !== '') {
+    console.log('name, email, pass, birthday, address, tel:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel)
+
+    if (updateName !== '' && updateEmail !== '' && updateBirthday !== '' && (pass !== undefined && pass !== '') && updateAdress !== '' && updateTel !== '') {
       alert('変更内容がありません．')
       return ;
     } 
