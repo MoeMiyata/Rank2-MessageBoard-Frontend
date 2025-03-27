@@ -67,6 +67,7 @@ export default function UserProfile() {
 
     if (updateName !== '' || updateEmail !== '' || updateBirthday !== '' || pass !== undefined || pass !== '' || updateAdress !== '' || updateTel !== '') {
       alert('変更内容がありません．')
+      return ;
     } 
 
     const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel);
