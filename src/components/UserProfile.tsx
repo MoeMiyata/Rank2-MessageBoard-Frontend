@@ -29,20 +29,19 @@ export default function UserProfile() {
   const currentDate = new Date().toISOString().split("T")[0]; // 現在の日付（YYYY-MM-DD形式）
   const hundredYearsAgoDate = new Date(hundredYearsAgo, 0, 1).toISOString().split("T")[0]; // 100年前の1月1日
 
-  // 登録ボタンが押せるかの判定
-  const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '';
-
   // プロフ画像
-  const [profileImage, setProfileImage] = useState('https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true');
+  const [profileImage, setProfileImage] = useState('');
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-
+    
     // React.ChangeEvent<HTMLInputElement>よりファイルを取得
     const fileObject = e.target.files[0];
     // オブジェクトURLを生成し、useState()を更新
     setProfileImage(window.URL.createObjectURL(fileObject));
   };
-
+  
+  // 登録ボタンが押せるかの判定
+  const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '' || profileImage !== '';
 
   const onBackToMainClick = async () => {
     navigate("/main");
@@ -77,6 +76,7 @@ export default function UserProfile() {
       updateTel = tel;
     }
     if (updateImgsrc !== loginUser.imgSrc) {
+      console.log(profileImage);
       updateImgsrc = profileImage;
     }
 
@@ -123,7 +123,7 @@ export default function UserProfile() {
         <SUserProfileFrame  isEditMode={isEditMode}>
             <SUserProfileRow>
               {/* <SUserProfileImage src="https://fujifilmsquare.jp/assets/img/column/column_24_mv.jpg" alt="ProfileImage" /> */}
-              <SUserProfileImage src={profileImage}  alt="ProfileImage" />
+              <SUserProfileImage src={loginUser.imgSrc}  alt="ProfileImage" />
               {isEditMode ? 
                 <div>
                   <input type="file" accept="image/*" onChange={onFileInputChange} />
