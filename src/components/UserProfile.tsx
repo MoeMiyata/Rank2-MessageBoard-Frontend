@@ -50,7 +50,6 @@ export default function UserProfile() {
     let updateTel = '';
 
     if (name !== loginUser.name) {
-      // updateName = name;
       updateName = name !== '' ? name : ''; // 空文字を反映
     }
     if (email !== loginUser.email) {
@@ -107,6 +106,8 @@ export default function UserProfile() {
         </SUserProfileTextRow>
 
         <SUserProfileFrame  isEditMode={isEditMode}>
+            <SUserProfileImage src="https://via.placeholder.com/150" alt="ProfileImage" />
+
             <SUserProfileRow>
                 {/* <h1>Name: {loginUser.name}</h1> */}
                 {isEditMode ? 
@@ -467,4 +468,11 @@ const SUserProfileData = styled.span`
   margin-right: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
+`;
+
+const SUserProfileImage = styled.img`
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
 `;
