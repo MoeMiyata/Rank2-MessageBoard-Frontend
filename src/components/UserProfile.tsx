@@ -44,6 +44,7 @@ export default function UserProfile() {
     const fileObject = e.target.files[0];
     // オブジェクトURLを生成し、useState()を更新
     setProfileImage(fileObject);
+    setProfileImageUrl(window.URL.createObjectURL(fileObject));
   };
   const handleUpload = async (): Promise<void> => {
     console.log('In handleUpload');
