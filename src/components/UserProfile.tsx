@@ -120,7 +120,8 @@ export default function UserProfile() {
       handleUpload() // DropBoxに画像データ送信
 
       console.log(Dropbox_hosturl + profileImageUrl);
-      updateImgUrl = Dropbox_hosturl + profileImageUrl;
+      updateImgUrl = Dropbox_hosturl + loginUser.name + '_profileImage.jpg';
+      setProfileImageUrl(updateImgUrl);
     }
 
     console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImageUrl)
