@@ -89,6 +89,7 @@ export const DropboxUpload: React.FC = () => {
     setUploading(true);
 
     const dbx = new Dropbox({ accessToken });
+    console.log(dbx);
 
     try {
       const response = await dbx.filesUpload({
