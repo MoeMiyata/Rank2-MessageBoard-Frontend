@@ -338,7 +338,9 @@ module.exports = function (webpackEnv) {
       ],
    
       fallback: { // cryptoがブラウザ（font側）で使用できるように追加
+        util: require.resolve('util/'),
         crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
       },
     },
     module: {
