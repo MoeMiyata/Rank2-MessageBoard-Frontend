@@ -75,6 +75,7 @@ export default function UserProfile() {
         path: pathDisplay, // 正しい型を保証
       });
       setProfileImageUrl(sharedLinkResponse.result.url);
+      console.log('sharedLinkResponse.result.url:', sharedLinkResponse.result.url)
     } catch (error) {
       console.error('Error uploading file:', error);
     }
