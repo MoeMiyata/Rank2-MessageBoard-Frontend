@@ -336,6 +336,10 @@ module.exports = function (webpackEnv) {
           babelRuntimeRegenerator,
         ]),
       ],
+   
+      fallback: { // cryptoがブラウザ（font側）で使用できるように追加
+        crypto: require.resolve('crypto-browserify'),
+      },
     },
     module: {
       strictExportPresence: true,
