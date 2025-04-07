@@ -80,7 +80,7 @@ export const DropboxUpload: React.FC = () => {
     const file = e.target.files?.[0];
     if (file) {
       setImage(file);
-      console.log(file);
+      console.log('file:', file);
     }
   };
 
@@ -117,6 +117,8 @@ export const DropboxUpload: React.FC = () => {
 
       setImageUrl(sharedLinkResponse.result.url);
     } catch (error) {
+      console.error('image:', image);
+
       console.error('Error uploading file:', error);
     } finally {
       setUploading(false);
