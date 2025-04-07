@@ -92,9 +92,12 @@ export const DropboxUpload: React.FC = () => {
 
     try {
       const response = await dbx.filesUpload({
-        path: 'https://www.dropbox.com/home/App/Rank2-MessageBoard' + image.name,
+        path: 'https://www.dropbox.com/home/App/Rank2-MessageBoard/' + image.name,
         contents: image,
       });
+
+      console.log(image.name)
+      console.log(image)
 
       // path_display が undefined でないことを確認
       const pathDisplay = response.result.path_display;
