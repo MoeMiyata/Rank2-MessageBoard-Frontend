@@ -8,7 +8,7 @@ import UserProfile from './pages/UserProfile.tsx';
 import { UserProvider } from "./providers/UserProvider.tsx"; // 追加（UserProviderコンポーネントを組み込む）
 import './App.css';
 import { LoginUserProvider } from './providers/LoginUserProvider.tsx';
-import { DropboxUpload } from './components/DropBoxUpload.tsx';
+import { DropboxUpload } from './components/DropboxUpload.tsx';
 
 function App() {
   return (
