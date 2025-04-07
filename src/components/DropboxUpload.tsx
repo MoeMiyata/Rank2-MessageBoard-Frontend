@@ -89,6 +89,9 @@ export const DropboxUpload: React.FC = () => {
 
     if (!image) return;
 
+    console.log(image.name)
+    console.log(image)
+
     setUploading(true);
 
     const dbx = new Dropbox({ accessToken });
