@@ -100,7 +100,7 @@ export const DropboxUpload: React.FC = () => {
 
     try {
       const response = await dbx.filesUpload({
-        path: 'https://www.dropbox.com/home/App/Rank2-MessageBoard/' + username + '_profileImage.jpg',
+        path: '/App/Rank2-MessageBoard/' + username + '_profileImage.jpg',
         contents: image,
       });
 
