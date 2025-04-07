@@ -67,6 +67,7 @@
 
 import React, { useState } from 'react';
 import { Dropbox } from 'dropbox'; // Dropbox SDKをインポート
+// import Dropbox from 'dropbox';  // ブラウザ向けSDKをインポート
 
 export const DropboxUpload: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
