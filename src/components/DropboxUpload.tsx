@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Dropbox } from 'dropbox'; // Dropbox SDKをインポート
+import { files } from 'dropbox'; // Dropbox SDK の files モジュールをインポート
 
 export const DropboxUpload: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -31,6 +32,7 @@ export const DropboxUpload: React.FC = () => {
       const response = await dbx.filesUpload({
         path: '/' + username + '_profileImage.jpg',
         contents: image,
+        mode: { '.tag': 'overwrite' }, // 'overwrite' モードを指定
       });
 
       console.log('response:', response);
