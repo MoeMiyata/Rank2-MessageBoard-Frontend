@@ -81,7 +81,7 @@ export default function UserProfile() {
   /////// ここまでプロフ画像
   
   // 登録ボタンが押せるかの判定
-  const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '' || profileImageUrl !== '';
+  const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '' || profileImage !== null;
 
   const onBackToMainClick = async () => {
     navigate("/main");
@@ -123,7 +123,7 @@ export default function UserProfile() {
       updateImgUrl = Dropbox_hosturl + profileImageUrl;
     }
 
-    console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImage)
+    console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImageUrl)
     console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel, updateImgsrc:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl)
 
     if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '' && updateImgUrl.trim() === '') {
