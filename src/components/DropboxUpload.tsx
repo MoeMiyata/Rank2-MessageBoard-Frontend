@@ -89,9 +89,9 @@ export const DropboxUpload: React.FC = () => {
 
     if (!image) return;
 
-    const encodedFileName = encodeURIComponent(image.name); // ファイル名をURLエンコード
+    const username = 'user1'
     console.log(image.name)
-    console.log(encodedFileName)
+    console.log('https://www.dropbox.com/home/App/Rank2-MessageBoard/' + username + '_profileImage.jpg')
 
     setUploading(true);
 
@@ -100,7 +100,7 @@ export const DropboxUpload: React.FC = () => {
 
     try {
       const response = await dbx.filesUpload({
-        path: 'https://www.dropbox.com/home/App/Rank2-MessageBoard/' + encodedFileName,
+        path: 'https://www.dropbox.com/home/App/Rank2-MessageBoard/' + username + '_profileImage.jpg',
         contents: image,
       });
 
