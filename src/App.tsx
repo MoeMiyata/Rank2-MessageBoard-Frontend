@@ -8,12 +8,12 @@ import UserProfile from './pages/UserProfile.tsx';
 import { UserProvider } from "./providers/UserProvider.tsx"; // 追加（UserProviderコンポーネントを組み込む）
 import './App.css';
 import { LoginUserProvider } from './providers/LoginUserProvider.tsx';
-import { DropboxUpload } from './components/DropboxUpload.tsx';
+// import { DropboxUpload } from './components/DropboxUpload.tsx';
 
 function App() {
   return (
     <div className="App">
-      {/* <UserProvider>
+      <UserProvider>
       <LoginUserProvider> 
         <Routes>
           <Route path="/" element={<SignIn />} />
@@ -22,9 +22,9 @@ function App() {
           <Route path="/userprofile" element={<UserProfile />} />
         </Routes>
       </LoginUserProvider>
-      </UserProvider> */}
-      <h1>ReactとDropboxで画像アップロード</h1>
-      <DropboxUpload />
+      </UserProvider>
+      {/* <h1>ReactとDropboxで画像アップロード</h1>
+      <DropboxUpload /> */}
     </div>
   );
 }

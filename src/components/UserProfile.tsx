@@ -1,9 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { Dropbox } from 'dropbox'; // Dropbox SDKをインポート
+
 import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 import { getUser, updateUser } from "../api/User.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
+
 
 export default function UserProfile() {
   console.log('In UserProfile!\n');
@@ -29,19 +32,56 @@ export default function UserProfile() {
   const currentDate = new Date().toISOString().split("T")[0]; // 現在の日付（YYYY-MM-DD形式）
   const hundredYearsAgoDate = new Date(hundredYearsAgo, 0, 1).toISOString().split("T")[0]; // 100年前の1月1日
 
-  // プロフ画像
-  const [profileImage, setProfileImage] = useState('');
+  /////// プロフ画像
+  const [profileImageUrl, setProfileImageUrl] = useState(''); ///後でloginUser.ImgSrcに変更
+  const [profileImage, setProfileImage] = useState<File | null>(null);
+  const accessToken: string = 'sl.u.AFppm5Fg2bYKXvA5rTFtETY_XHGLc7WV464mi-nd3EKoq3JM95CHaTt-10V-n3F0hvSTH5JrX0wG0SJkgXRtFWvaYJzSq1pFbyiRcs4YQpfARCnkCqnNopZUGcrOp61trraAdhSlzVey-dpBz3Me-NAA5Ti5plYPV4ej6aX0EJ7noD8RKvoY6Qo5llShqjaMK-gyJxzUa9_1Gjuraj7vRIesAvM59RBhJuL8c3259vXxTCnAYweFXkoxBEn7Hx2FDKbv9lSAWg2EfQH9B3YfKpzK-Ug4vqe6Pw3q_AiV4qtl9lQnoQ-IQ77NjXxv2v7TpkiRFKlcfO8tVLUpzV8OSkeqPeldJDkUVaEG7gfWfCaYellDGaXJKDq9ebNo6OFe-l2PzVNmCD93eH1gGWJ-oNVXIvDrcx5O7ydRgU5xQo-oVTtlZ4iIFvNcfmAx7aFKgxW1gO5pkgl9Xu6qn1ruhC3WL8KBCrmkLTScPumTBqUDavVDp68p6XRsOj6QTokPmM3Fn9FOzjImt2rsHZwysL7XdUQmkWuzstRl2HzkTCjdfGWqKLrI8uXWD9srJ8QfG6-Ykuk2Zwq-dMvWs3EtdyTbtyWN2MxZuQ49kehc6JGmuptqRIC2w8cvJU-Xk0eIH6luNyJWHZP6QsQJLeIhMxZiMYludHHCSeYK8qFlq08xyaO52kbw7_hAZ69oYjaBCy3NjmbcCxQPDVnv_Bp57aeKMNzzGTTS9kL5MUlCYglHf6Iy23tgapMrZIgMyAkAvxE6EPrBZwY2ykjxiuZzmggbEuwu4UM9Tzoaw20vvQn-_hMp2d2eJ3bleVsRaTsxmNwGf5DiedVVAWvs8IOAq86PpGjSem87xQRNnrxQF42oIhyNYXDLEpleFA4pFmwbDTL5Xt_rsXoygZuehlBR8vI_WTXVxzUWwYN-tlWv9n0fEtDqFnyEf5EmA3c1sCm4KLFTrlo1J4-qkAFyh-2bPiZyVp7TKCdgAHyypiegcLPSU05HWce0fEKG3yDzP8ObBG7Ol8LEYuKnVQyP-pk4ONGDvrP5sWF0Gzpdm6yZExr_vQND_3r3vGod7YWbzVs4Z_1rfKEY51lqFona293lwNImUiBTXUlArSdntbQw5B3-pXqHzJEkeE8PWFoZ52oNYoNaZs4TCKkMahd8gM-tXlkiThIrKQPzGPGT7hYAgwIrqoxcbKUHkxl6-M5eeZyHroCpLXpoo5o_d7zeoM0FDASsdTjPQEmaQAH2n9Sf6bm27g5HOtFdATQV25PwI8RFdduTAUVnhXpPQKt6Vb-_fFGREXhQ1boghReNuGLvEkTvcc0nbz7AInzG554s4ZRwsavO32LeOXmM0IE4sDX4l1zoGeqCwgoso3nXf5UI4zp6csWoQPGSZkzGPJyciVRCjmYGWjUsinKdm-60_E39S5BJvLr2esLMVadIynpP9uo0zQ';
+  
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     
     // React.ChangeEvent<HTMLInputElement>よりファイルを取得
     const fileObject = e.target.files[0];
     // オブジェクトURLを生成し、useState()を更新
-    setProfileImage(window.URL.createObjectURL(fileObject));
+    setProfileImage(fileObject);
   };
+  const handleUpload = async (): Promise<void> => {
+    console.log('In handleUpload');
+
+    if (!profileImage) return;
+
+    const dbx = new Dropbox({ accessToken });
+    console.log(dbx);
+
+    try {
+      const response = await dbx.filesUpload({
+        path: '/' + loginUser.name + '_profileImage.jpg',
+        contents: profileImage,
+        mode: { '.tag': 'overwrite' }, // 'overwrite' モードを指定
+      });
+
+      console.log('response:', response);
+
+      // path_display が undefined でないことを確認
+      const pathDisplay = response.result.path_display;
+      if (!pathDisplay) {
+        console.error('Error: path_display is undefined');
+        return;
+      }
+
+      // path_display がある場合にのみ共有リンクを作成
+      const sharedLinkResponse = await dbx.sharingCreateSharedLinkWithSettings({
+        path: pathDisplay, // 正しい型を保証
+      });
+      setProfileImageUrl(sharedLinkResponse.result.url);
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  };
+  /////// ここまでプロフ画像
   
   // 登録ボタンが押せるかの判定
-  const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '' || profileImage !== '';
+  const isRegisterValid = name !== '' || email !== '' || pass !== undefined || birthday !== '' || address !== '' || tel !== '' || profileImageUrl !== '';
 
   const onBackToMainClick = async () => {
     navigate("/main");
@@ -53,12 +93,13 @@ export default function UserProfile() {
   }
 
   const onUserProfileRegisterClick = async () => {
+    const Dropbox_hosturl = 'https://www.dropbox.com/home/App/Rank2-MessageBoard';
     let updateName = '';
     let updateEmail = '';
     let updateBirthday = '';
     let updateAdress = '';
     let updateTel = '';
-    let updateImgsrc = '';
+    let updateImgUrl = '';
 
     if (name !== loginUser.name) {
       updateName = name !== '' ? name : ''; // 空文字を反映
@@ -75,20 +116,22 @@ export default function UserProfile() {
     if (tel !== loginUser.tel) {
       updateTel = tel;
     }
-    if (updateImgsrc !== loginUser.imgSrc) {
-      console.log(profileImage);
-      updateImgsrc = profileImage;
+    if (updateImgUrl !== loginUser.imgSrc) {
+      handleUpload() // DropBoxに画像データ送信
+
+      console.log(Dropbox_hosturl + profileImageUrl);
+      updateImgUrl = Dropbox_hosturl + profileImageUrl;
     }
 
     console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImage)
-    console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel, updateImgsrc:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgsrc)
+    console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel, updateImgsrc:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl)
 
-    if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '' && updateImgsrc.trim() === '') {
+    if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '' && updateImgUrl.trim() === '') {
       alert('変更内容がありません．')
       return ;
     } 
 
-    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgsrc);
+    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl);
     // const error = null;
 
     if (error) {
