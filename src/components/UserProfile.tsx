@@ -93,7 +93,7 @@ export default function UserProfile() {
   }
 
   const onUserProfileRegisterClick = async () => {
-    const Dropbox_hosturl = 'https://www.dropbox.com/home/App/Rank2-MessageBoard';
+    const Dropbox_hosturl = 'https://www.dropbox.com/home/App/Rank2-MessageBoard/';
     let updateName = '';
     let updateEmail = '';
     let updateBirthday = '';
