@@ -128,6 +128,8 @@ export default function UserProfile() {
     console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImageUrl)
     console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel, updateImgsrc:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl)
 
+    console.log('profileImageUrl:', profileImageUrl);
+
     if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '' && updateImgUrl.trim() === '') {
       alert('変更内容がありません．')
       return ;
@@ -168,7 +170,8 @@ export default function UserProfile() {
         <SUserProfileFrame  isEditMode={isEditMode}>
             <SUserProfileRow>
               {/* <SUserProfileImage src="https://fujifilmsquare.jp/assets/img/column/column_24_mv.jpg" alt="ProfileImage" /> */}
-              <SUserProfileImage src={loginUser.imgSrc}  alt="ProfileImage" />
+              {/* <SUserProfileImage src={loginUser.imgSrc}  alt="ProfileImage" /> */}
+              <SUserProfileImage src={profileImageUrl}  alt="ProfileImage" />
               {isEditMode ? 
                 <div>
                   <input type="file" accept="image/*" onChange={onFileInputChange} />
