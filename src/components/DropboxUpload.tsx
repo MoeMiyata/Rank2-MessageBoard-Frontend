@@ -90,8 +90,6 @@ export const DropboxUpload: React.FC = () => {
     if (!image) return;
 
     const username = 'user1'
-    console.log(image.name)
-    console.log('https://www.dropbox.com/home/App/Rank2-MessageBoard/' + username + '_profileImage.jpg')
 
     setUploading(true);
 
@@ -100,7 +98,7 @@ export const DropboxUpload: React.FC = () => {
 
     try {
       const response = await dbx.filesUpload({
-        path: '/App/Rank2-MessageBoard/' + username + '_profileImage.jpg',
+        path: '/' + username + '_profileImage.jpg',
         contents: image,
       });
 
