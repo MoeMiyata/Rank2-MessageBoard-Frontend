@@ -33,6 +33,8 @@ export const DropboxUpload: React.FC = () => {
         contents: image,
       });
 
+      console.log('response:', response);
+
       // path_display が undefined でないことを確認
       const pathDisplay = response.result.path_display;
       if (!pathDisplay) {
