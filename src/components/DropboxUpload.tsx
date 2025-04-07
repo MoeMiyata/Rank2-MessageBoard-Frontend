@@ -80,10 +80,13 @@ export const DropboxUpload: React.FC = () => {
     const file = e.target.files?.[0];
     if (file) {
       setImage(file);
+      console.log(file);
     }
   };
 
   const handleUpload = async (): Promise<void> => {
+    console.log('In handleUpload');
+
     if (!image) return;
 
     setUploading(true);
