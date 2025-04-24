@@ -9,23 +9,20 @@ import { UserContext } from "../providers/UserProvider.tsx";
 
 
 export default function UserProfile() {
-  // console.log('In UserProfile!\n');
-
   const navigate = useNavigate();
   const { loginUser, setLoginUser } = useContext(LoginUserContext);
   console.log('loginUser:', loginUser);
-  // console.log('loginUser(birthday):', loginUser.birthday);
 
-  const { userInfo} = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
 
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [ isEditMode, setIsEditMode ] = useState(false);
 
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [pass, setPass] = useState<string|undefined>(undefined);
-  const [birthday, setBirthday] = useState<string>('');
-  const [address, setAddress] = useState<string>('');
-  const [tel, setTel] = useState<string>('');
+  const [ name, setName ] = useState<string>('');
+  const [ email, setEmail ] = useState<string>('');
+  const [ pass, setPass ] = useState<string|undefined>(undefined);
+  const [ birthday, setBirthday ] = useState<string>('');
+  const [ address, setAddress ] = useState<string>('');
+  const [ tel, setTel ] = useState<string>('');
   const currentYear = new Date().getFullYear();
   // 100年前の日付を計算
   const hundredYearsAgo = currentYear - 100;
@@ -44,8 +41,8 @@ export default function UserProfile() {
     const fileObject = e.target.files[0];
     // オブジェクトURLを生成し、useState()を更新
     setProfileImage(fileObject);
-    // setProfileImageUrl(window.URL.createObjectURL(fileObject));
   };
+
   const handleUpload = async (): Promise<string | void> => {
     console.log('In handleUpload');
 
@@ -83,7 +80,12 @@ export default function UserProfile() {
       return adjustedSharedLinkUrl;
 
     } catch (error) {
+      if (error?.error?.error_summary) {
+        console.error('Dropbox error summary:', error.error.error_summary);
+      }
+
       console.error('Error uploading file:', error);
+
       return
     }
   };
@@ -102,7 +104,7 @@ export default function UserProfile() {
   }
 
   const onUserProfileRegisterClick = async () => {
-    const Dropbox_hosturl = 'https://www.dropbox.com/home/App/Rank2-MessageBoard/';
+    // const Dropbox_hosturl = 'https://www.dropbox.com/home/App/Rank2-MessageBoard/';
     let updateName = '';
     let updateEmail = '';
     let updateBirthday = '';
@@ -125,7 +127,8 @@ export default function UserProfile() {
     if (tel !== loginUser.tel) {
       updateTel = tel;
     }
-    if (updateImgUrl !== loginUser.imgSrc) {
+    // if (updateImgUrl !== loginUser.imgSrc) {
+    if (profileImage) { // 画像がuploadされていれば更新
       const uploadedUrl = await handleUpload(); // DropBoxに画像データ送信
       if (uploadedUrl) {
         updateImgUrl = uploadedUrl;
