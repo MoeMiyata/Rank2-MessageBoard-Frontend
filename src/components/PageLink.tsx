@@ -44,7 +44,8 @@ export default function PageLink() {
         <SPageLink>
             <SPageLinkRow>
                 { !(pageNumber<10) ? <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> : null }
-                { ((pageNumber<10)||isExistNextPage) && <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
+                { (isExistNextPage) && <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
+                {/* { ((pageNumber<10)||isExistNextPage) && <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> } */}
             </SPageLinkRow>
         </SPageLink>
 	)
