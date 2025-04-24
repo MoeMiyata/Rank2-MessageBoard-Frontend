@@ -41,7 +41,7 @@ export default function SideBar() {
   return (
     <SSideBar>
       <SSideBarRow>
-        <img src={loginUser.imgSrc} alt='profileImage'/>
+        <SUserProfileImage src={loginUser.imgSrc} alt='profileImage'/>
         <SSideBarRow>{loginUser.name}</SSideBarRow>
         <SSideBarRow>{loginUser.email}</SSideBarRow>
       </SSideBarRow>
@@ -69,12 +69,13 @@ const SSideBar = styled.div`
 const SSideBarRow = styled.div`
   margin-top: 4px;
   margin-bottom: 4px;
-  text-align: left;
+  // text-align: left;
 `
 
 const SSideBarTextArea = styled.textarea`
   border-radius: 4px;
   box-shadow: inset 0 2px 4px #CCCCCC;
+  width: 100%;
 `
 
 const SSideBarButton = styled.button`
@@ -82,7 +83,7 @@ const SSideBarButton = styled.button`
   padding: 4px;
   border-radius: 8px;
   color: #FAFAFA;
-  width: 100%;
+  width: 155px;
   cursor: pointer;
 
   &:disabled {
@@ -90,3 +91,10 @@ const SSideBarButton = styled.button`
     cursor: not-allowed;  // 無効化されたボタンのカーソルを変更
   }
 `
+
+const SUserProfileImage = styled.img`
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+`;
