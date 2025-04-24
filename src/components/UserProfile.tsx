@@ -75,7 +75,7 @@ export default function UserProfile() {
         path: pathDisplay, // 正しい型を保証
       });
 
-      console.log('sharedLinkResponse.result.url:', sharedLinkResponse.result.url.replace('?dl=0', '?raw=1'))
+      console.log('sharedLinkResponse.result.url:', (sharedLinkResponse.result.url).replace('?dl=0', '?raw=1'))
       setProfileImageUrl((sharedLinkResponse.result.url).replace('?dl=0', '?raw=1')); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
 
     } catch (error) {
@@ -125,9 +125,13 @@ export default function UserProfile() {
       handleUpload() // DropBoxに画像データ送信
 
       console.log(Dropbox_hosturl + profileImageUrl);
-      updateImgUrl = Dropbox_hosturl + loginUser.name + '_profileImage.jpg';
-      // setProfileImageUrl(updateImgUrl);
-      // setProfileImageUrl(profileImageUrl);  /////////// ここの変更から->ここいる？
+      /////////////////// updateImgUrl = Dropbox_hosturl + loginUser.name + '_profileImage.jpg'; // ここが原因？
+      // updateImgUrl = profileImageUrl;
+      /////////////////// setProfileImageUrl(updateImgUrl);
+      /////////////////// setProfileImageUrl(profileImageUrl);  /////////// ここの変更から->ここいる？
+      if (profileImageUrl && profileImageUrl !== loginUser.imgSrc) {
+        updateImgUrl = profileImageUrl;
+      }
     }
 
     console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImageUrl)
