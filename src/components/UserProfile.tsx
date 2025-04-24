@@ -74,9 +74,10 @@ export default function UserProfile() {
       const sharedLinkResponse = await dbx.sharingCreateSharedLinkWithSettings({
         path: pathDisplay, // 正しい型を保証
       });
+      
+      console.log('sharedLinkResponse.result.url:', sharedLinkResponse.result.url)
       setProfileImageUrl(sharedLinkResponse.result.url); //・///////////////////////////////このURLを使用する。（次回修正）///////////////////////////////
 
-      console.log('sharedLinkResponse.result.url:', sharedLinkResponse.result.url)
     } catch (error) {
       console.error('Error uploading file:', error);
       return error
