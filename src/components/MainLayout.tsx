@@ -97,7 +97,7 @@ const SBody = styled.div`
 `;
 
 const SSideBar = styled.div`
-  border-right: 1px solid #222222;
+  // border-right: 1px solid #222222;
   width: 30%;
   height: 100%;
 `;

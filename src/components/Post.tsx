@@ -44,7 +44,8 @@ export default function Post(props: any) {
 
 
 const SPost = styled.div`
-  margin: 8px 0px;
+  // margin: 8px 0px;
+  margin: 10px;
   border-bottom: 1px solid #AAAAAA;
   text-align: left;
   padding-left: 8px;
@@ -57,7 +58,8 @@ const SName = styled.span`
 `
 
 const SDate = styled.span`
-  margin-left: 8px;
+  // margin-left: 8px;
+  margin: 10px;
   font-size: small;
   color: #000044;
 `
