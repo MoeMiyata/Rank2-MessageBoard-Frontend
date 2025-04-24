@@ -47,6 +47,7 @@ export default function PageLink() {
 
 const SPageLink = styled.div`
   padding: 8px;
+  margin-bottom: 8px;
 `
 
 const SPageLinkRow = styled.div`

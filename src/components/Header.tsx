@@ -56,9 +56,14 @@ const SHeader = styled.div`
 `
 
 const SLogo = styled.div`
-  padding-top: 8px;
+  adding-top: 2px;
   padding-bottom: 8px;
   text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  // padding-top: 8px;
+  // padding-bottom: 8px;
+  // text-align: center;
   justyify-content: start;
 `
 
