@@ -124,7 +124,8 @@ export default function UserProfile() {
 
       console.log(Dropbox_hosturl + profileImageUrl);
       updateImgUrl = Dropbox_hosturl + loginUser.name + '_profileImage.jpg';
-      setProfileImageUrl(updateImgUrl);
+      // setProfileImageUrl(updateImgUrl);
+      setProfileImageUrl(profileImageUrl);  /////////// ここの変更から
     }
 
     console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImageUrl)
