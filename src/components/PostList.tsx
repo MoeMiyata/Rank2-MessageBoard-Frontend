@@ -8,6 +8,10 @@ import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
 
 import { getList } from "../api/Post.tsx";
 
+
+import PageLink from './PageLink.tsx';
+
+
 export default function PostList() {
   const { postList } = useContext(PostListContext);
   const { userInfo } = useContext(UserContext);
@@ -44,11 +48,15 @@ export default function PostList() {
   console.log('postList:', postList);
 
   return (
+    <>
     <SPostList>
       {postList.map((p) => (
         <Post key={p.id} post={p} />
       ))}
     </SPostList>
+    
+    <PageLink></PageLink>
+    </>
   );
 }
 
