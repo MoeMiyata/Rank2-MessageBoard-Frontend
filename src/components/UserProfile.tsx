@@ -69,13 +69,6 @@ export default function UserProfile() {
         return;
       }
 
-      // // path_display がある場合にのみ共有リンクを作成
-      // const sharedLinkResponse = await dbx.sharingCreateSharedLinkWithSettings({
-      //   path: pathDisplay, // 正しい型を保証
-      // });
-
-      // const sharedLinkUrl = sharedLinkResponse.result.url
-
       ///// 共有リンクを再利用するように修正
       const existingLinks = await dbx.sharingListSharedLinks({
         path: pathDisplay,
@@ -92,13 +85,7 @@ export default function UserProfile() {
         sharedLinkUrl = sharedLinkResponse.result.url;
       }
 
-
-      console.log('sharedLinkResponse.result.url:', sharedLinkUrl)
-      // const adjustedSharedLinkUrl = sharedLinkUrl.replace(/\?.*$/, '?dl=1')
-      
-      // URLの末尾にタイムスタンプを追加してキャッシュを避ける
-      const adjustedSharedLinkUrl = sharedLinkUrl.replace(/\?.*$/, '?dl=1') + `&t=${new Date().getTime()}`;
-      console.log('sharedLinkResponse.result.url1:', sharedLinkUrl.replace(/\?.*$/, '?dl=1'))
+      const adjustedSharedLinkUrl = sharedLinkUrl.replace(/\?.*$/, '?dl=1') + `&t=${new Date().getTime()}`;  // URLの末尾にタイムスタンプを追加してキャッシュを避ける
       setProfileImageUrl(adjustedSharedLinkUrl); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
       return adjustedSharedLinkUrl;
 
@@ -127,7 +114,6 @@ export default function UserProfile() {
   }
 
   const onUserProfileRegisterClick = async () => {
-    // const Dropbox_hosturl = 'https://www.dropbox.com/home/App/Rank2-MessageBoard/';
     let updateName = '';
     let updateEmail = '';
     let updateBirthday = '';
@@ -150,21 +136,11 @@ export default function UserProfile() {
     if (tel !== loginUser.tel) {
       updateTel = tel;
     }
-    // if (updateImgUrl !== loginUser.imgSrc) {
     if (profileImage) { // 画像がuploadされていれば更新
       const uploadedUrl = await handleUpload(); // DropBoxに画像データ送信
       if (uploadedUrl) {
         updateImgUrl = uploadedUrl;
       }
-
-      // console.log(Dropbox_hosturl + profileImageUrl);
-      /////////////////// updateImgUrl = Dropbox_hosturl + loginUser.name + '_profileImage.jpg'; // ここが原因？
-      // updateImgUrl = profileImageUrl;
-      /////////////////// setProfileImageUrl(updateImgUrl);
-      /////////////////// setProfileImageUrl(profileImageUrl);  /////////// ここの変更から->ここいる？
-      // if (profileImageUrl && profileImageUrl !== loginUser.imgSrc) {
-      //   updateImgUrl = profileImageUrl;
-      // }
     }
 
     console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImageUrl)
@@ -178,11 +154,9 @@ export default function UserProfile() {
     } 
 
     const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl);
-    // const error = null;
 
     if (error) {
       alert(error.response.data.message); // サーバ側で設定したエラー文を表示
-      // alert('error!');
     } else {
       ////// ここで、登録できたら登録内容をloginUserに反映する
       const myGetUser = async () => {
