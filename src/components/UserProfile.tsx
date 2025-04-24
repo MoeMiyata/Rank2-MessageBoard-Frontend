@@ -30,8 +30,8 @@ export default function UserProfile() {
   const hundredYearsAgoDate = new Date(hundredYearsAgo, 0, 1).toISOString().split("T")[0]; // 100年前の1月1日
 
   /////// プロフ画像
-  const [profileImageUrl, setProfileImageUrl] = useState(''); ///後でloginUser.ImgSrcに変更
-  const [profileImage, setProfileImage] = useState<File | null>(null);
+  const [ profileImageUrl, setProfileImageUrl ] = useState(''); ///後でloginUser.ImgSrcに変更
+  const [ profileImage, setProfileImage ] = useState<File | null>(null);
   const accessToken: string = 'sl.u.AFpNV3p1tBrbbzZZZ8Lw1UiQD0COjFIl0IoZ69eEzVhqpUOf8ZcoeTS5l05Gcv9_EyvL2Xc5TBOQ9efj2Tj7Y-PDXCo8Ghjg8HvEH9AmGTVXHId08fSAK-35vHjzW2aE27KOLiWHcpbwzQwBFmKhSjiMnlzhMwpG2owVUWJbavfIrM_21VtJAY2QYIrpY0I91Vli3IV3in6VIdOkKQUrARPQVSXfNJlUKE9Qp-5vCNmGOZ35XWtWqsguobmYSinbHL1jtGoubEMC91zzsJlaBoj_0WNvK9jGOnil-Q_IynbNN8Pm6sjmoslhyV7hY1yjMKvG6gFlXYI6xidNc4YsjJtoXIKnrQUgvHmy0WZqqiF5mfkHthyix48sMaJflAmjCfb5K2s5IDk-tzEUeyesCXRaevgZxN7Y_n9cSsoFIXwpEN_kxsRZS9dGTOvrv0Logut-BlvxcEr1qI0G1Wzp8uaMh3e3Fm7hJok_MpctzHyFReVVpnwOdk7GipFr6hoNP84ledQFF4R1MmCuig3Z9JrYv_goJ8-aYD0yQY-iBNDJ6umfpw4AtONn_EEU2nsyKOgiaS3ySP1L_icsPIpqGxVqdpv4vAeYBnSAcHwObsKhAPsDn34hlFEZTgu_xZTWzgWrB0ZLHFgceORYM1_0peCf7E9F-lqMKhaEMnMb71-wR7NdO9EwsDbk91o7-PlWDigzeuUkO6cFSIMt2malEjgysLMlEfdLQ19-ANfVzePdfzQ8hfGUnu8qbRk1JmOjl6lCOicPHBplKd772nX5RH-HjlasTy_wCCih38azXaoANrohhdOkLwErgyDQnDKPf7Hl5kqCyua5aSkzRHrk_t_Wl5Sc3jbeQphGQFo-SAA4W1EbXGaCejtVxfJIY_3yDuLDx9MoBTALj4LmyHGWex51F8vSIAu_7Aor1XEeZ_N3jCGI5lEOggYs0lJY7ZbOFIBrLaCIwXvlGB22qW6pJj0Wg7bEO77xrcKvq-77FKhPXpiNuVwNr1pVndufjeLjxO2VrH-9gaw8MKjPmuDm6RkjXwkIbwJXczkRMqA8MRtXb2oHdWUHTFXZCGWl6lmwQLRH4IQaopfqG9yStv2byJvzxzH8UNCTScPIoOHXGX_lEQW7mvMRCxsIfWYPc3Jukt3ZjOELGLnMj6X4ndTYGixviMtQN2nIE7kH-w3Ch3y5a83ohRRD0SxHKBOKI7AYWEOSGujBSLyTmuS76sG_1-IpqvLsKDuPQRMIAyJ2CTdO-kgU4Ka8xXJPHnZNzw5uiYIL6RD2uukntQILoC9UOiA021_8YqEjS34d4PQKKLUJ5vK1gmA7ufQbFVwU0TBGj6H47sXUvwge4HXDf3B8v8pzMr4Dwv5LLkX7ZAOYQQ7VA2Nvh2w2Ye-XrQLrHIIagkVQyZp_8y2TCKcBpCxKeHOq9ubBALGyGHD4dVCoXK3lvg';
   
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -209,7 +209,8 @@ export default function UserProfile() {
         <SUserProfileFrame  isEditMode={isEditMode}>
             <SUserProfileRow>
               {/* <SUserProfileImage src="https://fujifilmsquare.jp/assets/img/column/column_24_mv.jpg" alt="ProfileImage" /> */}
-              <SUserProfileImage src={loginUser.imgSrc}  alt="ProfileImage" />
+              {/* <SUserProfileImage src={loginUser.imgSrc}  alt="ProfileImage" /> */}
+              <SUserProfileImage src={isEditMode && profileImageUrl ? profileImageUrl : loginUser.imgSrc} />
               {/* <SUserProfileImage src={profileImageUrl}  alt="ProfileImage" /> */}
               {isEditMode ? 
                 <div>
