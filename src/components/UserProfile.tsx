@@ -46,7 +46,7 @@ export default function UserProfile() {
     setProfileImage(fileObject);
     // setProfileImageUrl(window.URL.createObjectURL(fileObject));
   };
-  const handleUpload = async (): Promise<void> => {
+  const handleUpload = async (): Promise<string | void> => {
     console.log('In handleUpload');
 
     if (!profileImage) return;
@@ -77,12 +77,14 @@ export default function UserProfile() {
 
       const sharedLinkUrl = sharedLinkResponse.result.url
       console.log('sharedLinkResponse.result.url:', sharedLinkUrl)
+      const adjustedSharedLinkUrl = sharedLinkResponse.result.url.replace(/\?.*$/, '?dl=1')
       console.log('sharedLinkResponse.result.url1:', sharedLinkUrl.replace(/\?.*$/, '?dl=1'))
-      setProfileImageUrl((sharedLinkResponse.result.url).replace(/\?.*$/, '?dl=1')); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
+      setProfileImageUrl(adjustedSharedLinkUrl); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
+      return adjustedSharedLinkUrl;
 
     } catch (error) {
       console.error('Error uploading file:', error);
-      return error
+      return
     }
   };
   /////// ここまでプロフ画像
@@ -124,11 +126,14 @@ export default function UserProfile() {
       updateTel = tel;
     }
     if (updateImgUrl !== loginUser.imgSrc) {
-      handleUpload() // DropBoxに画像データ送信
+      const uploadedUrl = await handleUpload(); // DropBoxに画像データ送信
+      if (uploadedUrl) {
+        updateImgUrl = uploadedUrl;
+      }
 
-      console.log(Dropbox_hosturl + profileImageUrl);
+      // console.log(Dropbox_hosturl + profileImageUrl);
       /////////////////// updateImgUrl = Dropbox_hosturl + loginUser.name + '_profileImage.jpg'; // ここが原因？
-      updateImgUrl = profileImageUrl;
+      // updateImgUrl = profileImageUrl;
       /////////////////// setProfileImageUrl(updateImgUrl);
       /////////////////// setProfileImageUrl(profileImageUrl);  /////////// ここの変更から->ここいる？
       // if (profileImageUrl && profileImageUrl !== loginUser.imgSrc) {
