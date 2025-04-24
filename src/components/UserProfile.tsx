@@ -76,7 +76,7 @@ export default function UserProfile() {
       });
 
       console.log('sharedLinkResponse.result.url:', sharedLinkResponse.result.url)
-      setProfileImageUrl(sharedLinkResponse.result.url); //・///////////////////////////////このURLを使用する。（次回修正）///////////////////////////////
+      setProfileImageUrl((sharedLinkResponse.result.url).replace('?dl=0', '?raw=1')); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
 
     } catch (error) {
       console.error('Error uploading file:', error);
