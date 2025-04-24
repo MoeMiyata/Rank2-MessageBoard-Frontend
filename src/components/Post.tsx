@@ -29,15 +29,15 @@ export default function Post(props: any) {
   
   return (
     <SPost>
-      <div>
+      <SPostHeader>
         <SName>{post.user_name}</SName>
         <SDate>{getDateStr(post.craeted_at)}</SDate>
 
         {/* メッセージの削除ボタン */}
         <DeletePost deleteid={post.id} postUserName={post.user_name}/>
-      </div>
+      </SPostHeader>
 
-      <div>{getLines(post.content)}</div>
+      <SPostContent>{getLines(post.content)}</SPostContent>
     </SPost>
   )
 }
@@ -46,10 +46,18 @@ export default function Post(props: any) {
 const SPost = styled.div`
   // margin: 8px 0px;
   margin: 10px;
-  border-bottom: 1px solid #AAAAAA;
+  // border-bottom: 1px solid #AAAAAA;
+  border: 1px solid #AAAAAA;
   text-align: left;
   padding-left: 8px;
   padding-bottom: 8px;
+`
+
+const SPostHeader = styled.div`
+  margin: 10px;
+`
+const SPostContent = styled.div`
+  margin: 10px;
 `
 
 const SName = styled.span`
@@ -58,8 +66,7 @@ const SName = styled.span`
 `
 
 const SDate = styled.span`
-  // margin-left: 8px;
-  margin: 10px;
+  margin-left: 8px;
   font-size: small;
   color: #000044;
 `
