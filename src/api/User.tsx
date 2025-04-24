@@ -23,7 +23,7 @@ export const createUser = async (name: string, email: string, password: string) 
       password
     });
     
-    console.log('res(createUser):', res.data);
+    // console.log('res(createUser):', res.data);
     return res.data;
 
   } catch (error: any) {
@@ -34,29 +34,29 @@ export const createUser = async (name: string, email: string, password: string) 
 export const getUser = async (user_id: number, token: string) => {
   // const url = `http://localhost:3000/user/${user_id}?token=${token}`;
   const url = hostUrl + `/user/${user_id}?token=${token}`;
-  console.log(url)
+  // console.log(url)
   const res = await axios.get(url);
 
-  console.log('res(getUser):', res.data);
+  // console.log('res(getUser):', res.data);
   return res.data;
 };
 
 // user情報更新
 export const updateUser = async (user_id: number, token: string, name?: string, email?: string, password?: string, birthday?: string, address?: string, tel?: string, imgSrc?: string) => {
-  console.log('In updateUser.\n')
+  // console.log('In updateUser.\n')
   const url = hostUrl + `/user/${user_id}?token=${token}`;
-  console.log('updateURL:', url)
+  // console.log('updateURL:', url)
 
   try {
-    console.log('updateData:', {
-      name,
-      email,
-      password,
-      birthday,
-      address,
-      tel,
-      imgSrc,
-    })
+    // console.log('updateData:', {
+    //   name,
+    //   email,
+    //   password,
+    //   birthday,
+    //   address,
+    //   tel,
+    //   imgSrc,
+    // })
     const res = await axios.put(url, {
       name,
       email,

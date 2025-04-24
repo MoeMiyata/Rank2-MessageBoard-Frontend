@@ -9,12 +9,12 @@ import { UserContext } from "../providers/UserProvider.tsx";
 
 
 export default function UserProfile() {
-  console.log('In UserProfile!\n');
+  // console.log('In UserProfile!\n');
 
   const navigate = useNavigate();
   const { loginUser, setLoginUser } = useContext(LoginUserContext);
   console.log('loginUser:', loginUser);
-  console.log('loginUser(birthday):', loginUser.birthday);
+  // console.log('loginUser(birthday):', loginUser.birthday);
 
   const { userInfo} = useContext(UserContext);
 
@@ -52,7 +52,7 @@ export default function UserProfile() {
     if (!profileImage) return;
 
     const dbx = new Dropbox({ accessToken });
-    console.log(dbx);
+    console.log("dbx", dbx);
 
     try {
       const response = await dbx.filesUpload({
@@ -79,6 +79,7 @@ export default function UserProfile() {
       console.log('sharedLinkResponse.result.url:', sharedLinkResponse.result.url)
     } catch (error) {
       console.error('Error uploading file:', error);
+      return error
     }
   };
   /////// ここまでプロフ画像
