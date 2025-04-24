@@ -40,11 +40,11 @@ export default function SideBar() {
 
   return (
     <SSideBar>
-      {/* <SSideBarRow>hoge</SSideBarRow> */}
-      <SSideBarRow>{loginUser.name}</SSideBarRow>
-
-      {/* <SSideBarRow>hoge@example.com</SSideBarRow> */}
-      <SSideBarRow>{loginUser.email}</SSideBarRow>
+      <SSideBarRow>
+        <img src={loginUser.imgSrc} alt='profileImage'/>
+        <SSideBarRow>{loginUser.name}</SSideBarRow>
+        <SSideBarRow>{loginUser.email}</SSideBarRow>
+      </SSideBarRow>
 
       <SSideBarRow>
         <SSideBarTextArea
