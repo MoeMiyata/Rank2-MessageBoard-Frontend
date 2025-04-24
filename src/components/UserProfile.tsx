@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Dropbox } from 'dropbox'; // Dropbox SDKをインポート
@@ -32,8 +32,48 @@ export default function UserProfile() {
   /////// プロフ画像
   const [ profileImageUrl, setProfileImageUrl ] = useState(''); ///後でloginUser.ImgSrcに変更
   const [ profileImage, setProfileImage ] = useState<File | null>(null);
-  const accessToken: string = 'sl.u.AFr6UfeWAIAcDRKXDNvSFpGDpnvoVC2x_3-MivMz5IcQ11aUuScwFkrGWz7aHUkBiEz23Yj129rtfPVzkz3fMbmMcRS2BG2tvEJ7ymW3aKJmi3lJqE2vzVjnt2GFokxuimlqgtMrQVw9mGOLZri_kcmsfsWZuXg32HL3QvtV-rxDoxOHX4gfManKH8U3t7VRPbuhdtaxSOPXxLjOu_b0hdDEKsFNjuK-3Du_9Ik9xge5jKbyP_OZGE0oavLvCyh9RloU-5XAltzh4C5X3fYmGV5cBa5lBfo9pHpXpaRkCSEVBv2P9FBOi7fC-UUpFNZXWCkQ7NiWBd3eD4q7pP1456cf5wLHmDxc9iRR35LEFhZq_fz5sQc2ohwi8qxIoa4URUDDI3Y8pwP1qZG3WK8urXB8b8KjnT_7imHV_8ZNhMbp8HyD1_BLWsRVqPbrOfrCKDLGSUnKw5VWmxLR1aDaL6gPQEuRKBLAWjVyUinjPofcSeqiCGK8lvwAHX6hMZx_3DiwmuamDA0mbWgutmhDMcZV9UMgnZYUpktwOEZMQ4uaXCt9gG16pnD_2zitubx-8Efg4ML54YVEu-OOzw9ahIe7nDhTJvBFQJkuytvXLCqJD3UCJMAFQ-BEgGsh-leH3Jl8FF7EYwi32vutLzAQGd6yKxyggSkQvCdp0mrPy6fQgjI4ns0lsXyowKhysNsJRhERMZjjHpdymKhMVdXVn_5eYatqnlxuSsohTjfAUHwDyd3IETOG3Rxo1zkHpccRMVzxLpHUQj3E0iOCTG3wGcsyR5fuizbIepPctK67XuPrbqaI1i_nPy9JU1T078saqL5C23HkQxUrL7EvCcg4aZsGgY9AgK4F6mXsAp7WZZTrXJwcHDZ-UrQ2Pkb0zwXcKzDnHJw0u0_omqx7LDegcFzZB_6rpUwXtH6QbarUy-MFkAmpSsoCTcFWV5EANf7ILlIS8viwi-3HZ9D7GnRMY1h2-on-HIlSsjHsOS-yL26V4mriUNJTuEbT3lO8xklmWiWCPDhH4ejVS9jpVG8AarnbGwL18_Ljqxvr5g2GFlPpleqLDp0inu2T5BSDcJdwXhvChz4oejHg_GFXBgC1UFC238XoUK2omLlnGNbXKEPIzJQPwQCt4Lz9BctdjPZLzVRCrxbn0i3pKYvXV4GaXkDigGMfSMp3d_qpz4KdcVXYNrqfzK0GC7vG956l4dD5TVMMv_xkZ3bCiUWXUmoV6hA0iJi7wXI51gCJI0ZjmD9MS_wYV-9_V-hiO1EjyalTlvDYy5o3Ll3LNNUa3w2Kul4LGYbawX0CEMUEF-x5kf2Cyym9PN0JMI6vA-f6gJLF8khDBIVIFHQqrhUWh0vkq3UuOoTi8ridJTEdpzM9m9ssVojraODR6kkOsyU_ge69_BrXWxQH4Ptpz0thfGR8fHKYDgkyxmI5EBJsgdjoY7ysuA';
+
+  const refreshAccessToken = async (
+    refreshToken: string,
+    clientId: string,
+    clientSecret: string
+  ): Promise<string | undefined> => {
+    const params = new URLSearchParams();
+    params.append("grant_type", "refresh_token");
+    params.append("refresh_token", refreshToken);
+    params.append("client_id", clientId);
+    params.append("client_secret", clientSecret);
   
+    try {
+      const response = await fetch("https://api.dropbox.com/oauth2/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params.toString(),
+      });
+  
+      if (!response.ok) {
+        console.error("トークンのリフレッシュに失敗しました:", response.statusText);
+        return;
+      }
+  
+      const data = await response.json();
+      console.log("リフレッシュ結果:", data);
+      return data.access_token; // 新しい access_token を返す
+    } catch (error) {
+      console.error("トークン更新中にエラー:", error);
+      return;
+    }
+  };
+  
+  // const accessToken: string = 'sl.u.AFr6UfeWAIAcDRKXDNvSFpGDpnvoVC2x_3-MivMz5IcQ11aUuScwFkrGWz7aHUkBiEz23Yj129rtfPVzkz3fMbmMcRS2BG2tvEJ7ymW3aKJmi3lJqE2vzVjnt2GFokxuimlqgtMrQVw9mGOLZri_kcmsfsWZuXg32HL3QvtV-rxDoxOHX4gfManKH8U3t7VRPbuhdtaxSOPXxLjOu_b0hdDEKsFNjuK-3Du_9Ik9xge5jKbyP_OZGE0oavLvCyh9RloU-5XAltzh4C5X3fYmGV5cBa5lBfo9pHpXpaRkCSEVBv2P9FBOi7fC-UUpFNZXWCkQ7NiWBd3eD4q7pP1456cf5wLHmDxc9iRR35LEFhZq_fz5sQc2ohwi8qxIoa4URUDDI3Y8pwP1qZG3WK8urXB8b8KjnT_7imHV_8ZNhMbp8HyD1_BLWsRVqPbrOfrCKDLGSUnKw5VWmxLR1aDaL6gPQEuRKBLAWjVyUinjPofcSeqiCGK8lvwAHX6hMZx_3DiwmuamDA0mbWgutmhDMcZV9UMgnZYUpktwOEZMQ4uaXCt9gG16pnD_2zitubx-8Efg4ML54YVEu-OOzw9ahIe7nDhTJvBFQJkuytvXLCqJD3UCJMAFQ-BEgGsh-leH3Jl8FF7EYwi32vutLzAQGd6yKxyggSkQvCdp0mrPy6fQgjI4ns0lsXyowKhysNsJRhERMZjjHpdymKhMVdXVn_5eYatqnlxuSsohTjfAUHwDyd3IETOG3Rxo1zkHpccRMVzxLpHUQj3E0iOCTG3wGcsyR5fuizbIepPctK67XuPrbqaI1i_nPy9JU1T078saqL5C23HkQxUrL7EvCcg4aZsGgY9AgK4F6mXsAp7WZZTrXJwcHDZ-UrQ2Pkb0zwXcKzDnHJw0u0_omqx7LDegcFzZB_6rpUwXtH6QbarUy-MFkAmpSsoCTcFWV5EANf7ILlIS8viwi-3HZ9D7GnRMY1h2-on-HIlSsjHsOS-yL26V4mriUNJTuEbT3lO8xklmWiWCPDhH4ejVS9jpVG8AarnbGwL18_Ljqxvr5g2GFlPpleqLDp0inu2T5BSDcJdwXhvChz4oejHg_GFXBgC1UFC238XoUK2omLlnGNbXKEPIzJQPwQCt4Lz9BctdjPZLzVRCrxbn0i3pKYvXV4GaXkDigGMfSMp3d_qpz4KdcVXYNrqfzK0GC7vG956l4dD5TVMMv_xkZ3bCiUWXUmoV6hA0iJi7wXI51gCJI0ZjmD9MS_wYV-9_V-hiO1EjyalTlvDYy5o3Ll3LNNUa3w2Kul4LGYbawX0CEMUEF-x5kf2Cyym9PN0JMI6vA-f6gJLF8khDBIVIFHQqrhUWh0vkq3UuOoTi8ridJTEdpzM9m9ssVojraODR6kkOsyU_ge69_BrXWxQH4Ptpz0thfGR8fHKYDgkyxmI5EBJsgdjoY7ysuA';
+  // const accessToken = await refreshAccessToken(
+  //   "lpGMfLpOc8IAAAAAAAAAAe9qa0hrZoXbH-plrBcsWc3sfqk8SYAl9ZHOz4hXHOL0",
+  //   "j3li7gaq8uneq5y",
+  //   "ev12iix1eberer6"
+  // );
+
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     
@@ -47,6 +87,11 @@ export default function UserProfile() {
     console.log('In handleUpload');
 
     if (!profileImage) return;
+
+    const accessToken = await refreshAccessToken("lpGMfLpOc8IAAAAAAAAAAe9qa0hrZoXbH-plrBcsWc3sfqk8SYAl9ZHOz4hXHOL0", "j3li7gaq8uneq5y", "ev12iix1eberer6");
+      if (accessToken) {
+        console.log("取得成功:", accessToken);
+      }
 
     const dbx = new Dropbox({ accessToken });
     console.log("dbx", dbx);
