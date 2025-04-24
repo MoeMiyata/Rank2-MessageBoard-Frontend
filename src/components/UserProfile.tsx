@@ -94,7 +94,10 @@ export default function UserProfile() {
 
 
       console.log('sharedLinkResponse.result.url:', sharedLinkUrl)
-      const adjustedSharedLinkUrl = sharedLinkUrl.replace(/\?.*$/, '?dl=1')
+      // const adjustedSharedLinkUrl = sharedLinkUrl.replace(/\?.*$/, '?dl=1')
+      
+      // URLの末尾にタイムスタンプを追加してキャッシュを避ける
+      const adjustedSharedLinkUrl = sharedLinkUrl.replace(/\?.*$/, '?dl=1') + `&t=${new Date().getTime()}`;
       console.log('sharedLinkResponse.result.url1:', sharedLinkUrl.replace(/\?.*$/, '?dl=1'))
       setProfileImageUrl(adjustedSharedLinkUrl); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
       return adjustedSharedLinkUrl;
