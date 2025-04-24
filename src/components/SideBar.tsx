@@ -83,7 +83,8 @@ const SSideBarButton = styled.button`
   padding: 4px;
   border-radius: 8px;
   color: #FAFAFA;
-  width: 155px;
+  // width: 155px;
+  width: 100%;
   cursor: pointer;
 
   &:disabled {
