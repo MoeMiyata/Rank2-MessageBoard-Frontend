@@ -77,8 +77,8 @@ export default function UserProfile() {
 
       const sharedLinkUrl = sharedLinkResponse.result.url
       console.log('sharedLinkResponse.result.url:', sharedLinkUrl)
-      console.log('sharedLinkResponse.result.url1:', sharedLinkUrl.replace(/\?.*$/, '?raw=1'))
-      setProfileImageUrl((sharedLinkResponse.result.url).replace(/\?.*$/, '?raw=1')); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
+      console.log('sharedLinkResponse.result.url1:', sharedLinkUrl.replace(/\?.*$/, '?dl=1'))
+      setProfileImageUrl((sharedLinkResponse.result.url).replace(/\?.*$/, '?dl=1')); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
 
     } catch (error) {
       console.error('Error uploading file:', error);
