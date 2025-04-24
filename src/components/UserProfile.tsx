@@ -51,6 +51,8 @@ export default function UserProfile() {
     const dbx = new Dropbox({ accessToken });
     console.log("dbx", dbx);
 
+    let sharedLinkUrl = ''
+
     try {
       const response = await dbx.filesUpload({
         path: '/' + loginUser.name + '_profileImage.jpg',
@@ -67,14 +69,32 @@ export default function UserProfile() {
         return;
       }
 
-      // path_display がある場合にのみ共有リンクを作成
-      const sharedLinkResponse = await dbx.sharingCreateSharedLinkWithSettings({
-        path: pathDisplay, // 正しい型を保証
+      // // path_display がある場合にのみ共有リンクを作成
+      // const sharedLinkResponse = await dbx.sharingCreateSharedLinkWithSettings({
+      //   path: pathDisplay, // 正しい型を保証
+      // });
+
+      // const sharedLinkUrl = sharedLinkResponse.result.url
+
+      ///// 共有リンクを再利用するように修正
+      const existingLinks = await dbx.sharingListSharedLinks({
+        path: pathDisplay,
+        direct_only: true,
       });
 
-      const sharedLinkUrl = sharedLinkResponse.result.url
+      if (existingLinks.result.links.length > 0) {
+        sharedLinkUrl = existingLinks.result.links[0].url;
+      } else {
+        // 共有リンクを新規作成
+        const sharedLinkResponse = await dbx.sharingCreateSharedLinkWithSettings({
+          path: pathDisplay,
+        });
+        sharedLinkUrl = sharedLinkResponse.result.url;
+      }
+
+
       console.log('sharedLinkResponse.result.url:', sharedLinkUrl)
-      const adjustedSharedLinkUrl = sharedLinkResponse.result.url.replace(/\?.*$/, '?dl=1')
+      const adjustedSharedLinkUrl = sharedLinkUrl.replace(/\?.*$/, '?dl=1')
       console.log('sharedLinkResponse.result.url1:', sharedLinkUrl.replace(/\?.*$/, '?dl=1'))
       setProfileImageUrl(adjustedSharedLinkUrl); // .replace('?dl=0', '?raw=1')は表示する際にdl=0->dl=1に変更必要
       return adjustedSharedLinkUrl;
