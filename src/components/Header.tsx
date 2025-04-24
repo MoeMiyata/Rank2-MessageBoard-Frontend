@@ -56,7 +56,7 @@ const SHeader = styled.div`
 `
 
 const SLogo = styled.div`
-  adding-top: 2px;
+  padding-top: 2px;
   padding-bottom: 8px;
   text-align: center;
   font-weight: bold;

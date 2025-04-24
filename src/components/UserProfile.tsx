@@ -140,6 +140,7 @@ export default function UserProfile() {
       const uploadedUrl = await handleUpload(); // DropBoxに画像データ送信
       if (uploadedUrl) {
         updateImgUrl = uploadedUrl;
+        console.log("uploadedUrl:", uploadedUrl)
       }
     }
 
@@ -149,6 +150,7 @@ export default function UserProfile() {
     console.log('profileImageUrl:', profileImageUrl);
 
     if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '' && updateImgUrl.trim() === '') {
+      console.log("updateImgUrl:", updateImgUrl)
       alert('変更内容がありません．')
       return ;
     } 
@@ -185,10 +187,7 @@ export default function UserProfile() {
 
         <SUserProfileFrame  isEditMode={isEditMode}>
             <SUserProfileRow>
-              {/* <SUserProfileImage src="https://fujifilmsquare.jp/assets/img/column/column_24_mv.jpg" alt="ProfileImage" /> */}
-              {/* <SUserProfileImage src={loginUser.imgSrc}  alt="ProfileImage" /> */}
               <SUserProfileImage src={isEditMode && profileImageUrl ? profileImageUrl : loginUser.imgSrc} />
-              {/* <SUserProfileImage src={profileImageUrl}  alt="ProfileImage" /> */}
               {isEditMode ? 
                 <div>
                   <input type="file" accept="image/*" onChange={onFileInputChange} />
@@ -197,7 +196,6 @@ export default function UserProfile() {
             </SUserProfileRow>
 
             <SUserProfileRow>
-                {/* <h1>Name: {loginUser.name}</h1> */}
                 {isEditMode ? 
                   <>
                     <SUserProfileLabel>
@@ -208,7 +206,6 @@ export default function UserProfile() {
                       <SUserProfileInput>
                         <input
                           id="name"
-                          // value={pass}
                           type="name"
                           placeholder={loginUser.name}
                           onChange={(evt) => setName(evt.target.value)}
@@ -225,7 +222,6 @@ export default function UserProfile() {
                     <SUserProfileData>
                       {loginUser.name}
                     </SUserProfileData>
-                    {/* <span>{loginUser.name}</span> */}
                   </>
                   }
             </SUserProfileRow>
@@ -249,7 +245,6 @@ export default function UserProfile() {
                     </SUserProfileData>
                   </>
                   : 
-                  // <p>メールアドレス: {loginUser.email}</p>
                   <>
                     <SUserProfileLabel>
                       Email ✉️ : 
@@ -262,7 +257,6 @@ export default function UserProfile() {
             </SUserProfileRow>
 
             <SUserProfileRow>
-                {/* <h1>ハッシュ: {loginUser.hash}</h1> */}
                 {isEditMode ? 
                   <>
                     <SUserProfileLabel>
@@ -305,15 +299,8 @@ export default function UserProfile() {
                         <input
                             id="birthday"
                             type="date"
-                            // placeholder={loginUser.birthday ? loginUser.birthday.toISOString().split('T')[0] : ''}
                             min={hundredYearsAgoDate} // 100年前の日付
                             max={currentDate} // 現在の日付
-                            // onChange={(evt) => {setLoginUser((prevState) => ({
-                            //   ...prevState,  // 前の状態を維持
-                            //   birthday: new Date(evt.target.value),   
-                            //   }));
-                            //   console.log("Selected birthday:", evt.target.value);} 
-                            // }
                             onChange={(evt) => {setBirthday(evt.target.value);
                               console.log("Selected birthday:", evt.target.value);}
                             }
@@ -327,22 +314,17 @@ export default function UserProfile() {
                       Date of birth 🎂 : 
                     </SUserProfileLabel>
                     <SUserProfileData>
-                      {/* {loginUser.birthday 
-                        ? loginUser.birthday.getFullYear() + '年' + (loginUser.birthday.getMonth() + 1) + '月' + loginUser.birthday.getDate() + '日'
-                        : '登録なし'} */}
                       {loginUser.birthday 
                         ? new Date(loginUser.birthday).getFullYear() + '年 ' + 
                           (new Date(loginUser.birthday).getMonth() + 1) + '月 ' + 
                           new Date(loginUser.birthday).getDate() + '日'
                         : '登録なし'}
-                      {/* 誕生日（Date型では表示されないので修正必要） */}
                     </SUserProfileData>
                   </>
                 }
             </SUserProfileRow>
 
             <SUserProfileRow>
-                {/* <h1>住所: 登録なし</h1> */}
                 {isEditMode ? 
                   <>
                     <SUserProfileLabel>
@@ -355,10 +337,6 @@ export default function UserProfile() {
                             id="address"
                             type="text"
                             placeholder={loginUser.address}
-                            // onChange={(evt) => setLoginUser((prevState) => ({
-                            //   ...prevState,  // 前の状態を維持
-                            //   address: evt.target.value,   // telだけを更新
-                            // }))}
                             onChange={(evt) => setAddress(evt.target.value)}
                         />
                       </SUserProfileInput>
@@ -472,17 +450,6 @@ const SEdit = styled.div`
   cursor: pointer;  // ポインタ追加
 `
 
-// const SUserProfileFrame = styled.div`
-//   background-color: #f8f8f8;
-//   // margin: 80px;
-//   // margin: 40px 80px 80px 80px;
-//   margin: ${({ isEditMode }) => (isEditMode ? "40px 80px 80px 80px" : "100px 80px 80px 80px")};
-  
-//   padding-top: 8px;
-//   padding-bottom: 8px;
-//   border-radius: 8px;
-//   box-shadow: 0 8px 8px #aaaaaa;
-// `;
 const SUserProfileFrame = styled.div<UserProfileProps>`
   background-color: #f8f8f8;
   margin: ${({ isEditMode }) => (isEditMode ? "40px 80px 80px 80px" : "105px 80px 80px 80px")};
