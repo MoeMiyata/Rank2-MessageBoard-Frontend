@@ -30,6 +30,7 @@ export const UserIconProvider = (props: any) => {
     const icons = await getUserIcons(userInfo.token);
 
     console.log('icons:', icons)
+    setUserIcons(icons)
   }
 
   useEffect(() => {
