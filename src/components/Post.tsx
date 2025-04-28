@@ -14,9 +14,13 @@ export default function Post(props: any) {
   const [postOwnerImgSrc, setPostOwnerImgSrc] = useState<string>('https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true');
 
   const getPostOwnerImgsrc = async () => {
-    const postOwner = await getUser(postOwnerId, userInfo.token)
-    setPostOwnerImgSrc(postOwner.imgSrc)
-    console.log("postOwner:", postOwner)
+    try {
+      const postOwner = await getUser(postOwnerId, userInfo.token)
+      console.log("postOwner:", postOwner)
+      setPostOwnerImgSrc(postOwner.imgSrc)
+    } catch (error) {
+      console.error("Error fetching post owner image:", error);
+    }
   }
 
   const getDateStr = (dateObj: Date) => {
