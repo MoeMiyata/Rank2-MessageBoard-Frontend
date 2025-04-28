@@ -41,6 +41,16 @@ export const getUser = async (user_id: number, token: string) => {
   return res.data;
 };
 
+// ユーザアイコン情報取得
+export const getUserIcons = async (token: string) => {
+  const url = hostUrl + `/user/token=${token}`;
+  console.log(url)
+  const res = await axios.get(url);
+
+  // console.log('res(getUser):', res.data);
+  return res.data;
+};
+
 // user情報更新
 export const updateUser = async (user_id: number, token: string, name?: string, email?: string, password?: string, birthday?: string, address?: string, tel?: string, imgSrc?: string) => {
   console.log('In updateUser.\n')

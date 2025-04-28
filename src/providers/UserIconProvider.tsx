@@ -2,6 +2,7 @@ import { useState, createContext, Dispatch, SetStateAction, useEffect, useContex
 import React from "react";
 import { hostUrl } from "../api/hostUrl.ts";
 import { UserContext } from "./UserProvider.tsx";
+import { getUserIcons } from "../api/User.tsx";
 
 // 保持する情報の型
 type UserIcon = {
@@ -24,16 +25,24 @@ export const UserIconProvider = (props: any) => {
 
   const { userInfo } = useContext(UserContext)
 
+  // ユーザアイコン情報一覧を取得する関数
+  const getIconList = async() => {
+    const icons = await getUserIcons(userInfo.token);
+
+    console.log('icons:', icons)
+  }
+
   useEffect(() => {
-    fetch(hostUrl + `/user/token=${userInfo.token}`)  // NestJS APIのURL
-      .then((res) => res.json())
-      .then((data: UserIcon[]) => {
-        console.log("UserIcon[]:", data)
-        setUserIcons(data);
-      })
-      .catch((err) => {
-        console.error('アイコン取得エラー:', err);
-      });
+    // fetch(hostUrl + `/user/token=${userInfo.token}`)  // NestJS APIのURL
+    //   .then((res) => res.json())
+    //   .then((data: UserIcon[]) => {
+    //     console.log("UserIcon[]:", data)
+    //     setUserIcons(data);
+    //   })
+    //   .catch((err) => {
+    //     console.error('アイコン取得エラー:', err);
+    //   });
+    getIconList()
   }, []);
 
   return (
