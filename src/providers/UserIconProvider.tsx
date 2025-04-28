@@ -1,7 +1,7 @@
 import { useState, createContext, Dispatch, SetStateAction, useEffect, useContext } from "react";
 import React from "react";
-import { hostUrl } from "../api/hostUrl";
-import { UserContext } from "./UserProvider";
+import { hostUrl } from "../api/hostUrl.ts";
+import { UserContext } from "./UserProvider.tsx";
 
 // 保持する情報の型
 type UserIcon = {
