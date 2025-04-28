@@ -9,7 +9,7 @@ import { UserIconContext } from "../providers/UserIconProvider.tsx";
 
 
 export default function Post(props: any) {
-  const { postOwnerId, post } = props;
+  const { postOwnerName, post } = props;
 
   const { userInfo } = useContext(UserContext);
   // const { loginUser } = useContext(LoginUserContext);
@@ -17,15 +17,15 @@ export default function Post(props: any) {
   const { userIcons, setUserIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
 
-  const getPostOwnerImgsrc = async () => {
-    try {
-      const postOwner = await getUser(postOwnerId, userInfo.token)
-      console.log("postOwner:", postOwner)
-      setPostOwnerImgSrc(postOwner.imgSrc)
-    } catch (error) {
-      console.error("Error fetching post owner image:", error);
-    }
-  }
+  // const getPostOwnerImgsrc = async () => {
+  //   try {
+  //     const postOwner = await getUser(postOwnerId, userInfo.token)
+  //     console.log("postOwner:", postOwner)
+  //     setPostOwnerImgSrc(postOwner.imgSrc)
+  //   } catch (error) {
+  //     console.error("Error fetching post owner image:", error);
+  //   }
+  // }
 
   const getDateStr = (dateObj: Date) => {
     const year = post.created_at.getFullYear();
@@ -48,9 +48,21 @@ export default function Post(props: any) {
     });
   }
 
-  // useEffect (() => {
-  //   getPostOwnerImgsrc()
-  // }, [postOwnerId])
+  const getImgSrc = (userName: string) => {
+    const userIcon = userIcons.find(icon => icon.userName === userName);
+    if (userIcon) {
+      setPostOwnerImgSrc(userIcon.imgSrc)
+      return userIcon.imgSrc;
+    }
+    else {
+      return 'https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true'
+    }
+  }
+  
+  // 例: idが2のimgSrcを取り出す
+  // const postOwnerImgSrc = getImgSrc(postOwnerName);
+
+  getImgSrc(postOwnerName);
   
   return (
     <SPost>
