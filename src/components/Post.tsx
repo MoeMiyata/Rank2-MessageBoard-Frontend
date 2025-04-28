@@ -2,30 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 import styled from "styled-components";
 import { DeletePost } from './DeletePost.tsx';
-// import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
-import { getUser } from '../api/User.tsx';
-import { UserContext } from '../providers/UserProvider.tsx';
 import { UserIconContext } from "../providers/UserIconProvider.tsx";
 
 
 export default function Post(props: any) {
   const { postOwnerName, post } = props;
 
-  const { userInfo } = useContext(UserContext);
-  // const { loginUser } = useContext(LoginUserContext);
-  // const [postOwnerImgSrc, setPostOwnerImgSrc] = useState<string>('https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true');
-  const { userIcons, setUserIcons } = useContext(UserIconContext);
+  const { userIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
-
-  // const getPostOwnerImgsrc = async () => {
-  //   try {
-  //     const postOwner = await getUser(postOwnerId, userInfo.token)
-  //     console.log("postOwner:", postOwner)
-  //     setPostOwnerImgSrc(postOwner.imgSrc)
-  //   } catch (error) {
-  //     console.error("Error fetching post owner image:", error);
-  //   }
-  // }
 
   const getDateStr = (dateObj: Date) => {
     const year = post.created_at.getFullYear();
@@ -51,21 +35,15 @@ export default function Post(props: any) {
   const getImgSrc = (userName: string) => {
     const userIcon = userIcons.find(icon => icon.name === userName);
     if (userIcon) {
-      // setPostOwnerImgSrc(userIcon.imgSrc)
-      console.log('return userIcon.imgSrc')
       return userIcon.imgSrc;
     }
     else {
-      console.log('return default')
       return 'https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true'
     }
   }
   
-  // 例: idが2のimgSrcを取り出す
   const postOwnerImgSrc = getImgSrc(postOwnerName);
 
-  // getImgSrc(postOwnerName);
-  
   return (
     <SPost>
       <SPostHeader>
