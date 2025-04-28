@@ -94,25 +94,30 @@ export default function PageLink() {
 
     const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
 
+    // 次ページがあるかを確認する関数
     const judgeOfNextPage = async (page: number) => {
       const posts = await getList(userInfo.token, page);
       console.log("judgeOfNextPage(posts):", posts);
       setIsExistNextPage(Array.isArray(posts) && posts.length > 0);
     }
 
-    // ページ遷移前に次ページの判定を行う
+    // ページ遷移前に次ページの判定を行う関数
     const onBeforePageClick = async () => {
+        // 現在のページ番号から前のページに移動
         setPageNumber((prevPage) => prevPage - 10);
     }
 
+    // ページ遷移後に次ページの判定を行う関数
     const onNextPageClick = async () => {
+        // 現在のページ番号から次のページに移動
         setPageNumber((prevPage) => prevPage + 10);
     }
 
-    // `pageNumber`が変更されるたびに次ページが存在するかを再判定
+    // `useEffect` で `pageNumber` が変更されたときに次ページを確認
     useEffect(() => {
-        judgeOfNextPage(pageNumber + 10);  // 次ページを判定するために現在のpageNumber+10を渡す
-    }, [pageNumber]);
+        const nextPage = pageNumber + 10;
+        judgeOfNextPage(nextPage); // 次のページが存在するか判定
+    }, [pageNumber]);  // pageNumberが変更されたときに再実行
 
     return (
         <SPageLink>
