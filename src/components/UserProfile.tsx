@@ -33,17 +33,17 @@ export default function UserProfile() {
   const [ profileImageUrl, setProfileImageUrl ] = useState(''); ///後でloginUser.ImgSrcに変更
   const [ profileImage, setProfileImage ] = useState<File | null>(null);
 
-  // 初回レンダリング時にloginUserの情報入力
-  useEffect(() => {
-    if (loginUser) {
-      setName(loginUser.name);
-      setEmail(loginUser.email);
-      setBirthday(loginUser.birthday!);
-      setAddress(loginUser.address);
-      setTel(loginUser.tel);
-      setProfileImageUrl(loginUser.imgSrc); // これが初期表示の画像URL
-    }
-  }, [loginUser]);
+  // // 初回レンダリング時にloginUserの情報入力
+  // useEffect(() => {
+  //   if (loginUser) {
+  //     setName(loginUser.name);
+  //     setEmail(loginUser.email);
+  //     setBirthday(loginUser.birthday!);
+  //     setAddress(loginUser.address);
+  //     setTel(loginUser.tel);
+  //     setProfileImageUrl(loginUser.imgSrc); // これが初期表示の画像URL
+  //   }
+  // }, [loginUser]);
 
   const refreshAccessToken = async (
     refreshToken: string,
@@ -265,7 +265,7 @@ export default function UserProfile() {
                           id="name"
                           type="name"
                           placeholder={loginUser.name}
-                          value={name}
+                          // value={name}
                           onChange={(evt) => setName(evt.target.value)}
                       />
                       </SUserProfileInput>
@@ -297,7 +297,7 @@ export default function UserProfile() {
                           id="email"
                           type="email"
                           placeholder={loginUser.email}
-                          value={email}
+                          // value={email}
                           onChange={(evt) => setEmail(evt.target.value)}
                       />
                       </SUserProfileInput>
