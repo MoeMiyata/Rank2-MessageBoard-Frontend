@@ -1,13 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 import styled from "styled-components";
 import { DeletePost } from './DeletePost.tsx';
-import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
+// import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
+import { getUser } from '../api/User.tsx';
+import { UserContext } from '../providers/UserProvider.tsx';
 
 export default function Post(props: any) {
-  const { children, post } = props;
+  const { postOwnerId, post } = props;
 
-  const { loginUser } = useContext(LoginUserContext);
+  const { userInfo } = useContext(UserContext);
+  // const { loginUser } = useContext(LoginUserContext);
+  const [postOwnerImgSrc, setPostOwnerImgSrc] = useState<string>('https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true');
+
+  const getPostOwnerImgsrc = async () => {
+    const postOwner = await getUser(postOwnerId, userInfo.token)
+    setPostOwnerImgSrc(postOwner.imgSrc)
+    console.log("postOwner:", postOwner)
+  }
 
   const getDateStr = (dateObj: Date) => {
     const year = post.created_at.getFullYear();
@@ -29,6 +39,10 @@ export default function Post(props: any) {
       )
     });
   }
+
+  useEffect (() => {
+    getPostOwnerImgsrc()
+  }, [])
   
   return (
     <SPost>
@@ -36,7 +50,7 @@ export default function Post(props: any) {
         {/* <SPostHeaderRow> */}
           
         <SPostHeaderBox>
-          <SUserProfileImage src={loginUser.imgSrc} alt='profileImage'/>
+          <SUserProfileImage src={postOwnerImgSrc} alt='profileImage'/>
         </SPostHeaderBox>
         <SPostHeaderBox>
           <SNameDateBox>
