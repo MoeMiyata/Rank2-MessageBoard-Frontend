@@ -33,7 +33,7 @@ export const UserIconProvider = (props: any) => {
     setUserIcons(icons)
   }
 
-  useEffect(() => {
+  // useEffect(() => {
     // fetch(hostUrl + `/user/token=${userInfo.token}`)  // NestJS APIのURL
     //   .then((res) => res.json())
     //   .then((data: UserIcon[]) => {
@@ -44,7 +44,7 @@ export const UserIconProvider = (props: any) => {
     //     console.error('アイコン取得エラー:', err);
     //   });
     getIconList()
-  }, []);
+  // }, []);
 
   return (
     <>
