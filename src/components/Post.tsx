@@ -39,8 +39,11 @@ export default function Post(props: any) {
           <SUserProfileImage src={loginUser.imgSrc} alt='profileImage'/>
         </SPostHeaderBox>
         <SPostHeaderBox>
+          <div>
+
           <SName>{post.user_name}</SName>
           <SDate>{getDateStr(post.craeted_at)}</SDate>
+          </div>
         </SPostHeaderBox>
 
         {/* メッセージの削除ボタン */}
@@ -74,13 +77,15 @@ const SPostContent = styled.div`
   margin: 10px;
 `
 
-const SName = styled.span`
+// const SName = styled.span`
+const SName = styled.div`
   // font-size: small;
   font-size: medium;
   color: #000044;
 `
 
-const SDate = styled.span`
+// const SDate = styled.span`
+const SDate = styled.div`
   // margin-left: 8px;
   font-size: small;
   color: #000044;
@@ -100,5 +105,6 @@ const SUserProfileImage = styled.img`
 const SPostHeaderBox = styled.div`
 display: flex;
 justify-content: center;
+align-items: center;
 padding: 10px;
 `;
