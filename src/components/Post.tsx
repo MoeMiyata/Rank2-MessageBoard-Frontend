@@ -13,7 +13,7 @@ export default function Post(props: any) {
 
   const { userInfo } = useContext(UserContext);
   // const { loginUser } = useContext(LoginUserContext);
-  const [postOwnerImgSrc, setPostOwnerImgSrc] = useState<string>('https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true');
+  // const [postOwnerImgSrc, setPostOwnerImgSrc] = useState<string>('https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true');
   const { userIcons, setUserIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
 
@@ -51,7 +51,7 @@ export default function Post(props: any) {
   const getImgSrc = (userName: string) => {
     const userIcon = userIcons.find(icon => icon.userName === userName);
     if (userIcon) {
-      setPostOwnerImgSrc(userIcon.imgSrc)
+      // setPostOwnerImgSrc(userIcon.imgSrc)
       return userIcon.imgSrc;
     }
     else {
@@ -60,9 +60,9 @@ export default function Post(props: any) {
   }
   
   // 例: idが2のimgSrcを取り出す
-  // const postOwnerImgSrc = getImgSrc(postOwnerName);
+  const postOwnerImgSrc = getImgSrc(postOwnerName);
 
-  getImgSrc(postOwnerName);
+  // getImgSrc(postOwnerName);
   
   return (
     <SPost>
