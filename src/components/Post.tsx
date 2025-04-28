@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ReactNode } from 'react';
 import styled from "styled-components";
 import { DeletePost } from './DeletePost.tsx';
+import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 
 export default function Post(props: any) {
   const { children, post } = props;
+
+  const { loginUser } = useContext(LoginUserContext);
 
   const getDateStr = (dateObj: Date) => {
     const year = post.created_at.getFullYear();
@@ -30,6 +33,8 @@ export default function Post(props: any) {
   return (
     <SPost>
       <SPostHeader>
+        <></>
+        <SUserProfileImage src={loginUser.imgSrc} alt='profileImage'/>
         <SName>{post.user_name}</SName>
         <SDate>{getDateStr(post.craeted_at)}</SDate>
 
@@ -70,3 +75,10 @@ const SDate = styled.span`
   font-size: small;
   color: #000044;
 `
+
+const SUserProfileImage = styled.img`
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+`;
