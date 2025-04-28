@@ -10,7 +10,7 @@ import { getList } from "../api/Post.tsx";
 
 
 import PageLink from './PageLink.tsx';
-
+import { UserIconProvider } from "../providers/UserIconProvider.tsx";
 
 export default function PostList() {
   const { postList } = useContext(PostListContext);
@@ -49,12 +49,14 @@ export default function PostList() {
 
   return (
     <>
-    <SPostList>
-      {postList.map((p) => (
-        <Post key={p.id} postOwnerId={p.id} post={p} />
-      ))}
-    <PageLink></PageLink>
-    </SPostList>
+    <UserIconProvider>
+      <SPostList>
+        {postList.map((p) => (
+          <Post key={p.id} postOwnerId={p.id} post={p} />
+        ))}
+      <PageLink></PageLink>
+      </SPostList>
+    </UserIconProvider>
     
     </>
   );

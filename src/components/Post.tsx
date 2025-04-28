@@ -5,6 +5,8 @@ import { DeletePost } from './DeletePost.tsx';
 // import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 import { getUser } from '../api/User.tsx';
 import { UserContext } from '../providers/UserProvider.tsx';
+import { UserIconContext } from "../providers/UserIconProvider.tsx";
+
 
 export default function Post(props: any) {
   const { postOwnerId, post } = props;
@@ -12,6 +14,8 @@ export default function Post(props: any) {
   const { userInfo } = useContext(UserContext);
   // const { loginUser } = useContext(LoginUserContext);
   const [postOwnerImgSrc, setPostOwnerImgSrc] = useState<string>('https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true');
+  const { userIcons, setUserIcons } = useContext(UserIconContext);
+  console.log('userIcons:', userIcons)
 
   const getPostOwnerImgsrc = async () => {
     try {
@@ -44,9 +48,9 @@ export default function Post(props: any) {
     });
   }
 
-  useEffect (() => {
-    getPostOwnerImgsrc()
-  }, [postOwnerId])
+  // useEffect (() => {
+  //   getPostOwnerImgsrc()
+  // }, [postOwnerId])
   
   return (
     <SPost>
