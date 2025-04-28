@@ -33,13 +33,21 @@ export default function Post(props: any) {
   return (
     <SPost>
       <SPostHeader>
-        <></>
-        <SUserProfileImage src={loginUser.imgSrc} alt='profileImage'/>
-        <SName>{post.user_name}</SName>
-        <SDate>{getDateStr(post.craeted_at)}</SDate>
+        {/* <SPostHeaderRow> */}
+          
+        <SPostHeaderBox>
+          <SUserProfileImage src={loginUser.imgSrc} alt='profileImage'/>
+        </SPostHeaderBox>
+        <SPostHeaderBox>
+          <SName>{post.user_name}</SName>
+          <SDate>{getDateStr(post.craeted_at)}</SDate>
+        </SPostHeaderBox>
 
         {/* メッセージの削除ボタン */}
-        <DeletePost deleteid={post.id} postUserName={post.user_name}/>
+        <SPostHeaderBox>
+          <DeletePost deleteid={post.id} postUserName={post.user_name}/>
+        </SPostHeaderBox>
+        {/* </SPostHeaderRow> */}
       </SPostHeader>
 
       <SPostContent>{getLines(post.content)}</SPostContent>
@@ -60,6 +68,7 @@ const SPost = styled.div`
 
 const SPostHeader = styled.div`
   margin: 10px;
+  display: flex;
 `
 const SPostContent = styled.div`
   margin: 10px;
@@ -81,4 +90,13 @@ const SUserProfileImage = styled.img`
   width: 50px;
   height: 50px;
   object-fit: cover;
+`;
+
+// const SPostHeaderRow = styled.div`
+//   display: flex;
+// `;
+
+const SPostHeaderBox = styled.div`
+  padding: 10px;
+  background-color: lightgray;
 `;
