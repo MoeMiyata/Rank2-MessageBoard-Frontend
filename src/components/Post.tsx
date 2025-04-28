@@ -15,7 +15,7 @@ export default function Post(props: any) {
 
   const getPostOwnerImgsrc = async () => {
     try {
-      const postOwner = await getUser(userInfo.id, userInfo.token)
+      const postOwner = await getUser(postOwnerId, userInfo.token)
       console.log("postOwner:", postOwner)
       setPostOwnerImgSrc(postOwner.imgSrc)
     } catch (error) {
