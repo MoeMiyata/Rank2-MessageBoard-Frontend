@@ -75,12 +75,13 @@ const SPostContent = styled.div`
 `
 
 const SName = styled.span`
-  font-size: small;
+  // font-size: small;
+  font-size: medium;
   color: #000044;
 `
 
 const SDate = styled.span`
-  margin-left: 8px;
+  // margin-left: 8px;
   font-size: small;
   color: #000044;
 `
@@ -97,6 +98,7 @@ const SUserProfileImage = styled.img`
 // `;
 
 const SPostHeaderBox = styled.div`
-  padding: 10px;
-  background-color: lightgray;
+display: flex;
+justify-content: center;
+padding: 10px;
 `;
