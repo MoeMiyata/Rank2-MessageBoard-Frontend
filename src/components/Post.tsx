@@ -49,7 +49,7 @@ export default function Post(props: any) {
   }
 
   const getImgSrc = (userName: string) => {
-    const userIcon = userIcons.find(icon => icon.userName === userName);
+    const userIcon = userIcons.find(icon => icon.name === userName);
     if (userIcon) {
       // setPostOwnerImgSrc(userIcon.imgSrc)
       console.log('return userIcon.imgSrc')
