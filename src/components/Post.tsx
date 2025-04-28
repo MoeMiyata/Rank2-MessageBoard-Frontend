@@ -42,7 +42,7 @@ export default function Post(props: any) {
 
   useEffect (() => {
     getPostOwnerImgsrc()
-  }, [])
+  }, [postOwnerId])
   
   return (
     <SPost>
