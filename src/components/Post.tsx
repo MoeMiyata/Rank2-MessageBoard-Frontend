@@ -52,9 +52,11 @@ export default function Post(props: any) {
     const userIcon = userIcons.find(icon => icon.userName === userName);
     if (userIcon) {
       // setPostOwnerImgSrc(userIcon.imgSrc)
+      console.log('return userIcon.imgSrc')
       return userIcon.imgSrc;
     }
     else {
+      console.log('return default')
       return 'https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true'
     }
   }
