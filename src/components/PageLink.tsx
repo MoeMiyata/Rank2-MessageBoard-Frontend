@@ -4,7 +4,8 @@ import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 import { UserContext } from '../providers/UserProvider.tsx';
 import { getList } from '../api/Post.tsx';
 
-export default function PageLink() {
+export default function PageLink( props ) {
+  const { postList } = props;
   const { userInfo } = useContext(UserContext);
   const { pageNumber, setPageNumber } = useContext(PageLinkContext);
   const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
@@ -23,19 +24,19 @@ export default function PageLink() {
 
 
   const onBeforePageClick = async () => {
-      // await setPageNumber((prevPage) => prevPage -= 10);
-      setPageNumber((prevPage) => prevPage -= 10);
+    // await setPageNumber((prevPage) => prevPage -= 10);
+    setPageNumber((prevPage) => prevPage -= 10);
   }
 
   const onNextPageClick = async () => {
-      // await setPageNumber((prevPage) => prevPage += 10);
-      setPageNumber((prevPage) => prevPage += 10);
+    // await setPageNumber((prevPage) => prevPage += 10);
+    setPageNumber((prevPage) => prevPage += 10);
   }
 
 
   useEffect(() => {
-      judgeOfNextPage();
-  }, []); 
+    judgeOfNextPage();
+  }, [postList]); 
   
 
 	return (

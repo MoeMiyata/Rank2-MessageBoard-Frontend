@@ -54,7 +54,7 @@ export default function PostList() {
         {postList.map((p) => (
           <Post key={p.id} postOwnerName={p.user_name} post={p} />
         ))}
-      <PageLink></PageLink>
+      <PageLink postList={postList}></PageLink>
       </SPostList>
     </UserIconProvider>
     
