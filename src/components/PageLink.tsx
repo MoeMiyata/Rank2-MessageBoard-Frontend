@@ -5,38 +5,38 @@ import { UserContext } from '../providers/UserProvider.tsx';
 import { getList } from '../api/Post.tsx';
 
 export default function PageLink() {
-    const { userInfo } = useContext(UserContext);
-    const { pageNumber, setPageNumber } = useContext(PageLinkContext);
-    const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
+  const { userInfo } = useContext(UserContext);
+  const { pageNumber, setPageNumber } = useContext(PageLinkContext);
+  const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
 
-    // const judgeOfNextPage = async () => {
-    //     const posts = await getList(userInfo.token, pageNumber+10); // +20にしているのはstateの更新とレンダリングのタイミングが合わないので帳尻合わせで10->20に変更  -> 合わなかったのでまた10に戻した
-    //     console.log("judgeOfNextPage(posts):", posts);
-    //     setIsExistNextPage(posts.length > 0);
-    // }
-    const judgeOfNextPage = async () => {
-      const nextPage = pageNumber + 10;
-      const posts = await getList(userInfo.token, nextPage);
-      console.log("judgeOfNextPage(posts):", posts);
-      setIsExistNextPage(Array.isArray(posts) && posts.length > 0);
+  // const judgeOfNextPage = async () => {
+  //     const posts = await getList(userInfo.token, pageNumber+10); // +20にしているのはstateの更新とレンダリングのタイミングが合わないので帳尻合わせで10->20に変更  -> 合わなかったのでまた10に戻した
+  //     console.log("judgeOfNextPage(posts):", posts);
+  //     setIsExistNextPage(posts.length > 0);
+  // }
+  const judgeOfNextPage = async () => {
+    const nextPage = pageNumber + 10;
+    const posts = await getList(userInfo.token, nextPage);
+    console.log("judgeOfNextPage(posts):", posts);
+    setIsExistNextPage(Array.isArray(posts) && posts.length > 0);
   }
 
 
-    const onBeforePageClick = async () => {
-        // await setPageNumber((prevPage) => prevPage -= 10);
-        setPageNumber((prevPage) => prevPage -= 10);
-    }
+  const onBeforePageClick = async () => {
+      // await setPageNumber((prevPage) => prevPage -= 10);
+      setPageNumber((prevPage) => prevPage -= 10);
+  }
 
-    const onNextPageClick = async () => {
-        // await setPageNumber((prevPage) => prevPage += 10);
-        setPageNumber((prevPage) => prevPage += 10);
-    }
+  const onNextPageClick = async () => {
+      // await setPageNumber((prevPage) => prevPage += 10);
+      setPageNumber((prevPage) => prevPage += 10);
+  }
 
 
-    useEffect(() => {
-        judgeOfNextPage();
-    }, [pageNumber]); 
-    
+  useEffect(() => {
+      judgeOfNextPage();
+  }, []); 
+  
 
 	return (
         <SPageLink>
