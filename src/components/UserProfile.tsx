@@ -112,7 +112,7 @@ export default function UserProfile() {
 
     try {
       const response = await dbx.filesUpload({
-        path: '/' + loginUser.name + '_profileImage.jpg',
+        path: '/userID' + userInfo.id + '_profileImage.jpg',
         contents: profileImage,
         mode: { '.tag': 'overwrite' }, // 'overwrite' モードを指定
       });
