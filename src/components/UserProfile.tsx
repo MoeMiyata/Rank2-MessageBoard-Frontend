@@ -344,7 +344,6 @@ export default function UserProfile() {
             </SUserProfileRow>
 
             <SUserProfileRow>
-                {/* <h1>生年月日:  登録なし</h1> */}
                 {isEditMode ? 
                   <>
                     <SUserProfileLabel>
