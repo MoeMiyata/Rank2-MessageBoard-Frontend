@@ -33,17 +33,6 @@ export default function UserProfile() {
   const [ profileImageUrl, setProfileImageUrl ] = useState(''); ///後でloginUser.ImgSrcに変更
   const [ profileImage, setProfileImage ] = useState<File | null>(null);
 
-  // 初回レンダリング時にloginUserの情報入力
-  // useEffect(() => {
-    // if (loginUser) {
-    //   setName(loginUser.name);
-    //   setEmail(loginUser.email);
-    //   setBirthday(loginUser.birthday!);
-    //   setAddress(loginUser.address);
-    //   setTel(loginUser.tel);
-    //   setProfileImageUrl(loginUser.imgSrc); // これが初期表示の画像URL
-    // }
-  // }, [loginUser.imgSrc]);
 
   const refreshAccessToken = async (
     refreshToken: string,
@@ -78,13 +67,7 @@ export default function UserProfile() {
       return;
     }
   };
-  
-  // const accessToken: string = 'sl.u.AFr6UfeWAIAcDRKXDNvSFpGDpnvoVC2x_3-MivMz5IcQ11aUuScwFkrGWz7aHUkBiEz23Yj129rtfPVzkz3fMbmMcRS2BG2tvEJ7ymW3aKJmi3lJqE2vzVjnt2GFokxuimlqgtMrQVw9mGOLZri_kcmsfsWZuXg32HL3QvtV-rxDoxOHX4gfManKH8U3t7VRPbuhdtaxSOPXxLjOu_b0hdDEKsFNjuK-3Du_9Ik9xge5jKbyP_OZGE0oavLvCyh9RloU-5XAltzh4C5X3fYmGV5cBa5lBfo9pHpXpaRkCSEVBv2P9FBOi7fC-UUpFNZXWCkQ7NiWBd3eD4q7pP1456cf5wLHmDxc9iRR35LEFhZq_fz5sQc2ohwi8qxIoa4URUDDI3Y8pwP1qZG3WK8urXB8b8KjnT_7imHV_8ZNhMbp8HyD1_BLWsRVqPbrOfrCKDLGSUnKw5VWmxLR1aDaL6gPQEuRKBLAWjVyUinjPofcSeqiCGK8lvwAHX6hMZx_3DiwmuamDA0mbWgutmhDMcZV9UMgnZYUpktwOEZMQ4uaXCt9gG16pnD_2zitubx-8Efg4ML54YVEu-OOzw9ahIe7nDhTJvBFQJkuytvXLCqJD3UCJMAFQ-BEgGsh-leH3Jl8FF7EYwi32vutLzAQGd6yKxyggSkQvCdp0mrPy6fQgjI4ns0lsXyowKhysNsJRhERMZjjHpdymKhMVdXVn_5eYatqnlxuSsohTjfAUHwDyd3IETOG3Rxo1zkHpccRMVzxLpHUQj3E0iOCTG3wGcsyR5fuizbIepPctK67XuPrbqaI1i_nPy9JU1T078saqL5C23HkQxUrL7EvCcg4aZsGgY9AgK4F6mXsAp7WZZTrXJwcHDZ-UrQ2Pkb0zwXcKzDnHJw0u0_omqx7LDegcFzZB_6rpUwXtH6QbarUy-MFkAmpSsoCTcFWV5EANf7ILlIS8viwi-3HZ9D7GnRMY1h2-on-HIlSsjHsOS-yL26V4mriUNJTuEbT3lO8xklmWiWCPDhH4ejVS9jpVG8AarnbGwL18_Ljqxvr5g2GFlPpleqLDp0inu2T5BSDcJdwXhvChz4oejHg_GFXBgC1UFC238XoUK2omLlnGNbXKEPIzJQPwQCt4Lz9BctdjPZLzVRCrxbn0i3pKYvXV4GaXkDigGMfSMp3d_qpz4KdcVXYNrqfzK0GC7vG956l4dD5TVMMv_xkZ3bCiUWXUmoV6hA0iJi7wXI51gCJI0ZjmD9MS_wYV-9_V-hiO1EjyalTlvDYy5o3Ll3LNNUa3w2Kul4LGYbawX0CEMUEF-x5kf2Cyym9PN0JMI6vA-f6gJLF8khDBIVIFHQqrhUWh0vkq3UuOoTi8ridJTEdpzM9m9ssVojraODR6kkOsyU_ge69_BrXWxQH4Ptpz0thfGR8fHKYDgkyxmI5EBJsgdjoY7ysuA';
-  // const accessToken = await refreshAccessToken(
-  //   "lpGMfLpOc8IAAAAAAAAAAe9qa0hrZoXbH-plrBcsWc3sfqk8SYAl9ZHOz4hXHOL0",
-  //   "j3li7gaq8uneq5y",
-  //   "ev12iix1eberer6"
-  // );
+
 
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
