@@ -440,9 +440,11 @@ export default function UserProfile() {
               Back to Main
             </SMainButton>
           }
-          <SDeleteButton type="button" onClick={onUserProfileDeleteUserClick}>
-            Delete account
-          </SDeleteButton>
+          <div>
+            <SDeleteButton type="button" onClick={onUserProfileDeleteUserClick}>
+              Delete account
+            </SDeleteButton>
+          </div>
         </SUserProfileRow>
     </>
   );
@@ -534,11 +536,16 @@ const SRegisterButton = styled.button`
 `;
 
 const SDeleteButton = styled.button`
-  background-color: #444444;
-  color: #f0f0f0;
-  padding: 4px 16px;
-  border-radius: 8px;
-  cursor: pointer; 
+  border: none;
+  background: none;
+  color: #5aa1fa;
+  text-decoration: none;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline; 
+  }
 `;
 
 const SUserProfileLabel = styled.span`
