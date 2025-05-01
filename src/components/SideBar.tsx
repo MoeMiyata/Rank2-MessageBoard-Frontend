@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState, useContext } from "react";
 import styled from "styled-components";
+
+import useSound from 'use-sound';
+
 import { UserContext } from "../providers/UserProvider.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
@@ -13,6 +16,8 @@ export default function SideBar() {
   const { loginUser } = useContext(LoginUserContext);
   const { pageNumber } = useContext(PageLinkContext);
   const { setPostList } = useContext(PostListContext); 
+
+  const [playSend] = useSound(`${process.env.PUBLIC_URL}/消音・しゅぽん.mp3`, { playbackRate: 1 });
 
   const getPostList = async () => {
     const posts = await getList(userInfo.token, pageNumber);
@@ -36,6 +41,7 @@ export default function SideBar() {
   const onSendClick = async () => {
 	  await post(String(userInfo.id), userInfo.token, msg);
     await getPostList();
+    playSend()
   };
 
   return (
