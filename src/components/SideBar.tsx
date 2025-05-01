@@ -17,7 +17,7 @@ export default function SideBar() {
   const { pageNumber } = useContext(PageLinkContext);
   const { setPostList } = useContext(PostListContext); 
 
-  const [playSend] = useSound('/消音・しゅぽん.mp3', { playbackRate: 1 });
+  const [playSend] = useSound('/mute_shupon.mp3', { playbackRate: 1 });
 
   const getPostList = async () => {
     const posts = await getList(userInfo.token, pageNumber);
