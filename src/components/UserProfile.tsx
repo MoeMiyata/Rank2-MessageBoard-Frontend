@@ -212,6 +212,10 @@ export default function UserProfile() {
     }
   };
 
+  const onUserProfileDeleteUserClick = () => {
+    console.log("delete user")
+  }
+
   return (
     <>
         <SHeader>
@@ -436,7 +440,9 @@ export default function UserProfile() {
               Back to Main
             </SMainButton>
           }
-            
+          <SDeleteButton type="button" onClick={onUserProfileDeleteUserClick}>
+            Delete account
+          </SDeleteButton>
         </SUserProfileRow>
     </>
   );
@@ -525,6 +531,14 @@ const SRegisterButton = styled.button`
     background-color: #aaaaaa;
     cursor: not-allowed; 
   }
+`;
+
+const SDeleteButton = styled.button`
+  background-color: #444444;
+  color: #f0f0f0;
+  padding: 4px 16px;
+  border-radius: 8px;
+  cursor: pointer; 
 `;
 
 const SUserProfileLabel = styled.span`
