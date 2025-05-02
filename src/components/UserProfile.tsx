@@ -479,7 +479,7 @@ interface UserProfileProps {
 }
 
 const STitle = styled.div<UserProfileProps>`
-  padding-top: 8px;
+  padding-top: 5px;
   padding-bottom: 8px;
   // padding-left: 22px;
   padding-left: ${({ isEditMode }) => (isEditMode ? "67px" : "20px")};
@@ -489,7 +489,7 @@ const STitle = styled.div<UserProfileProps>`
 
 const SEdit = styled.div`
   // padding-top: 8px;
-  padding-top: 6px;
+  padding-top: 4px;
   padding-bottom: 8px;
   padding-right: 4px;
   text-align: center;
@@ -596,4 +596,6 @@ const SLogo = styled.div`
   bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
+  font-weight: bold;
+  font-size: large;
 `;

@@ -75,7 +75,7 @@ const SRightItem = styled.div`
 `
 
 const SName = styled.div`
-  padding-top: 8px;
+  padding-top: 7px;
   padding-bottom: 8px;
   text-align: center;
   margin-right: 8px;
@@ -84,7 +84,7 @@ const SName = styled.div`
 
 const SLogout = styled.div`
   // padding-top: 8px;
-  padding-top: 6px;
+  padding-top: 5px;
   padding-bottom: 8px;
   text-align: center;
   cursor: pointer;  // ポインタ追加
