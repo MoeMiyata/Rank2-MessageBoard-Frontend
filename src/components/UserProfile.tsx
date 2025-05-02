@@ -219,7 +219,7 @@ export default function UserProfile() {
   return (
     <>
         <SHeader>
-            <SLogo isEditMode={isEditMode}>User Profile</SLogo>
+            <STitle isEditMode={isEditMode}>User Profile</STitle>
             <SRightItem>
               <SEdit onClick={onEditModeClick}>{isEditMode ? "キャンセル" : "編集"}</SEdit>
             </SRightItem>
@@ -445,6 +445,11 @@ export default function UserProfile() {
               Delete account
             </SDeleteButton>
           </div>
+          <div>
+            <SLogo onClick={onUserProfileDeleteUserClick}>
+              - MicroPost -
+            </SLogo>
+          </div>
         </SUserProfileRow>
     </>
   );
@@ -473,7 +478,7 @@ interface UserProfileProps {
   isEditMode: boolean;
 }
 
-const SLogo = styled.div<UserProfileProps>`
+const STitle = styled.div<UserProfileProps>`
   padding-top: 8px;
   padding-bottom: 8px;
   // padding-left: 22px;
@@ -536,6 +541,8 @@ const SRegisterButton = styled.button`
 `;
 
 const SDeleteButton = styled.button`
+  position: fixed;
+  bottom: 50px;
   border: none;
   background: none;
   color: #5aa1fa;
@@ -580,4 +587,9 @@ const SUserProfileImage = styled.img`
   width: 150px;
   height: 150px;
   object-fit: cover;
+`;
+
+const SLogo = styled.div`
+  position: fixed;
+  bottom: 10px;
 `;
