@@ -542,7 +542,9 @@ const SRegisterButton = styled.button`
 
 const SDeleteButton = styled.button`
   position: fixed;
-  bottom: 50px;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
   border: none;
   background: none;
   color: #5aa1fa;
@@ -591,5 +593,7 @@ const SUserProfileImage = styled.img`
 
 const SLogo = styled.div`
   position: fixed;
-  bottom: 10px;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
