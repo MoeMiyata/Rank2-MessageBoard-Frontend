@@ -24,17 +24,19 @@ export const DeleteUser = () => {
     const onDeleteUserClick = async () => {
       console.log("delete user")
       onClickSwitchDialog()
+      navigate("/")
     }
 
     return (
       <>
-        <SDeleteUserButton type="button" onClick={onDeleteUserClick}>
+        <SDeleteUserButton type="button" onClick={onClickSwitchDialog}>
             Delete account
         </SDeleteUserButton>
         { isOpenDialog && (
           <div>
             <h2>アカウントを削除しますか？</h2>
             <p>※削除後この内容は取り消せません。</p>
+            <button onClick={onDeleteUserClick}>削除する</button>
             <button onClick={onClickSwitchDialog}>閉じる</button>
           </div>
           )}
