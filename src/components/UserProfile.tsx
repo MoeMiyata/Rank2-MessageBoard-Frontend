@@ -7,7 +7,6 @@ import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 import { getUser, updateUser } from "../api/User.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { DeleteUser } from "./DeleteUser.tsx";
-import { DeleteUserDialog } from "./DeleteUserDialog.tsx";
 
 
 export default function UserProfile() {
@@ -440,7 +439,6 @@ export default function UserProfile() {
             </SMainButton>
           }
           <div>
-            {/* <DeleteUserDialog/> */}
             <DeleteUser/>
           </div>
           <div>

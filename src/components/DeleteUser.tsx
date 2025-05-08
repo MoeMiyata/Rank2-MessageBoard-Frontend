@@ -24,7 +24,7 @@ export const DeleteUser = () => {
     const onDeleteUserClick = async () => {
       console.log("delete user")
       onClickSwitchDialog()
-    //   await deleteUser(userInfo.token, userInfo.id);
+      await deleteUser(userInfo.token, userInfo.id);
       navigate("/")
     }
 
@@ -37,7 +37,7 @@ export const DeleteUser = () => {
           <SDeleteDialogContainer>
             <SDeleteDialog>
               <p style={{ marginBottom: 0 }}>アカウントを削除しますか？</p>
-              <p style={{ marginTop: 0 , fontSize: "small"}}>※ 削除後この操作は取り消せません。</p>
+              <p style={{ marginTop: 0 , fontSize: "small"}}>※ 削除後この操作は取り消せません</p>
               <SDeleteDialogButton buttonText="削除" onClick={onDeleteUserClick}>削除</SDeleteDialogButton>
               <SDeleteDialogButton buttonText="キャンセル" onClick={onClickSwitchDialog}>キャンセル</SDeleteDialogButton>
             </SDeleteDialog>
@@ -90,8 +90,10 @@ const SDeleteDialogButton = styled.button<{ buttonText: string }>`
   background-color:  #f8f8f8;
   // padding: 2px 10px;
   padding: ${({ buttonText }) => buttonText === "削除" ? "2px 30px 2px 10px" : "2px 10px 2px 30px"};
+  cursor: pointer;
 
   &:hover {
-    text-decoration: underline; 
+    // text-decoration: underline; 
+    color: #5AA1FA;
   }
 `;
