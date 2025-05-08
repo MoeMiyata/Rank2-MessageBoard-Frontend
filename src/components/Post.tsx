@@ -54,7 +54,7 @@ export default function Post(props: any) {
         </SPostHeaderBox>
         <SPostHeaderBox>
           <SNameDateBox>
-            <SName>{post.user_name}</SName>
+            <SName>{post.user_name ? post.user_name : "deleted user"}</SName>
             <SDate>{getDateStr(post.craeted_at)}</SDate>
           </SNameDateBox>
         </SPostHeaderBox>
