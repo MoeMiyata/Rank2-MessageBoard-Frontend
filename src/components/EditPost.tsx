@@ -53,7 +53,7 @@ export const EditPost = (props: any) => {
 const SEditPostButton = styled.button<{ isEditPost: boolean }>`
 //   background-color: #222222;
 //   color: #FAFAFA;
-  color: #222222;
+  color: ${ ({ isEditPost }) => isEditPost ? "#FAFAFA" : "#222222"};
   background-color: ${ ({ isEditPost }) => isEditPost ? "#222222" : "none"};
   border: none;
   border-radius: 8px;
