@@ -73,7 +73,7 @@ export default function Post(props: any) {
         {/* </SPostHeaderRow> */}
       </SPostHeader>
 
-      <SPostContent contentEditable={isEditPost}>{getLines(post.content)}</SPostContent>
+      <SPostContent contentEditable={isEditPost} onBlur={() => setIsEditPost(false)}>{getLines(post.content)}</SPostContent>
     </SPost>
   )
 }
