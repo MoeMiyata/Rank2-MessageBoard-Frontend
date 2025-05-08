@@ -7,7 +7,7 @@ import { UserIconContext } from "../providers/UserIconProvider.tsx";
 
 export default function Post(props: any) {
   const { postOwnerName, post } = props;
-  console.log("post.name:", post.name)
+  console.log("post.user_name:", post.user_name)
 
   const { userIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
@@ -55,7 +55,7 @@ export default function Post(props: any) {
         </SPostHeaderBox>
         <SPostHeaderBox>
           <SNameDateBox>
-            <SName>{post.user_name === "" ? "deleted user" : post.user_name}</SName>
+            <SName>{post.user_name ? post.user_name : "deleted user"}</SName>
             <SDate>{getDateStr(post.craeted_at)}</SDate>
           </SNameDateBox>
         </SPostHeaderBox>
