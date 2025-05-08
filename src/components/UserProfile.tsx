@@ -440,7 +440,7 @@ export default function UserProfile() {
             </SMainButton>
           }
           <div>
-            <DeleteUserDialog/>
+            {/* <DeleteUserDialog/> */}
             <DeleteUser/>
           </div>
           <div>

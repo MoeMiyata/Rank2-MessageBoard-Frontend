@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 
 import { UserContext } from "../providers/UserProvider.tsx";
@@ -9,10 +9,21 @@ export const DeleteUser = () => {
     const navigate = useNavigate();
     const { userInfo } = useContext(UserContext);
 
+    // const onDeleteUserClick = async () => {
+    //   console.log("delete user")
+    //   await deleteUser(userInfo.token, userInfo.id);
+    //   navigate("/")
+    // }
+
+    const [ isOpenDialog, setIsOpenDialog ] = useState(false);
+    
+    const onClickSwitchDialog = () => {
+        setIsOpenDialog(!isOpenDialog)
+    }
+
     const onDeleteUserClick = async () => {
       console.log("delete user")
-      await deleteUser(userInfo.token, userInfo.id);
-      navigate("/")
+      onClickSwitchDialog()
     }
 
     return (
@@ -20,6 +31,15 @@ export const DeleteUser = () => {
         <SDeleteUserButton type="button" onClick={onDeleteUserClick}>
             Delete account
         </SDeleteUserButton>
+        <button onClick={onClickSwitchDialog}>
+          { isOpenDialog && (
+              <div>
+                  <h2>Delete Dialog</h2>
+                  <p>これはダイアログの内容です。</p>
+                  <button onClick={onClickSwitchDialog}>閉じる</button>
+              </div>
+          )}
+        </button>
       </>
     )
 }
