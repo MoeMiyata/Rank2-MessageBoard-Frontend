@@ -8,7 +8,8 @@ import { EditPost } from './EditPost.tsx';
 
 export default function Post(props: any) {
   const { postOwnerName, post } = props;
-  console.log("post.user_name:", post.user_name)
+
+  // const [ isEditPost, setIsEditPost ] = useState(false)
 
   const { userIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
@@ -69,7 +70,7 @@ export default function Post(props: any) {
         {/* </SPostHeaderRow> */}
       </SPostHeader>
 
-      <SPostContent>{getLines(post.content)}</SPostContent>
+      <SPostContent contentEditable="true">{getLines(post.content)}</SPostContent>
     </SPost>
   )
 }
