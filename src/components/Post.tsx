@@ -95,7 +95,9 @@ const SPostHeader = styled.div`
 `
 const SPostContent = styled.div<{ isEditPost: boolean }>`
   margin: 10px;
-  border: ${ ({isEditPost}) => isEditPost ? "1px solid #222222" : "none" };
+  border: ${ ({isEditPost}) => isEditPost ? "1px solid #3680FF" : "none" };
+  border-radius: 5px;
+  padding: ${ ({isEditPost}) => isEditPost ? "8px" : "9px" };
 `
 
 // const SName = styled.span`

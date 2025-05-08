@@ -62,6 +62,6 @@ const SEditPostButton = styled.button`
 
   &:hover {
     color: #FAFAFA;
-    back-ground-color: #222222;
+    background-color: #222222;
   }
 `

@@ -59,9 +59,9 @@ const SDeletePostButton = styled.button`
   padding: 0px 10px;
   margin-left: 30px;
   cursor: pointer;
-  
+
   &:hover {
     color: #FAFAFA;
-    back-ground-color: #222222;
+    background-color: #222222;
   }
 `
