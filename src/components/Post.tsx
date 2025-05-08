@@ -7,6 +7,7 @@ import { UserIconContext } from "../providers/UserIconProvider.tsx";
 
 export default function Post(props: any) {
   const { postOwnerName, post } = props;
+  console.log("post.name:", post.name)
 
   const { userIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
