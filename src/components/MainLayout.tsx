@@ -63,16 +63,16 @@ export default function MainLayout() {
       {/* メッセージ一覧取得のリロード操作 */}
       <ReloadPage/> 
 
-      <SHeader>
-        <Header></Header>
-      </SHeader>
+      <VolumeProvider>
+        <SHeader>
+          <Header></Header>
+        </SHeader>
+      </VolumeProvider>
 
       <SBody>
-        <VolumeProvider>
-          <SSideBar>
-            <SideBar></SideBar>
-          </SSideBar>
-        </VolumeProvider>
+        <SSideBar>
+          <SideBar></SideBar>
+        </SSideBar>
 
         <SContents>
           <Contents></Contents>
