@@ -89,11 +89,10 @@ const SDeleteDialogButton = styled.button<{ buttonText: string }>`
   // background-color: lightblue;
   background-color:  #f8f8f8;
   // padding: 2px 10px;
-  padding: ${({ buttonText }) => buttonText === "削除" ? "2px 30px 2px 10px" : "2px 10px 2px 30px"};
+  margin: ${({ buttonText }) => buttonText === "削除" ? "2px 30px 2px 30px" : "2px 10px 2px 30px"};
   cursor: pointer;
 
   &:hover {
-    // text-decoration: underline; 
     color: #5AA1FA;
   }
 `;
