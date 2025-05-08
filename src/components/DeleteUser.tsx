@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
+import { UserContext } from "../providers/UserProvider.tsx";
+import { deleteUser } from "../api/Post.tsx";
+
 export const DeleteUser = () => {
-    const onDeleteUserClick = () => {
+    const { userInfo } = useContext(UserContext);
+
+    const onDeleteUserClick = async () => {
       console.log("delete user")
+      await deleteUser(userInfo.token, userInfo.id);
     }
 
     return (
