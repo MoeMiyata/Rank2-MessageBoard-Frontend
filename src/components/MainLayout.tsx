@@ -67,17 +67,18 @@ export default function MainLayout() {
         <SHeader>
           <Header></Header>
         </SHeader>
+
+        <SBody>
+          <SSideBar>
+            <SideBar></SideBar>
+          </SSideBar>
+
+          <SContents>
+            <Contents></Contents>
+          </SContents>
+        </SBody>
       </VolumeProvider>
 
-      <SBody>
-        <SSideBar>
-          <SideBar></SideBar>
-        </SSideBar>
-
-        <SContents>
-          <Contents></Contents>
-        </SContents>
-      </SBody>
 
       </SearchPostProvider>
       </PageLinkProvider>
