@@ -33,7 +33,7 @@ export const deletePost = async (token: string, id: number) => {
 // 特定の投稿を編集
 export const updatePost = async (token: string, id: number, content: string) => {
   console.log('In updatePost.\n')
-  const url = hostUrl + `/post/${id}?token=${token}`;
+  const url = hostUrl + `/post?token=${token}&id=${id}`;
   console.log('updateURL:', url)
   const res = await axios.put(url, content);
   
