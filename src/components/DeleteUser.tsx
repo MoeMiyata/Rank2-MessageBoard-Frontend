@@ -3,13 +3,16 @@ import styled from "styled-components";
 
 import { UserContext } from "../providers/UserProvider.tsx";
 import { deleteUser } from "../api/Post.tsx";
+import { useNavigate } from "react-router-dom";
 
 export const DeleteUser = () => {
+    const navigate = useNavigate();
     const { userInfo } = useContext(UserContext);
 
     const onDeleteUserClick = async () => {
       console.log("delete user")
       await deleteUser(userInfo.token, userInfo.id);
+      navigate("/")
     }
 
     return (
