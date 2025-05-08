@@ -10,6 +10,7 @@ import { UserContext } from '../providers/UserProvider.tsx';
 
 import { ReloadPage } from './ReloadPage.tsx';
 import { getUser } from '../api/User.tsx';
+import { VolumeProvider } from '../providers/VolumeProvider.tsx';
 
 // import { useContext, useLayoutEffect } from "react";
 // import { UserContext } from "../providers/UserProvider.tsx";
@@ -67,9 +68,11 @@ export default function MainLayout() {
       </SHeader>
 
       <SBody>
-        <SSideBar>
-          <SideBar></SideBar>
-        </SSideBar>
+        <VolumeProvider>
+          <SSideBar>
+            <SideBar></SideBar>
+          </SSideBar>
+        </VolumeProvider>
 
         <SContents>
           <Contents></Contents>
