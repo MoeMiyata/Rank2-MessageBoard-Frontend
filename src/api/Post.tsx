@@ -34,8 +34,8 @@ export const deletePost = async (token: string, id: number) => {
 export const updatePost = async (token: string, id: number, content: string) => {
   console.log('In updatePost.\n')
   const url = hostUrl + `/post/${id}?token=${token}`;
-  // console.log('updateURL:', url)
-  const res = await axios.put(url, { content });
+  console.log('updateURL:', url)
+  const res = await axios.put(url, content);
   
   console.log('res(updatePost):', res.data);
   return res.data;
