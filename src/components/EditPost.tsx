@@ -58,4 +58,10 @@ const SEditPostButton = styled.button`
   border-radius: 8px;
   padding: 0px 10px;
   margin-left: 30px;
+  cursor: pointer;
+
+  &:hover {
+    color: #FAFAFA;
+    back-ground-color: #222222;
+  }
 `

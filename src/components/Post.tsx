@@ -73,7 +73,7 @@ export default function Post(props: any) {
         {/* </SPostHeaderRow> */}
       </SPostHeader>
 
-      <SPostContent contentEditable={isEditPost} onBlur={() => setIsEditPost(false)}>{getLines(post.content)}</SPostContent>
+      <SPostContent isEditPost={isEditPost} contentEditable={isEditPost} onBlur={() => setIsEditPost(false)}>{getLines(post.content)}</SPostContent>
     </SPost>
   )
 }
@@ -93,8 +93,9 @@ const SPostHeader = styled.div`
   margin: 10px;
   display: flex;
 `
-const SPostContent = styled.div`
+const SPostContent = styled.div<{ isEditPost: boolean }>`
   margin: 10px;
+  border: ${ ({isEditPost}) => isEditPost ? "1px solid #222222" : "none" };
 `
 
 // const SName = styled.span`
