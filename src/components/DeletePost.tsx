@@ -10,7 +10,7 @@ import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 
 
 export const DeletePost = (props: any) => {
-    const { deleteid, postUserName } = props;
+    const { deleteId, postUserName } = props;
 
     const { userInfo } = useContext(UserContext);
     const { setPostList } = useContext(PostListContext);
@@ -38,13 +38,13 @@ export const DeletePost = (props: any) => {
 
     // 対象のポストのみ削除してリロードする関数
     const deletePostReload = async() => {
-        await deletePost(userInfo.token, deleteid);
+        await deletePost(userInfo.token, deleteId);
         getPostList()
     }
 
     const onDeletePostClick = () => {
         deletePostReload()
-        console.log("post.id:", deleteid, "のメッセージ削除");
+        console.log("post.id:", deleteId, "のメッセージ削除");
     }
 
     return loginUser.name === postUserName ? <SDeletePostButton onClick={onDeletePostClick}>削除</SDeletePostButton> : null //後ほど、ログインユーザのメッセージじゃなかったらボタンを表示しない

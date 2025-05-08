@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import styled from "styled-components";
 import { DeletePost } from './DeletePost.tsx';
 import { UserIconContext } from "../providers/UserIconProvider.tsx";
+import { EditPost } from './EditPost.tsx';
 
 
 export default function Post(props: any) {
@@ -62,7 +63,8 @@ export default function Post(props: any) {
 
         {/* メッセージの削除ボタン */}
         <SPostHeaderBox>
-          <DeletePost deleteid={post.id} postUserName={post.user_name}/>
+          <EditPost editId={post.id} postUserName={post.user_name}/>
+          <DeletePost deleteId={post.id} postUserName={post.user_name}/>
         </SPostHeaderBox>
         {/* </SPostHeaderRow> */}
       </SPostHeader>
