@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 export const DeleteUser = () => {
-    const onUserProfileDeleteUserClick = () => {
+    const onDeleteUserClick = () => {
       console.log("delete user")
     }
 
     return (
       <>
-        <SDeleteUserButton type="button" onClick={onUserProfileDeleteUserClick}>
+        <SDeleteUserButton type="button" onClick={onDeleteUserClick}>
             Delete account
         </SDeleteUserButton>
       </>

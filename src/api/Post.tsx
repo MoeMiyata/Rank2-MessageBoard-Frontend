@@ -29,3 +29,11 @@ export const deletePost = async (token: string, id: number) => {
   console.log('res(deletePost):', res);
   return res.data;
 }
+
+// ユーザを削除
+export const deleteUser = async (token: string, user_id: number) => {
+  const url = hostUrl + `/user?token=${token}&user_id=${user_id}`;
+  const res = await axios.delete(url);
+  console.log('res(deleteUser):', res);
+  return res.data;
+}

@@ -212,10 +212,7 @@ export default function UserProfile() {
       setIsEditMode(!isEditMode);
     }
   };
-
-  // const onUserProfileDeleteUserClick = () => {
-  //   console.log("delete user")
-  // }
+  
 
   return (
     <>
@@ -442,9 +439,6 @@ export default function UserProfile() {
             </SMainButton>
           }
           <div>
-            {/* <SDeleteButton type="button" onClick={onUserProfileDeleteUserClick}>
-              Delete account
-            </SDeleteButton> */}
             <DeleteUser/>
           </div>
           <div>
@@ -542,23 +536,6 @@ const SRegisterButton = styled.button`
     cursor: not-allowed; 
   }
 `;
-
-// const SDeleteButton = styled.button`
-//   position: fixed;
-//   bottom: 120px;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   border: none;
-//   background: none;
-//   color: #5aa1fa;
-//   text-decoration: none;
-//   padding: 0;
-//   cursor: pointer;
-
-//   &:hover {
-//     text-decoration: underline; 
-//   }
-// `;
 
 const SUserProfileLabel = styled.span`
   display: inline-block;
