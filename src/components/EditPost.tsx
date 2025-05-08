@@ -47,13 +47,14 @@ export const EditPost = (props: any) => {
         setIsEditPost(!isEditPost)
     }
 
-    return loginUser.name === postUserName ? <SEditPostButton onClick={onEditPostClick}>編集</SEditPostButton> : null
+    return loginUser.name === postUserName ? <SEditPostButton isEditPost={isEditPost} onClick={onEditPostClick}>編集</SEditPostButton> : null
 }
 
-const SEditPostButton = styled.button`
+const SEditPostButton = styled.button<{ isEditPost: boolean }>`
 //   background-color: #222222;
 //   color: #FAFAFA;
   color: #222222;
+  background-color: ${ ({ isEditPost }) => isEditPost ? "#222222" : "none"};
   border: none;
   border-radius: 8px;
   padding: 0px 10px;
