@@ -56,7 +56,7 @@ export default function Post(props: any) {
         <SPostHeaderBox>
           <SNameDateBox>
             <SName isDeletedUser={!post.user_name}>{post.user_name ? post.user_name : "deleted user"}</SName>
-            <SDate>{getDateStr(post.craeted_at)}</SDate>
+            <SDate isDeletedUser={!post.user_name}>{getDateStr(post.craeted_at)}</SDate>
           </SNameDateBox>
         </SPostHeaderBox>
 
@@ -96,14 +96,15 @@ const SName = styled.div<{ isDeletedUser: boolean }>`
   // font-size: small;
   font-size: medium;
   // color: #000044;
-  color: ${({ isDeletedUser }) => isDeletedUser ? "#999999" : "#000044"};
+  color: ${({ isDeletedUser }) => isDeletedUser ? "#959292" : "#000044"};
 `
 
 // const SDate = styled.span`
-const SDate = styled.div`
+const SDate = styled.div<{ isDeletedUser: boolean}>`
   // margin-left: 8px;
   font-size: small;
-  color: #000044;
+  // color: #000044;
+  color: ${({isDeletedUser}) => isDeletedUser ? "#959292" : "#000044" };
 `
 
 const SUserProfileImage = styled.img`
