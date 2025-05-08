@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { DeletePost } from './DeletePost.tsx';
 import { UserIconContext } from "../providers/UserIconProvider.tsx";
 import { EditPost } from './EditPost.tsx';
+import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 
 
 export default function Post(props: any) {
@@ -13,6 +14,8 @@ export default function Post(props: any) {
 
   const { userIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
+  
+  const { loginUser } = useContext(LoginUserContext);
 
   const getDateStr = (dateObj: Date) => {
     const year = post.created_at.getFullYear();
@@ -70,7 +73,7 @@ export default function Post(props: any) {
         {/* </SPostHeaderRow> */}
       </SPostHeader>
 
-      <SPostContent contentEditable="true">{getLines(post.content)}</SPostContent>
+      <SPostContent contentEditable={loginUser.name === post.user_name ? "true" : "false"}>{getLines(post.content)}</SPostContent>
     </SPost>
   )
 }
