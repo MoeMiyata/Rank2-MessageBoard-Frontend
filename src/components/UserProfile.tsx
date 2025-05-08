@@ -506,7 +506,7 @@ const SUserProfileFrame = styled.div<UserProfileProps>`
 `;
 
 const SUserProfileRow = styled.div`
-  display: inline-block;
+  // display: inline-block;
   // margin-top: 4px;
   // margin-bottom: 4px;
   margin-top: 10px;
@@ -514,7 +514,7 @@ const SUserProfileRow = styled.div`
 `;
 
 const SUserProfileTextRow = styled.div`
-  display: inline-block;
+  // display: inline-block;
   margin-top: 40px;
 `;
 

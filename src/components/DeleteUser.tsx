@@ -37,7 +37,7 @@ export const DeleteUser = () => {
           <SDeleteDialogContainer>
             <SDeleteDialog>
               <p style={{ marginBottom: 0 }}>アカウントを削除しますか？</p>
-              <p style={{ marginTop: 0 , fontSize: "small"}}>※削除後この操作は取り消せません。</p>
+              <p style={{ marginTop: 0 , fontSize: "small"}}>※ 削除後この操作は取り消せません。</p>
               <SDeleteDialogButton buttonText="削除" onClick={onDeleteUserClick}>削除</SDeleteDialogButton>
               <SDeleteDialogButton buttonText="キャンセル" onClick={onClickSwitchDialog}>キャンセル</SDeleteDialogButton>
             </SDeleteDialog>
@@ -70,6 +70,11 @@ const SDeleteDialogContainer = styled.div`
 `;
 
 const SDeleteDialog = styled.div`
+  position: fixed;
+  bottom: 6%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
   background-color: #f8f8f8;
   width: 300px;
   padding-top: 8px;
@@ -84,5 +89,9 @@ const SDeleteDialogButton = styled.button<{ buttonText: string }>`
   // background-color: lightblue;
   background-color:  #f8f8f8;
   // padding: 2px 10px;
-  padding: ${({ buttonText }) => buttonText === "削除" ? "2px 20px 2px 10px" : "2px 10px 2px 20px"};
+  padding: ${({ buttonText }) => buttonText === "削除" ? "2px 30px 2px 10px" : "2px 10px 2px 30px"};
+
+  &:hover {
+    text-decoration: underline; 
+  }
 `;
