@@ -84,3 +84,11 @@ export const updateUser = async (user_id: number, token: string, name?: string, 
     return error;
   }
 };
+
+// ユーザを削除
+export const deleteUser = async (token: string, user_id: number) => {
+  const url = hostUrl + `/user?token=${token}&user_id=${user_id}`;
+  const res = await axios.delete(url);
+  console.log('res(deleteUser):', res);
+  return res.data;
+}

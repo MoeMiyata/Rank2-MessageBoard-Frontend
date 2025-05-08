@@ -12,6 +12,8 @@ export default function Post(props: any) {
 
   const [ isEditPost, setIsEditPost ] = useState(false)
 
+  const [ editedContent, setEditedContent ] = useState("")
+
   const { userIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
   
@@ -67,13 +69,20 @@ export default function Post(props: any) {
 
         {/* メッセージの削除ボタン */}
         <SPostHeaderBox>
-          <EditPost editId={post.id} postUserName={post.user_name} isEditPost={isEditPost} setIsEditPost={setIsEditPost}/>
+          <EditPost editId={post.id} postUserName={post.user_name} isEditPost={isEditPost} setIsEditPost={setIsEditPost} editedContent={ editedContent }/>
           <DeletePost deleteId={post.id} postUserName={post.user_name}/>
         </SPostHeaderBox>
         {/* </SPostHeaderRow> */}
       </SPostHeader>
 
-      <SPostContent isEditPost={isEditPost} contentEditable={isEditPost} onBlur={() => setIsEditPost(false)}>{getLines(post.content)}</SPostContent>
+      <SPostContent
+        isEditPost={isEditPost}
+        contentEditable={isEditPost}
+        onBlur={(e) => {
+          setEditedContent(e.currentTarget.textContent ?? post.content);
+          setIsEditPost(false)
+        }}
+      >{getLines(post.content)}</SPostContent>
     </SPost>
   )
 }

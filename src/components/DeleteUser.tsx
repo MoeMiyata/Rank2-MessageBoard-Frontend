@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 
 import { UserContext } from "../providers/UserProvider.tsx";
-import { deleteUser } from "../api/Post.tsx";
+import { deleteUser } from "../api/User.tsx";
 import { useNavigate } from "react-router-dom";
 
 export const DeleteUser = () => {

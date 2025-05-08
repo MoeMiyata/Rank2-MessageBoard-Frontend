@@ -30,10 +30,13 @@ export const deletePost = async (token: string, id: number) => {
   return res.data;
 }
 
-// ユーザを削除
-export const deleteUser = async (token: string, user_id: number) => {
-  const url = hostUrl + `/user?token=${token}&user_id=${user_id}`;
-  const res = await axios.delete(url);
-  console.log('res(deleteUser):', res);
+// 特定の投稿を編集
+export const updatePost = async (token: string, id: number, content: string) => {
+  console.log('In updatePost.\n')
+  const url = hostUrl + `/post/${id}?token=${token}`;
+  // console.log('updateURL:', url)
+  const res = await axios.put(url, { content });
+  
+  console.log('res(updatePost):', res.data);
   return res.data;
-}
+};
