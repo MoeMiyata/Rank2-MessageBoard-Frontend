@@ -9,15 +9,17 @@ import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 import { post, getList } from "../api/Post.tsx";
 import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
+import { VolumeContext } from '../providers/VolumeProvider.tsx';
 
 export default function SideBar() {
   const [msg, setMsg] = useState("");
   const { userInfo } = useContext(UserContext);  // コンテキストからuserInfoを取り出す
+  const { isMute } = useContext(VolumeContext);
   const { loginUser } = useContext(LoginUserContext);
   const { pageNumber } = useContext(PageLinkContext);
   const { setPostList } = useContext(PostListContext); 
 
-  const [playSend] = useSound('/mute_shupon.mp3', { playbackRate: 1 });
+  const [ playSend ] = useSound('/mute_shupon.mp3', { playbackRate: isMute ? 0 : 1 });
 
   const getPostList = async () => {
     const posts = await getList(userInfo.token, pageNumber);

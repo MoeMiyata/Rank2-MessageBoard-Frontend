@@ -17,20 +17,20 @@ export const DeleteUser = () => {
 
     const [ isOpenDialog, setIsOpenDialog ] = useState(false);
     
-    const onClickSwitchDialog = () => {
+    const onSwitchDialogClick = () => {
         setIsOpenDialog(!isOpenDialog)
     }
 
     const onDeleteUserClick = async () => {
       console.log("delete user")
-      onClickSwitchDialog()
+      onSwitchDialogClick()
       await deleteUser(userInfo.token, userInfo.id);
       navigate("/")
     }
 
     return (
       <>
-        <SDeleteUserButton type="button" onClick={onClickSwitchDialog}>
+        <SDeleteUserButton type="button" onClick={onSwitchDialogClick}>
             Delete account
         </SDeleteUserButton>
         { isOpenDialog && (
@@ -39,7 +39,7 @@ export const DeleteUser = () => {
               <p style={{ marginBottom: 0 }}>アカウントを削除しますか？</p>
               <p style={{ marginTop: 0 , fontSize: "small"}}>※ 削除後この操作は取り消せません</p>
               <SDeleteDialogButton buttonText="削除" onClick={onDeleteUserClick}>削除</SDeleteDialogButton>
-              <SDeleteDialogButton buttonText="キャンセル" onClick={onClickSwitchDialog}>キャンセル</SDeleteDialogButton>
+              <SDeleteDialogButton buttonText="キャンセル" onClick={onSwitchDialogClick}>キャンセル</SDeleteDialogButton>
             </SDeleteDialog>
           </SDeleteDialogContainer>
           )}

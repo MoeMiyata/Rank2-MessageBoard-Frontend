@@ -5,12 +5,14 @@ import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { SearchPost } from './SearchPost.tsx';
 import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
+import { VolumeContext } from '../providers/VolumeProvider.tsx';
 
 export default function Header() {
   const navigate = useNavigate();
   // const [ userName, setUserName ] = useState("");
   const { loginUser } = useContext(LoginUserContext);
   const { userInfo, setUserInfo } = useContext(UserContext);
+  const { isMute, setIsMute } = useContext(VolumeContext);
 
   const logout = () => {
     setUserInfo({ id: 0, token: "" });
@@ -30,6 +32,11 @@ export default function Header() {
     navigate("/userprofile");
   }
 
+  const onVolumeClick = () => {
+    console.log('音量切り替え');
+    setIsMute(!isMute);
+  }
+
   return (
     <SHeader>
       <SLogo>MicroPost</SLogo>
@@ -39,6 +46,7 @@ export default function Header() {
 
       <SRightItem>
         <SName onClick={onUserProfileClick}>{loginUser.name}</SName>
+        <SVolume onClick={onVolumeClick}>{ isMute ? "sound OFF" : "sound ON" }</SVolume>
         <SLogout onClick={logout}>ログアウト</SLogout>
       </SRightItem>
     </SHeader>
@@ -75,6 +83,14 @@ const SRightItem = styled.div`
 `
 
 const SName = styled.div`
+  padding-top: 7px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-right: 8px;
+  cursor: pointer;  // ポインタ追加
+`
+
+const SVolume = styled.div`
   padding-top: 7px;
   padding-bottom: 8px;
   text-align: center;
