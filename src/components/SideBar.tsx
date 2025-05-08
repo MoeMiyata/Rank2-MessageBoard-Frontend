@@ -71,6 +71,7 @@ export default function SideBar() {
 
 
 const SSideBar = styled.div`
+  margin: 20px 0px 0px 15px;
   padding: 8px;
 `
 
