@@ -10,7 +10,7 @@ import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 
 
 export const EditPost = (props: any) => {
-    const { editId, postUserName } = props;
+    const { editId, postUserName, isEditPost, setIsEditPost } = props;
 
     // const { userInfo } = useContext(UserContext);
     // const { setPostList } = useContext(PostListContext);
@@ -43,8 +43,8 @@ export const EditPost = (props: any) => {
     // }
 
     const onEditPostClick = () => {
-        // deletePostReload()
         console.log("post.id:", editId, "のメッセージ編集");
+        setIsEditPost(!isEditPost)
     }
 
     return loginUser.name === postUserName ? <SEditPostButton onClick={onEditPostClick}>編集</SEditPostButton> : null

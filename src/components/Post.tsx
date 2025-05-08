@@ -10,7 +10,7 @@ import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 export default function Post(props: any) {
   const { postOwnerName, post } = props;
 
-  // const [ isEditPost, setIsEditPost ] = useState(false)
+  const [ isEditPost, setIsEditPost ] = useState(false)
 
   const { userIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
@@ -67,13 +67,13 @@ export default function Post(props: any) {
 
         {/* メッセージの削除ボタン */}
         <SPostHeaderBox>
-          <EditPost editId={post.id} postUserName={post.user_name}/>
+          <EditPost editId={post.id} postUserName={post.user_name} isEditPost={isEditPost} setIsEditPost={setIsEditPost}/>
           <DeletePost deleteId={post.id} postUserName={post.user_name}/>
         </SPostHeaderBox>
         {/* </SPostHeaderRow> */}
       </SPostHeader>
 
-      <SPostContent contentEditable={loginUser.name === post.user_name ? "true" : "false"}>{getLines(post.content)}</SPostContent>
+      <SPostContent contentEditable={isEditPost}>{getLines(post.content)}</SPostContent>
     </SPost>
   )
 }
