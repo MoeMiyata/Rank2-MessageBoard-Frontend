@@ -31,15 +31,13 @@ export const DeleteUser = () => {
         <SDeleteUserButton type="button" onClick={onDeleteUserClick}>
             Delete account
         </SDeleteUserButton>
-        <button onClick={onClickSwitchDialog}>
-          { isOpenDialog && (
-              <div>
-                  <h2>Delete Dialog</h2>
-                  <p>これはダイアログの内容です。</p>
-                  <button onClick={onClickSwitchDialog}>閉じる</button>
-              </div>
+        { isOpenDialog && (
+          <div>
+            <h2>アカウントを削除しますか？</h2>
+            <p>※削除後この内容は取り消せません。</p>
+            <button onClick={onClickSwitchDialog}>閉じる</button>
+          </div>
           )}
-        </button>
       </>
     )
 }
