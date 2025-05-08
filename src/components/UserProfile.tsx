@@ -6,6 +6,7 @@ import { Dropbox } from 'dropbox'; // Dropbox SDKをインポート
 import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 import { getUser, updateUser } from "../api/User.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
+import { DeleteUser } from "./DeleteUser.tsx";
 
 
 export default function UserProfile() {
@@ -212,9 +213,9 @@ export default function UserProfile() {
     }
   };
 
-  const onUserProfileDeleteUserClick = () => {
-    console.log("delete user")
-  }
+  // const onUserProfileDeleteUserClick = () => {
+  //   console.log("delete user")
+  // }
 
   return (
     <>
@@ -441,12 +442,13 @@ export default function UserProfile() {
             </SMainButton>
           }
           <div>
-            <SDeleteButton type="button" onClick={onUserProfileDeleteUserClick}>
+            {/* <SDeleteButton type="button" onClick={onUserProfileDeleteUserClick}>
               Delete account
-            </SDeleteButton>
+            </SDeleteButton> */}
+            <DeleteUser/>
           </div>
           <div>
-            <SLogo onClick={onUserProfileDeleteUserClick}>
+            <SLogo>
               - MicroPost -
             </SLogo>
           </div>
@@ -485,6 +487,7 @@ const STitle = styled.div<UserProfileProps>`
   padding-left: ${({ isEditMode }) => (isEditMode ? "67px" : "20px")};
   text-align: center;
   flex-grow: 1;  /* 残りのスペースを埋める */
+  font-size: large;
 `;
 
 const SEdit = styled.div`
@@ -540,22 +543,22 @@ const SRegisterButton = styled.button`
   }
 `;
 
-const SDeleteButton = styled.button`
-  position: fixed;
-  bottom: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: none;
-  background: none;
-  color: #5aa1fa;
-  text-decoration: none;
-  padding: 0;
-  cursor: pointer;
+// const SDeleteButton = styled.button`
+//   position: fixed;
+//   bottom: 120px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   border: none;
+//   background: none;
+//   color: #5aa1fa;
+//   text-decoration: none;
+//   padding: 0;
+//   cursor: pointer;
 
-  &:hover {
-    text-decoration: underline; 
-  }
-`;
+//   &:hover {
+//     text-decoration: underline; 
+//   }
+// `;
 
 const SUserProfileLabel = styled.span`
   display: inline-block;

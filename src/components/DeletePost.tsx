@@ -51,8 +51,10 @@ export const DeletePost = (props: any) => {
 }
 
 const SDeletePostButton = styled.button`
-  background-color: #222222;
-  color: #FAFAFA;
+//   background-color: #222222;
+//   color: #FAFAFA;
+  color: #222222;
+  border: none;
   border-radius: 8px;
   padding: 0px 10px;
   margin-left: 30px;
