@@ -64,7 +64,7 @@ export const SearchPost = () => {
             </SMobileSearchBox>
           </SMobileSearchBoxContainer>
         )}
-        <SMobileSearchButton ><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/></SMobileSearchButton>
+        <SMobileSearchButton onClick={onSwitchMobileSearchBoxClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/></SMobileSearchButton>
         {/* </SMobileSearchDiv>  */}
       </>
     )
