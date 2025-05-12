@@ -15,9 +15,9 @@ export const EditPost = (props: any) => {
     const onEditPostClick = async() => {
         console.log("post.id:", editId, "のメッセージ編集");
         console.log("editedContent:", editedContent);
-        if (!isEditPost) setIsEditPost(true) // Blurとかぶるのでtrueにする時だけ変更
+        // if (!isEditPost) setIsEditPost(true) // Blurとかぶるのでtrueにする時だけ変更
         // else setIsEditPost(true)
-        // setIsEditPost(!isEditPost)
+        setIsEditPost(!isEditPost)
         await updatePost(userInfo.token, editId, editedContent);
     }
 

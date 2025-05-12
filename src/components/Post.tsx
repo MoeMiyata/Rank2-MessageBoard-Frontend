@@ -54,6 +54,8 @@ export default function Post(props: any) {
   }
 
   const onEditPostBlur = async() => {
+          console.log("post.id:", post.id, "のメッセージ編集");
+          console.log("editedContent:", editedContent);
           setIsEditPost(false)
           await updatePost(userInfo.token, post.id, editedContent);
       }
@@ -89,7 +91,7 @@ export default function Post(props: any) {
         onBlur={(e) => {
           console.log("e.currentTarget.textContent;", e.currentTarget.textContent)
           setEditedContent(e.currentTarget.innerText ?? post.content);
-          onEditPostBlur()
+          // onEditPostBlur()
         }}
       >{getLines(post.content)}</SPostContent>
     </SPost>
