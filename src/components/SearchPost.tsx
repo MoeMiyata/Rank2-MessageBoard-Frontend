@@ -94,6 +94,7 @@ const SMobileSearchButton = styled.button`
   display: none;
 
   @media (max-width: 768px) {
+    display: flex;
     background-color: #222222;
     color: #FAFAFA;
     position: fixed;
