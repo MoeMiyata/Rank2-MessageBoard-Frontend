@@ -36,11 +36,11 @@ export const ReloadPage = () => {
     }
 
     return (
-        <SPageLinkNextButton onClick={onReloadClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/reloadicon_white.png?raw=true" alt="button" width="30" height="30" /></SPageLinkNextButton>
+        <SPageReloadButton onClick={onReloadClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/reloadicon_white.png?raw=true" alt="button" width="30" height="30" /></SPageReloadButton>
     )
 }
 
-const SPageLinkNextButton = styled.button`
+const SPageReloadButton = styled.button`
   background-color: #222222;
   color: #FAFAFA;
   position: fixed;
@@ -49,4 +49,8 @@ const SPageLinkNextButton = styled.button`
   padding: 3px 5px 0px 4px;
   border-radius: 50%;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    top: 100px;
+  }
 `

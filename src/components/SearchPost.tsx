@@ -118,7 +118,7 @@ const SMobileSearchButton = styled.button`
     background-color: #222222;
     color: #FAFAFA;
     position: fixed;
-    top: 100px;
+    top: 45px;
     right: 10px;
     border-radius: 50%;
     cursor: pointer;
@@ -134,7 +134,7 @@ const SMobileSearchBoxContainer = styled.div`
 
 const SMobileSearchBox = styled.div`
   position: fixed;
-  top: 121px;
+  top: 67px;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(34, 34, 34);
