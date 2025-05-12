@@ -53,11 +53,11 @@ export default function Post(props: any) {
     }
   }
 
-  const onEditPostBlur = async(newContent) => {
+  const onEditPostBlur = async(newContent: string) => {
           console.log("post.id:", post.id, "のメッセージ編集");
           console.log("editedContent:", editedContent);
           console.log("isEditPost:", isEditPost);
-          setIsEditPost(!isEditPost)
+          setIsEditPost(false)
           await updatePost(userInfo.token, post.id, newContent);
       }
   
