@@ -43,4 +43,9 @@ const SEditPostButton = styled.button<{ isEditPost: boolean }>`
     color: #FAFAFA;
     background-color: #222222;
   }
+
+  @media (max-width: 768px) {
+    margin-top: 8px;
+    margin-left: 0px;
+  }
 `

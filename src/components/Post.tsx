@@ -89,9 +89,9 @@ export default function Post(props: any) {
       <SPostHeader>
         {/* <SPostHeaderRow> */}
           
-        <SPostHeaderBox>
+        <SPostHeaderIconBox>
           <SUserProfileImage src={postOwnerImgSrc} alt='profileImage'/>
-        </SPostHeaderBox>
+        </SPostHeaderIconBox>
         <SPostHeaderBox>
           <SNameDateBox>
             <SName isDeletedUser={!post.user_name}>{post.user_name ? post.user_name : "deleted user"}</SName>
@@ -105,6 +105,14 @@ export default function Post(props: any) {
           <DeletePost deleteId={post.id} postUserName={post.user_name}/>
         </SPostHeaderBox>
         {/* </SPostHeaderRow> */}
+
+        <SMobilePostHeaderBox>
+          <SNameDateBox>
+            <SName isDeletedUser={!post.user_name}>{post.user_name ? post.user_name : "deleted user"}</SName>
+            <EditPost editId={post.id} postUserName={post.user_name} isEditPost={isEditPost} isEditPostRef={isEditPostRef} setIsEditPost={setIsEditPost} editedContent={ editedContent }/>
+            <DeletePost deleteId={post.id} postUserName={post.user_name}/>
+          </SNameDateBox>
+        </SMobilePostHeaderBox>
       </SPostHeader>
 
       <SPostContent
@@ -138,12 +146,23 @@ const SPost = styled.div`
 const SPostHeader = styled.div`
   margin: 10px;
   display: flex;
+
+  @media (max-width: 768px) {
+    margin: 10px 10px 0px 10px;
+  }
 `
+
 const SPostContent = styled.div<{ isEditPost: boolean }>`
   margin: 10px;
   // border: ${ ({isEditPost}) => isEditPost ? "1px solid #3680FF" : "none" };
   border-radius: 5px;
   padding: ${ ({isEditPost}) => isEditPost ? "8px" : "9px" };
+
+  @media (max-width: 768px) {
+    margin: 0px 10px 0px 10px;
+    border-radius: 5px;
+    padding: 0px 9px 7px 9px;
+  }
 `
 
 // const SName = styled.span`
@@ -174,12 +193,36 @@ const SUserProfileImage = styled.img`
 // `;
 
 const SPostHeaderBox = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const SPostHeaderIconBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 `;
 
 const SNameDateBox = styled.div`
+  flex-grow: 1;
   width: 200px;
+`;
+
+
+const SMobilePostHeaderBox = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
 `;
