@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 import styled from "styled-components";
 import { DeletePost } from './DeletePost.tsx';
 import { UserIconContext } from "../providers/UserIconProvider.tsx";
 import { EditPost } from './EditPost.tsx';
-import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 import { UserContext } from '../providers/UserProvider.tsx';
 import { updatePost } from '../api/Post.tsx';
 
@@ -20,7 +19,26 @@ export default function Post(props: any) {
   console.log('userIcons:', userIcons)
   
   const { userInfo } = useContext(UserContext);
-  const { loginUser } = useContext(LoginUserContext);
+
+
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isEditPost && contentRef.current) {
+      contentRef.current.focus();
+  
+      // カーソルを末尾に移動（任意）
+      const range = document.createRange();
+      const sel = window.getSelection();
+      range.selectNodeContents(contentRef.current);
+      range.collapse(false); // false = 最後にカーソル
+      sel?.removeAllRanges();
+      sel?.addRange(range);
+    }
+  }, [isEditPost]);
+
+
+
 
   const getDateStr = (dateObj: Date) => {
     const year = post.created_at.getFullYear();
@@ -52,16 +70,16 @@ export default function Post(props: any) {
       return 'https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true'
     }
   }
+  const postOwnerImgSrc = getImgSrc(postOwnerName);
 
   const onEditPostBlur = async(newContent: string) => {
-          console.log("post.id:", post.id, "のメッセージ編集");
-          console.log("editedContent:", editedContent);
-          console.log("isEditPost:", isEditPost);
-          if (setIsEditPost) setIsEditPost(false)
-          await updatePost(userInfo.token, post.id, newContent);
-      }
+    console.log("post.id:", post.id, "のメッセージ編集");
+    console.log("editedContent:", editedContent);
+    console.log("isEditPost:", isEditPost);
+    if (setIsEditPost) setIsEditPost(false)
+    await updatePost(userInfo.token, post.id, newContent);
+  }
   
-  const postOwnerImgSrc = getImgSrc(postOwnerName);
 
   return (
     <SPost>
@@ -87,6 +105,7 @@ export default function Post(props: any) {
       </SPostHeader>
 
       <SPostContent
+        ref={contentRef}
         isEditPost={isEditPost}
         contentEditable={isEditPost}
         onBlur={(e) => {
