@@ -112,9 +112,9 @@ export default function Post(props: any) {
           console.log("e.currentTarget.innerText:", e.currentTarget.innerText)
           const newContent = e.currentTarget.innerText.replace(/\n+$/, '')
           setEditedContent(newContent ?? post.content);
-          setTimeout(() => {
-            onEditPostBlur(newContent);
-          }, 0);
+          // setTimeout(() => {
+          onEditPostBlur(newContent);
+          // }, 0);
         }}
       >{getLines(post.content)}</SPostContent>
     </SPost>
