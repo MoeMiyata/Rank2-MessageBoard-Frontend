@@ -57,7 +57,7 @@ export default function Post(props: any) {
           console.log("post.id:", post.id, "のメッセージ編集");
           console.log("editedContent:", editedContent);
           console.log("isEditPost:", isEditPost);
-          setIsEditPost(false)
+          if (setIsEditPost) setIsEditPost(false)
           await updatePost(userInfo.token, post.id, newContent);
       }
   
@@ -93,7 +93,7 @@ export default function Post(props: any) {
           console.log("e.currentTarget.innerText:", e.currentTarget.innerText)
           const newContent = e.currentTarget.innerText.replace(/\n+$/, '')
           setEditedContent(newContent ?? post.content);
-          // onEditPostBlur(newContent);
+          onEditPostBlur(newContent);
         }}
       >{getLines(post.content)}</SPostContent>
     </SPost>
