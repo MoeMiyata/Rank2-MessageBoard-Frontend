@@ -37,15 +37,21 @@ export const SearchPost = () => {
 
     // 検索ボタンを押しても実行可能
     const onSearchPostClick = () => {
-        console.log("kwd:", kwd)
-        getSearchPostList()
+      console.log("kwd:", kwd)
+      getSearchPostList()
     }
 
     return (
-            <SSearchDiv>
-                <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
-                <SSearchIcon type="submit" onClick={onSearchPostClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
-            </SSearchDiv> 
+      <>
+        <SSearchDiv>
+          <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
+          <SSearchIcon type="submit" onClick={onSearchPostClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
+        </SSearchDiv> 
+
+        {/* <SMobileSearchDiv> */}
+        <SMobileSearchButton ><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="30" height="30" /></SMobileSearchButton>
+        {/* </SMobileSearchDiv>  */}
+      </>
     )
 }
 
@@ -64,7 +70,7 @@ const SSearchPost = styled.input`
   width: 400px;
 
   @media (max-width: 768px) {
-    width: 200px;
+    display: none;
   }
 `
 
@@ -72,6 +78,34 @@ const SSearchIcon = styled.button`
   background-color: #222222;
   border: none;
 `
+
+// const SMobileSearchDiv = styled.div`
+//   display: none;
+  
+//   @media (max-width: 768px) {
+//     display: flex;
+//     width: 100%;
+//     flex-direction: row;
+//     justify-content: flex-end;
+//   }
+// `
+
+const SMobileSearchButton = styled.button`
+  display: none;
+
+  @media (max-width: 768px) {
+    background-color: #222222;
+    color: #FAFAFA;
+    position: fixed;
+    bottom: 45px;
+    right: 10px;
+    padding: 3px 5px 0px 4px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+`
+
+
 
 
 // 投稿一覧を表示し、検索されるとその表示された10個の投稿からListを削って表示する

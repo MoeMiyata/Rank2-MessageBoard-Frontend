@@ -65,6 +65,7 @@ export default function SideBar() {
       <SSideBarRow>
         <SSideBarButton onClick={onSendClick} disabled={msg.trim() === ''}>送信</SSideBarButton>
       </SSideBarRow>
+
     </SSideBar>
   );
 }
@@ -79,6 +80,10 @@ const SSideBarRow = styled.div`
   margin-top: 4px;
   margin-bottom: 4px;
   // text-align: left;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const SSideBarTextArea = styled.textarea`
