@@ -17,13 +17,12 @@ export const EditPost = (props: any) => {
         // console.log("post.id:", editId, "のメッセージ編集");
         // console.log("editedContent:", editedContent);
         console.log("isEditPost(onEditPostClick):", isEditPost);
-        // // if (!isEditPost) setIsEditPost(true) // Blurとかぶるのでtrueにする時だけ変更
-        // // else setIsEditPost(true)
-        // setIsEditPost(!isEditPost)
-        // await updatePost(userInfo.token, editId, editedContent);
-        // 編集を終了して保存
-        await updatePost(userInfo.token, editId, editedContent);
-        setIsEditPost(!isEditPost); // 明示的に false に戻す
+        if (!isEditPost) {
+            setIsEditPost(true); // 編集モードに入る
+          } else {
+            await updatePost(userInfo.token, editId, editedContent); // 保存
+            setIsEditPost(false); // 編集終了
+          }
     }
 
     return loginUser.name === postUserName ? <SEditPostButton isEditPost={isEditPost} onClick={onEditPostClick}>編集</SEditPostButton> : null
