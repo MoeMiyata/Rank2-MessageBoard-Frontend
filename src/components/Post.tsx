@@ -90,7 +90,7 @@ export default function Post(props: any) {
         contentEditable={isEditPost}
         onBlur={(e) => {
           console.log("e.currentTarget.innerText:", e.currentTarget.innerText)
-          newContent = e.currentTarget.innerText.replace(/\n+$/, '')
+          const newContent = e.currentTarget.innerText.replace(/\n+$/, '')
           setEditedContent(newContent ?? post.content);
           onEditPostBlur(newContent)
         }}
