@@ -5,6 +5,8 @@ import { DeletePost } from './DeletePost.tsx';
 import { UserIconContext } from "../providers/UserIconProvider.tsx";
 import { EditPost } from './EditPost.tsx';
 import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
+import { UserContext } from '../providers/UserProvider.tsx';
+import { updatePost } from '../api/Post.tsx';
 
 
 export default function Post(props: any) {
@@ -17,6 +19,7 @@ export default function Post(props: any) {
   const { userIcons } = useContext(UserIconContext);
   console.log('userIcons:', userIcons)
   
+  const { userInfo } = useContext(UserContext);
   const { loginUser } = useContext(LoginUserContext);
 
   const getDateStr = (dateObj: Date) => {
@@ -49,6 +52,13 @@ export default function Post(props: any) {
       return 'https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/profileicon_default.png?raw=true'
     }
   }
+
+  const onEditPostBlur = async() => {
+          console.log("post.id:", post.id, "のメッセージ編集");
+          console.log("editedContent:", editedContent);
+          // setIsEditPost(!isEditPost)
+          await updatePost(userInfo.token, post.id, editedContent); ///////////////////// ここに置いてるから編集内容が反映されない？
+      }
   
   const postOwnerImgSrc = getImgSrc(postOwnerName);
 
@@ -82,6 +92,7 @@ export default function Post(props: any) {
           console.log("e.currentTarget.textContent;", e.currentTarget.textContent)
           setEditedContent(e.currentTarget.textContent ?? post.content);
           setIsEditPost(false)
+          onEditPostBlur()
         }}
       >{getLines(post.content)}</SPostContent>
     </SPost>
