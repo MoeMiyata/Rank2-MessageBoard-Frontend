@@ -87,6 +87,11 @@ const SSearchPost = styled.input`
   margin: 2.5px;
   text-align: center;
   width: 400px;
+
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    width: 75%;
+  }
 `
 
 const SSearchIcon = styled.button`
@@ -129,16 +134,15 @@ const SMobileSearchBoxContainer = styled.div`
 
 const SMobileSearchBox = styled.div`
   position: fixed;
-  bottom: 6%;
+  top: 121px;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  background-color: #f8f8f8;
-  width: 300px;
+  background-color: rgb(34, 34, 34);
+  width: 90%;
   padding-top: 8px;
   padding-bottom: 8px;
-  border-radius: 8px;
-  box-shadow: 0 8px 8px #aaaaaa;
+  border-radius: 20px;
+  box-shadow: rgb(170, 170, 170) 0px 8px 8px;
 `;
 
 // const SDeleteDialogButton = styled.button<{ buttonText: string }>`
