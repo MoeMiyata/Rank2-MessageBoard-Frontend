@@ -1,5 +1,5 @@
 // import React, { useState, useContext } from "react";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
@@ -41,6 +41,12 @@ export const SearchPost = () => {
       getSearchPostList()
     }
 
+
+    const [ isOpenSearchBox, setIsOpenSearchBox ] = useState(false);
+    const onSwitchMobileSearchBoxClick = () => {
+      setIsOpenSearchBox(!isOpenSearchBox)
+    }
+
     return (
       <>
         <SSearchDiv>
@@ -49,6 +55,15 @@ export const SearchPost = () => {
         </SSearchDiv> 
 
         {/* <SMobileSearchDiv> */}
+        { isOpenSearchBox && (
+          <SMobileSearchBoxContainer>
+            <SMobileSearchBox>
+              <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
+              {/* <SDeleteDialogButton buttonText="削除" onClick={onDeleteUserClick}>削除</SDeleteDialogButton>
+              <SDeleteDialogButton buttonText="キャンセル" onClick={onSwitchDialogClick}>キャンセル</SDeleteDialogButton> */}
+            </SMobileSearchBox>
+          </SMobileSearchBoxContainer>
+        )}
         <SMobileSearchButton ><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/></SMobileSearchButton>
         {/* </SMobileSearchDiv>  */}
       </>
@@ -107,6 +122,38 @@ const SMobileSearchButton = styled.button`
   }
 `
 
+const SMobileSearchBoxContainer = styled.div`
+  display: inline-block;
+  justify-content: center;
+`;
+
+const SMobileSearchBox = styled.div`
+  position: fixed;
+  bottom: 6%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #f8f8f8;
+  width: 300px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 8px 8px #aaaaaa;
+`;
+
+// const SDeleteDialogButton = styled.button<{ buttonText: string }>`
+//   border: none;
+//   border-radius: 5px;
+//   // background-color: lightblue;
+//   background-color:  #f8f8f8;
+//   // padding: 2px 10px;
+//   margin: ${({ buttonText }) => buttonText === "削除" ? "2px 30px 2px 30px" : "2px 10px 2px 30px"};
+//   cursor: pointer;
+
+//   &:hover {
+//     color: #5AA1FA;
+//   }
+// `;
 
 
 

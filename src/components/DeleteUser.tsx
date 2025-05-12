@@ -42,7 +42,7 @@ export const DeleteUser = () => {
               <SDeleteDialogButton buttonText="キャンセル" onClick={onSwitchDialogClick}>キャンセル</SDeleteDialogButton>
             </SDeleteDialog>
           </SDeleteDialogContainer>
-          )}
+        )}
       </>
     )
 }
