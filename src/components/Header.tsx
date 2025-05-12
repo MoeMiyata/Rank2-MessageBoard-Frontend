@@ -46,15 +46,16 @@ export default function Header() {
       {/* 検索ボタンの配置 */}
       <SearchPost/>
 
+      <SBurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </SBurgerMenu>
+
       <SRightItem>
         <SName onClick={onUserProfileClick}>{loginUser.name}</SName>
         <SVolume onClick={onVolumeClick}>{ isMute ? "sound OFF" : "sound ON" }</SVolume>
         <SLogout onClick={logout}>ログアウト</SLogout>
       </SRightItem>
 
-      <SBurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
-        ☰
-      </SBurgerMenu>
 
       {menuOpen && (
         <SMobileMenu>
@@ -75,6 +76,7 @@ const SHeader = styled.div`
   padding-left: 8px;
   padding-right: 8px;
   height: 100%;
+  position: relative;
 `
 
 const SLogo = styled.div`
@@ -86,7 +88,7 @@ const SLogo = styled.div`
   // padding-top: 8px;
   // padding-bottom: 8px;
   // text-align: center;
-  justyify-content: start;
+  justify-content: start;
 `
 
 const SRightItem = styled.div`
