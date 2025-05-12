@@ -90,7 +90,7 @@ export default function Post(props: any) {
         contentEditable={isEditPost}
         onBlur={(e) => {
           console.log("e.currentTarget.textContent;", e.currentTarget.textContent)
-          setEditedContent(e.currentTarget.textContent ?? post.content);
+          setEditedContent(e.currentTarget.innerText ?? post.content);
           // setIsEditPost(false)
           // onEditPostBlur()
         }}
