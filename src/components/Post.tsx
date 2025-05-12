@@ -56,7 +56,7 @@ export default function Post(props: any) {
   const onEditPostBlur = async(newContent) => {
           console.log("post.id:", post.id, "のメッセージ編集");
           console.log("editedContent:", editedContent);
-          setIsEditPost(false)
+          setIsEditPost(!isEditPost)
           await updatePost(userInfo.token, post.id, newContent);
       }
   
