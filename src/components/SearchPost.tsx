@@ -62,6 +62,10 @@ const SSearchPost = styled.input`
   margin: 2.5px;
   text-align: center;
   width: 400px;
+
+  @media (max-width: 768px) {
+    width: 200px;
+  }
 `
 
 const SSearchIcon = styled.button`

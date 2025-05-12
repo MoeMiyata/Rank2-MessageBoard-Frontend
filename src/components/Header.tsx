@@ -46,9 +46,11 @@ export default function Header() {
       {/* 検索ボタンの配置 */}
       <SearchPost/>
 
-      <SBurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
-        ☰
-      </SBurgerMenu>
+      <SMobileRightItem>
+        <SBurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </SBurgerMenu>
+      </SMobileRightItem>
 
       <SRightItem>
         <SName onClick={onUserProfileClick}>{loginUser.name}</SName>
@@ -77,7 +79,7 @@ const SHeader = styled.div`
   padding-right: 8px;
   height: 100%;
   position: relative;
-`
+`;
 
 const SLogo = styled.div`
   padding-top: 2px;
@@ -89,7 +91,7 @@ const SLogo = styled.div`
   // padding-bottom: 8px;
   // text-align: center;
   justify-content: start;
-`
+`;
 
 const SRightItem = styled.div`
   width:100%;
@@ -99,8 +101,19 @@ const SRightItem = styled.div`
 
   @media (max-width: 768px) {
     display: none; // スマホ時は非表示
-  }
+  };
 `
+
+const SMobileRightItem = styled.div`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+`;
 
 const SName = styled.div`
   padding-top: 7px;
@@ -108,7 +121,7 @@ const SName = styled.div`
   text-align: center;
   margin-right: 8px;
   cursor: pointer;  // ポインタ追加
-`
+`;
 
 const SVolume = styled.div`
   padding-top: 7px;
@@ -116,7 +129,7 @@ const SVolume = styled.div`
   text-align: center;
   margin-right: 8px;
   cursor: pointer;  // ポインタ追加
-`
+`;
 
 const SLogout = styled.div`
   // padding-top: 8px;
@@ -124,7 +137,7 @@ const SLogout = styled.div`
   padding-bottom: 8px;
   text-align: center;
   cursor: pointer;  // ポインタ追加
-`
+`;
 
 const SBurgerMenu = styled.div`
   display: none;
