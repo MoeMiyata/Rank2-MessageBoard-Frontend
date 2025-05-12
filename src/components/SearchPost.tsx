@@ -49,7 +49,7 @@ export const SearchPost = () => {
         </SSearchDiv> 
 
         {/* <SMobileSearchDiv> */}
-        <SMobileSearchButton ><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="30" height="30" style={{ margin: "-2px 0px 0px -6px" }}/></SMobileSearchButton>
+        <SMobileSearchButton ><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/></SMobileSearchButton>
         {/* </SMobileSearchDiv>  */}
       </>
     )
@@ -100,7 +100,6 @@ const SMobileSearchButton = styled.button`
     position: fixed;
     top: 100px;
     right: 10px;
-    padding: 3px 5px 0px 4px;
     border-radius: 50%;
     cursor: pointer;
     width: 43px;
