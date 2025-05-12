@@ -112,7 +112,9 @@ export default function Post(props: any) {
           console.log("e.currentTarget.innerText:", e.currentTarget.innerText)
           const newContent = e.currentTarget.innerText.replace(/\n+$/, '')
           setEditedContent(newContent ?? post.content);
-          onEditPostBlur(newContent);
+          setTimeout(() => {
+            onEditPostBlur(newContent);
+          }, 0);
         }}
       >{getLines(post.content)}</SPostContent>
     </SPost>
@@ -136,7 +138,7 @@ const SPostHeader = styled.div`
 `
 const SPostContent = styled.div<{ isEditPost: boolean }>`
   margin: 10px;
-  border: ${ ({isEditPost}) => isEditPost ? "1px solid #3680FF" : "none" };
+  // border: ${ ({isEditPost}) => isEditPost ? "1px solid #3680FF" : "none" };
   border-radius: 5px;
   padding: ${ ({isEditPost}) => isEditPost ? "8px" : "9px" };
 `
