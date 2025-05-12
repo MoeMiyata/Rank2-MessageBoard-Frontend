@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -37,6 +37,8 @@ export default function Header() {
     setIsMute(!isMute);
   }
 
+  const [menuOpen, setMenuOpen] = useState(false); // メディアクエリ（スマホ用）
+
   return (
     <SHeader>
       <SLogo>MicroPost</SLogo>
@@ -49,6 +51,18 @@ export default function Header() {
         <SVolume onClick={onVolumeClick}>{ isMute ? "sound OFF" : "sound ON" }</SVolume>
         <SLogout onClick={logout}>ログアウト</SLogout>
       </SRightItem>
+
+      <SBurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </SBurgerMenu>
+
+      {menuOpen && (
+        <SMobileMenu>
+          <SName onClick={() => { onUserProfileClick(); setMenuOpen(false); }}>{loginUser.name}</SName>
+          <SVolume onClick={() => { onVolumeClick(); setMenuOpen(false); }}>{ isMute ? "sound OFF" : "sound ON" }</SVolume>
+          <SLogout onClick={() => { logout(); setMenuOpen(false); }}>ログアウト</SLogout>
+        </SMobileMenu>
+      )}
     </SHeader>
   )
 }
@@ -80,6 +94,10 @@ const SRightItem = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: end;
+
+  @media (max-width: 768px) {
+    display: none; // スマホ時は非表示
+  }
 `
 
 const SName = styled.div`
@@ -105,3 +123,33 @@ const SLogout = styled.div`
   text-align: center;
   cursor: pointer;  // ポインタ追加
 `
+
+const SBurgerMenu = styled.div`
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const SMobileMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #222;
+  color: #f8f8f8;
+  position: absolute;
+  top: 48px; // ヘッダー下に出す
+  right: 8px;
+  z-index: 1000;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 8px;
+
+  & > div {
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+`;
