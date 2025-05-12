@@ -91,7 +91,7 @@ export default function Post(props: any) {
         onBlur={(e) => {
           console.log("e.currentTarget.innerText:", e.currentTarget.innerText)
           setEditedContent(e.currentTarget.innerText.replace(/\n+$/, '') ?? post.content);
-          // onEditPostBlur()
+          onEditPostBlur()
         }}
       >{getLines(post.content)}</SPostContent>
     </SPost>
