@@ -73,9 +73,10 @@ export default function Post(props: any) {
   const postOwnerImgSrc = getImgSrc(postOwnerName);
 
   const onEditPostBlur = async(newContent: string) => {
+    console.log("In onEditPostBlur !");
     console.log("post.id:", post.id, "のメッセージ編集");
     console.log("editedContent:", editedContent);
-    console.log("isEditPost:", isEditPost);
+    console.log("isEditPost(onEditPostBlur):", isEditPost);
     setIsEditPost(false)
     await updatePost(userInfo.token, post.id, newContent);
   }

@@ -13,9 +13,10 @@ export const EditPost = (props: any) => {
     const { loginUser } = useContext(LoginUserContext);
 
     const onEditPostClick = async() => {
+        console.log("In onEditPostClick !");
         // console.log("post.id:", editId, "のメッセージ編集");
         // console.log("editedContent:", editedContent);
-        // console.log("isEditPost:", isEditPost);
+        console.log("isEditPost(onEditPostClick):", isEditPost);
         // // if (!isEditPost) setIsEditPost(true) // Blurとかぶるのでtrueにする時だけ変更
         // // else setIsEditPost(true)
         // setIsEditPost(!isEditPost)
