@@ -76,7 +76,7 @@ export default function Post(props: any) {
     console.log("post.id:", post.id, "のメッセージ編集");
     console.log("editedContent:", editedContent);
     console.log("isEditPost:", isEditPost);
-    if (setIsEditPost) setIsEditPost(false)
+    setIsEditPost(false)
     await updatePost(userInfo.token, post.id, newContent);
   }
   
