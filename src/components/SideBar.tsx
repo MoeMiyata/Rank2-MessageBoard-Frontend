@@ -41,7 +41,7 @@ export default function SideBar() {
   };
 
   const onSendClick = async () => {
-	  await post(String(userInfo.id), userInfo.token, msg);
+	  await post(String(userInfo.id), userInfo.token, msg.replace(/\n+$/, ''));
     await getPostList();
     playSend()
   };
