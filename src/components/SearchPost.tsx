@@ -60,6 +60,10 @@ const SSearchDiv = styled.div`
   display: flex;
   position: relative;
   left: 25%;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const SSearchPost = styled.input`
@@ -68,10 +72,6 @@ const SSearchPost = styled.input`
   margin: 2.5px;
   text-align: center;
   width: 400px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 `
 
 const SSearchIcon = styled.button`
@@ -97,7 +97,7 @@ const SMobileSearchButton = styled.button`
     background-color: #222222;
     color: #FAFAFA;
     position: fixed;
-    bottom: 45px;
+    top: 100px;
     right: 10px;
     padding: 3px 5px 0px 4px;
     border-radius: 50%;

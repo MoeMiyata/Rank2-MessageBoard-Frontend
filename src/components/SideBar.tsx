@@ -74,16 +74,16 @@ export default function SideBar() {
 const SSideBar = styled.div`
   margin: 20px 0px 0px 15px;
   padding: 8px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const SSideBarRow = styled.div`
   margin-top: 4px;
   margin-bottom: 4px;
   // text-align: left;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 `
 
 const SSideBarTextArea = styled.textarea`
