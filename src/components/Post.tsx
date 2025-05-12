@@ -91,8 +91,8 @@ export default function Post(props: any) {
         onBlur={(e) => {
           console.log("e.currentTarget.textContent;", e.currentTarget.textContent)
           setEditedContent(e.currentTarget.textContent ?? post.content);
-          setIsEditPost(false)
-          onEditPostBlur()
+          // setIsEditPost(false)
+          // onEditPostBlur()
         }}
       >{getLines(post.content)}</SPostContent>
     </SPost>

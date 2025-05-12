@@ -36,7 +36,7 @@ export const updatePost = async (token: string, id: number, content: string) => 
   const url = hostUrl + `/post?token=${token}&id=${id}`;
   console.log('updateURL:', url)
   console.log('updatecontent:', content)
-  const res = await axios.put(url, content);
+  const res = await axios.put(url, {content});
   
   console.log('res(updatePost):', res.data);
   return res.data;

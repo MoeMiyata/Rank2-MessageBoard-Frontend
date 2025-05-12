@@ -45,8 +45,9 @@ export const EditPost = (props: any) => {
     const onEditPostClick = async() => {
         console.log("post.id:", editId, "のメッセージ編集");
         console.log("editedContent:", editedContent);
-        if (isEditPost) setIsEditPost(false)
-        else setIsEditPost(true)
+        // if (isEditPost) setIsEditPost(false)
+        // else setIsEditPost(true)
+        setIsEditPost(!isEditPost)
         await updatePost(userInfo.token, editId, editedContent); ///////////////////// ここに置いてるから編集内容が反映されない？
     }
 
