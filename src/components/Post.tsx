@@ -53,11 +53,11 @@ export default function Post(props: any) {
     }
   }
 
-  const onEditPostBlur = async() => {
+  const onEditPostBlur = async(newContent) => {
           console.log("post.id:", post.id, "のメッセージ編集");
           console.log("editedContent:", editedContent);
           setIsEditPost(false)
-          await updatePost(userInfo.token, post.id, editedContent);
+          await updatePost(userInfo.token, post.id, newContent);
       }
   
   const postOwnerImgSrc = getImgSrc(postOwnerName);
@@ -90,8 +90,9 @@ export default function Post(props: any) {
         contentEditable={isEditPost}
         onBlur={(e) => {
           console.log("e.currentTarget.innerText:", e.currentTarget.innerText)
-          setEditedContent(e.currentTarget.innerText.replace(/\n+$/, '') ?? post.content);
-          onEditPostBlur()
+          newContent = e.currentTarget.innerText.replace(/\n+$/, '')
+          setEditedContent(newContent ?? post.content);
+          onEditPostBlur(newContent)
         }}
       >{getLines(post.content)}</SPostContent>
     </SPost>
