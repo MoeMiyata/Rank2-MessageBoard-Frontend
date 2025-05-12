@@ -7,7 +7,7 @@ import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 
 
 export const EditPost = (props: any) => {
-    const { editId, postUserName, isEditPost, setIsEditPost, editedContent } = props;
+    const { editId, postUserName, isEditPost, isEditPostRef, setIsEditPost, editedContent } = props;
 
     const { userInfo } = useContext(UserContext);
     const { loginUser } = useContext(LoginUserContext);
@@ -17,7 +17,7 @@ export const EditPost = (props: any) => {
         // console.log("post.id:", editId, "のメッセージ編集");
         // console.log("editedContent:", editedContent);
         console.log("isEditPost(onEditPostClick):", isEditPost);
-        if (!isEditPost) {
+        if (!isEditPostRef.current) {
             setIsEditPost(true); // 編集モードに入る
           } else {
             await updatePost(userInfo.token, editId, editedContent); // 保存

@@ -20,13 +20,11 @@ export default function Post(props: any) {
   
   const { userInfo } = useContext(UserContext);
 
-
   const contentRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (isEditPost && contentRef.current) {
       contentRef.current.focus();
-  
+      
       // カーソルを末尾に移動（任意）
       const range = document.createRange();
       const sel = window.getSelection();
@@ -36,7 +34,11 @@ export default function Post(props: any) {
       sel?.addRange(range);
     }
   }, [isEditPost]);
-
+  
+  const isEditPostRef = useRef(isEditPost);
+  useEffect(() => {
+    isEditPostRef.current = isEditPost;
+  }, [isEditPost]);
 
 
 
@@ -99,7 +101,7 @@ export default function Post(props: any) {
 
         {/* メッセージの削除ボタン */}
         <SPostHeaderBox>
-          <EditPost editId={post.id} postUserName={post.user_name} isEditPost={isEditPost} setIsEditPost={setIsEditPost} editedContent={ editedContent }/>
+          <EditPost editId={post.id} postUserName={post.user_name} isEditPost={isEditPost} isEditPostRef={isEditPostRef} setIsEditPost={setIsEditPost} editedContent={ editedContent }/>
           <DeletePost deleteId={post.id} postUserName={post.user_name}/>
         </SPostHeaderBox>
         {/* </SPostHeaderRow> */}
