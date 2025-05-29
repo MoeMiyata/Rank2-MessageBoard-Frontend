@@ -91,7 +91,7 @@ const SMobilePostBoxContainer = styled.div`
 
 const SMobilePostBox = styled.div`
   position: fixed;
-  bottom: 10px;
+  bottom: 0px;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(34, 34, 34);

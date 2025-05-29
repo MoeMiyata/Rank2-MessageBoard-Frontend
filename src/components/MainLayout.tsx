@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "./Header.tsx";
 import SideBar from "./SideBar.tsx";
 import Contents from "./Contents.tsx";
-import { PageLinkContext, PageLinkProvider } from '../providers/PageLinkProvider.tsx';
+import { PageLinkProvider } from '../providers/PageLinkProvider.tsx';
 import { SearchPostProvider } from "../providers/SearchPostProvider.tsx";
 import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 import { UserContext } from '../providers/UserProvider.tsx';

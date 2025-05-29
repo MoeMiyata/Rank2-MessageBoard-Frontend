@@ -223,7 +223,7 @@ export default function UserProfile() {
             </SRightItem>
         </SHeader>
 
-        <SUserProfileTextRow>
+        <SUserProfileTextRow isEditMode={isEditMode} >
           {isEditMode ? "登録内容を編集してください。" : null}
         </SUserProfileTextRow>
 
@@ -231,9 +231,9 @@ export default function UserProfile() {
             <SUserProfileRow>
               <SUserProfileImage src={isEditMode && profileImageUrl ? profileImageUrl : loginUser.imgSrc} />
               {isEditMode ? 
-                <SUserProfileImageInput>
-                  <input type="file" accept="image/*" onChange={onFileInputChange} />
-                </SUserProfileImageInput>
+                <div>
+                  <SUserProfileImageInput type="file" accept="image/*" onChange={onFileInputChange} />
+                </div>
                 : null}
             </SUserProfileRow>
 
@@ -508,7 +508,7 @@ const SUserProfileFrame = styled.div<UserProfileProps>`
   }
 `;
 
-const SUserProfileImageInput = styled.div`
+const SUserProfileImageInput = styled.input`
   @media(max-width: 768px) {
     font-size: smaller;
   }
@@ -522,12 +522,14 @@ const SUserProfileRow = styled.div`
   margin-bottom: 10px;
 `;
 
-const SUserProfileTextRow = styled.div`
+const SUserProfileTextRow = styled.div<{ isEditMode: boolean }>`
   // display: inline-block;
   margin-top: 40px;
 
   @media(max-width: 768px) {
-    display: none;
+    // display: none;
+    font-size: smaller;
+    margin-top: ${({ isEditMode }) => ( isEditMode ? '40px' : '60px' )};
   }
 `;
 
