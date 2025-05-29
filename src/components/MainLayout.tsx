@@ -104,6 +104,10 @@ const SSideBar = styled.div`
   // border-right: 1px solid #222222;
   width: 30%;
   height: 100%;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const SContents = styled.div`

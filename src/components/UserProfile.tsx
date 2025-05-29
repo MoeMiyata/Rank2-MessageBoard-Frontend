@@ -231,9 +231,9 @@ export default function UserProfile() {
             <SUserProfileRow>
               <SUserProfileImage src={isEditMode && profileImageUrl ? profileImageUrl : loginUser.imgSrc} />
               {isEditMode ? 
-                <div>
+                <SUserProfileImageInput>
                   <input type="file" accept="image/*" onChange={onFileInputChange} />
-                </div>
+                </SUserProfileImageInput>
                 : null}
             </SUserProfileRow>
 
@@ -508,6 +508,12 @@ const SUserProfileFrame = styled.div<UserProfileProps>`
   }
 `;
 
+const SUserProfileImageInput = styled.div`
+  @media(max-width: 768px) {
+    font-size: smaller;
+  }
+`; 
+
 const SUserProfileRow = styled.div`
   // display: inline-block;
   // margin-top: 4px;
@@ -552,6 +558,7 @@ const SUserProfileLabel = styled.span`
   vertical-align: top;
   text-align: right;
   margin-right: 4px;
+  margin-left: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
 
@@ -579,6 +586,10 @@ const SUserProfileData = styled.span`
   margin-right: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
+
+  @media (max-width: 768px) {
+    width: 45%;
+  }
 `;
 
 const SUserProfileImage = styled.img`

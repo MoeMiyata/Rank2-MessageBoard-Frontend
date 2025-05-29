@@ -75,9 +75,9 @@ const SSideBar = styled.div`
   margin: 20px 0px 0px 15px;
   padding: 8px;
 
-  @media (max-width: 768px) {
-    display: none;
-  }
+  // @media (max-width: 768px) {
+  //   display: none;
+  // }
 `
 
 const SSideBarRow = styled.div`
