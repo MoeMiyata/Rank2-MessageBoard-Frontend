@@ -17,7 +17,7 @@ export const PostMobile = () => {
             <SMobilePostBoxContainer>
                 <SMobilePostBox>
                     <SMobilePostTextArea
-                        rows={4}
+                        rows={1}
                         value={msg}
                         onChange={(evt) => setMsg(evt.target.value)}
                     ></SMobilePostTextArea>
@@ -47,7 +47,7 @@ const SMobilePostBoxContainer = styled.div`
 
 const SMobilePostBox = styled.div`
   position: fixed;
-  top: 67px;
+  bottom: 25px;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(34, 34, 34);
