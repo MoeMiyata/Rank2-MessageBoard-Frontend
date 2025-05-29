@@ -501,6 +501,11 @@ const SUserProfileFrame = styled.div<UserProfileProps>`
   padding-bottom: 8px;
   border-radius: 8px;
   box-shadow: 0 8px 8px #aaaaaa;
+
+  @media (max-width: 768px) {
+    margin: 20px 20px 20px;
+    font-size: small;
+  }
 `;
 
 const SUserProfileRow = styled.div`
@@ -514,6 +519,10 @@ const SUserProfileRow = styled.div`
 const SUserProfileTextRow = styled.div`
   // display: inline-block;
   margin-top: 40px;
+
+  @media(max-width: 768px) {
+    display: none;
+  }
 `;
 
 const SMainButton = styled.button`
@@ -545,6 +554,10 @@ const SUserProfileLabel = styled.span`
   margin-right: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
+
+  @media (max-width: 768px) {
+    width: 45%;
+  }
 `;
 
 const SUserProfileInput = styled.span`
@@ -552,6 +565,10 @@ const SUserProfileInput = styled.span`
   width: auto;
   vertical-align: top;
   margin-left: 4px;
+
+  @media (max-width: 768px) {
+    width: 48%;
+  }
 `;
 
 const SUserProfileData = styled.span`
@@ -569,6 +586,11 @@ const SUserProfileImage = styled.img`
   width: 150px;
   height: 150px;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    width: 70px;
+    height: 70px;
+  }
 `;
 
 const SLogo = styled.div`
@@ -578,4 +600,9 @@ const SLogo = styled.div`
   transform: translateX(-50%);
   font-weight: bold;
   font-size: large;
+
+  @media (max-width: 768px) {
+    bottom: 30px;
+    font-size: small;
+  }
 `;

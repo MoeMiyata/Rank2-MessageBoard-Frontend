@@ -62,6 +62,10 @@ const SDeleteUserButton = styled.button`
   &:hover {
     text-decoration: underline; 
   }
+
+  @media (max-width: 768px) {
+    bottom: 90px;
+  }
 `;
 
 const SDeleteDialogContainer = styled.div`
@@ -81,6 +85,10 @@ const SDeleteDialog = styled.div`
   padding-bottom: 8px;
   border-radius: 8px;
   box-shadow: 0 8px 8px #aaaaaa;
+
+  @media (max-width: 768px) {
+    bottom: 2%;
+  }
 `;
 
 const SDeleteDialogButton = styled.button<{ buttonText: string }>`

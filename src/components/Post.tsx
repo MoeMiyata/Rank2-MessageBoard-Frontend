@@ -138,6 +138,8 @@ const SPost = styled.div`
   margin: 10px;
   // border-bottom: 1px solid #AAAAAA;
   border: 1px solid #AAAAAA;
+  border-radius: 8px;
+  box-shadow: rgb(170, 170, 170) 0px 2px 2px;
   text-align: left;
   padding-left: 8px;
   padding-bottom: 8px;
