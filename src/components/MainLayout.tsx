@@ -108,7 +108,7 @@ const SSideBar = styled.div`
   @media (max-width: 768px) {
     width: 0%;
     height: 0%;
-    display: none;
+    // display: none;
   }
 `;
 

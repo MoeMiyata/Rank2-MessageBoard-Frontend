@@ -47,26 +47,29 @@ export default function SideBar() {
   };
 
   return (
-    <SSideBar>
-      <SSideBarRow>
-        <SUserProfileImage src={loginUser.imgSrc} alt='profileImage'/>
-        <SSideBarRow>{loginUser.name}</SSideBarRow>
-        <SSideBarRow>{loginUser.email}</SSideBarRow>
-      </SSideBarRow>
+    <>
+      <SSideBar>
+        <SSideBarRow>
+          <SUserProfileImage src={loginUser.imgSrc} alt='profileImage'/>
+          <SSideBarRow>{loginUser.name}</SSideBarRow>
+          <SSideBarRow>{loginUser.email}</SSideBarRow>
+        </SSideBarRow>
 
-      <SSideBarRow>
-        <SSideBarTextArea
-          rows={4}
-          value={msg}
-          onChange={(evt) => setMsg(evt.target.value)}
-        ></SSideBarTextArea>
-      </SSideBarRow>
+        <SSideBarRow>
+          <SSideBarTextArea
+            rows={4}
+            value={msg}
+            onChange={(evt) => setMsg(evt.target.value)}
+          ></SSideBarTextArea>
+        </SSideBarRow>
 
-      <SSideBarRow>
-        <SSideBarButton onClick={onSendClick} disabled={msg.trim() === ''}>送信</SSideBarButton>
-      </SSideBarRow>
+        <SSideBarRow>
+          <SSideBarButton onClick={onSendClick} disabled={msg.trim() === ''}>送信</SSideBarButton>
+        </SSideBarRow>
+      </SSideBar>
 
-    </SSideBar>
+      <SMobileSideBar></SMobileSideBar>
+    </>
   );
 }
 
@@ -75,22 +78,22 @@ const SSideBar = styled.div`
   margin: 20px 0px 0px 15px;
   padding: 8px;
 
-  // @media (max-width: 768px) {
-  //   display: none;
-  // }
-`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 
 const SSideBarRow = styled.div`
   margin-top: 4px;
   margin-bottom: 4px;
   // text-align: left;
-`
+`;
 
 const SSideBarTextArea = styled.textarea`
   border-radius: 4px;
   box-shadow: inset 0 2px 4px #CCCCCC;
   width: 100%;
-`
+`;
 
 const SSideBarButton = styled.button`
   background-color: #222222;
@@ -105,11 +108,20 @@ const SSideBarButton = styled.button`
     background-color: #aaaaaa;  // 無効化されたボタンのスタイルを変更
     cursor: not-allowed;  // 無効化されたボタンのカーソルを変更
   }
-`
+`;
 
 const SUserProfileImage = styled.img`
   border-radius: 50%;
   width: 100px;
   height: 100px;
   object-fit: cover;
+`;
+
+
+
+const SMobileSideBar = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: block; // とりあえずblock
+  }
 `;
