@@ -10,6 +10,7 @@ import { PageLinkContext } from '../providers/PageLinkProvider.tsx';
 import { post, getList } from "../api/Post.tsx";
 import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 import { VolumeContext } from '../providers/VolumeProvider.tsx';
+import { PostMobile } from './PostMobile.tsx';
 
 export default function SideBar() {
   const [msg, setMsg] = useState("");
@@ -68,7 +69,9 @@ export default function SideBar() {
         </SSideBarRow>
       </SSideBar>
 
-      <SMobileSideBar></SMobileSideBar>
+      <SMobileSideBar>
+        <PostMobile/>
+      </SMobileSideBar>
     </>
   );
 }
