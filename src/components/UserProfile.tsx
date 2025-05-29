@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Dropbox } from 'dropbox'; // Dropbox SDKをインポート
@@ -564,6 +564,8 @@ const SUserProfileLabel = styled.span`
 
   @media (max-width: 768px) {
     width: 45%;
+    // width: 100%;
+    // text-align: center;
   }
 `;
 
@@ -575,6 +577,8 @@ const SUserProfileInput = styled.span`
 
   @media (max-width: 768px) {
     width: 48%;
+    // width: 100%;
+    // text-align: center;
   }
 `;
 

@@ -77,7 +77,7 @@ const SPostMobileButton = styled.button`
   background-color: #222222;
   color: #FAFAFA;
   position: fixed;
-  bottom: 45px;
+  bottom: 90px;
   right: 10px;
   padding: 3px 5px 0px 4px;
   border-radius: 50%;
@@ -115,9 +115,9 @@ const SMobilePostTextArea = styled.textarea`
 
 const SMobileSendButton = styled.button`
   position: absolute;
-  bottom: 8px;
-  right: 8px;
-  background: #4CAF50;
+  bottom: 6.5px;
+  right: 5%;
+  background: #222222;
   border: none;
   color: white;
   padding: 6px;
