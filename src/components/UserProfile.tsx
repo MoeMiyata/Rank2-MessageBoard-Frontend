@@ -529,7 +529,7 @@ const SUserProfileTextRow = styled.div<{ isEditMode: boolean }>`
   @media(max-width: 768px) {
     // display: none;
     font-size: smaller;
-    margin-top: ${({ isEditMode }) => ( isEditMode ? '40px' : '60px' )};
+    margin-top: ${({ isEditMode }) => ( isEditMode ? '20px' : '60px' )};
   }
 `;
 
@@ -611,7 +611,7 @@ const SUserProfileImage = styled.img`
 `;
 
 const SLogo = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 50px;
   left: 50%;
   transform: translateX(-50%);

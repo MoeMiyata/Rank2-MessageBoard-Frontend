@@ -9,12 +9,6 @@ export const DeleteUser = () => {
     const navigate = useNavigate();
     const { userInfo } = useContext(UserContext);
 
-    // const onDeleteUserClick = async () => {
-    //   console.log("delete user")
-    //   await deleteUser(userInfo.token, userInfo.id);
-    //   navigate("/")
-    // }
-
     const [ isOpenDialog, setIsOpenDialog ] = useState(false);
     
     const onSwitchDialogClick = () => {
@@ -48,7 +42,7 @@ export const DeleteUser = () => {
 }
 
 const SDeleteUserButton = styled.button`
-  position: fixed;
+  position: absolute;
   bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
