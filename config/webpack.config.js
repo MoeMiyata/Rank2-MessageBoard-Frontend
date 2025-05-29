@@ -341,6 +341,8 @@ module.exports = function (webpackEnv) {
         buffer: require.resolve('buffer/'),
         crypto: require.resolve('crypto-browserify'),
         stream: require.resolve('stream-browserify'),
+        // vmモジュールを解決
+        vm: require.resolve("vm-browserify"),
       },
     },
     module: {
