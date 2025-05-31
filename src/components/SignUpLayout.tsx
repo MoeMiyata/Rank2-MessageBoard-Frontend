@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { createUser } from "../api/User.tsx";
+import { requestEmailVerification } from "../api/User.tsx";
+// import { createUser } from "../api/User.tsx";
 
 
 export default function SignUpLayout() {
@@ -16,14 +17,18 @@ export default function SignUpLayout() {
   const onSignUpClick = async () => {
       console.log('name:', name, '\nemail:', email, '\npassword:', pass);
       
-      const error = await createUser(name, email, pass);
+      // const error = await createUser(name, email, pass);
 
-      if (error) {
-        alert(error.response.data.message);
-      } else {
-        //　アカウント作成に成功したらログイン画面に移行
-        navigate("/");
-      }
+      // if (error) {
+      //   alert(error.response.data.message);
+      // } else {
+      //   //　アカウント作成に成功したらログイン画面に移行
+      //   navigate("/");
+      // }
+
+
+      const error = await requestEmailVerification(name, email, pass);
+      console.log("requestEmailVerification:", error);
   };
 
   const onBackToLoginClick = async () => {
