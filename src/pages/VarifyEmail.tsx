@@ -9,7 +9,7 @@ export const VerifyEmail = () => {
   useEffect(() => {
     if (token) {
       axios
-        .post('https://rank2-messageboard-backend.onrender.com/user/verify', { token })
+        .post('https://rank2-messageboard-backend.onrender.com/user/verify-email', { token })
         .then((res) => {
           alert('✅ メール認証が完了しました！');
         })
