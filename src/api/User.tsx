@@ -29,7 +29,7 @@ export const requestEmailVerification = async (name: string, email: string, pass
       email,
       password
     }); 
-    // console.log('res(createUser):', res.data);
+    console.log('res(requestEmailVerification):', res.data);
     return res.data;
 
   } catch (error: any) {
