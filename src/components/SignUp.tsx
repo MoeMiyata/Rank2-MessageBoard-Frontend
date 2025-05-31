@@ -11,9 +11,9 @@ export default function SignUp() {
 
   return (
     <SSignInRow>
-    <SLoginButton type="button" onClick={onSignUpClick}>
-        Sign up
-    </SLoginButton>
+      <SLoginButton type="button" onClick={onSignUpClick}>
+          Sign up
+      </SLoginButton>
     </SSignInRow>
   );
 }

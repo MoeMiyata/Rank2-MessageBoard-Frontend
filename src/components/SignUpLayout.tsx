@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createUser } from "../api/User.tsx";
 
 
-export default function SignInLayout() {
+export default function SignUpLayout() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
