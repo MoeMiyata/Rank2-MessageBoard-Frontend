@@ -12,36 +12,7 @@ import { ReloadPage } from './ReloadPage.tsx';
 import { getUser } from '../api/User.tsx';
 import { VolumeProvider } from '../providers/VolumeProvider.tsx';
 
-// import { useContext, useLayoutEffect } from "react";
-// import { UserContext } from "../providers/UserProvider.tsx";
-// import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
-// import { getList } from "../api/Post.tsx";
-
 export default function MainLayout() {
-  // const { userInfo } = useContext(UserContext);
-  // const { pageNumber } = useContext(PageLinkContext);
-  // const { setPostList } = useContext(PostListContext);
-
-  // const getPostList = async () => {
-  //   console.log("MainLayout: getPostList");
-  //   const posts = await getList(userInfo.token, pageNumber);
-  //   console.log(posts);
-  //   let postList: Array<PostType> = [];
-
-  //   if (posts) {
-  //     posts.forEach((p: any) => {
-  //       postList.push({
-  //         id: p.id,
-  //         user_name: p.user_name,
-  //         content: p.content,
-  //         created_at: new Date(p.created_at),
-  //       });
-  //     });
-  //   }
-  //   setPostList(postList);
-  // };
-
-
   // ログインしたユーザの情報を取得してContextに内容を保持しておく
   const { userInfo } = useContext(UserContext);
   const { loginUser, setLoginUser } = useContext(LoginUserContext);

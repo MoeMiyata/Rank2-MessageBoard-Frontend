@@ -100,7 +100,7 @@ const SRightItem = styled.div`
   justify-content: end;
 
   @media (max-width: 768px) {
-    display: none; // スマホ時は非表示
+    display: none;
   };
 `
 

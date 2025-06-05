@@ -88,7 +88,6 @@ export default function SignUpLayout() {
       </SSignInRow>
 
       <SSignInRow>
-        {/* <SLoginButton type="button" onClick={onSignInClick}> */}
         <SLoginButton type="button" onClick={onSignUpClick} disabled={!isFormValid}>
           Create New Account
         </SLoginButton>

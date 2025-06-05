@@ -76,7 +76,7 @@ const SSearchDiv = styled.div`
   position: relative;
   left: 25%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1070px) {
     display: none;
   }
 `
@@ -113,7 +113,7 @@ const SSearchIcon = styled.button`
 const SMobileSearchButton = styled.button`
   display: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1070px) {
     display: flex;
     background-color: #222222;
     color: #FAFAFA;
