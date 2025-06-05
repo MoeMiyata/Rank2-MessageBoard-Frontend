@@ -62,7 +62,7 @@ export default function SignIn() {
               type={isRevealPassword ? 'text' : 'password'}
               onChange={(evt) => setPass(evt.target.value)}
             />
-            <span onClick={togglePassword}  role="presentation" style={{ left: 'auto', position: 'absolute', right: '10px', top: '10px' }}>
+            <span onClick={togglePassword}  role="presentation" className="eye-icon">
               <i className={isRevealPassword ? "fas fa-eye" : "fas fa-eye-slash"} />
             </span>
           </SSignInInput>
@@ -103,10 +103,20 @@ const SSignInLabel = styled.span`
 `;
 
 const SSignInInput = styled.span`
+  position: relative;
   display: inline-block;
   // width: auto;
   vertical-align: top;
   margin-left: 4px;
+
+  .eye-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+  }
 `;
 
 const SSignInData = styled.span`
