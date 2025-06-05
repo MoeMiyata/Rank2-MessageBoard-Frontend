@@ -40,14 +40,14 @@ export const VerifyEmail = () => {
       axios
         .post(`${hostUrl}/user/verify-email`, { token })
         .then((res) => {
-          alert('✅ メール認証が完了しました！');
+          // alert('✅ メール認証が完了しました！');
           // 元の画面にメッセージを送信
           if (window.opener) {
             console.log("opener exists!");
             window.opener.postMessage({ type: 'email-verified' }, `${hostUrl}`);
           }
           // 自分のウィンドウを閉じる
-          window.close();
+          // window.close();
         })
         .catch((err) => {
           alert('❌ 認証に失敗しました');
