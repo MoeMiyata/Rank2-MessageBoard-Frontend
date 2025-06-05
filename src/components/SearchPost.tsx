@@ -53,7 +53,7 @@ export const SearchPost = () => {
           <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
           <SSearchIcon type="submit" onClick={onSearchPostClick}>
             {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /> */}
-            <i className="fas fa-search" style={{width: '30px', height: '30px', color: 'white'}} ></i>
+            <i className="fas fa-search" style={{scale: 2}} ></i>
           </SSearchIcon>
         </SSearchDiv> 
 
@@ -67,7 +67,10 @@ export const SearchPost = () => {
             </SMobileSearchBox>
           </SMobileSearchBoxContainer>
         )}
-        <SMobileSearchButton onClick={onSwitchMobileSearchBoxClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/></SMobileSearchButton>
+        <SMobileSearchButton onClick={onSwitchMobileSearchBoxClick}>
+          {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/> */}
+          <i className="fas fa-search" style={{scale: 2}} ></i>
+        </SMobileSearchButton>
         {/* </SMobileSearchDiv>  */}
       </>
     )
@@ -121,6 +124,8 @@ const SMobileSearchButton = styled.button`
     background-color: #222222;
     color: #FAFAFA;
     position: fixed;
+    width: 45px;
+    height: 45px;
     top: 45px;
     right: 10px;
     border-radius: 50%;

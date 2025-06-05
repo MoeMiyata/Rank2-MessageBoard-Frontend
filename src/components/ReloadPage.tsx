@@ -38,7 +38,7 @@ export const ReloadPage = () => {
     return (
         <SPageReloadButton onClick={onReloadClick}>
             {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/reloadicon_white.png?raw=true" alt="button" width="30" height="30" /> */}
-            <i className="fas fa-redo" style={{width: '30px', height: '30px', color: 'white'}} ></i>
+            <i className="fas fa-redo" style={{scale: 2}} ></i>
         </SPageReloadButton>
     )
 }
@@ -47,6 +47,8 @@ const SPageReloadButton = styled.button`
   background-color: #222222;
   color: #FAFAFA;
   position: fixed;
+  width: 45px;
+  height: 45px;
   top: 45px;
   right: 10px;
   padding: 3px 5px 0px 4px;
