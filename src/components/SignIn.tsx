@@ -9,7 +9,12 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [pass, setPass] = useState("");
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { setUserInfo } = useContext(UserContext);
+  
+  const [isRevealPassword, setIsRevealPassword] = useState(false);
+  const togglePassword = () => {
+    setIsRevealPassword((prevState) => !prevState);
+  }
 
   const onSignInClick = async () => {
     const ret = await sign_in(userId, pass);
@@ -54,9 +59,12 @@ export default function SignIn() {
             <input
               id="password"
               value={pass}
-              type="password"
+              type={isRevealPassword ? 'text' : 'password'}
               onChange={(evt) => setPass(evt.target.value)}
             />
+            <span onClick={togglePassword}  role="presentation" style={{ left: 'auto', position: 'absolute', right: '10px', top: '10px' }}>
+              <i className={isRevealPassword ? "fas fa-eye" : "fas fa-eye-slash"} />
+            </span>
           </SSignInInput>
         </SSignInData>
       </SSignInRow>

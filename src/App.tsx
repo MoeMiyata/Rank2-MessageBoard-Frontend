@@ -10,6 +10,7 @@ import './App.css';
 import { LoginUserProvider } from './providers/LoginUserProvider.tsx';
 import { VerifyEmail } from './pages/VerifyEmail.tsx';
 // import { DropboxUpload } from './components/DropboxUpload.tsx';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   return (
