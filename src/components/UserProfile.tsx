@@ -7,6 +7,7 @@ import { LoginUserContext } from "../providers/LoginUserProvider.tsx";
 import { getUser, updateUser } from "../api/User.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { DeleteUser } from "./DeleteUser.tsx";
+import toast from "react-hot-toast";
 
 
 export default function UserProfile() {
@@ -196,11 +197,6 @@ export default function UserProfile() {
       }
     }
 
-    console.log('name, email, pass, birthday, address, tel, imgSrc:', name, email, pass, birthday, address, tel, profileImageUrl)
-    console.log('updateName, updateEmail, pass, updateBirthday, updateAddress, updateTel, updateImgsrc:', updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl)
-
-    console.log('profileImageUrl:', profileImageUrl);
-
     if (updateName.trim() === '' && updateEmail.trim() === '' && updateBirthday.trim() === '' && (pass === undefined || pass.trim() === '') && updateAdress.trim() === '' && updateTel.trim() === '' && updateImgUrl.trim() === '') {
       console.log("updateImgUrl:", updateImgUrl)
       alert('変更内容がありません．')
@@ -224,6 +220,9 @@ export default function UserProfile() {
     }
   };
 
+  const onChangePasswordClick = () => {
+    toast("パスワード再設定用のメールを送信しました", { icon: <i className="fas fa-check-circle" style={{color: 'green'}}/>})
+  }
 
   return (
     <>
@@ -318,12 +317,13 @@ export default function UserProfile() {
 
                     <SUserProfileData>
                       <SUserProfileInput>
-                      <input
+                      {/* <input
                           id="password"
                           type="password"
                           placeholder="＊＊＊＊＊"
                           onChange={(evt) => setPass(evt.target.value)}
-                      />
+                      /> */}
+                      <SChangePasswordButton onClick={onChangePasswordClick}>パスワードを変更する</SChangePasswordButton>
                       </SUserProfileInput>
                     </SUserProfileData>
                   </>
@@ -632,5 +632,14 @@ const SLogo = styled.div`
   @media (max-width: 768px) {
     bottom: 30px;
     font-size: small;
+  }
+`;
+
+const SChangePasswordButton = styled.button`
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #5AA1FA;
   }
 `;

@@ -19,14 +19,6 @@ export default function Header() {
     navigate("/");
   };
 
-  // useEffect(() => {
-  //   const myGetUser = async () => {
-  //     const user = await getUser(userInfo.id, userInfo.token);
-  //     setUserName(user.name);
-  //   };
-  //   myGetUser();
-  // }, []);
-
   const onUserProfileClick = () => {
     console.log('ユーザ情報閲覧');
     navigate("/userprofile");
@@ -54,7 +46,7 @@ export default function Header() {
 
       <SRightItem>
         <SName onClick={onUserProfileClick}>{loginUser.name}</SName>
-        <SVolume onClick={onVolumeClick}>{ isMute ? "sound OFF" : "sound ON" }</SVolume>
+        <SVolume onClick={onVolumeClick}><i className={isMute ? "fas fa-bell-slash" : "fas fa-bell"}></i></SVolume>
         <SLogout onClick={logout}>ログアウト</SLogout>
       </SRightItem>
 
@@ -62,7 +54,7 @@ export default function Header() {
       {menuOpen && (
         <SMobileMenu>
           <SName onClick={() => { onUserProfileClick(); setMenuOpen(false); }}>{loginUser.name}</SName>
-          <SVolume onClick={() => { onVolumeClick(); setMenuOpen(false); }}><i className={isMute ? "fas fa-bell-slash" : "fas fa-bell"}></i></SVolume>
+          <SVolume onClick={() => { onVolumeClick(); setMenuOpen(false); }}>{ isMute ? "sound OFF" : "sound ON" }</SVolume>
           <SLogout onClick={() => { logout(); setMenuOpen(false); }}>ログアウト</SLogout>
         </SMobileMenu>
       )}
@@ -143,7 +135,7 @@ const SBurgerMenu = styled.div`
   display: none;
   font-size: 24px;
   cursor: pointer;
-  padding: 8px;
+  padding: 2px 8px 2px 8px;
 
   @media (max-width: 768px) {
     display: block;
