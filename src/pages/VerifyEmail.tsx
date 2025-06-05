@@ -34,13 +34,17 @@ export const VerifyEmail = () => {
   return (
     <div style={{height: '100vh', textAlign: 'center'}}>
       {isVerifyEmail ? 
-        <>
+        <div>
           <span>ログイン画面からログインをお願いします</span>
           <SLoginButton type="button" onClick={onBackToLoginClick}>
             Back to Login
           </SLoginButton>
-        </>
-       : <><i className="fas fa-spinner fa-pulse"></i><span> メール認証を確認しています...</span></> }
+        </div>
+       : 
+        <div>
+          <i className="fas fa-spinner fa-pulse"></i>
+          <span> メール認証を確認しています...</span>
+        </div> }
     </div>
   );
 };
