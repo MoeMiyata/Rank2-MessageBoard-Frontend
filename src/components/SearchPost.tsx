@@ -69,7 +69,7 @@ export const SearchPost = () => {
         )}
         <SMobileSearchButton onClick={onSwitchMobileSearchBoxClick}>
           {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/> */}
-          <i className="fas fa-search" style={{scale: 2}} ></i>
+          <i className="fas fa-search" ></i>
         </SMobileSearchButton>
         {/* </SMobileSearchDiv>  */}
       </>
@@ -131,6 +131,13 @@ const SMobileSearchButton = styled.button`
     right: 10px;
     border-radius: 50%;
     cursor: pointer;
+
+    i {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      scole: 2;
+    }
   }
 `
 
