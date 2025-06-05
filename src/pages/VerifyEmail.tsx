@@ -32,7 +32,7 @@ export const VerifyEmail = () => {
   };
 
   return (
-    <div style={{height: '100vh', textAlign: 'center'}}>
+    <div style={{display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center'}}>
       {isVerifyEmail ? 
         <div>
           <span>ログイン画面からログインをお願いします</span>
@@ -43,7 +43,7 @@ export const VerifyEmail = () => {
        : 
         <div>
           <i className="fas fa-spinner fa-pulse"></i>
-          <span> メール認証を確認しています...</span>
+          <span>  メール認証を確認しています...</span>
         </div> }
     </div>
   );
