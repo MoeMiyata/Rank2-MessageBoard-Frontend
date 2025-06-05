@@ -109,6 +109,10 @@ const SSignInInput = styled.span`
   vertical-align: top;
   margin-left: 4px;
 
+  input {
+    padding-right: 30px; /* アイコン分の余白 */
+  }
+
   .eye-icon {
     position: absolute;
     right: 8px;
