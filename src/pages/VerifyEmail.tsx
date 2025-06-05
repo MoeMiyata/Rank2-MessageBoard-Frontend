@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import { hostUrl } from '../api/hostUrl';
+import { hostUrl } from '../api/hostUrl.ts';
 
 export const VerifyEmail = () => {
   const [ params ] = useSearchParams();
