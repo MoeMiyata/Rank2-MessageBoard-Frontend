@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { requestEmailVerification } from "../api/User.tsx";
@@ -13,6 +13,20 @@ export default function SignUpLayout() {
 
   // サインアップボタンが押せるかの判定
   const isFormValid = name !== "" && email !== "" && pass !== "";
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === 'email-verified') {
+        alert("✅ 認証が完了しました。メイン画面に遷移します！");
+        navigate('/main');
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
 
   const onSignUpClick = async () => {
       console.log('name:', name, '\nemail:', email, '\npassword:', pass);
