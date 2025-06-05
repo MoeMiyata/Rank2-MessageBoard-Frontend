@@ -51,7 +51,10 @@ export const SearchPost = () => {
       <>
         <SSearchDiv>
           <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
-          <SSearchIcon type="submit" onClick={onSearchPostClick}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /></SSearchIcon>
+          <SSearchIcon type="submit" onClick={onSearchPostClick}>
+            {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /> */}
+            <i className="fas fa-search" style={{width: '30px', height: '30px', color: 'white'}} ></i>
+          </SSearchIcon>
         </SSearchDiv> 
 
         {/* <SMobileSearchDiv> */}

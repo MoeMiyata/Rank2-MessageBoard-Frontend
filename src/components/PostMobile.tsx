@@ -68,7 +68,10 @@ export const PostMobile = () => {
                 </SMobilePostBox>
             </SMobilePostBoxContainer>
             )}
-            <SPostMobileButton onClick={onPostMobileButton}><img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/posticon.png?raw=true" alt="button" width="30" height="30" /></SPostMobileButton>
+            <SPostMobileButton onClick={onPostMobileButton}>
+              {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/posticon.png?raw=true" alt="button" width="30" height="30" /> */}
+              <i className="fas fa-edit" style={{width: '30px', height: '30px', color: 'white'}}></i>
+            </SPostMobileButton>
         </>
     )
 }
