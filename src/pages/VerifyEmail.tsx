@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { hostUrl } from '../api/hostUrl.ts';
 import toast from 'react-hot-toast';
+import styled from 'styled-components';
 
 export const VerifyEmail = () => {
+  const navigate = useNavigate();
+  const [ isVerifyEmail, setIsVerifyEmail ] = useState(false);
   const [ params ] = useSearchParams();
   const token = params.get('token');
 
@@ -15,7 +18,8 @@ export const VerifyEmail = () => {
         .then((res) => {
           toast('メール認証が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
           // 自分のウィンドウを閉じる
-          window.close();
+          // window.close();
+          setIsVerifyEmail(true);
         })
         .catch((err) => {
           toast('認証に失敗しました', { icon: <i className="fas fa-times-circle" style={{color: 'red'}}></i> })
@@ -23,5 +27,30 @@ export const VerifyEmail = () => {
     }
   }, [token]);
 
-  return <div>メール認証を確認しています...</div>;
+  const onBackToLoginClick = async () => {
+    navigate("/");
+  };
+
+  return (
+    <div style={{height: '100vh', textAlign: 'center'}}>
+      {isVerifyEmail ? 
+        <>
+          <span>ログイン画面からログインをお願いします</span>
+          <SLoginButton type="button" onClick={onBackToLoginClick}>
+            Back to Login
+          </SLoginButton>
+        </>
+       : <><i className="fas fa-spinner fa-pulse"></i><span> メール認証を確認しています...</span></> }
+    </div>
+  );
 };
+
+
+
+const SLoginButton = styled.button`
+  background-color: #444444;
+  color: #f0f0f0;
+  padding: 4px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+`;

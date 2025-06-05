@@ -270,8 +270,7 @@ export default function UserProfile() {
                   :
                   <>
                     <SUserProfileLabel>
-                      <i className="fas fa-user"></i>
-                      Name : 
+                      Name <i className="fas fa-user"></i> : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.name}
@@ -301,8 +300,7 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      <i className="fas fa-envelope"></i>
-                      Email : 
+                      Email <i className="fas fa-envelope"></i> : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.email}
@@ -332,8 +330,7 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      <i className="fas fa-key"></i>
-                      Password : 
+                      Password <i className="fas fa-key"></i> : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       ＊＊＊＊＊
@@ -366,8 +363,7 @@ export default function UserProfile() {
                   :
                   <>
                     <SUserProfileLabel>
-                      <i className="fas fa-birthday-cake"></i>
-                      Date of birth : 
+                      Date of birth <i className="fas fa-birthday-cake"></i> : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.birthday 
@@ -401,8 +397,7 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      <i className="fas fa-home"></i>
-                      Address : 
+                      Address <i className="fas fa-home"></i> : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                     {loginUser.address || '登録なし'}
@@ -434,8 +429,7 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      <i className="fas fa-phone"></i>
-                      Phone number : 
+                      Phone number <i className="fas fa-phone"></i> : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.tel || '登録なし'}

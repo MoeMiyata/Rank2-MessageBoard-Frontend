@@ -139,4 +139,5 @@ const SLoginButton = styled.button`
   color: #f0f0f0;
   padding: 4px 16px;
   border-radius: 8px;
+  cursor: pointer;
 `;
