@@ -55,7 +55,7 @@ const SPageReloadButton = styled.button`
   border-radius: 50%;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1070px) {
     top: 100px;
   }
 `

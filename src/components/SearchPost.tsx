@@ -131,8 +131,6 @@ const SMobileSearchButton = styled.button`
     right: 10px;
     border-radius: 50%;
     cursor: pointer;
-    width: 43px;
-    height: 43px;
   }
 `
 
