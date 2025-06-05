@@ -136,7 +136,7 @@ const SMobileSearchButton = styled.button`
       position: absolute;
       top: 13px;
       left: 13px;
-      scole: 2;
+      scale: 2;
     }
   }
 `

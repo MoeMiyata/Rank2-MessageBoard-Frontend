@@ -270,7 +270,8 @@ export default function UserProfile() {
                   :
                   <>
                     <SUserProfileLabel>
-                      Name 👤 : 
+                      <i className="fas fa-user"></i>
+                      Name : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.name}
@@ -300,7 +301,8 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      Email ✉️ : 
+                      <i className="fas fa-envelope"></i>
+                      Email : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.email}
@@ -330,7 +332,8 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      Password 🔑 : 
+                      <i className="fas fa-key"></i>
+                      Password : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       ＊＊＊＊＊
@@ -363,7 +366,8 @@ export default function UserProfile() {
                   :
                   <>
                     <SUserProfileLabel>
-                      Date of birth 🎂 : 
+                      <i className="fas fa-birthday-cake"></i>
+                      Date of birth : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.birthday 
@@ -397,7 +401,8 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      Address 🏠 : 
+                      <i className="fas fa-home"></i>
+                      Address : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                     {loginUser.address || '登録なし'}
@@ -429,7 +434,8 @@ export default function UserProfile() {
                   : 
                   <>
                     <SUserProfileLabel>
-                      Phone number 📱 : 
+                      <i className="fas fa-phone"></i>
+                      Phone number : 
                     </SUserProfileLabel>
                     <SUserProfileData>
                       {loginUser.tel || '登録なし'}

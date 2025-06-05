@@ -70,7 +70,7 @@ export const PostMobile = () => {
             )}
             <SPostMobileButton onClick={onPostMobileButton}>
               {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/posticon.png?raw=true" alt="button" width="30" height="30" /> */}
-              <i className="fas fa-edit" style={{scale: 2}}></i>
+              <i className="fas fa-pen" style={{scale: 2}}></i>
             </SPostMobileButton>
         </>
     )
@@ -125,7 +125,7 @@ const SMobileSendButton = styled.button`
   background: #222222;
   border: none;
   color: white;
-  padding: 6px;
+  padding: 6px 8px;
   border-radius: 50%;
   cursor: pointer;
   font-size: 14px;

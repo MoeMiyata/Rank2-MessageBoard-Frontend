@@ -48,7 +48,7 @@ export default function Header() {
 
       <SMobileRightItem>
         <SBurgerMenu onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
+          <i className="fas fa-cog"></i>
         </SBurgerMenu>
       </SMobileRightItem>
 
@@ -62,7 +62,7 @@ export default function Header() {
       {menuOpen && (
         <SMobileMenu>
           <SName onClick={() => { onUserProfileClick(); setMenuOpen(false); }}>{loginUser.name}</SName>
-          <SVolume onClick={() => { onVolumeClick(); setMenuOpen(false); }}>{ isMute ? "sound OFF" : "sound ON" }</SVolume>
+          <SVolume onClick={() => { onVolumeClick(); setMenuOpen(false); }}><i className={isMute ? "fas fa-bell-slash" : "fas fa-bell"}></i></SVolume>
           <SLogout onClick={() => { logout(); setMenuOpen(false); }}>ログアウト</SLogout>
         </SMobileMenu>
       )}
@@ -147,6 +147,7 @@ const SBurgerMenu = styled.div`
 
   @media (max-width: 768px) {
     display: block;
+    color: white;
   }
 `;
 
