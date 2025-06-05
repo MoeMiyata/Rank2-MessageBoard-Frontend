@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import { requestEmailVerification } from "../api/User.tsx";
 // import { createUser } from "../api/User.tsx";
@@ -29,7 +30,7 @@ export default function SignUpLayout() {
 
       const error = await requestEmailVerification(name, email, pass);
       console.log("requestEmailVerification:", error);
-      alert("認証メールを送信しました。確認してください。");
+      toast('認証メールを送信しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
   };
 
   const onBackToLoginClick = async () => {

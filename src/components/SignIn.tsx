@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { toast } from 'react-hot-toast';
+
 import { UserContext } from "../providers/UserProvider.tsx";
 import { sign_in } from "../api/Auth.tsx";
 
@@ -22,6 +24,7 @@ export default function SignIn() {
 
     if (ret && ret.token) {
       console.log(`Sign in success. ${ret.user_id}, ${ret.token}`);
+      toast('ログインに成功しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
       setUserInfo({
         id: ret.user_id,
         token: ret.token,
