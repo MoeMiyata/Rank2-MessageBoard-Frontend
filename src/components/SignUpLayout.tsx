@@ -16,6 +16,7 @@ export default function SignUpLayout() {
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
+      console.log("受信メッセージ:", event);
       if (event.data?.type === 'email-verified') {
         alert("✅ 認証が完了しました。メイン画面に遷移します！");
         navigate('/main');
@@ -43,6 +44,7 @@ export default function SignUpLayout() {
 
       const error = await requestEmailVerification(name, email, pass);
       console.log("requestEmailVerification:", error);
+      alert("認証メールを送信しました。確認してください。");
   };
 
   const onBackToLoginClick = async () => {

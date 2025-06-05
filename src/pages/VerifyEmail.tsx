@@ -43,7 +43,8 @@ export const VerifyEmail = () => {
           alert('✅ メール認証が完了しました！');
           // 元の画面にメッセージを送信
           if (window.opener) {
-            window.opener.postMessage({ type: 'email-verified' }, '*');
+            console.log("opener exists!");
+            window.opener.postMessage({ type: 'email-verified' }, `${hostUrl}`);
           }
           // 自分のウィンドウを閉じる
           window.close();
