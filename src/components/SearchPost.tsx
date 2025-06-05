@@ -53,7 +53,7 @@ export const SearchPost = () => {
           <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
           <SSearchIcon type="submit" onClick={onSearchPostClick}>
             {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /> */}
-            <i className="fas fa-search" style={{scale: 2}} ></i>
+            <i className="fas fa-search" style={{scale: 1.5}} ></i>
           </SSearchIcon>
         </SSearchDiv> 
 
@@ -102,6 +102,7 @@ const SSearchPost = styled.input`
 
 const SSearchIcon = styled.button`
   background-color: #222222;
+  color: #FAFAFA;
   border: none;
 `
 

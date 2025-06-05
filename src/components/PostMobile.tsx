@@ -70,7 +70,7 @@ export const PostMobile = () => {
             )}
             <SPostMobileButton onClick={onPostMobileButton}>
               {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/posticon.png?raw=true" alt="button" width="30" height="30" /> */}
-              <i className="fas fa-edit" style={{width: '30px', height: '30px', color: 'white'}}></i>
+              <i className="fas fa-edit" style={{scale: 2}}></i>
             </SPostMobileButton>
         </>
     )
@@ -82,7 +82,9 @@ const SPostMobileButton = styled.button`
   position: fixed;
   bottom: 90px;
   right: 10px;
-  padding: 3px 5px 0px 4px;
+  width: 45px;
+  height: 45px;
+  // padding: 3px 5px 0px 4px;
   border-radius: 50%;
   cursor: pointer;
 `;
