@@ -84,7 +84,18 @@ export default function UserProfile() {
 
     if (!profileImage) return;
 
-    const accessToken = await refreshAccessToken("lpGMfLpOc8IAAAAAAAAAAe9qa0hrZoXbH-plrBcsWc3sfqk8SYAl9ZHOz4hXHOL0", "j3li7gaq8uneq5y", "ev12iix1eberer6");
+    const refreshToken = process.env.REACT_APP_DROPBOX_REFRESH_TOKEN;
+    const clientId = process.env.REACT_APP_DROPBOX_CLIENT_ID!;
+    const clientSecret = process.env.REACT_APP_DROPBOX_CLIENT_SECRET!;
+
+    // どれか1つでも欠けていたら中断
+    if (!refreshToken || !clientId || !clientSecret) {
+      console.error("❌ Dropbox APIの認証情報が見つかりません (.env.local が正しく設定されているか確認してください)");
+      alert("Dropbox設定が不完全です。アップロードできません。");
+      return;
+    }
+
+    const accessToken = await refreshAccessToken(refreshToken, clientId, clientSecret);
       if (accessToken) {
         console.log("取得成功:", accessToken);
       }

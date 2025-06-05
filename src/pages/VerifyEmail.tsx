@@ -12,7 +12,7 @@ export const VerifyEmail = () => {
   useEffect(() => {
     if (token) {
       axios
-        .post(hostUrl + '/user/verify-email', { token })
+        .post(`${hostUrl}/user/verify-email`, { token })
         .then((res) => {
           alert('✅ メール認証が完了しました！');
           navigate('/main');
