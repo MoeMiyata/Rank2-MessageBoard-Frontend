@@ -68,7 +68,7 @@ export const ChangePassword = () => {
         </div>
        : 
         <SChangePassFrame>
-          <div>パスワードを再設定してください。</div>
+          <div style={{ margin: "20px"}}>パスワードを再設定してください。</div>
 
           <SChangePassRow>
             <SChangePassInput>
@@ -125,9 +125,11 @@ const SChangePassFrame = styled.div`
   padding-bottom: 8px;
   border-radius: 8px;
   box-shadow: 0 8px 8px #aaaaaa;
+  width: 80%;
 `;
 
 const SLoginButton = styled.button`
+  margin: 20px;
   background-color: #444444;
   color: #f0f0f0;
   padding: 4px 16px;
@@ -137,15 +139,16 @@ const SLoginButton = styled.button`
 
 const SChangePassLabel = styled.span`
   display: inline-block;
-  width: 25%;
+  width: 50%;
   vertical-align: top;
   text-align: right;
   margin-right: 4px;
 `;
 
 const SChangePassInput = styled.span`
+  display: flex;
   position: relative;
-  display: inline-block;
+  // display: inline-block;
   // width: auto;
   vertical-align: top;
   margin-left: 4px;
@@ -166,16 +169,13 @@ const SChangePassInput = styled.span`
 
 const SChangePassData = styled.span`
   display: inline-block;
-  width: 25%;
+  width: 50%;
   vertical-align: top;
   text-align: left;
   margin-right: 4px;
 `;
 
 const SChangePassRow = styled.div`
-  // display: inline-block;
-  // margin-top: 4px;
-  // margin-bottom: 4px;
   margin-top: 10px;
   margin-bottom: 10px;
 `;
