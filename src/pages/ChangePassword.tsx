@@ -16,6 +16,7 @@ export const ChangePassword = () => {
   const token = params.get('token');
 
   const { userInfo } = useContext(UserContext);
+  console.log("userInfo（ChangePassword）:", userInfo)
 
   const [isRevealNewPassword, setIsRevealNewPassword] = useState(false);
   const toggleNewPassword = () => {
@@ -68,42 +69,48 @@ export const ChangePassword = () => {
        : 
         <SChangePassFrame>
           <div>パスワードを再設定してください。</div>
-          <SChangePassInput>
-            <SChangePassLabel>
-                <label htmlFor="password">新しいパスワード</label>
-            </SChangePassLabel>
-            <SChangePassData>
-                <SChangePassInput>
-                    <input
-                    id="password"
-                    value={newPassword}
-                    type={isRevealNewPassword ? 'text' : 'password'}
-                    onChange={(evt) => setNewPassword(evt.target.value)}
-                    />
-                    <span onClick={toggleNewPassword}  role="presentation" className="eye-icon">
-                    <i className={isRevealNewPassword ? "fas fa-eye" : "fas fa-eye-slash"} />
-                    </span>
-                </SChangePassInput>
-            </SChangePassData>
-          </SChangePassInput>
-          <SChangePassInput>
-            <SChangePassLabel>
-                <label htmlFor="password">新しいパスワード（確認）</label>
-            </SChangePassLabel>
-            <SChangePassData>
-                <SChangePassInput>
-                    <input
-                    id="password"
-                    value={confirmNewPassword}
-                    type={isRevealConfirmNewPassword ? 'text' : 'password'}
-                    onChange={(evt) => setConfirmNewPassword(evt.target.value)}
-                    />
-                    <span onClick={toggleConfirmNewPassword}  role="presentation" className="eye-icon">
-                    <i className={isRevealConfirmNewPassword ? "fas fa-eye" : "fas fa-eye-slash"} />
-                    </span>
-                </SChangePassInput>
-            </SChangePassData>
-          </SChangePassInput>
+
+          <SChangePassRow>
+            <SChangePassInput>
+              <SChangePassLabel>
+                  <label htmlFor="password">新しいパスワード</label>
+              </SChangePassLabel>
+              <SChangePassData>
+                  <SChangePassInput>
+                      <input
+                      id="password"
+                      value={newPassword}
+                      type={isRevealNewPassword ? 'text' : 'password'}
+                      onChange={(evt) => setNewPassword(evt.target.value)}
+                      />
+                      <span onClick={toggleNewPassword}  role="presentation" className="eye-icon">
+                      <i className={isRevealNewPassword ? "fas fa-eye" : "fas fa-eye-slash"} />
+                      </span>
+                  </SChangePassInput>
+              </SChangePassData>
+            </SChangePassInput>
+          </SChangePassRow>
+
+          <SChangePassRow>
+            <SChangePassInput>
+              <SChangePassLabel>
+                  <label htmlFor="password">新しいパスワード（確認）</label>
+              </SChangePassLabel>
+              <SChangePassData>
+                  <SChangePassInput>
+                      <input
+                      id="password"
+                      value={confirmNewPassword}
+                      type={isRevealConfirmNewPassword ? 'text' : 'password'}
+                      onChange={(evt) => setConfirmNewPassword(evt.target.value)}
+                      />
+                      <span onClick={toggleConfirmNewPassword}  role="presentation" className="eye-icon">
+                      <i className={isRevealConfirmNewPassword ? "fas fa-eye" : "fas fa-eye-slash"} />
+                      </span>
+                  </SChangePassInput>
+              </SChangePassData>
+            </SChangePassInput>
+          </SChangePassRow>
           <SLoginButton onClick={onChangePasswordClick}>送信</SLoginButton>
         </SChangePassFrame> }
     </div>
@@ -163,4 +170,12 @@ const SChangePassData = styled.span`
   vertical-align: top;
   text-align: left;
   margin-right: 4px;
+`;
+
+const SChangePassRow = styled.div`
+  // display: inline-block;
+  // margin-top: 4px;
+  // margin-bottom: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
