@@ -8,12 +8,13 @@ export const requestEmailVerification = async (name: string, email: string, pass
     const res = await axios.post(url, {
       name,
       email,
-      password
+      password,
     }); 
     console.log('res(requestEmailVerification):', res.data);
     return res.data;
 
   } catch (error: any) {
+    alert(error.response.data.message)
     return error;
   }
 }
@@ -25,12 +26,13 @@ export const requestChangePassword = async (token: string, name: string, email:s
     const res = await axios.post(url, {
       token,
       name,
-      email
+      email,
     }); 
     console.log('res(requestChangePassword):', res.data);
     return res.data;
 
   } catch (error: any) {
+    alert(error.response.data.message)
     return error;
   }
 }
