@@ -8,6 +8,7 @@ import { getUser, updateUser } from "../api/User.tsx";
 import { UserContext } from "../providers/UserProvider.tsx";
 import { DeleteUser } from "./DeleteUser.tsx";
 import toast from "react-hot-toast";
+import { requestChangePassword } from "../api/Email.tsx";
 
 
 export default function UserProfile() {
@@ -220,8 +221,9 @@ export default function UserProfile() {
     }
   };
 
-  const onChangePasswordClick = () => {
-    toast("パスワード再設定用のメールを送信しました", { icon: <i className="fas fa-check-circle" style={{color: 'green'}}/>})
+  const onChangePasswordClick = async () => {
+    await requestChangePassword(userInfo.token, loginUser.name, loginUser.email)
+    toast("パスワード再設定メールを送信しました", { icon: <i className="fas fa-check-circle" style={{color: 'green'}}/>})
   }
 
   return (
@@ -636,10 +638,12 @@ const SLogo = styled.div`
 `;
 
 const SChangePasswordButton = styled.button`
+  background-color: #f8f8f8;
+  color: #5AA1FA;
   border: none;
   cursor: pointer;
 
   &:hover {
-    color: #5AA1FA;
+    text-decoration: underline; 
   }
 `;

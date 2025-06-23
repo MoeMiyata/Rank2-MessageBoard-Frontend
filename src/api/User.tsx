@@ -20,24 +20,6 @@ import { hostUrl } from './hostUrl.ts';
 //   }
 // }
 
-export const requestEmailVerification = async (name: string, email: string, password: string) => {
-  const url = hostUrl + `/user/request-verification`;
-  console.log("In requestEmailVerification!:", url);
-  try {
-    const res = await axios.post(url, {
-      name,
-      email,
-      password
-    }); 
-    console.log('res(requestEmailVerification):', res.data);
-    return res.data;
-
-  } catch (error: any) {
-    return error;
-  }
-}
-
-
 export const getUser = async (user_id: number, token: string) => {
   // const url = `http://localhost:3000/user/${user_id}?token=${token}`;
   const url = hostUrl + `/user/${user_id}?token=${token}`;

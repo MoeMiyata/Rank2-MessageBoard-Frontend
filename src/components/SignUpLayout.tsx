@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
-import { requestEmailVerification } from "../api/User.tsx";
+import { requestEmailVerification } from "../api/Email.tsx";
 // import { createUser } from "../api/User.tsx";
 
 

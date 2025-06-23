@@ -54,7 +54,7 @@ const SDeleteUserButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
