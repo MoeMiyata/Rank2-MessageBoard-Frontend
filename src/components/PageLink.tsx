@@ -40,6 +40,8 @@ export default function PageLink( props ) {
                 <i className="fas fa-chevron-circle-left" 
                    onClick={pageNumber < 10 ? undefined : onBeforePageClick}
                    style={{
+                    width: '100px',
+                    scale: 2,
                     color: pageNumber < 10 ? '#ccc' : '#000',
                     cursor: pageNumber < 10 ? 'not-allowed' : 'pointer',
                    }}>
@@ -47,6 +49,8 @@ export default function PageLink( props ) {
                 <i className="fas fa-chevron-circle-right"
                    onClick={isExistNextPage ? onNextPageClick : undefined }
                    style={{
+                    width: '100px',
+                    scale: 2,
                     color: isExistNextPage ? '#000' : '#ccc',
                     cursor: isExistNextPage ? 'not-pointer' : 'not-allowed',
                    }}>
