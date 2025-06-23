@@ -96,6 +96,11 @@ export default function SignUpLayout() {
         ref={recaptchaRef}
         sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
         onChange={(token) => console.log("captcha取得:", token)}
+        style={{
+          display: "flex",
+          flexDirection: "column-reverse",
+          alignItems: "center"
+        }}
       />
 
       <SSignInRow>
