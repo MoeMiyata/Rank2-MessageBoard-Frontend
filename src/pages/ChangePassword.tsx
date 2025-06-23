@@ -30,7 +30,7 @@ export const ChangePassword = () => {
   useEffect(() => {
     if (token) {
       axios
-        .post(`${hostUrl}/user/change-pass`, { token })
+        .post(`${hostUrl}/user/change-password`, { token })
         .then((res) => {
           toast('メール認証が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
         })
@@ -42,12 +42,13 @@ export const ChangePassword = () => {
 
   const onChangePasswordClick = async () => {
     if (newPassword !== confirmNewPassword) {
-        return toast('パスワードが一致していません。', { icon: <i className="fas fa-times-circle" style={{color: 'red'}}></i> })
+      return toast('パスワードが一致していません。', { icon: <i className="fas fa-times-circle" style={{color: 'red'}}></i> })
     }
     else {
-        await updateUser(userInfo.id, userInfo.token, newPassword);
-        setIsNewPassword(true)
-        toast('パスワードの再設定が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
+      setIsNewPassword(true)
+      console.log("newPassword:", newPassword)
+      await updateUser(userInfo.id, userInfo.token, newPassword);
+      toast('パスワードの再設定が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
     }
   }
 
