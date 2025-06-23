@@ -74,7 +74,7 @@ export const ChangePassword = () => {
           <div style={{ margin: "20px"}}>パスワードを再設定してください。</div>
 
           <SChangePassRow>
-            <SChangePassInput>
+            <SChangePassContainer>
               <SChangePassLabel>
                   <label htmlFor="password">新しいパスワード</label>
               </SChangePassLabel>
@@ -91,11 +91,11 @@ export const ChangePassword = () => {
                       </span>
                   </SChangePassInput>
               </SChangePassData>
-            </SChangePassInput>
+            </SChangePassContainer>
           </SChangePassRow>
 
           <SChangePassRow>
-            <SChangePassInput>
+            <SChangePassContainer>
               <SChangePassLabel>
                   <label htmlFor="password">新しいパスワード（確認）</label>
               </SChangePassLabel>
@@ -112,7 +112,7 @@ export const ChangePassword = () => {
                       </span>
                   </SChangePassInput>
               </SChangePassData>
-            </SChangePassInput>
+            </SChangePassContainer>
           </SChangePassRow>
           <SLoginButton onClick={onChangePasswordClick}>送信</SLoginButton>
         </SChangePassFrame> }
@@ -148,8 +148,12 @@ const SChangePassLabel = styled.span`
   margin-right: 4px;
 `;
 
-const SChangePassInput = styled.span`
+const SChangePassContainer = styled.span`
   display: flex;
+`
+
+const SChangePassInput = styled.span`
+  display: inline-block;
   position: relative;
   // display: inline-block;
   // width: auto;
