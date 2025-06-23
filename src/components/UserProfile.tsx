@@ -204,7 +204,7 @@ export default function UserProfile() {
       return ;
     } 
 
-    const error = await updateUser(userInfo.id, userInfo.token, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl);
+    const error = await updateUser(userInfo.token, userInfo.id, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl);
 
     if (error) {
       alert(error.response.data.message); // サーバ側で設定したエラー文を表示
@@ -222,7 +222,7 @@ export default function UserProfile() {
   };
 
   const onChangePasswordClick = async () => {
-    await requestChangePassword(userInfo.token, loginUser.name, loginUser.email)
+    await requestChangePassword(userInfo.token,loginUser.name, loginUser.email)
     toast("パスワード再設定メールを送信しました", { icon: <i className="fas fa-check-circle" style={{color: 'green'}}/>})
   }
 

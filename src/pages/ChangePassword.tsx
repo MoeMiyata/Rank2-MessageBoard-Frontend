@@ -15,8 +15,10 @@ export const ChangePassword = () => {
   const [ params ] = useSearchParams();
   const token = params.get('token');
 
-  const { userInfo } = useContext(UserContext);
-  console.log("userInfo（ChangePassword）:", userInfo)
+  // const { userInfo } = useContext(UserContext);
+  // console.log("userInfo（ChangePassword）:", userInfo)
+  const [ payload, setPayload ] = useState<{ token: string; name: string; email: string }>({ token: "xxx-xxx-xxx", name: "xxx", email: "xxx" });
+  const [ record, setRecord ] = useState(null);
 
   const [isRevealNewPassword, setIsRevealNewPassword] = useState(false);
   const toggleNewPassword = () => {
@@ -34,6 +36,9 @@ export const ChangePassword = () => {
         .post(`${hostUrl}/user/verify-password`, { token })
         .then((res) => {
           toast('メール認証が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
+          setPayload(res.data.payload)
+          setRecord(res.data.record)
+          console.log("payload, record:", res.data.payload, res.data.record)
         })
         .catch((err) => {
           toast('認証に失敗しました', { icon: <i className="fas fa-times-circle" style={{color: 'red'}}></i> })
@@ -48,7 +53,8 @@ export const ChangePassword = () => {
     else {
       setIsNewPassword(true)
       console.log("newPassword:", newPassword)
-      await updateUser(userInfo.id, userInfo.token, newPassword);
+      console.log("payload.token, record, newPassword:", payload.token, record, newPassword)
+      await updateUser(payload.token, undefined, payload, record, newPassword);
       toast('パスワードの再設定が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
     }
   }
