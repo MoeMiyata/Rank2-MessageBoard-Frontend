@@ -96,7 +96,7 @@ export default function SignUpLayout() {
       </SSignInRow>
     </SSignInFrame>
 
-    <SSignInRow>
+    <SSignInRow style={{ marginTop: "25px" }}>
     <SLoginButton type="button" onClick={onBackToLoginClick}>
         Back to Login
     </SLoginButton>
@@ -127,16 +127,16 @@ const SLogo = styled.div`
 const SSignInFrame = styled.div`
   background-color: #f8f8f8;
   margin: 80px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 8px 8px #aaaaaa;
 `;
 
 const SSignInRow = styled.div`
-  dixplay: inline-block;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  // dixplay: inline-block;
+  margin-top: 20px;
+  margin-bottom: 15px;
 `;
 
 const SSignInLabel = styled.span`
@@ -149,9 +149,10 @@ const SSignInLabel = styled.span`
 
 const SSignInInput = styled.span`
   display: inline-block;
-  width: auto;
+  width: 25%;
   vertical-align: top;
   margin-left: 4px;
+  text-align: left;
 `;
 
 const SLoginButton = styled.button`
