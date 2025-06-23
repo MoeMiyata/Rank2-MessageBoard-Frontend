@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { updateUser } from '../api/User.tsx';
 import { UserContext } from '../providers/UserProvider.tsx';
 
-export const ChangePass = () => {
+export const ChangePassword = () => {
   const navigate = useNavigate();
   const [ newPassword, setNewPassword ] = useState("");
   const [ confirmNewPassword, setConfirmNewPassword ] = useState("");

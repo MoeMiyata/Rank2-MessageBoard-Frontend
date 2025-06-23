@@ -13,6 +13,7 @@ import { VerifyEmail } from './pages/VerifyEmail.tsx';
 import './App.css';
 import { Toaster } from 'react-hot-toast';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { ChangePassword } from './pages/ChangePassword.tsx';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
+          <Route path="/change-password" element={<ChangePassword />} />
         </Routes>
       </LoginUserProvider>
       </UserProvider>
