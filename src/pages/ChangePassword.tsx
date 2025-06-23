@@ -54,7 +54,7 @@ export const ChangePassword = () => {
       setIsNewPassword(true)
       console.log("newPassword:", newPassword)
       console.log("payload.token, record, newPassword:", payload.token, record, newPassword)
-      await updateUser(payload.token, undefined, payload, record, newPassword);
+      await updateUser(payload.token, 0, payload, record, newPassword);
       toast('パスワードの再設定が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
     }
   }
