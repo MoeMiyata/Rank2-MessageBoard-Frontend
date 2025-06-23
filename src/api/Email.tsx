@@ -19,12 +19,13 @@ export const requestEmailVerification = async (name: string, email: string, pass
   }
 }
 
-export const requestChangePassword = async (token: string, name: string, email:string) => {
+export const requestChangePassword = async (token: string, id: number, name: string, email:string) => {
   const url = hostUrl + `/user/change-password`;
   console.log("In requestChangePassword!:", url);
   try {
     const res = await axios.post(url, {
       token,
+      id,
       name,
       email,
     }); 

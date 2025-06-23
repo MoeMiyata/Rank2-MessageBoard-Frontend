@@ -41,7 +41,7 @@ export const getUserIcons = async (token: string) => {
 };
 
 // user情報更新
-export const updateUser = async (token: string, user_id?: number, playload?, record?, name?: string, email?: string, password?: string, birthday?: string, address?: string, tel?: string, imgSrc?: string) => {
+export const updateUser = async (token: string, user_id: number, record?, name?: string, email?: string, password?: string, birthday?: string, address?: string, tel?: string, imgSrc?: string) => {
   console.log('In updateUser.\n')
   const url = hostUrl + `/user/${user_id}?token=${token}`;
   // console.log('updateURL:', url)
@@ -57,7 +57,6 @@ export const updateUser = async (token: string, user_id?: number, playload?, rec
       imgSrc,
     })
     const res = await axios.put(url, {
-      playload,
       record,
       name,
       email,

@@ -222,7 +222,7 @@ export default function UserProfile() {
   };
 
   const onChangePasswordClick = async () => {
-    await requestChangePassword(userInfo.token,loginUser.name, loginUser.email)
+    await requestChangePassword(userInfo.token,userInfo.id, loginUser.name, loginUser.email)
     toast("パスワード再設定メールを送信しました", { icon: <i className="fas fa-check-circle" style={{color: 'green'}}/>})
   }
 

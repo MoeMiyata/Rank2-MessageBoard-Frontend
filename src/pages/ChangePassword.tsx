@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { hostUrl } from '../api/hostUrl.ts';
 import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import { updateUser } from '../api/User.tsx';
-import { UserContext } from '../providers/UserProvider.tsx';
 
 export const ChangePassword = () => {
   const navigate = useNavigate();
@@ -15,9 +14,7 @@ export const ChangePassword = () => {
   const [ params ] = useSearchParams();
   const token = params.get('token');
 
-  // const { userInfo } = useContext(UserContext);
-  // console.log("userInfo（ChangePassword）:", userInfo)
-  const [ payload, setPayload ] = useState<{ token: string; name: string; email: string }>({ token: "xxx-xxx-xxx", name: "xxx", email: "xxx" });
+  const [ payload, setPayload ] = useState<{ token: string; id: number, name: string; email: string }>({ token: "xxx-xxx-xxx", id: 0, name: "xxx", email: "xxx" });
   const [ record, setRecord ] = useState(null);
 
   const [isRevealNewPassword, setIsRevealNewPassword] = useState(false);
@@ -54,7 +51,7 @@ export const ChangePassword = () => {
       setIsNewPassword(true)
       console.log("newPassword:", newPassword)
       console.log("payload.token, record, newPassword:", payload.token, record, newPassword)
-      await updateUser(payload.token, 0, payload, record, newPassword);
+      await updateUser(payload.token, payload.id, record, newPassword);
       toast('パスワードの再設定が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
     }
   }
