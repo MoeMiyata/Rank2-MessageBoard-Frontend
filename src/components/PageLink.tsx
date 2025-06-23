@@ -52,7 +52,7 @@ export default function PageLink( props ) {
                     width: '100px',
                     scale: 2,
                     color: isExistNextPage ? '#000' : '#ccc',
-                    cursor: isExistNextPage ? 'not-pointer' : 'not-allowed',
+                    cursor: isExistNextPage ? 'pointer' : 'not-allowed',
                    }}>
                 </i>
             </SPageLinkRow>
