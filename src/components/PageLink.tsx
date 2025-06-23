@@ -35,8 +35,22 @@ export default function PageLink( props ) {
 	return (
         <SPageLink>
             <SPageLinkRow>
-                { !(pageNumber<10) ? <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> : null }
-                { (isExistNextPage) && <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> }
+                {/* { !(pageNumber<10) ? <SPageLinkBeforeButton onClick={onBeforePageClick}>前へ</SPageLinkBeforeButton> : null }
+                { (isExistNextPage) && <SPageLinkNextButton onClick={onNextPageClick}>次へ</SPageLinkNextButton> } */}
+                <i className="fas fa-chevron-circle-left" 
+                   onClick={pageNumber < 10 ? undefined : onBeforePageClick}
+                   style={{
+                    color: pageNumber < 10 ? '#ccc' : '#000',
+                    cursor: pageNumber < 10 ? 'not-allowed' : 'pointer',
+                   }}>
+                </i>
+                <i className="fas fa-chevron-circle-right"
+                   onClick={isExistNextPage ? onNextPageClick : undefined }
+                   style={{
+                    color: isExistNextPage ? '#000' : '#ccc',
+                    cursor: isExistNextPage ? 'not-pointer' : 'not-allowed',
+                   }}>
+                </i>
             </SPageLinkRow>
         </SPageLink>
 	)
