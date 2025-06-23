@@ -31,7 +31,7 @@ export const ChangePassword = () => {
   useEffect(() => {
     if (token) {
       axios
-        .post(`${hostUrl}/user/change-password`, { token })
+        .post(`${hostUrl}/user/verify-password`, { token })
         .then((res) => {
           toast('メール認証が完了しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
         })
