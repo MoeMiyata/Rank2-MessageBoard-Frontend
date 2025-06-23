@@ -19,10 +19,10 @@ export const EditPost = (props: any) => {
         console.log("isEditPost(onEditPostClick):", isEditPost);
         if (!isEditPostRef.current) {
             setIsEditPost(true); // 編集モードに入る
-          } else {
-            await updatePost(userInfo.token, editId, editedContent); // 保存
-            setIsEditPost(false); // 編集終了
-          }
+        // } else {
+        //   await updatePost(userInfo.token, editId, editedContent); // 保存
+        //   setIsEditPost(false); // 編集終了
+        }
     }
 
     return loginUser.name === postUserName ? <SEditPostButton isEditPost={isEditPost} onClick={onEditPostClick}>編集</SEditPostButton> : null
