@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import { requestEmailVerification } from "../api/Email.tsx";
 // import { createUser } from "../api/User.tsx";
+import ReCAPTCHA from "react-google-recaptcha";
 
 
 export default function SignUpLayout() {
@@ -26,8 +27,6 @@ export default function SignUpLayout() {
       //   //　アカウント作成に成功したらログイン画面に移行
       //   navigate("/");
       // }
-
-
       const error = await requestEmailVerification(name, email, pass);
       console.log("requestEmailVerification:", error);
       toast('認証メールを送信しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
@@ -36,6 +35,9 @@ export default function SignUpLayout() {
   const onBackToLoginClick = async () => {
     navigate("/");
   };
+
+  // reCAPTCHA実装
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
       
   return (
     <>
@@ -88,6 +90,13 @@ export default function SignUpLayout() {
           />
         </SSignInInput>
       </SSignInRow>
+
+      {/* CAPTCHA */}
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+        onChange={(token) => console.log("captcha取得:", token)}
+      />
 
       <SSignInRow>
         <SLoginButton type="button" onClick={onSignUpClick} disabled={!isFormValid}>
