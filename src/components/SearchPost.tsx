@@ -6,12 +6,11 @@ import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
 import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
 import { getList } from "../api/Post.tsx";
-import PostList from "./PostList.tsx";
 import PageLink from "./PageLink.tsx";
 
 export const SearchPost = () => {
   const { userInfo } = useContext(UserContext);
-  const { setPostList } = useContext(PostListContext);
+  const { postList, setPostList } = useContext(PostListContext);
   const { pageNumber } = useContext(PageLinkContext);
   const { kwd, setKwd } = useContext(SearchPostContext);
   // ポスト一覧を取得する関数
@@ -35,7 +34,7 @@ export const SearchPost = () => {
   // kwdが変更されるたびに検索結果を更新する
   useEffect(() => {
     getSearchPostList(); // kwdが変更されるたびに実行
-    PageLink({ PostList })
+    PageLink({ postList })
   }, [kwd]);  // kwdが変わるたびに実行
 
   // 検索ボタンを押しても実行可能
