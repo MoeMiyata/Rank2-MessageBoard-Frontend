@@ -6,74 +6,77 @@ import { PostListContext, PostType } from "../providers/PostListProvider.tsx";
 import { PageLinkContext } from "../providers/PageLinkProvider.tsx";
 import { SearchPostContext } from "../providers/SearchPostProvider.tsx";
 import { getList } from "../api/Post.tsx";
+import PostList from "./PostList.tsx";
+import PageLink from "./PageLink.tsx";
 
 export const SearchPost = () => {
-    const { userInfo } = useContext(UserContext);
-    const { setPostList } = useContext(PostListContext);
-    const { pageNumber } = useContext(PageLinkContext);
-    const { kwd, setKwd } = useContext(SearchPostContext);
-    // ポスト一覧を取得する関数
-    const getSearchPostList = async() => {
-        const posts = await getList(userInfo.token, pageNumber, kwd);
-        // getListで取得したポスト配列をコンテキストに保存する
-        let postList: Array<PostType> = [];
-        if (posts) {
-        posts.forEach((p: any) => {
-            postList.push({
-            id: p.id,
-            user_name: p.user_name,
-            content: p.content,
-            created_at: new Date(p.created_at),
-            });
+  const { userInfo } = useContext(UserContext);
+  const { setPostList } = useContext(PostListContext);
+  const { pageNumber } = useContext(PageLinkContext);
+  const { kwd, setKwd } = useContext(SearchPostContext);
+  // ポスト一覧を取得する関数
+  const getSearchPostList = async() => {
+    const posts = await getList(userInfo.token, pageNumber, kwd);
+    // getListで取得したポスト配列をコンテキストに保存する
+    let postList: Array<PostType> = [];
+    if (posts) {
+    posts.forEach((p: any) => {
+        postList.push({
+        id: p.id,
+        user_name: p.user_name,
+        content: p.content,
+        created_at: new Date(p.created_at),
         });
-        }
-        setPostList(postList);
+    });
     }
+    setPostList(postList);
+  }
 
-    // kwdが変更されるたびに検索結果を更新する
-    useEffect(() => {
-      getSearchPostList(); // kwdが変更されるたびに実行
-    }, [kwd]);  // kwdが変わるたびに実行
+  // kwdが変更されるたびに検索結果を更新する
+  useEffect(() => {
+    getSearchPostList(); // kwdが変更されるたびに実行
+    PageLink({ PostList })
+  }, [kwd]);  // kwdが変わるたびに実行
 
-    // 検索ボタンを押しても実行可能
-    const onSearchPostClick = () => {
-      console.log("kwd:", kwd)
-      getSearchPostList()
-    }
+  // 検索ボタンを押しても実行可能
+  const onSearchPostClick = () => {
+    console.log("kwd:", kwd)
+    getSearchPostList()
+  }
 
 
-    const [ isOpenSearchBox, setIsOpenSearchBox ] = useState(false);
-    const onSwitchMobileSearchBoxClick = () => {
-      setIsOpenSearchBox(!isOpenSearchBox)
-    }
+  const [ isOpenSearchBox, setIsOpenSearchBox ] = useState(false);
+  const onSwitchMobileSearchBoxClick = () => {
+    setIsOpenSearchBox(!isOpenSearchBox)
+  }
 
-    return (
-      <>
-        <SSearchDiv>
-          <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
-          <SSearchIcon type="submit" onClick={onSearchPostClick}>
-            {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /> */}
-            <i className="fas fa-search" style={{scale: 1.5}} ></i>
-          </SSearchIcon>
-        </SSearchDiv> 
+  return (
+    <>
+      <SSearchDiv>
+        <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
+        <SSearchIcon type="submit" onClick={onSearchPostClick}>
+          {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /> */}
+          <i className="fas fa-search" style={{scale: 1.5}} ></i>
+        </SSearchIcon>
+      </SSearchDiv> 
 
-        {/* <SMobileSearchDiv> */}
-        { isOpenSearchBox && (
-          <SMobileSearchBoxContainer>
-            <SMobileSearchBox>
-              <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
-              {/* <SDeleteDialogButton buttonText="削除" onClick={onDeleteUserClick}>削除</SDeleteDialogButton>
-              <SDeleteDialogButton buttonText="キャンセル" onClick={onSwitchDialogClick}>キャンセル</SDeleteDialogButton> */}
-            </SMobileSearchBox>
-          </SMobileSearchBoxContainer>
-        )}
-        <SMobileSearchButton onClick={onSwitchMobileSearchBoxClick}>
-          {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/> */}
-          <i className="fas fa-search" ></i>
-        </SMobileSearchButton>
-        {/* </SMobileSearchDiv>  */}
-      </>
-    )
+      {/* <SMobileSearchDiv> */}
+      { isOpenSearchBox && (
+        <SMobileSearchBoxContainer>
+          <SMobileSearchBox>
+            <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
+            {/* <SDeleteDialogButton buttonText="削除" onClick={onDeleteUserClick}>削除</SDeleteDialogButton>
+            <SDeleteDialogButton buttonText="キャンセル" onClick={onSwitchDialogClick}>キャンセル</SDeleteDialogButton> */}
+          </SMobileSearchBox>
+        </SMobileSearchBoxContainer>
+      )}
+      <SMobileSearchButton onClick={onSwitchMobileSearchBoxClick}>
+        {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/> */}
+        <i className="fas fa-search" ></i>
+      </SMobileSearchButton>
+      {/* </SMobileSearchDiv>  */}
+    </>
+  )
 }
 
 
