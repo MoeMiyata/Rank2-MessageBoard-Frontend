@@ -34,7 +34,7 @@ export const SearchPost = () => {
   // kwdが変更されるたびに検索結果を更新する
   useEffect(() => {
     getSearchPostList(); // kwdが変更されるたびに実行
-    PageLink({ postList })
+    <PageLink postList={ postList } />
   }, [kwd]);  // kwdが変わるたびに実行
 
   // 検索ボタンを押しても実行可能
