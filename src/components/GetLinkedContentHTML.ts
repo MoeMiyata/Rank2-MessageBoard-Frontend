@@ -11,7 +11,7 @@ export const getLinkedContentHTML = (content: string): string => {
     const regex = new RegExp(`(${keyword})`, 'g');
     html = html.replace(
       regex,
-      `<a href="${url}" target="_blank" style="color: #3680FF; text-decoration: underline;">$1</a>`
+      `<a href="${url}" target="_blank" class="auto-link">$1</a>`
     );
   }
 

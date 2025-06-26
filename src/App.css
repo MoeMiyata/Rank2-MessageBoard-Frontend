@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* linkedContentで追加 */
+.auto-link {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.auto-link:hover {
+  color: #3680FF;
+  text-decoration: underline;
+}
