@@ -47,6 +47,28 @@ export const SearchPost = () => {
     setIsOpenSearchBox(!isOpenSearchBox)
   }
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1070px)');
+
+    const handleResize = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setIsOpenSearchBox(false);  // 画面が大きくなったら閉じる
+      }
+    };
+
+    // 初期チェック（ロード時）
+    if (mediaQuery.matches) {
+      setIsOpenSearchBox(false);
+    }
+
+    mediaQuery.addEventListener('change', handleResize);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleResize);
+    };
+  }, []);
+
+
   return (
     <>
       <SSearchDiv>
@@ -148,15 +170,20 @@ const SMobileSearchBoxContainer = styled.div`
 
 const SMobileSearchBox = styled.div`
   position: fixed;
+  width: 74%;
   top: 67px;
-  left: 50%;
+  left: 61%;
   transform: translate(-50%, -50%);
   background-color: rgb(34, 34, 34);
-  width: 90%;
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 20px;
   box-shadow: rgb(170, 170, 170) 0px 8px 8px;
+
+  @media (max-width: 768px) {
+    left: 50%;
+    width: 90%;
+  }
 `;
 
 // const SDeleteDialogButton = styled.button<{ buttonText: string }>`
