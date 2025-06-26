@@ -5,14 +5,14 @@ import { UserContext } from '../providers/UserProvider.tsx';
 import { getList } from '../api/Post.tsx';
 
 export default function PageLink( props ) {
-  const { postList } = props;
+  const { postList, kwd } = props;
   const { userInfo } = useContext(UserContext);
   const { pageNumber, setPageNumber } = useContext(PageLinkContext);
   const [isExistNextPage, setIsExistNextPage] = useState<boolean>(false); // 次ページがあるかどうかの状態管理
 
   const judgeOfNextPage = async () => {
     const nextPage = pageNumber + 10;
-    const posts = await getList(userInfo.token, nextPage);
+    const posts = await getList(userInfo.token, nextPage, kwd);
     console.log("judgeOfNextPage(posts):", posts);
     setIsExistNextPage(Array.isArray(posts) && posts.length > 0);
   }
@@ -29,7 +29,7 @@ export default function PageLink( props ) {
 
   useEffect(() => {
     judgeOfNextPage();
-  }, [postList]); 
+  }, [postList, kwd]); 
   
 
 	return (
