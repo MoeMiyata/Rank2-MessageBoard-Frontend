@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { varifyReCAPTCHA } from "../api/ReCAPTCHA";
+import { varifyReCAPTCHA } from "../api/ReCAPTCHA.tsx";
 
 export const CAPTCHA = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);

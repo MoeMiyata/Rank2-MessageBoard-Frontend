@@ -1,12 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import { requestEmailVerification } from "../api/Email.tsx";
-// import { createUser } from "../api/User.tsx";
-import ReCAPTCHA from "react-google-recaptcha";
-import { hostUrl } from "../api/hostUrl.ts";
-import axios from "axios";
 import { CAPTCHA } from "./reCAPTCHA.tsx";
 
 
