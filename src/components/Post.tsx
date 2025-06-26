@@ -6,6 +6,7 @@ import { UserIconContext } from "../providers/UserIconProvider.tsx";
 import { EditPost } from './EditPost.tsx';
 import { UserContext } from '../providers/UserProvider.tsx';
 import { updatePost } from '../api/Post.tsx';
+import { getLinkedContentHTML } from './GetLinkedContentHTML.ts';
 
 
 export default function Post(props: any) {
@@ -117,7 +118,7 @@ export default function Post(props: any) {
         </SMobilePostHeaderBox>
       </SPostHeader>
 
-      <SPostContent
+      {/* <SPostContent
         ref={contentRef}
         isEditPost={isEditPost}
         contentEditable={isEditPost}
@@ -129,7 +130,18 @@ export default function Post(props: any) {
           onEditPostBlur(newContent);
           // }, 0);
         }}
-      >{getLines(post.content)}</SPostContent>
+      >{getLines(post.content)}</SPostContent> */}
+      <SPostContent
+        ref={contentRef}
+        isEditPost={isEditPost}
+        contentEditable={isEditPost}
+        onBlur={(e) => {
+          const newContent = e.currentTarget.innerText.replace(/\n+$/, '')
+          setEditedContent(newContent ?? post.content);
+          onEditPostBlur(newContent);
+        }}
+        dangerouslySetInnerHTML={!isEditPost ? { __html: getLinkedContentHTML(post.content) } : undefined}
+      />
     </SPost>
   )
 }
