@@ -51,7 +51,7 @@ export default function PostList() {
     <>
     <UserIconProvider>
       {postList.length === 0 ? (
-        <p style={{ textAlign: 'center', marginTop: '20px' }}>
+        <p style={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
           表示できる投稿がありません
         </p>
       ) :
