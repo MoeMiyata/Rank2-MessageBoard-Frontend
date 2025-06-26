@@ -50,12 +50,18 @@ export default function PostList() {
   return (
     <>
     <UserIconProvider>
-      <SPostList>
-        {postList.map((p) => (
-          <Post key={p.id} postOwnerName={p.user_name} post={p} />
-        ))}
-      <PageLink postList={postList} kwd={kwd}></PageLink>
-      </SPostList>
+      {postList.length === 0 ? (
+        <p style={{ textAlign: 'center', marginTop: '20px' }}>
+          表示できる投稿がありません
+        </p>
+      ) :
+        <SPostList>
+          {postList.map((p) => (
+            <Post key={p.id} postOwnerName={p.user_name} post={p} />
+          ))}
+          <PageLink postList={postList} kwd={kwd}></PageLink>
+        </SPostList>
+      }
     </UserIconProvider>
     
     </>
