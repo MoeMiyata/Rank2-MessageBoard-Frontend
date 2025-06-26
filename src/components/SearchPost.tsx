@@ -48,7 +48,7 @@ export const SearchPost = () => {
   }
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 1070px)');
+    const mediaQuery = window.matchMedia('(min-width: 1071px)');
 
     const handleResize = (event: MediaQueryListEvent) => {
       if (event.matches) {
