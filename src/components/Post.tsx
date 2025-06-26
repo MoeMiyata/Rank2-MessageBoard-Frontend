@@ -140,8 +140,12 @@ export default function Post(props: any) {
           setEditedContent(newContent ?? post.content);
           onEditPostBlur(newContent);
         }}
-        dangerouslySetInnerHTML={!isEditPost ? { __html: getLinkedContentHTML(post.content) } : post.content}
-      />
+      >
+        {isEditPost
+          ? post.content
+          : <span dangerouslySetInnerHTML={{ __html: getLinkedContentHTML(post.content) }} />
+        }
+      </SPostContent>
     </SPost>
   )
 }
