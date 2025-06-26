@@ -142,8 +142,8 @@ export default function Post(props: any) {
         }}
       >
         {isEditPost
-          ? post.content
-          : <span dangerouslySetInnerHTML={{ __html: getLinkedContentHTML(post.content) }} />
+          ? editedContent || post.content
+          : <span dangerouslySetInnerHTML={{ __html: getLinkedContentHTML(editedContent || post.content) }} />
         }
       </SPostContent>
     </SPost>
