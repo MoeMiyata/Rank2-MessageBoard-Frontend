@@ -18,7 +18,7 @@ const [verified, setVerified] = useState(false);
     // reCAPTCHA認証
     const res = await verifyReCAPTCHA({ token })
 
-    if (res.success) {
+    if (res.data.success) {
       console.log("認証成功");
       setVerified(true);
     } else {
