@@ -74,26 +74,20 @@ export const SearchPost = () => {
       <SSearchDiv>
         <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
         <SSearchIcon type="submit" onClick={onSearchPostClick}>
-          {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="search" width="30" height="30" /> */}
           <i className="fas fa-search" style={{scale: 1.5}} ></i>
         </SSearchIcon>
       </SSearchDiv> 
 
-      {/* <SMobileSearchDiv> */}
       { isOpenSearchBox && (
         <SMobileSearchBoxContainer>
           <SMobileSearchBox>
             <SSearchPost type="search" placeholder="検索" name="kwd" onChange={(evt) => setKwd(evt.target.value)}/>
-            {/* <SDeleteDialogButton buttonText="削除" onClick={onDeleteUserClick}>削除</SDeleteDialogButton>
-            <SDeleteDialogButton buttonText="キャンセル" onClick={onSwitchDialogClick}>キャンセル</SDeleteDialogButton> */}
           </SMobileSearchBox>
         </SMobileSearchBoxContainer>
       )}
       <SMobileSearchButton onClick={onSwitchMobileSearchBoxClick}>
-        {/* <img src="https://github.com/MoeMiyata/Rank2-MessageBoard-Frontend/blob/main/public/searchicon.png?raw=true" alt="button" width="40" height="40" style={{ margin: "-2px 0px 0px -6.5px" }}/> */}
         <i className="fas fa-search" ></i>
       </SMobileSearchButton>
-      {/* </SMobileSearchDiv>  */}
     </>
   )
 }
@@ -107,7 +101,7 @@ const SSearchDiv = styled.div`
   @media (max-width: 1070px) {
     display: none;
   }
-`
+`;
 
 const SSearchPost = styled.input`
   border-radius: 4px;
@@ -120,24 +114,13 @@ const SSearchPost = styled.input`
     border-radius: 8px;
     width: 75%;
   }
-`
+`;
 
 const SSearchIcon = styled.button`
   background-color: #222222;
   color: #FAFAFA;
   border: none;
-`
-
-// const SMobileSearchDiv = styled.div`
-//   display: none;
-  
-//   @media (max-width: 768px) {
-//     display: flex;
-//     width: 100%;
-//     flex-direction: row;
-//     justify-content: flex-end;
-//   }
-// `
+`;
 
 const SMobileSearchButton = styled.button`
   display: none;
@@ -161,7 +144,7 @@ const SMobileSearchButton = styled.button`
       scale: 2;
     }
   }
-`
+`;
 
 const SMobileSearchBoxContainer = styled.div`
   display: inline-block;
@@ -185,21 +168,3 @@ const SMobileSearchBox = styled.div`
     width: 90%;
   }
 `;
-
-// const SDeleteDialogButton = styled.button<{ buttonText: string }>`
-//   border: none;
-//   border-radius: 5px;
-//   // background-color: lightblue;
-//   background-color:  #f8f8f8;
-//   // padding: 2px 10px;
-//   margin: ${({ buttonText }) => buttonText === "削除" ? "2px 30px 2px 30px" : "2px 10px 2px 30px"};
-//   cursor: pointer;
-
-//   &:hover {
-//     color: #5AA1FA;
-//   }
-// `;
-
-
-
-// 投稿一覧を表示し、検索されるとその表示された10個の投稿からListを削って表示する
