@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { varifyReCAPTCHA } from "../api/ReCAPTCHA.tsx";
+import { verifyReCAPTCHA } from "../api/ReCAPTCHA.tsx";
 
 export const CAPTCHA = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 const [verified, setVerified] = useState(false);
 
-  const onVarifyReCAPTCHAChange = async (token: string | null) => {
+  const onVerifyReCAPTCHAChange = async (token: string | null) => {
     // reCAPTCHA
     console.log("reCAPTCHA token:", token);
 
@@ -16,7 +16,7 @@ const [verified, setVerified] = useState(false);
     }
 
     // reCAPTCHA認証
-    const res = await varifyReCAPTCHA({ token })
+    const res = await verifyReCAPTCHA({ token })
 
     if (res.success) {
       console.log("認証成功");
@@ -32,7 +32,7 @@ const [verified, setVerified] = useState(false);
       <ReCAPTCHA
         ref={recaptchaRef}
         sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-        onChange={onVarifyReCAPTCHAChange}
+        onChange={onVerifyReCAPTCHAChange}
         style={{
           display: "flex",
           flexDirection: "column-reverse",

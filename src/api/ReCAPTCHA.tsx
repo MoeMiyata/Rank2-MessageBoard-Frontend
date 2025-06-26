@@ -1,7 +1,7 @@
 import axios from "axios";
 import { hostUrl } from "./hostUrl.ts";
 
-export const varifyReCAPTCHA = async (props) => {
+export const verifyReCAPTCHA = async (props) => {
     const { token } = props
 
     try {
