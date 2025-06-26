@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { requestEmailVerification } from "../api/Email.tsx";
 // import { createUser } from "../api/User.tsx";
 import ReCAPTCHA from "react-google-recaptcha";
+import { hostUrl } from "../api/hostUrl.ts";
+import axios from "axios";
+import { CAPTCHA } from "./reCAPTCHA.tsx";
 
 
 export default function SignUpLayout() {
@@ -18,15 +21,7 @@ export default function SignUpLayout() {
 
   const onSignUpClick = async () => {
       console.log('name:', name, '\nemail:', email, '\npassword:', pass);
-      
-      // const error = await createUser(name, email, pass);
 
-      // if (error) {
-      //   alert(error.response.data.message);
-      // } else {
-      //   //　アカウント作成に成功したらログイン画面に移行
-      //   navigate("/");
-      // }
       const error = await requestEmailVerification(name, email, pass);
       console.log("requestEmailVerification:", error);
       toast('認証メールを送信しました', { icon: <i className="fas fa-check-circle" style={{color: 'green'}}></i> })
@@ -36,9 +31,7 @@ export default function SignUpLayout() {
     navigate("/");
   };
 
-  // reCAPTCHA実装
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
-      
+
   return (
     <>
     <SHeader>
@@ -92,16 +85,7 @@ export default function SignUpLayout() {
       </SSignInRow>
 
       {/* CAPTCHA */}
-      <ReCAPTCHA
-        ref={recaptchaRef}
-        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-        onChange={(token) => console.log("captcha取得:", token)}
-        style={{
-          display: "flex",
-          flexDirection: "column-reverse",
-          alignItems: "center"
-        }}
-      />
+      <CAPTCHA />
 
       <SSignInRow>
         <SLoginButton type="button" onClick={onSignUpClick} disabled={!isFormValid}>
@@ -111,9 +95,9 @@ export default function SignUpLayout() {
     </SSignInFrame>
 
     <SSignInRow style={{ marginTop: "25px" }}>
-    <SLoginButton type="button" onClick={onBackToLoginClick}>
+      <SLoginButton type="button" onClick={onBackToLoginClick}>
         Back to Login
-    </SLoginButton>
+      </SLoginButton>
     </SSignInRow>
     </>
   );
