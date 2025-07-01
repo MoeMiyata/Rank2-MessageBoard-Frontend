@@ -204,7 +204,7 @@ export default function UserProfile() {
       return ;
     } 
 
-    const error = await updateUser(userInfo.token, userInfo.id, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl);
+    const error = await updateUser(userInfo.token, userInfo.id, null, updateName, updateEmail, pass, updateBirthday, updateAdress, updateTel, updateImgUrl);
 
     if (error) {
       alert(error.response.data.message); // サーバ側で設定したエラー文を表示
