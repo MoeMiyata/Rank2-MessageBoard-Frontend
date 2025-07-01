@@ -33,7 +33,7 @@ export default function Header() {
 
   return (
     <SHeader>
-      <SLogo>MicroPost</SLogo>
+      <SLogo>Boardemy</SLogo>
 
       {/* 検索ボタンの配置 */}
       <SearchPost/>

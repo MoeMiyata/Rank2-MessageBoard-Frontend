@@ -456,7 +456,7 @@ export default function UserProfile() {
           </div>
           <div>
             <SLogo>
-              - MicroPost -
+              - Boardemy -
             </SLogo>
           </div>
         </SUserProfileRow>
