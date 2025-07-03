@@ -11,6 +11,7 @@ import { post, getList } from "../api/Post.tsx";
 import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 import { VolumeContext } from '../providers/VolumeProvider.tsx';
 import { PostMobile } from './PostMobile.tsx';
+import { extractKeywords } from '../api/Keywords.ts';
 
 export default function SideBar() {
   const [msg, setMsg] = useState("");
@@ -41,10 +42,11 @@ export default function SideBar() {
     setPostList(postList);
   };
 
-  const onSendClick = async () => {
+  const onSendClick = async (message: string) => {
 	  await post(String(userInfo.id), userInfo.token, msg.replace(/\n+$/, ''));
     await getPostList();
     playSend()
+    await extractKeywords(message)
   };
 
   return (
@@ -65,7 +67,7 @@ export default function SideBar() {
         </SSideBarRow>
 
         <SSideBarRow>
-          <SSideBarButton onClick={onSendClick} disabled={msg.trim() === ''}>送信</SSideBarButton>
+          <SSideBarButton onClick={() => onSendClick(msg)} disabled={msg.trim() === ''}>送信</SSideBarButton>
         </SSideBarRow>
       </SSideBar>
 
