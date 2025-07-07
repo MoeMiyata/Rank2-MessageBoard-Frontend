@@ -1,14 +1,11 @@
-export const getLinkedContentHTML = (content: string): string => {
-  const keywordLinks: Record<string, string> = {
-    "量子コンピュータ": "https://ja.wikipedia.org/wiki/量子コンピュータ",
-    "人工知能": "https://ja.wikipedia.org/wiki/人工知能",
-    "機械学習": "https://ja.wikipedia.org/wiki/機械学習",
-    // 追加したい語彙をここに
-  };
+import { KeywordsLinksType } from "../providers/KeywordLinksProvider.tsx";
 
+export const getLinkedContentHTML = (content: string, keywordLinks: KeywordsLinksType[]): string => {
   let html = content;
-  for (const [keyword, url] of Object.entries(keywordLinks)) {
-    const regex = new RegExp(`(${keyword})`, 'g');
+
+  for (const { keyword, url } of keywordLinks) {
+    const isEnglish = /^[A-Za-z\s]+$/.test(keyword);  // 英字のみなら true
+    const regex = new RegExp(`(${keyword})`, isEnglish ? 'gi' : 'g');
     html = html.replace(
       regex,
       `<a href="${url}" target="_blank" class="auto-link">$1</a>`

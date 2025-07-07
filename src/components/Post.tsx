@@ -7,6 +7,8 @@ import { EditPost } from './EditPost.tsx';
 import { UserContext } from '../providers/UserProvider.tsx';
 import { updatePost } from '../api/Post.tsx';
 import { getLinkedContentHTML } from './GetLinkedContentHTML.ts';
+import { extractKeywords, getKeywordLinks } from '../api/Keywords.ts';
+import { KeywordsLinksContext } from '../providers/KeywordLinksProvider.tsx';
 
 
 export default function Post(props: any) {
@@ -17,9 +19,8 @@ export default function Post(props: any) {
   const [ editedContent, setEditedContent ] = useState("")
 
   const { userIcons } = useContext(UserIconContext);
-  console.log('userIcons:', userIcons)
-  
   const { userInfo } = useContext(UserContext);
+  const { keywordLinks, setKeywordLinks } = useContext(KeywordsLinksContext);
 
   const contentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -84,6 +85,14 @@ export default function Post(props: any) {
       setIsEditPost(false)
       await updatePost(userInfo.token, post.id, newContent);
     }, 200);
+
+    await extractKeywords(newContent);
+    const myGetkeywordLinks = async () => {
+      const kwdLinks = await getKeywordLinks();
+      setKeywordLinks(kwdLinks);
+      console.log("keywordLinks(MainLayout):", kwdLinks);
+    };
+    myGetkeywordLinks();
   }
   
 
@@ -118,19 +127,6 @@ export default function Post(props: any) {
         </SMobilePostHeaderBox>
       </SPostHeader>
 
-      {/* <SPostContent
-        ref={contentRef}
-        isEditPost={isEditPost}
-        contentEditable={isEditPost}
-        onBlur={(e) => {
-          console.log("e.currentTarget.innerText:", e.currentTarget.innerText)
-          const newContent = e.currentTarget.innerText.replace(/\n+$/, '')
-          setEditedContent(newContent ?? post.content);
-          // setTimeout(() => {
-          onEditPostBlur(newContent);
-          // }, 0);
-        }}
-      >{getLines(post.content)}</SPostContent> */}
       <SPostContent
         ref={contentRef}
         isEditPost={isEditPost}
@@ -143,7 +139,7 @@ export default function Post(props: any) {
       >
         {isEditPost
           ? editedContent || post.content
-          : <span dangerouslySetInnerHTML={{ __html: getLinkedContentHTML(editedContent || post.content) }} />
+          : <span dangerouslySetInnerHTML={{ __html: getLinkedContentHTML(editedContent || post.content, keywordLinks) }} />
         }
       </SPostContent>
     </SPost>

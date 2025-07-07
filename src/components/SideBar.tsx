@@ -11,7 +11,8 @@ import { post, getList } from "../api/Post.tsx";
 import { LoginUserContext } from '../providers/LoginUserProvider.tsx';
 import { VolumeContext } from '../providers/VolumeProvider.tsx';
 import { PostMobile } from './PostMobile.tsx';
-import { extractKeywords } from '../api/Keywords.ts';
+import { extractKeywords, getKeywordLinks } from '../api/Keywords.ts';
+import { KeywordsLinksContext } from '../providers/KeywordLinksProvider.tsx';
 
 export default function SideBar() {
   const [msg, setMsg] = useState("");
@@ -20,6 +21,7 @@ export default function SideBar() {
   const { loginUser } = useContext(LoginUserContext);
   const { pageNumber } = useContext(PageLinkContext);
   const { setPostList } = useContext(PostListContext); 
+  const { setKeywordLinks } = useContext(KeywordsLinksContext);
 
   const [ playSend ] = useSound('/mute_shupon.mp3', { playbackRate: isMute ? 0 : 1 });
 
@@ -46,7 +48,14 @@ export default function SideBar() {
 	  await post(String(userInfo.id), userInfo.token, msg.replace(/\n+$/, ''));
     await getPostList();
     playSend()
-    await extractKeywords(message)
+
+    await extractKeywords(message);
+    const myGetkeywordLinks = async () => {
+      const kwdLinks = await getKeywordLinks();
+      setKeywordLinks(kwdLinks);
+      console.log("keywordLinks(MainLayout):", kwdLinks);
+    };
+    myGetkeywordLinks();
   };
 
   return (
